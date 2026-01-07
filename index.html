@@ -17,7 +17,7 @@
             <meta name="viewport" content="width=device-width,
                 initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
             <style>
-                #map_dda65f877106196b62581aeb7606eb84 {
+                #map_418e7ee54cc104c10bd11e142382e816 {
                     position: relative;
                     width: 100.0%;
                     height: 100.0%;
@@ -51,20 +51,18 @@
 
         
     <script src="https://cdn.jsdelivr.net/gh/python-visualization/folium@main/folium/templates/leaflet_heat.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/leaflet.fullscreen@3.0.0/Control.FullScreen.min.js"></script>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet.fullscreen@3.0.0/Control.FullScreen.css"/>
 </head>
 <body>
     
     
-            <div class="folium-map" id="map_dda65f877106196b62581aeb7606eb84" ></div>
+            <div class="folium-map" id="map_418e7ee54cc104c10bd11e142382e816" ></div>
         
 </body>
 <script>
     
     
-            var map_dda65f877106196b62581aeb7606eb84 = L.map(
-                "map_dda65f877106196b62581aeb7606eb84",
+            var map_418e7ee54cc104c10bd11e142382e816 = L.map(
+                "map_418e7ee54cc104c10bd11e142382e816",
                 {
                     center: [40.64, 16.1],
                     crs: L.CRS.EPSG3857,
@@ -81,7 +79,7 @@
 
         
     
-            var tile_layer_0e73f628cf1c334203bb5142250874c4 = L.tileLayer(
+            var tile_layer_6f5d4c9d6061197887dd041366b104a9 = L.tileLayer(
                 "https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png",
                 {
   "minZoom": 0,
@@ -98,13 +96,13 @@
             );
         
     
-            tile_layer_0e73f628cf1c334203bb5142250874c4.addTo(map_dda65f877106196b62581aeb7606eb84);
+            tile_layer_6f5d4c9d6061197887dd041366b104a9.addTo(map_418e7ee54cc104c10bd11e142382e816);
         
     
-            var heat_map_b9da1cbb2653f76f259e63c4681cdd8d = L.heatLayer(
-                [[40.1, 15.9, 0.8], [40.2, 16.0, 0.9], [40.5, 15.7, 0.5], [40.8, 16.3, 0.4], [39.9, 16.1, 1.0]],
+            var heat_map_92ef135831949fc54813f52ed6069830 = L.heatLayer(
+                [[40.1, 15.8, 0.9], [40.5, 16.2, 0.7], [40.8, 16.5, 0.4]],
                 {
-  "minOpacity": 0.4,
+  "minOpacity": 0.5,
   "maxZoom": 18,
   "radius": 25,
   "blur": 15,
@@ -112,47 +110,2626 @@
             );
         
     
-            heat_map_b9da1cbb2653f76f259e63c4681cdd8d.addTo(map_dda65f877106196b62581aeb7606eb84);
+            heat_map_92ef135831949fc54813f52ed6069830.addTo(map_418e7ee54cc104c10bd11e142382e816);
         
     
-            var feature_group_152eebcbb8ae7b2f7230458d759f91fc = L.featureGroup(
-                {
-}
-            );
+            var circle_marker_4f84278d9dbe578588f0dd893dde5835 = L.circleMarker(
+                [40.728333, 15.9225],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3498db", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 1}
+            ).addTo(map_418e7ee54cc104c10bd11e142382e816);
         
     
-            feature_group_152eebcbb8ae7b2f7230458d759f91fc.addTo(map_dda65f877106196b62581aeb7606eb84);
+        var popup_24924d199ca374aa7232ad404d97e682 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_713176712cb36b3dd699955d372fa519 = $(`<div id="html_713176712cb36b3dd699955d372fa519" style="width: 100.0%; height: 100.0%;">                 <div style='font-family:Arial; width:220px;'>                     <h5 style='margin:0; color:#2c3e50;'>None</h5>                     <small>Bacino: N/A</small><hr style='margin:8px 0;'>                     <b>Livello Reale:</b> N/D<br>                     <div style='margin-top:10px; padding:8px; background:#f0f7ff; border-left:4px solid #4285F4;'>                         <small><b>GOOGLE FLOOD AI:</b></small><br>Monitoraggio AI Attivo                     </div>                 </div>                 </div>`)[0];
+                popup_24924d199ca374aa7232ad404d97e682.setContent(html_713176712cb36b3dd699955d372fa519);
+            
+        
+
+        circle_marker_4f84278d9dbe578588f0dd893dde5835.bindPopup(popup_24924d199ca374aa7232ad404d97e682)
+        ;
+
         
     
-            var layer_control_a42f4e33024bb9a16f0fa3c7d834599a_layers = {
+    
+            var circle_marker_8c0a190259e77b9ae71c11140a7c7819 = L.circleMarker(
+                [40.952222, 15.629444],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3498db", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 1}
+            ).addTo(map_418e7ee54cc104c10bd11e142382e816);
+        
+    
+        var popup_b7d5ec21f7e3cacf2ae594565f4c4c7b = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_f89f0ffbcefb47ef1d6dd1a99f2bc80e = $(`<div id="html_f89f0ffbcefb47ef1d6dd1a99f2bc80e" style="width: 100.0%; height: 100.0%;">                 <div style='font-family:Arial; width:220px;'>                     <h5 style='margin:0; color:#2c3e50;'>None</h5>                     <small>Bacino: N/A</small><hr style='margin:8px 0;'>                     <b>Livello Reale:</b> N/D<br>                     <div style='margin-top:10px; padding:8px; background:#f0f7ff; border-left:4px solid #4285F4;'>                         <small><b>GOOGLE FLOOD AI:</b></small><br>Monitoraggio AI Attivo                     </div>                 </div>                 </div>`)[0];
+                popup_b7d5ec21f7e3cacf2ae594565f4c4c7b.setContent(html_f89f0ffbcefb47ef1d6dd1a99f2bc80e);
+            
+        
+
+        circle_marker_8c0a190259e77b9ae71c11140a7c7819.bindPopup(popup_b7d5ec21f7e3cacf2ae594565f4c4c7b)
+        ;
+
+        
+    
+    
+            var circle_marker_97c3719c011cb267602048e56a508e92 = L.circleMarker(
+                [40.584722, 16.579444],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3498db", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 1}
+            ).addTo(map_418e7ee54cc104c10bd11e142382e816);
+        
+    
+        var popup_eda50b164f1c091865aa364ebd4e8060 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_ecd9ec0fd51eb89975ab884a83652758 = $(`<div id="html_ecd9ec0fd51eb89975ab884a83652758" style="width: 100.0%; height: 100.0%;">                 <div style='font-family:Arial; width:220px;'>                     <h5 style='margin:0; color:#2c3e50;'>None</h5>                     <small>Bacino: N/A</small><hr style='margin:8px 0;'>                     <b>Livello Reale:</b> 0.19 m<br>                     <div style='margin-top:10px; padding:8px; background:#f0f7ff; border-left:4px solid #4285F4;'>                         <small><b>GOOGLE FLOOD AI:</b></small><br>Monitoraggio AI Attivo                     </div>                 </div>                 </div>`)[0];
+                popup_eda50b164f1c091865aa364ebd4e8060.setContent(html_ecd9ec0fd51eb89975ab884a83652758);
+            
+        
+
+        circle_marker_97c3719c011cb267602048e56a508e92.bindPopup(popup_eda50b164f1c091865aa364ebd4e8060)
+        ;
+
+        
+    
+    
+            var circle_marker_f42a9bfd740f86a75a2d87ec29ba57c8 = L.circleMarker(
+                [40.390278, 16.656944],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 1}
+            ).addTo(map_418e7ee54cc104c10bd11e142382e816);
+        
+    
+        var popup_75ce4acc2c7eddf0b2d335ed95381ddc = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_c56df923b8759ab04fbb2a6067a0e3f6 = $(`<div id="html_c56df923b8759ab04fbb2a6067a0e3f6" style="width: 100.0%; height: 100.0%;">                 <div style='font-family:Arial; width:220px;'>                     <h5 style='margin:0; color:#2c3e50;'>None</h5>                     <small>Bacino: N/A</small><hr style='margin:8px 0;'>                     <b>Livello Reale:</b> 2.08 m<br>                     <div style='margin-top:10px; padding:8px; background:#f0f7ff; border-left:4px solid #4285F4;'>                         <small><b>GOOGLE FLOOD AI:</b></small><br>Monitoraggio AI Attivo                     </div>                 </div>                 </div>`)[0];
+                popup_75ce4acc2c7eddf0b2d335ed95381ddc.setContent(html_c56df923b8759ab04fbb2a6067a0e3f6);
+            
+        
+
+        circle_marker_f42a9bfd740f86a75a2d87ec29ba57c8.bindPopup(popup_75ce4acc2c7eddf0b2d335ed95381ddc)
+        ;
+
+        
+    
+    
+            var circle_marker_da68ccfd963eca92015edd7ea9af9e77 = L.circleMarker(
+                [40.5425, 15.569722],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3498db", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 1}
+            ).addTo(map_418e7ee54cc104c10bd11e142382e816);
+        
+    
+        var popup_23fe438eee7bcd688967b5f1e6597c7e = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_77d2b619a5c65d7f5f92d6c4650b110f = $(`<div id="html_77d2b619a5c65d7f5f92d6c4650b110f" style="width: 100.0%; height: 100.0%;">                 <div style='font-family:Arial; width:220px;'>                     <h5 style='margin:0; color:#2c3e50;'>None</h5>                     <small>Bacino: N/A</small><hr style='margin:8px 0;'>                     <b>Livello Reale:</b> 0.36 m<br>                     <div style='margin-top:10px; padding:8px; background:#f0f7ff; border-left:4px solid #4285F4;'>                         <small><b>GOOGLE FLOOD AI:</b></small><br>Monitoraggio AI Attivo                     </div>                 </div>                 </div>`)[0];
+                popup_23fe438eee7bcd688967b5f1e6597c7e.setContent(html_77d2b619a5c65d7f5f92d6c4650b110f);
+            
+        
+
+        circle_marker_da68ccfd963eca92015edd7ea9af9e77.bindPopup(popup_23fe438eee7bcd688967b5f1e6597c7e)
+        ;
+
+        
+    
+    
+            var circle_marker_4ffe9f094c842b7018e5e44eed8c2f19 = L.circleMarker(
+                [40.521667, 15.912222],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3498db", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 1}
+            ).addTo(map_418e7ee54cc104c10bd11e142382e816);
+        
+    
+        var popup_745fa35206d73ba36469fabd3de6f1f4 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_a77e80e915f7aac9c8c38c7810e45f30 = $(`<div id="html_a77e80e915f7aac9c8c38c7810e45f30" style="width: 100.0%; height: 100.0%;">                 <div style='font-family:Arial; width:220px;'>                     <h5 style='margin:0; color:#2c3e50;'>None</h5>                     <small>Bacino: N/A</small><hr style='margin:8px 0;'>                     <b>Livello Reale:</b> N/D<br>                     <div style='margin-top:10px; padding:8px; background:#f0f7ff; border-left:4px solid #4285F4;'>                         <small><b>GOOGLE FLOOD AI:</b></small><br>Monitoraggio AI Attivo                     </div>                 </div>                 </div>`)[0];
+                popup_745fa35206d73ba36469fabd3de6f1f4.setContent(html_a77e80e915f7aac9c8c38c7810e45f30);
+            
+        
+
+        circle_marker_4ffe9f094c842b7018e5e44eed8c2f19.bindPopup(popup_745fa35206d73ba36469fabd3de6f1f4)
+        ;
+
+        
+    
+    
+            var circle_marker_a4d595bfc9344f729ac3bb7fd7fd13e1 = L.circleMarker(
+                [40.748611, 16.239444],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3498db", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 1}
+            ).addTo(map_418e7ee54cc104c10bd11e142382e816);
+        
+    
+        var popup_71d90c1394d68ea9f45955af38447141 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_a79c01e3abffa2c7dd0f0c05721424f7 = $(`<div id="html_a79c01e3abffa2c7dd0f0c05721424f7" style="width: 100.0%; height: 100.0%;">                 <div style='font-family:Arial; width:220px;'>                     <h5 style='margin:0; color:#2c3e50;'>None</h5>                     <small>Bacino: N/A</small><hr style='margin:8px 0;'>                     <b>Livello Reale:</b> N/D<br>                     <div style='margin-top:10px; padding:8px; background:#f0f7ff; border-left:4px solid #4285F4;'>                         <small><b>GOOGLE FLOOD AI:</b></small><br>Monitoraggio AI Attivo                     </div>                 </div>                 </div>`)[0];
+                popup_71d90c1394d68ea9f45955af38447141.setContent(html_a79c01e3abffa2c7dd0f0c05721424f7);
+            
+        
+
+        circle_marker_a4d595bfc9344f729ac3bb7fd7fd13e1.bindPopup(popup_71d90c1394d68ea9f45955af38447141)
+        ;
+
+        
+    
+    
+            var circle_marker_d1ed76460e3bd14164e5a5b52c1e5e8d = L.circleMarker(
+                [41.049722, 15.794444],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3498db", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 1}
+            ).addTo(map_418e7ee54cc104c10bd11e142382e816);
+        
+    
+        var popup_a0c937fbb58b28a370216258c42e1575 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_15f81a018d67734e1d53be952d3ec9e6 = $(`<div id="html_15f81a018d67734e1d53be952d3ec9e6" style="width: 100.0%; height: 100.0%;">                 <div style='font-family:Arial; width:220px;'>                     <h5 style='margin:0; color:#2c3e50;'>None</h5>                     <small>Bacino: N/A</small><hr style='margin:8px 0;'>                     <b>Livello Reale:</b> N/D<br>                     <div style='margin-top:10px; padding:8px; background:#f0f7ff; border-left:4px solid #4285F4;'>                         <small><b>GOOGLE FLOOD AI:</b></small><br>Monitoraggio AI Attivo                     </div>                 </div>                 </div>`)[0];
+                popup_a0c937fbb58b28a370216258c42e1575.setContent(html_15f81a018d67734e1d53be952d3ec9e6);
+            
+        
+
+        circle_marker_d1ed76460e3bd14164e5a5b52c1e5e8d.bindPopup(popup_a0c937fbb58b28a370216258c42e1575)
+        ;
+
+        
+    
+    
+            var circle_marker_69dc21adaee34cb67913435d4f7432aa = L.circleMarker(
+                [40.296944, 15.909167],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3498db", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 1}
+            ).addTo(map_418e7ee54cc104c10bd11e142382e816);
+        
+    
+        var popup_3a5d2d89ef03861c6cbc6bb734a7d638 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_51731e0852123965758579b9a6de0f94 = $(`<div id="html_51731e0852123965758579b9a6de0f94" style="width: 100.0%; height: 100.0%;">                 <div style='font-family:Arial; width:220px;'>                     <h5 style='margin:0; color:#2c3e50;'>None</h5>                     <small>Bacino: N/A</small><hr style='margin:8px 0;'>                     <b>Livello Reale:</b> 0.42 m<br>                     <div style='margin-top:10px; padding:8px; background:#f0f7ff; border-left:4px solid #4285F4;'>                         <small><b>GOOGLE FLOOD AI:</b></small><br>Monitoraggio AI Attivo                     </div>                 </div>                 </div>`)[0];
+                popup_3a5d2d89ef03861c6cbc6bb734a7d638.setContent(html_51731e0852123965758579b9a6de0f94);
+            
+        
+
+        circle_marker_69dc21adaee34cb67913435d4f7432aa.bindPopup(popup_3a5d2d89ef03861c6cbc6bb734a7d638)
+        ;
+
+        
+    
+    
+            var circle_marker_920359580b3ad0bb45dc851e014be2c7 = L.circleMarker(
+                [40.069444, 16.106389],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3498db", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 1}
+            ).addTo(map_418e7ee54cc104c10bd11e142382e816);
+        
+    
+        var popup_13412e0f7ea82b3fc8694d2b98b5b9b2 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_98fb0a9e3fc5cf28a774aedbbef556ea = $(`<div id="html_98fb0a9e3fc5cf28a774aedbbef556ea" style="width: 100.0%; height: 100.0%;">                 <div style='font-family:Arial; width:220px;'>                     <h5 style='margin:0; color:#2c3e50;'>None</h5>                     <small>Bacino: N/A</small><hr style='margin:8px 0;'>                     <b>Livello Reale:</b> 1.24 m<br>                     <div style='margin-top:10px; padding:8px; background:#f0f7ff; border-left:4px solid #4285F4;'>                         <small><b>GOOGLE FLOOD AI:</b></small><br>Monitoraggio AI Attivo                     </div>                 </div>                 </div>`)[0];
+                popup_13412e0f7ea82b3fc8694d2b98b5b9b2.setContent(html_98fb0a9e3fc5cf28a774aedbbef556ea);
+            
+        
+
+        circle_marker_920359580b3ad0bb45dc851e014be2c7.bindPopup(popup_13412e0f7ea82b3fc8694d2b98b5b9b2)
+        ;
+
+        
+    
+    
+            var circle_marker_aabd8bd5d8aa908fad7369db87dc3cb7 = L.circleMarker(
+                [40.021389, 16.140556],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3498db", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 1}
+            ).addTo(map_418e7ee54cc104c10bd11e142382e816);
+        
+    
+        var popup_bac265c3258f63df32e992f088e0d678 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_1279168eae95a64e39e3c79372b506e3 = $(`<div id="html_1279168eae95a64e39e3c79372b506e3" style="width: 100.0%; height: 100.0%;">                 <div style='font-family:Arial; width:220px;'>                     <h5 style='margin:0; color:#2c3e50;'>None</h5>                     <small>Bacino: N/A</small><hr style='margin:8px 0;'>                     <b>Livello Reale:</b> N/D<br>                     <div style='margin-top:10px; padding:8px; background:#f0f7ff; border-left:4px solid #4285F4;'>                         <small><b>GOOGLE FLOOD AI:</b></small><br>Monitoraggio AI Attivo                     </div>                 </div>                 </div>`)[0];
+                popup_bac265c3258f63df32e992f088e0d678.setContent(html_1279168eae95a64e39e3c79372b506e3);
+            
+        
+
+        circle_marker_aabd8bd5d8aa908fad7369db87dc3cb7.bindPopup(popup_bac265c3258f63df32e992f088e0d678)
+        ;
+
+        
+    
+    
+            var circle_marker_02dbbe8f83e78986f05006fd877d1abc = L.circleMarker(
+                [40.254167, 15.983333],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3498db", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 1}
+            ).addTo(map_418e7ee54cc104c10bd11e142382e816);
+        
+    
+        var popup_53fadba6af1ce0702341afae3fbc455d = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_775c4d87df2d81098706e2397db2fb3e = $(`<div id="html_775c4d87df2d81098706e2397db2fb3e" style="width: 100.0%; height: 100.0%;">                 <div style='font-family:Arial; width:220px;'>                     <h5 style='margin:0; color:#2c3e50;'>None</h5>                     <small>Bacino: N/A</small><hr style='margin:8px 0;'>                     <b>Livello Reale:</b> N/D<br>                     <div style='margin-top:10px; padding:8px; background:#f0f7ff; border-left:4px solid #4285F4;'>                         <small><b>GOOGLE FLOOD AI:</b></small><br>Monitoraggio AI Attivo                     </div>                 </div>                 </div>`)[0];
+                popup_53fadba6af1ce0702341afae3fbc455d.setContent(html_775c4d87df2d81098706e2397db2fb3e);
+            
+        
+
+        circle_marker_02dbbe8f83e78986f05006fd877d1abc.bindPopup(popup_53fadba6af1ce0702341afae3fbc455d)
+        ;
+
+        
+    
+    
+            var circle_marker_5ada7188a5b52c1302be372f421207d3 = L.circleMarker(
+                [40.247778, 15.893889],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3498db", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 1}
+            ).addTo(map_418e7ee54cc104c10bd11e142382e816);
+        
+    
+        var popup_b8b13c46966fc438bc46171d119ba190 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_0c606916f7457cc6980b47307e2f0d4b = $(`<div id="html_0c606916f7457cc6980b47307e2f0d4b" style="width: 100.0%; height: 100.0%;">                 <div style='font-family:Arial; width:220px;'>                     <h5 style='margin:0; color:#2c3e50;'>None</h5>                     <small>Bacino: N/A</small><hr style='margin:8px 0;'>                     <b>Livello Reale:</b> 1.32 m<br>                     <div style='margin-top:10px; padding:8px; background:#f0f7ff; border-left:4px solid #4285F4;'>                         <small><b>GOOGLE FLOOD AI:</b></small><br>Monitoraggio AI Attivo                     </div>                 </div>                 </div>`)[0];
+                popup_b8b13c46966fc438bc46171d119ba190.setContent(html_0c606916f7457cc6980b47307e2f0d4b);
+            
+        
+
+        circle_marker_5ada7188a5b52c1302be372f421207d3.bindPopup(popup_b8b13c46966fc438bc46171d119ba190)
+        ;
+
+        
+    
+    
+            var circle_marker_d8d71f66da369b48fe9cf7f04d32e150 = L.circleMarker(
+                [41.048056, 15.786111],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3498db", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 1}
+            ).addTo(map_418e7ee54cc104c10bd11e142382e816);
+        
+    
+        var popup_27197416c7f65609cff7062e0b4ad13a = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_cdbbd9eaa2dfc4f67e7fc68ee380da72 = $(`<div id="html_cdbbd9eaa2dfc4f67e7fc68ee380da72" style="width: 100.0%; height: 100.0%;">                 <div style='font-family:Arial; width:220px;'>                     <h5 style='margin:0; color:#2c3e50;'>None</h5>                     <small>Bacino: N/A</small><hr style='margin:8px 0;'>                     <b>Livello Reale:</b> N/D<br>                     <div style='margin-top:10px; padding:8px; background:#f0f7ff; border-left:4px solid #4285F4;'>                         <small><b>GOOGLE FLOOD AI:</b></small><br>Monitoraggio AI Attivo                     </div>                 </div>                 </div>`)[0];
+                popup_27197416c7f65609cff7062e0b4ad13a.setContent(html_cdbbd9eaa2dfc4f67e7fc68ee380da72);
+            
+        
+
+        circle_marker_d8d71f66da369b48fe9cf7f04d32e150.bindPopup(popup_27197416c7f65609cff7062e0b4ad13a)
+        ;
+
+        
+    
+    
+            var circle_marker_4ec6672fb3221eb6d3523eca231ab8da = L.circleMarker(
+                [40.858611, 15.848056],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3498db", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 1}
+            ).addTo(map_418e7ee54cc104c10bd11e142382e816);
+        
+    
+        var popup_66f2846998d860d9758a91e779990a96 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_5049078ab9faf8839003ad5a41089e94 = $(`<div id="html_5049078ab9faf8839003ad5a41089e94" style="width: 100.0%; height: 100.0%;">                 <div style='font-family:Arial; width:220px;'>                     <h5 style='margin:0; color:#2c3e50;'>None</h5>                     <small>Bacino: N/A</small><hr style='margin:8px 0;'>                     <b>Livello Reale:</b> N/D<br>                     <div style='margin-top:10px; padding:8px; background:#f0f7ff; border-left:4px solid #4285F4;'>                         <small><b>GOOGLE FLOOD AI:</b></small><br>Monitoraggio AI Attivo                     </div>                 </div>                 </div>`)[0];
+                popup_66f2846998d860d9758a91e779990a96.setContent(html_5049078ab9faf8839003ad5a41089e94);
+            
+        
+
+        circle_marker_4ec6672fb3221eb6d3523eca231ab8da.bindPopup(popup_66f2846998d860d9758a91e779990a96)
+        ;
+
+        
+    
+    
+            var circle_marker_b402baeb129f956fb6c2338cd8492ec5 = L.circleMarker(
+                [39.983333, 16.297222],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3498db", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 1}
+            ).addTo(map_418e7ee54cc104c10bd11e142382e816);
+        
+    
+        var popup_a1e7234c2f0845543bc4bdead5891050 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_8a7005ec44e48e3780ecacaed43ca720 = $(`<div id="html_8a7005ec44e48e3780ecacaed43ca720" style="width: 100.0%; height: 100.0%;">                 <div style='font-family:Arial; width:220px;'>                     <h5 style='margin:0; color:#2c3e50;'>None</h5>                     <small>Bacino: N/A</small><hr style='margin:8px 0;'>                     <b>Livello Reale:</b> N/D<br>                     <div style='margin-top:10px; padding:8px; background:#f0f7ff; border-left:4px solid #4285F4;'>                         <small><b>GOOGLE FLOOD AI:</b></small><br>Monitoraggio AI Attivo                     </div>                 </div>                 </div>`)[0];
+                popup_a1e7234c2f0845543bc4bdead5891050.setContent(html_8a7005ec44e48e3780ecacaed43ca720);
+            
+        
+
+        circle_marker_b402baeb129f956fb6c2338cd8492ec5.bindPopup(popup_a1e7234c2f0845543bc4bdead5891050)
+        ;
+
+        
+    
+    
+            var circle_marker_775fa2390378c8093c5550cc9014f06c = L.circleMarker(
+                [39.953611, 15.976667],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3498db", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 1}
+            ).addTo(map_418e7ee54cc104c10bd11e142382e816);
+        
+    
+        var popup_2a001d67232993d7fa13ce143417e054 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_2b3f3ae293dfd4981e7596916d540b67 = $(`<div id="html_2b3f3ae293dfd4981e7596916d540b67" style="width: 100.0%; height: 100.0%;">                 <div style='font-family:Arial; width:220px;'>                     <h5 style='margin:0; color:#2c3e50;'>None</h5>                     <small>Bacino: N/A</small><hr style='margin:8px 0;'>                     <b>Livello Reale:</b> 0.87 m<br>                     <div style='margin-top:10px; padding:8px; background:#f0f7ff; border-left:4px solid #4285F4;'>                         <small><b>GOOGLE FLOOD AI:</b></small><br>Monitoraggio AI Attivo                     </div>                 </div>                 </div>`)[0];
+                popup_2a001d67232993d7fa13ce143417e054.setContent(html_2b3f3ae293dfd4981e7596916d540b67);
+            
+        
+
+        circle_marker_775fa2390378c8093c5550cc9014f06c.bindPopup(popup_2a001d67232993d7fa13ce143417e054)
+        ;
+
+        
+    
+    
+            var circle_marker_bf08f6a136c48a27b95d5c625ed1d378 = L.circleMarker(
+                [40.5675, 16.49],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3498db", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 1}
+            ).addTo(map_418e7ee54cc104c10bd11e142382e816);
+        
+    
+        var popup_067e319d3c2b3af348cc4de7c6cbba74 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_9248a184f081823a9d7f93c6af0556b3 = $(`<div id="html_9248a184f081823a9d7f93c6af0556b3" style="width: 100.0%; height: 100.0%;">                 <div style='font-family:Arial; width:220px;'>                     <h5 style='margin:0; color:#2c3e50;'>None</h5>                     <small>Bacino: N/A</small><hr style='margin:8px 0;'>                     <b>Livello Reale:</b> N/D<br>                     <div style='margin-top:10px; padding:8px; background:#f0f7ff; border-left:4px solid #4285F4;'>                         <small><b>GOOGLE FLOOD AI:</b></small><br>Monitoraggio AI Attivo                     </div>                 </div>                 </div>`)[0];
+                popup_067e319d3c2b3af348cc4de7c6cbba74.setContent(html_9248a184f081823a9d7f93c6af0556b3);
+            
+        
+
+        circle_marker_bf08f6a136c48a27b95d5c625ed1d378.bindPopup(popup_067e319d3c2b3af348cc4de7c6cbba74)
+        ;
+
+        
+    
+    
+            var circle_marker_4a7abde007ce84cab87947333ea36cbd = L.circleMarker(
+                [40.308611, 15.845],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3498db", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 1}
+            ).addTo(map_418e7ee54cc104c10bd11e142382e816);
+        
+    
+        var popup_aec57dcaf69d58af27f956f3f143571b = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_73efacb436ea91b259f690151dc17f3b = $(`<div id="html_73efacb436ea91b259f690151dc17f3b" style="width: 100.0%; height: 100.0%;">                 <div style='font-family:Arial; width:220px;'>                     <h5 style='margin:0; color:#2c3e50;'>None</h5>                     <small>Bacino: N/A</small><hr style='margin:8px 0;'>                     <b>Livello Reale:</b> 1.08 m<br>                     <div style='margin-top:10px; padding:8px; background:#f0f7ff; border-left:4px solid #4285F4;'>                         <small><b>GOOGLE FLOOD AI:</b></small><br>Monitoraggio AI Attivo                     </div>                 </div>                 </div>`)[0];
+                popup_aec57dcaf69d58af27f956f3f143571b.setContent(html_73efacb436ea91b259f690151dc17f3b);
+            
+        
+
+        circle_marker_4a7abde007ce84cab87947333ea36cbd.bindPopup(popup_aec57dcaf69d58af27f956f3f143571b)
+        ;
+
+        
+    
+    
+            var circle_marker_561830915f0cd1b43ed9ce23938cec38 = L.circleMarker(
+                [40.647222, 15.930833],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3498db", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 1}
+            ).addTo(map_418e7ee54cc104c10bd11e142382e816);
+        
+    
+        var popup_5d4ff5b6f184f1199909b621714c2629 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_198c18833b9a213ec65a0df69260ce98 = $(`<div id="html_198c18833b9a213ec65a0df69260ce98" style="width: 100.0%; height: 100.0%;">                 <div style='font-family:Arial; width:220px;'>                     <h5 style='margin:0; color:#2c3e50;'>None</h5>                     <small>Bacino: N/A</small><hr style='margin:8px 0;'>                     <b>Livello Reale:</b> 0.29 m<br>                     <div style='margin-top:10px; padding:8px; background:#f0f7ff; border-left:4px solid #4285F4;'>                         <small><b>GOOGLE FLOOD AI:</b></small><br>Monitoraggio AI Attivo                     </div>                 </div>                 </div>`)[0];
+                popup_5d4ff5b6f184f1199909b621714c2629.setContent(html_198c18833b9a213ec65a0df69260ce98);
+            
+        
+
+        circle_marker_561830915f0cd1b43ed9ce23938cec38.bindPopup(popup_5d4ff5b6f184f1199909b621714c2629)
+        ;
+
+        
+    
+    
+            var circle_marker_feb439d2a1faf3045bd7d8336e621a67 = L.circleMarker(
+                [40.999722, 15.825],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3498db", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 1}
+            ).addTo(map_418e7ee54cc104c10bd11e142382e816);
+        
+    
+        var popup_b8091b841d1f4ce94bd1c446b37e309c = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_bc95ee4615d9ae2c4f87b943ec002811 = $(`<div id="html_bc95ee4615d9ae2c4f87b943ec002811" style="width: 100.0%; height: 100.0%;">                 <div style='font-family:Arial; width:220px;'>                     <h5 style='margin:0; color:#2c3e50;'>None</h5>                     <small>Bacino: N/A</small><hr style='margin:8px 0;'>                     <b>Livello Reale:</b> 1.04 m<br>                     <div style='margin-top:10px; padding:8px; background:#f0f7ff; border-left:4px solid #4285F4;'>                         <small><b>GOOGLE FLOOD AI:</b></small><br>Monitoraggio AI Attivo                     </div>                 </div>                 </div>`)[0];
+                popup_b8091b841d1f4ce94bd1c446b37e309c.setContent(html_bc95ee4615d9ae2c4f87b943ec002811);
+            
+        
+
+        circle_marker_feb439d2a1faf3045bd7d8336e621a67.bindPopup(popup_b8091b841d1f4ce94bd1c446b37e309c)
+        ;
+
+        
+    
+    
+            var circle_marker_5d06437b9a89d989cd2a2841f70703e5 = L.circleMarker(
+                [40.293333, 16.657222],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3498db", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 1}
+            ).addTo(map_418e7ee54cc104c10bd11e142382e816);
+        
+    
+        var popup_a5d2350dc6369495fd62b049a3be6136 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_757cc4603bde5463c59b67c480acfbc0 = $(`<div id="html_757cc4603bde5463c59b67c480acfbc0" style="width: 100.0%; height: 100.0%;">                 <div style='font-family:Arial; width:220px;'>                     <h5 style='margin:0; color:#2c3e50;'>None</h5>                     <small>Bacino: N/A</small><hr style='margin:8px 0;'>                     <b>Livello Reale:</b> N/D<br>                     <div style='margin-top:10px; padding:8px; background:#f0f7ff; border-left:4px solid #4285F4;'>                         <small><b>GOOGLE FLOOD AI:</b></small><br>Monitoraggio AI Attivo                     </div>                 </div>                 </div>`)[0];
+                popup_a5d2350dc6369495fd62b049a3be6136.setContent(html_757cc4603bde5463c59b67c480acfbc0);
+            
+        
+
+        circle_marker_5d06437b9a89d989cd2a2841f70703e5.bindPopup(popup_a5d2350dc6369495fd62b049a3be6136)
+        ;
+
+        
+    
+    
+            var circle_marker_3b9fb3afa87fe3bdb9b58c29bd24936d = L.circleMarker(
+                [40.659722, 16.595278],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3498db", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 1}
+            ).addTo(map_418e7ee54cc104c10bd11e142382e816);
+        
+    
+        var popup_c384e16f8a88126a7af7c7beb939a707 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_a19d63a923a98aa524bb42d056c93be7 = $(`<div id="html_a19d63a923a98aa524bb42d056c93be7" style="width: 100.0%; height: 100.0%;">                 <div style='font-family:Arial; width:220px;'>                     <h5 style='margin:0; color:#2c3e50;'>None</h5>                     <small>Bacino: N/A</small><hr style='margin:8px 0;'>                     <b>Livello Reale:</b> N/D<br>                     <div style='margin-top:10px; padding:8px; background:#f0f7ff; border-left:4px solid #4285F4;'>                         <small><b>GOOGLE FLOOD AI:</b></small><br>Monitoraggio AI Attivo                     </div>                 </div>                 </div>`)[0];
+                popup_c384e16f8a88126a7af7c7beb939a707.setContent(html_a19d63a923a98aa524bb42d056c93be7);
+            
+        
+
+        circle_marker_3b9fb3afa87fe3bdb9b58c29bd24936d.bindPopup(popup_c384e16f8a88126a7af7c7beb939a707)
+        ;
+
+        
+    
+    
+            var circle_marker_d5fe56280ec7c0de6070db6d79f97dc8 = L.circleMarker(
+                [40.253889, 16.474722],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3498db", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 1}
+            ).addTo(map_418e7ee54cc104c10bd11e142382e816);
+        
+    
+        var popup_e061735c89c6501832e6824e2dedf72b = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_5af50be5d7437abeebb4d31683da4dc5 = $(`<div id="html_5af50be5d7437abeebb4d31683da4dc5" style="width: 100.0%; height: 100.0%;">                 <div style='font-family:Arial; width:220px;'>                     <h5 style='margin:0; color:#2c3e50;'>None</h5>                     <small>Bacino: N/A</small><hr style='margin:8px 0;'>                     <b>Livello Reale:</b> N/D<br>                     <div style='margin-top:10px; padding:8px; background:#f0f7ff; border-left:4px solid #4285F4;'>                         <small><b>GOOGLE FLOOD AI:</b></small><br>Monitoraggio AI Attivo                     </div>                 </div>                 </div>`)[0];
+                popup_e061735c89c6501832e6824e2dedf72b.setContent(html_5af50be5d7437abeebb4d31683da4dc5);
+            
+        
+
+        circle_marker_d5fe56280ec7c0de6070db6d79f97dc8.bindPopup(popup_e061735c89c6501832e6824e2dedf72b)
+        ;
+
+        
+    
+    
+            var circle_marker_deaa2cafe89bc8286514dacd1ef243eb = L.circleMarker(
+                [40.367222, 16.781389],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3498db", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 1}
+            ).addTo(map_418e7ee54cc104c10bd11e142382e816);
+        
+    
+        var popup_db3812fd701a7c416bc4a3441e0369ae = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_fe9ffbaba9274b7df000d360e697083e = $(`<div id="html_fe9ffbaba9274b7df000d360e697083e" style="width: 100.0%; height: 100.0%;">                 <div style='font-family:Arial; width:220px;'>                     <h5 style='margin:0; color:#2c3e50;'>None</h5>                     <small>Bacino: N/A</small><hr style='margin:8px 0;'>                     <b>Livello Reale:</b> 0.95 m<br>                     <div style='margin-top:10px; padding:8px; background:#f0f7ff; border-left:4px solid #4285F4;'>                         <small><b>GOOGLE FLOOD AI:</b></small><br>Monitoraggio AI Attivo                     </div>                 </div>                 </div>`)[0];
+                popup_db3812fd701a7c416bc4a3441e0369ae.setContent(html_fe9ffbaba9274b7df000d360e697083e);
+            
+        
+
+        circle_marker_deaa2cafe89bc8286514dacd1ef243eb.bindPopup(popup_db3812fd701a7c416bc4a3441e0369ae)
+        ;
+
+        
+    
+    
+            var circle_marker_d61a3a29d56e62e959c7481c3902737a = L.circleMarker(
+                [40.366389, 16.52],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3498db", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 1}
+            ).addTo(map_418e7ee54cc104c10bd11e142382e816);
+        
+    
+        var popup_557f9c031da8e8ce05f1d38bd314b908 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_2327a297b9fdfc1069de82e1736933fe = $(`<div id="html_2327a297b9fdfc1069de82e1736933fe" style="width: 100.0%; height: 100.0%;">                 <div style='font-family:Arial; width:220px;'>                     <h5 style='margin:0; color:#2c3e50;'>None</h5>                     <small>Bacino: N/A</small><hr style='margin:8px 0;'>                     <b>Livello Reale:</b> 0.16 m<br>                     <div style='margin-top:10px; padding:8px; background:#f0f7ff; border-left:4px solid #4285F4;'>                         <small><b>GOOGLE FLOOD AI:</b></small><br>Monitoraggio AI Attivo                     </div>                 </div>                 </div>`)[0];
+                popup_557f9c031da8e8ce05f1d38bd314b908.setContent(html_2327a297b9fdfc1069de82e1736933fe);
+            
+        
+
+        circle_marker_d61a3a29d56e62e959c7481c3902737a.bindPopup(popup_557f9c031da8e8ce05f1d38bd314b908)
+        ;
+
+        
+    
+    
+            var circle_marker_5cc75161924e066c30113962f8d2a321 = L.circleMarker(
+                [40.926944, 16.065],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3498db", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 1}
+            ).addTo(map_418e7ee54cc104c10bd11e142382e816);
+        
+    
+        var popup_cb4aa607ea3761acb846c71074c82faf = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_8bb21ebc408e88b6aa66b4f5423fd145 = $(`<div id="html_8bb21ebc408e88b6aa66b4f5423fd145" style="width: 100.0%; height: 100.0%;">                 <div style='font-family:Arial; width:220px;'>                     <h5 style='margin:0; color:#2c3e50;'>None</h5>                     <small>Bacino: N/A</small><hr style='margin:8px 0;'>                     <b>Livello Reale:</b> 0.32 m<br>                     <div style='margin-top:10px; padding:8px; background:#f0f7ff; border-left:4px solid #4285F4;'>                         <small><b>GOOGLE FLOOD AI:</b></small><br>Monitoraggio AI Attivo                     </div>                 </div>                 </div>`)[0];
+                popup_cb4aa607ea3761acb846c71074c82faf.setContent(html_8bb21ebc408e88b6aa66b4f5423fd145);
+            
+        
+
+        circle_marker_5cc75161924e066c30113962f8d2a321.bindPopup(popup_cb4aa607ea3761acb846c71074c82faf)
+        ;
+
+        
+    
+    
+            var circle_marker_af6d5aaa5bf24022bd41bdcb8c0c9581 = L.circleMarker(
+                [40.486111, 16.451667],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3498db", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 1}
+            ).addTo(map_418e7ee54cc104c10bd11e142382e816);
+        
+    
+        var popup_969003917caa7665f71bd8722c21ea61 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_d4928b1edefb4ca980a016010235e28c = $(`<div id="html_d4928b1edefb4ca980a016010235e28c" style="width: 100.0%; height: 100.0%;">                 <div style='font-family:Arial; width:220px;'>                     <h5 style='margin:0; color:#2c3e50;'>None</h5>                     <small>Bacino: N/A</small><hr style='margin:8px 0;'>                     <b>Livello Reale:</b> N/D<br>                     <div style='margin-top:10px; padding:8px; background:#f0f7ff; border-left:4px solid #4285F4;'>                         <small><b>GOOGLE FLOOD AI:</b></small><br>Monitoraggio AI Attivo                     </div>                 </div>                 </div>`)[0];
+                popup_969003917caa7665f71bd8722c21ea61.setContent(html_d4928b1edefb4ca980a016010235e28c);
+            
+        
+
+        circle_marker_af6d5aaa5bf24022bd41bdcb8c0c9581.bindPopup(popup_969003917caa7665f71bd8722c21ea61)
+        ;
+
+        
+    
+    
+            var circle_marker_19d1ec48b5e8d78e96a70b97365138da = L.circleMarker(
+                [40.869167, 15.646667],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3498db", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 1}
+            ).addTo(map_418e7ee54cc104c10bd11e142382e816);
+        
+    
+        var popup_2ab206d1519a3de61216cdd8c2da5bc3 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_3d7025d652ee9f2bdca7c8b682b1cb80 = $(`<div id="html_3d7025d652ee9f2bdca7c8b682b1cb80" style="width: 100.0%; height: 100.0%;">                 <div style='font-family:Arial; width:220px;'>                     <h5 style='margin:0; color:#2c3e50;'>None</h5>                     <small>Bacino: N/A</small><hr style='margin:8px 0;'>                     <b>Livello Reale:</b> 1.42 m<br>                     <div style='margin-top:10px; padding:8px; background:#f0f7ff; border-left:4px solid #4285F4;'>                         <small><b>GOOGLE FLOOD AI:</b></small><br>Monitoraggio AI Attivo                     </div>                 </div>                 </div>`)[0];
+                popup_2ab206d1519a3de61216cdd8c2da5bc3.setContent(html_3d7025d652ee9f2bdca7c8b682b1cb80);
+            
+        
+
+        circle_marker_19d1ec48b5e8d78e96a70b97365138da.bindPopup(popup_2ab206d1519a3de61216cdd8c2da5bc3)
+        ;
+
+        
+    
+    
+            var circle_marker_6fd133e43ca3d618a8cfaa1d935711fb = L.circleMarker(
+                [39.983611, 15.736111],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3498db", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 1}
+            ).addTo(map_418e7ee54cc104c10bd11e142382e816);
+        
+    
+        var popup_da42603776c6dc9fc9e77300d341eba5 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_1ad35e3a4708d8d5da355ad252353b65 = $(`<div id="html_1ad35e3a4708d8d5da355ad252353b65" style="width: 100.0%; height: 100.0%;">                 <div style='font-family:Arial; width:220px;'>                     <h5 style='margin:0; color:#2c3e50;'>None</h5>                     <small>Bacino: N/A</small><hr style='margin:8px 0;'>                     <b>Livello Reale:</b> N/D<br>                     <div style='margin-top:10px; padding:8px; background:#f0f7ff; border-left:4px solid #4285F4;'>                         <small><b>GOOGLE FLOOD AI:</b></small><br>Monitoraggio AI Attivo                     </div>                 </div>                 </div>`)[0];
+                popup_da42603776c6dc9fc9e77300d341eba5.setContent(html_1ad35e3a4708d8d5da355ad252353b65);
+            
+        
+
+        circle_marker_6fd133e43ca3d618a8cfaa1d935711fb.bindPopup(popup_da42603776c6dc9fc9e77300d341eba5)
+        ;
+
+        
+    
+    
+            var circle_marker_65a2a708dd83e9a133973c07a74283ab = L.circleMarker(
+                [40.558611, 16.701667],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3498db", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 1}
+            ).addTo(map_418e7ee54cc104c10bd11e142382e816);
+        
+    
+        var popup_767a2cb98b5729aaadbc5853d52d4eec = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_d57b0a8cd81f67c96cb02564aff26d79 = $(`<div id="html_d57b0a8cd81f67c96cb02564aff26d79" style="width: 100.0%; height: 100.0%;">                 <div style='font-family:Arial; width:220px;'>                     <h5 style='margin:0; color:#2c3e50;'>None</h5>                     <small>Bacino: N/A</small><hr style='margin:8px 0;'>                     <b>Livello Reale:</b> 0.72 m<br>                     <div style='margin-top:10px; padding:8px; background:#f0f7ff; border-left:4px solid #4285F4;'>                         <small><b>GOOGLE FLOOD AI:</b></small><br>Monitoraggio AI Attivo                     </div>                 </div>                 </div>`)[0];
+                popup_767a2cb98b5729aaadbc5853d52d4eec.setContent(html_d57b0a8cd81f67c96cb02564aff26d79);
+            
+        
+
+        circle_marker_65a2a708dd83e9a133973c07a74283ab.bindPopup(popup_767a2cb98b5729aaadbc5853d52d4eec)
+        ;
+
+        
+    
+    
+            var circle_marker_74c8163bcdbb227419cffa5df73bc8f1 = L.circleMarker(
+                [40.581944, 16.035278],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3498db", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 1}
+            ).addTo(map_418e7ee54cc104c10bd11e142382e816);
+        
+    
+        var popup_c4430a17d39f4ec12849beff61c82868 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_e149f5ff78afd903f408c7f2d8cdd6cc = $(`<div id="html_e149f5ff78afd903f408c7f2d8cdd6cc" style="width: 100.0%; height: 100.0%;">                 <div style='font-family:Arial; width:220px;'>                     <h5 style='margin:0; color:#2c3e50;'>None</h5>                     <small>Bacino: N/A</small><hr style='margin:8px 0;'>                     <b>Livello Reale:</b> N/D<br>                     <div style='margin-top:10px; padding:8px; background:#f0f7ff; border-left:4px solid #4285F4;'>                         <small><b>GOOGLE FLOOD AI:</b></small><br>Monitoraggio AI Attivo                     </div>                 </div>                 </div>`)[0];
+                popup_c4430a17d39f4ec12849beff61c82868.setContent(html_e149f5ff78afd903f408c7f2d8cdd6cc);
+            
+        
+
+        circle_marker_74c8163bcdbb227419cffa5df73bc8f1.bindPopup(popup_c4430a17d39f4ec12849beff61c82868)
+        ;
+
+        
+    
+    
+            var circle_marker_6a97ed10a38fe7924b915ed97f7f35c8 = L.circleMarker(
+                [40.082778, 15.753333],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 1}
+            ).addTo(map_418e7ee54cc104c10bd11e142382e816);
+        
+    
+        var popup_8a9b0cf18d672d4ef843c8065fb85646 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_edf2ef8e6c8b75d1d8ea2e665d177971 = $(`<div id="html_edf2ef8e6c8b75d1d8ea2e665d177971" style="width: 100.0%; height: 100.0%;">                 <div style='font-family:Arial; width:220px;'>                     <h5 style='margin:0; color:#2c3e50;'>None</h5>                     <small>Bacino: N/A</small><hr style='margin:8px 0;'>                     <b>Livello Reale:</b> 1.63 m<br>                     <div style='margin-top:10px; padding:8px; background:#f0f7ff; border-left:4px solid #4285F4;'>                         <small><b>GOOGLE FLOOD AI:</b></small><br>Monitoraggio AI Attivo                     </div>                 </div>                 </div>`)[0];
+                popup_8a9b0cf18d672d4ef843c8065fb85646.setContent(html_edf2ef8e6c8b75d1d8ea2e665d177971);
+            
+        
+
+        circle_marker_6a97ed10a38fe7924b915ed97f7f35c8.bindPopup(popup_8a9b0cf18d672d4ef843c8065fb85646)
+        ;
+
+        
+    
+    
+            var circle_marker_5d3747562e6e69150d5c915e30e5a0e3 = L.circleMarker(
+                [40.759722, 15.478889],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3498db", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 1}
+            ).addTo(map_418e7ee54cc104c10bd11e142382e816);
+        
+    
+        var popup_f1cb1fc1cdfe9ed2d410ea06e8b2bf0e = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_dd845bcba33dc5c7a708a208232acf27 = $(`<div id="html_dd845bcba33dc5c7a708a208232acf27" style="width: 100.0%; height: 100.0%;">                 <div style='font-family:Arial; width:220px;'>                     <h5 style='margin:0; color:#2c3e50;'>None</h5>                     <small>Bacino: N/A</small><hr style='margin:8px 0;'>                     <b>Livello Reale:</b> N/D<br>                     <div style='margin-top:10px; padding:8px; background:#f0f7ff; border-left:4px solid #4285F4;'>                         <small><b>GOOGLE FLOOD AI:</b></small><br>Monitoraggio AI Attivo                     </div>                 </div>                 </div>`)[0];
+                popup_f1cb1fc1cdfe9ed2d410ea06e8b2bf0e.setContent(html_dd845bcba33dc5c7a708a208232acf27);
+            
+        
+
+        circle_marker_5d3747562e6e69150d5c915e30e5a0e3.bindPopup(popup_f1cb1fc1cdfe9ed2d410ea06e8b2bf0e)
+        ;
+
+        
+    
+    
+            var circle_marker_f2c8f31fbe8b3844f01cdd8f01f44b8e = L.circleMarker(
+                [40.417222, 16.821389],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3498db", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 1}
+            ).addTo(map_418e7ee54cc104c10bd11e142382e816);
+        
+    
+        var popup_5493ae8317bf862b1be456c2c6b93b56 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_11e6e84313e82323a597f20bd158303d = $(`<div id="html_11e6e84313e82323a597f20bd158303d" style="width: 100.0%; height: 100.0%;">                 <div style='font-family:Arial; width:220px;'>                     <h5 style='margin:0; color:#2c3e50;'>None</h5>                     <small>Bacino: N/A</small><hr style='margin:8px 0;'>                     <b>Livello Reale:</b> 0.26 m<br>                     <div style='margin-top:10px; padding:8px; background:#f0f7ff; border-left:4px solid #4285F4;'>                         <small><b>GOOGLE FLOOD AI:</b></small><br>Monitoraggio AI Attivo                     </div>                 </div>                 </div>`)[0];
+                popup_5493ae8317bf862b1be456c2c6b93b56.setContent(html_11e6e84313e82323a597f20bd158303d);
+            
+        
+
+        circle_marker_f2c8f31fbe8b3844f01cdd8f01f44b8e.bindPopup(popup_5493ae8317bf862b1be456c2c6b93b56)
+        ;
+
+        
+    
+    
+            var circle_marker_ef368905a270832d72c35be008fd188b = L.circleMarker(
+                [40.965278, 15.562778],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3498db", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 1}
+            ).addTo(map_418e7ee54cc104c10bd11e142382e816);
+        
+    
+        var popup_3e627a79fa013bd54c798d99e24454d0 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_fc5053df493a4b0eeefae7007b9d6923 = $(`<div id="html_fc5053df493a4b0eeefae7007b9d6923" style="width: 100.0%; height: 100.0%;">                 <div style='font-family:Arial; width:220px;'>                     <h5 style='margin:0; color:#2c3e50;'>None</h5>                     <small>Bacino: N/A</small><hr style='margin:8px 0;'>                     <b>Livello Reale:</b> -0.18 m<br>                     <div style='margin-top:10px; padding:8px; background:#f0f7ff; border-left:4px solid #4285F4;'>                         <small><b>GOOGLE FLOOD AI:</b></small><br>Monitoraggio AI Attivo                     </div>                 </div>                 </div>`)[0];
+                popup_3e627a79fa013bd54c798d99e24454d0.setContent(html_fc5053df493a4b0eeefae7007b9d6923);
+            
+        
+
+        circle_marker_ef368905a270832d72c35be008fd188b.bindPopup(popup_3e627a79fa013bd54c798d99e24454d0)
+        ;
+
+        
+    
+    
+            var circle_marker_2b2d8e3f9e27b2f4fb1a698dd4be170f = L.circleMarker(
+                [40.104167, 16.39],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3498db", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 1}
+            ).addTo(map_418e7ee54cc104c10bd11e142382e816);
+        
+    
+        var popup_c1b81b1c361def14902072fb23467a01 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_2b2551cbb19d9d148722558d8e3c62c6 = $(`<div id="html_2b2551cbb19d9d148722558d8e3c62c6" style="width: 100.0%; height: 100.0%;">                 <div style='font-family:Arial; width:220px;'>                     <h5 style='margin:0; color:#2c3e50;'>None</h5>                     <small>Bacino: N/A</small><hr style='margin:8px 0;'>                     <b>Livello Reale:</b> N/D<br>                     <div style='margin-top:10px; padding:8px; background:#f0f7ff; border-left:4px solid #4285F4;'>                         <small><b>GOOGLE FLOOD AI:</b></small><br>Monitoraggio AI Attivo                     </div>                 </div>                 </div>`)[0];
+                popup_c1b81b1c361def14902072fb23467a01.setContent(html_2b2551cbb19d9d148722558d8e3c62c6);
+            
+        
+
+        circle_marker_2b2d8e3f9e27b2f4fb1a698dd4be170f.bindPopup(popup_c1b81b1c361def14902072fb23467a01)
+        ;
+
+        
+    
+    
+            var circle_marker_ce2dfa662f309192ac565761614770ba = L.circleMarker(
+                [40.095278, 15.924722],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3498db", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 1}
+            ).addTo(map_418e7ee54cc104c10bd11e142382e816);
+        
+    
+        var popup_2147d0dda316b26cb573420ebe4154ae = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_79406495111e960f4406643e90d75345 = $(`<div id="html_79406495111e960f4406643e90d75345" style="width: 100.0%; height: 100.0%;">                 <div style='font-family:Arial; width:220px;'>                     <h5 style='margin:0; color:#2c3e50;'>None</h5>                     <small>Bacino: N/A</small><hr style='margin:8px 0;'>                     <b>Livello Reale:</b> 1.42 m<br>                     <div style='margin-top:10px; padding:8px; background:#f0f7ff; border-left:4px solid #4285F4;'>                         <small><b>GOOGLE FLOOD AI:</b></small><br>Monitoraggio AI Attivo                     </div>                 </div>                 </div>`)[0];
+                popup_2147d0dda316b26cb573420ebe4154ae.setContent(html_79406495111e960f4406643e90d75345);
+            
+        
+
+        circle_marker_ce2dfa662f309192ac565761614770ba.bindPopup(popup_2147d0dda316b26cb573420ebe4154ae)
+        ;
+
+        
+    
+    
+            var circle_marker_40eaac98a8470166ed635fcefd173da7 = L.circleMarker(
+                [40.549444, 15.633889],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3498db", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 1}
+            ).addTo(map_418e7ee54cc104c10bd11e142382e816);
+        
+    
+        var popup_bbc7b5b1e056ab00e0e840f4bb64ba60 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_1eaefa19748b63be6d7d83075e5dcae0 = $(`<div id="html_1eaefa19748b63be6d7d83075e5dcae0" style="width: 100.0%; height: 100.0%;">                 <div style='font-family:Arial; width:220px;'>                     <h5 style='margin:0; color:#2c3e50;'>None</h5>                     <small>Bacino: N/A</small><hr style='margin:8px 0;'>                     <b>Livello Reale:</b> N/D<br>                     <div style='margin-top:10px; padding:8px; background:#f0f7ff; border-left:4px solid #4285F4;'>                         <small><b>GOOGLE FLOOD AI:</b></small><br>Monitoraggio AI Attivo                     </div>                 </div>                 </div>`)[0];
+                popup_bbc7b5b1e056ab00e0e840f4bb64ba60.setContent(html_1eaefa19748b63be6d7d83075e5dcae0);
+            
+        
+
+        circle_marker_40eaac98a8470166ed635fcefd173da7.bindPopup(popup_bbc7b5b1e056ab00e0e840f4bb64ba60)
+        ;
+
+        
+    
+    
+            var circle_marker_9035944979f4e769bc066e4dc6a04125 = L.circleMarker(
+                [40.376111, 16.099444],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3498db", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 1}
+            ).addTo(map_418e7ee54cc104c10bd11e142382e816);
+        
+    
+        var popup_306466041b70054436ada8395bfa79c6 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_3af96295646474c71848ae9537da7fff = $(`<div id="html_3af96295646474c71848ae9537da7fff" style="width: 100.0%; height: 100.0%;">                 <div style='font-family:Arial; width:220px;'>                     <h5 style='margin:0; color:#2c3e50;'>None</h5>                     <small>Bacino: N/A</small><hr style='margin:8px 0;'>                     <b>Livello Reale:</b> N/D<br>                     <div style='margin-top:10px; padding:8px; background:#f0f7ff; border-left:4px solid #4285F4;'>                         <small><b>GOOGLE FLOOD AI:</b></small><br>Monitoraggio AI Attivo                     </div>                 </div>                 </div>`)[0];
+                popup_306466041b70054436ada8395bfa79c6.setContent(html_3af96295646474c71848ae9537da7fff);
+            
+        
+
+        circle_marker_9035944979f4e769bc066e4dc6a04125.bindPopup(popup_306466041b70054436ada8395bfa79c6)
+        ;
+
+        
+    
+    
+            var circle_marker_7d28a737530fe25ffd1cc9a0e77537f2 = L.circleMarker(
+                [40.089722, 16.33],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3498db", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 1}
+            ).addTo(map_418e7ee54cc104c10bd11e142382e816);
+        
+    
+        var popup_fc46275777eaa5909fc1b1ab9d74dc5d = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_deb6b156b55b7764d70336882e331801 = $(`<div id="html_deb6b156b55b7764d70336882e331801" style="width: 100.0%; height: 100.0%;">                 <div style='font-family:Arial; width:220px;'>                     <h5 style='margin:0; color:#2c3e50;'>None</h5>                     <small>Bacino: N/A</small><hr style='margin:8px 0;'>                     <b>Livello Reale:</b> N/D<br>                     <div style='margin-top:10px; padding:8px; background:#f0f7ff; border-left:4px solid #4285F4;'>                         <small><b>GOOGLE FLOOD AI:</b></small><br>Monitoraggio AI Attivo                     </div>                 </div>                 </div>`)[0];
+                popup_fc46275777eaa5909fc1b1ab9d74dc5d.setContent(html_deb6b156b55b7764d70336882e331801);
+            
+        
+
+        circle_marker_7d28a737530fe25ffd1cc9a0e77537f2.bindPopup(popup_fc46275777eaa5909fc1b1ab9d74dc5d)
+        ;
+
+        
+    
+    
+            var circle_marker_513882ec68e3a6e0d38730c26708ef41 = L.circleMarker(
+                [40.253056, 15.885],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3498db", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 1}
+            ).addTo(map_418e7ee54cc104c10bd11e142382e816);
+        
+    
+        var popup_790b758aa0d7677d8f4cb1533b703cad = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_8e7f1dc66f7c9c82436f47113c46dea2 = $(`<div id="html_8e7f1dc66f7c9c82436f47113c46dea2" style="width: 100.0%; height: 100.0%;">                 <div style='font-family:Arial; width:220px;'>                     <h5 style='margin:0; color:#2c3e50;'>None</h5>                     <small>Bacino: N/A</small><hr style='margin:8px 0;'>                     <b>Livello Reale:</b> 0.14 m<br>                     <div style='margin-top:10px; padding:8px; background:#f0f7ff; border-left:4px solid #4285F4;'>                         <small><b>GOOGLE FLOOD AI:</b></small><br>Monitoraggio AI Attivo                     </div>                 </div>                 </div>`)[0];
+                popup_790b758aa0d7677d8f4cb1533b703cad.setContent(html_8e7f1dc66f7c9c82436f47113c46dea2);
+            
+        
+
+        circle_marker_513882ec68e3a6e0d38730c26708ef41.bindPopup(popup_790b758aa0d7677d8f4cb1533b703cad)
+        ;
+
+        
+    
+    
+            var circle_marker_bec70644af231d546395bca9613d51a9 = L.circleMarker(
+                [40.618889, 16.138333],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3498db", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 1}
+            ).addTo(map_418e7ee54cc104c10bd11e142382e816);
+        
+    
+        var popup_030cb52f153fb62ef9231cc770684c57 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_19fbf39afb5013344bc1a5be1fa316b2 = $(`<div id="html_19fbf39afb5013344bc1a5be1fa316b2" style="width: 100.0%; height: 100.0%;">                 <div style='font-family:Arial; width:220px;'>                     <h5 style='margin:0; color:#2c3e50;'>None</h5>                     <small>Bacino: N/A</small><hr style='margin:8px 0;'>                     <b>Livello Reale:</b> N/D<br>                     <div style='margin-top:10px; padding:8px; background:#f0f7ff; border-left:4px solid #4285F4;'>                         <small><b>GOOGLE FLOOD AI:</b></small><br>Monitoraggio AI Attivo                     </div>                 </div>                 </div>`)[0];
+                popup_030cb52f153fb62ef9231cc770684c57.setContent(html_19fbf39afb5013344bc1a5be1fa316b2);
+            
+        
+
+        circle_marker_bec70644af231d546395bca9613d51a9.bindPopup(popup_030cb52f153fb62ef9231cc770684c57)
+        ;
+
+        
+    
+    
+            var circle_marker_109f5bd3d189d2b098a0f17a90cda43d = L.circleMarker(
+                [40.295833, 16.7275],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3498db", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 1}
+            ).addTo(map_418e7ee54cc104c10bd11e142382e816);
+        
+    
+        var popup_af964398aeb8e32a9a939f7d35cc7cda = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_24b80127a2d3982bff69e97e053746b0 = $(`<div id="html_24b80127a2d3982bff69e97e053746b0" style="width: 100.0%; height: 100.0%;">                 <div style='font-family:Arial; width:220px;'>                     <h5 style='margin:0; color:#2c3e50;'>None</h5>                     <small>Bacino: N/A</small><hr style='margin:8px 0;'>                     <b>Livello Reale:</b> 1.20 m<br>                     <div style='margin-top:10px; padding:8px; background:#f0f7ff; border-left:4px solid #4285F4;'>                         <small><b>GOOGLE FLOOD AI:</b></small><br>Monitoraggio AI Attivo                     </div>                 </div>                 </div>`)[0];
+                popup_af964398aeb8e32a9a939f7d35cc7cda.setContent(html_24b80127a2d3982bff69e97e053746b0);
+            
+        
+
+        circle_marker_109f5bd3d189d2b098a0f17a90cda43d.bindPopup(popup_af964398aeb8e32a9a939f7d35cc7cda)
+        ;
+
+        
+    
+    
+            var circle_marker_4d0fd8992dfa515a79a13caa982a0f59 = L.circleMarker(
+                [40.597778, 16.244444],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3498db", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 1}
+            ).addTo(map_418e7ee54cc104c10bd11e142382e816);
+        
+    
+        var popup_70fa3cce033614bff31fa26727824264 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_ac4fe2418c3da744572dae47ee205e51 = $(`<div id="html_ac4fe2418c3da744572dae47ee205e51" style="width: 100.0%; height: 100.0%;">                 <div style='font-family:Arial; width:220px;'>                     <h5 style='margin:0; color:#2c3e50;'>None</h5>                     <small>Bacino: N/A</small><hr style='margin:8px 0;'>                     <b>Livello Reale:</b> 1.35 m<br>                     <div style='margin-top:10px; padding:8px; background:#f0f7ff; border-left:4px solid #4285F4;'>                         <small><b>GOOGLE FLOOD AI:</b></small><br>Monitoraggio AI Attivo                     </div>                 </div>                 </div>`)[0];
+                popup_70fa3cce033614bff31fa26727824264.setContent(html_ac4fe2418c3da744572dae47ee205e51);
+            
+        
+
+        circle_marker_4d0fd8992dfa515a79a13caa982a0f59.bindPopup(popup_70fa3cce033614bff31fa26727824264)
+        ;
+
+        
+    
+    
+            var circle_marker_72777d9c36d0745f6da1ae8d9d636545 = L.circleMarker(
+                [40.545, 16.075556],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3498db", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 1}
+            ).addTo(map_418e7ee54cc104c10bd11e142382e816);
+        
+    
+        var popup_2e637fd8740df154f6ef4cae9a7ad705 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_e109da461a451b1a32defa83c2a25785 = $(`<div id="html_e109da461a451b1a32defa83c2a25785" style="width: 100.0%; height: 100.0%;">                 <div style='font-family:Arial; width:220px;'>                     <h5 style='margin:0; color:#2c3e50;'>None</h5>                     <small>Bacino: N/A</small><hr style='margin:8px 0;'>                     <b>Livello Reale:</b> 0.55 m<br>                     <div style='margin-top:10px; padding:8px; background:#f0f7ff; border-left:4px solid #4285F4;'>                         <small><b>GOOGLE FLOOD AI:</b></small><br>Monitoraggio AI Attivo                     </div>                 </div>                 </div>`)[0];
+                popup_2e637fd8740df154f6ef4cae9a7ad705.setContent(html_e109da461a451b1a32defa83c2a25785);
+            
+        
+
+        circle_marker_72777d9c36d0745f6da1ae8d9d636545.bindPopup(popup_2e637fd8740df154f6ef4cae9a7ad705)
+        ;
+
+        
+    
+    
+            var circle_marker_ed8720c6fa240a2bece0beb2e2f82b97 = L.circleMarker(
+                [39.985833, 15.721667],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3498db", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 1}
+            ).addTo(map_418e7ee54cc104c10bd11e142382e816);
+        
+    
+        var popup_46b95a8bae30cf38d54726c552557a6b = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_79ed75f7d3ca5be68801144906ae3798 = $(`<div id="html_79ed75f7d3ca5be68801144906ae3798" style="width: 100.0%; height: 100.0%;">                 <div style='font-family:Arial; width:220px;'>                     <h5 style='margin:0; color:#2c3e50;'>None</h5>                     <small>Bacino: N/A</small><hr style='margin:8px 0;'>                     <b>Livello Reale:</b> N/D<br>                     <div style='margin-top:10px; padding:8px; background:#f0f7ff; border-left:4px solid #4285F4;'>                         <small><b>GOOGLE FLOOD AI:</b></small><br>Monitoraggio AI Attivo                     </div>                 </div>                 </div>`)[0];
+                popup_46b95a8bae30cf38d54726c552557a6b.setContent(html_79ed75f7d3ca5be68801144906ae3798);
+            
+        
+
+        circle_marker_ed8720c6fa240a2bece0beb2e2f82b97.bindPopup(popup_46b95a8bae30cf38d54726c552557a6b)
+        ;
+
+        
+    
+    
+            var circle_marker_d27fad6a48687be3ecc68a60a602c108 = L.circleMarker(
+                [40.5925, 16.376944],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3498db", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 1}
+            ).addTo(map_418e7ee54cc104c10bd11e142382e816);
+        
+    
+        var popup_0fbe6541da878049f4c8d230e0e4105e = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_17d77edbc7e9c1135cbfa2ce8de9773c = $(`<div id="html_17d77edbc7e9c1135cbfa2ce8de9773c" style="width: 100.0%; height: 100.0%;">                 <div style='font-family:Arial; width:220px;'>                     <h5 style='margin:0; color:#2c3e50;'>None</h5>                     <small>Bacino: N/A</small><hr style='margin:8px 0;'>                     <b>Livello Reale:</b> N/D<br>                     <div style='margin-top:10px; padding:8px; background:#f0f7ff; border-left:4px solid #4285F4;'>                         <small><b>GOOGLE FLOOD AI:</b></small><br>Monitoraggio AI Attivo                     </div>                 </div>                 </div>`)[0];
+                popup_0fbe6541da878049f4c8d230e0e4105e.setContent(html_17d77edbc7e9c1135cbfa2ce8de9773c);
+            
+        
+
+        circle_marker_d27fad6a48687be3ecc68a60a602c108.bindPopup(popup_0fbe6541da878049f4c8d230e0e4105e)
+        ;
+
+        
+    
+    
+            var circle_marker_1a54d8cc1b47d94a43e75d6bc3809612 = L.circleMarker(
+                [40.377222, 15.829444],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3498db", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 1}
+            ).addTo(map_418e7ee54cc104c10bd11e142382e816);
+        
+    
+        var popup_4e273a3baafce73362b30c42cfb0f6ec = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_0df1404837e250a88ec4b8a4217934d7 = $(`<div id="html_0df1404837e250a88ec4b8a4217934d7" style="width: 100.0%; height: 100.0%;">                 <div style='font-family:Arial; width:220px;'>                     <h5 style='margin:0; color:#2c3e50;'>None</h5>                     <small>Bacino: N/A</small><hr style='margin:8px 0;'>                     <b>Livello Reale:</b> N/D<br>                     <div style='margin-top:10px; padding:8px; background:#f0f7ff; border-left:4px solid #4285F4;'>                         <small><b>GOOGLE FLOOD AI:</b></small><br>Monitoraggio AI Attivo                     </div>                 </div>                 </div>`)[0];
+                popup_4e273a3baafce73362b30c42cfb0f6ec.setContent(html_0df1404837e250a88ec4b8a4217934d7);
+            
+        
+
+        circle_marker_1a54d8cc1b47d94a43e75d6bc3809612.bindPopup(popup_4e273a3baafce73362b30c42cfb0f6ec)
+        ;
+
+        
+    
+    
+            var circle_marker_5de785ddb7f668592438ec99062f1de3 = L.circleMarker(
+                [40.763889, 15.985556],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3498db", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 1}
+            ).addTo(map_418e7ee54cc104c10bd11e142382e816);
+        
+    
+        var popup_88ba8b48514ef12153db52840f072e9e = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_a5fa38615f7128315535cc8b0e400114 = $(`<div id="html_a5fa38615f7128315535cc8b0e400114" style="width: 100.0%; height: 100.0%;">                 <div style='font-family:Arial; width:220px;'>                     <h5 style='margin:0; color:#2c3e50;'>None</h5>                     <small>Bacino: N/A</small><hr style='margin:8px 0;'>                     <b>Livello Reale:</b> N/D<br>                     <div style='margin-top:10px; padding:8px; background:#f0f7ff; border-left:4px solid #4285F4;'>                         <small><b>GOOGLE FLOOD AI:</b></small><br>Monitoraggio AI Attivo                     </div>                 </div>                 </div>`)[0];
+                popup_88ba8b48514ef12153db52840f072e9e.setContent(html_a5fa38615f7128315535cc8b0e400114);
+            
+        
+
+        circle_marker_5de785ddb7f668592438ec99062f1de3.bindPopup(popup_88ba8b48514ef12153db52840f072e9e)
+        ;
+
+        
+    
+    
+            var circle_marker_5ad7b4d29aa0c48e3fbcf9c644132a7b = L.circleMarker(
+                [40.96, 15.803333],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3498db", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 1}
+            ).addTo(map_418e7ee54cc104c10bd11e142382e816);
+        
+    
+        var popup_cc5ca378400495d4c2054e2994162a13 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_258d57d92e24a6e5c131f37b491c6e4c = $(`<div id="html_258d57d92e24a6e5c131f37b491c6e4c" style="width: 100.0%; height: 100.0%;">                 <div style='font-family:Arial; width:220px;'>                     <h5 style='margin:0; color:#2c3e50;'>None</h5>                     <small>Bacino: N/A</small><hr style='margin:8px 0;'>                     <b>Livello Reale:</b> N/D<br>                     <div style='margin-top:10px; padding:8px; background:#f0f7ff; border-left:4px solid #4285F4;'>                         <small><b>GOOGLE FLOOD AI:</b></small><br>Monitoraggio AI Attivo                     </div>                 </div>                 </div>`)[0];
+                popup_cc5ca378400495d4c2054e2994162a13.setContent(html_258d57d92e24a6e5c131f37b491c6e4c);
+            
+        
+
+        circle_marker_5ad7b4d29aa0c48e3fbcf9c644132a7b.bindPopup(popup_cc5ca378400495d4c2054e2994162a13)
+        ;
+
+        
+    
+    
+            var circle_marker_534d17e5c8c614fe457f9d600fb8d82f = L.circleMarker(
+                [40.803056, 15.735833],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3498db", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 1}
+            ).addTo(map_418e7ee54cc104c10bd11e142382e816);
+        
+    
+        var popup_efe85fda27fcdf73ae57e056885b7052 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_914f42255c7ba2ad79bad4c55668440b = $(`<div id="html_914f42255c7ba2ad79bad4c55668440b" style="width: 100.0%; height: 100.0%;">                 <div style='font-family:Arial; width:220px;'>                     <h5 style='margin:0; color:#2c3e50;'>None</h5>                     <small>Bacino: N/A</small><hr style='margin:8px 0;'>                     <b>Livello Reale:</b> N/D<br>                     <div style='margin-top:10px; padding:8px; background:#f0f7ff; border-left:4px solid #4285F4;'>                         <small><b>GOOGLE FLOOD AI:</b></small><br>Monitoraggio AI Attivo                     </div>                 </div>                 </div>`)[0];
+                popup_efe85fda27fcdf73ae57e056885b7052.setContent(html_914f42255c7ba2ad79bad4c55668440b);
+            
+        
+
+        circle_marker_534d17e5c8c614fe457f9d600fb8d82f.bindPopup(popup_efe85fda27fcdf73ae57e056885b7052)
+        ;
+
+        
+    
+    
+            var circle_marker_ecded76e3b9171f0e7e3ee4efa4b830e = L.circleMarker(
+                [40.408889, 16.1125],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3498db", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 1}
+            ).addTo(map_418e7ee54cc104c10bd11e142382e816);
+        
+    
+        var popup_f38aa65b17dd1320ca1e76f5a37f45ea = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_13a985c569f352a45d3caaec544f5db1 = $(`<div id="html_13a985c569f352a45d3caaec544f5db1" style="width: 100.0%; height: 100.0%;">                 <div style='font-family:Arial; width:220px;'>                     <h5 style='margin:0; color:#2c3e50;'>None</h5>                     <small>Bacino: N/A</small><hr style='margin:8px 0;'>                     <b>Livello Reale:</b> N/D<br>                     <div style='margin-top:10px; padding:8px; background:#f0f7ff; border-left:4px solid #4285F4;'>                         <small><b>GOOGLE FLOOD AI:</b></small><br>Monitoraggio AI Attivo                     </div>                 </div>                 </div>`)[0];
+                popup_f38aa65b17dd1320ca1e76f5a37f45ea.setContent(html_13a985c569f352a45d3caaec544f5db1);
+            
+        
+
+        circle_marker_ecded76e3b9171f0e7e3ee4efa4b830e.bindPopup(popup_f38aa65b17dd1320ca1e76f5a37f45ea)
+        ;
+
+        
+    
+    
+            var circle_marker_6d17bbf5cc668c3e672cf636c000bd9b = L.circleMarker(
+                [40.649444, 15.501389],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3498db", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 1}
+            ).addTo(map_418e7ee54cc104c10bd11e142382e816);
+        
+    
+        var popup_b38944c265b2680d62ddfcbc7d443028 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_58197bc681b87109fb778746f8812818 = $(`<div id="html_58197bc681b87109fb778746f8812818" style="width: 100.0%; height: 100.0%;">                 <div style='font-family:Arial; width:220px;'>                     <h5 style='margin:0; color:#2c3e50;'>None</h5>                     <small>Bacino: N/A</small><hr style='margin:8px 0;'>                     <b>Livello Reale:</b> N/D<br>                     <div style='margin-top:10px; padding:8px; background:#f0f7ff; border-left:4px solid #4285F4;'>                         <small><b>GOOGLE FLOOD AI:</b></small><br>Monitoraggio AI Attivo                     </div>                 </div>                 </div>`)[0];
+                popup_b38944c265b2680d62ddfcbc7d443028.setContent(html_58197bc681b87109fb778746f8812818);
+            
+        
+
+        circle_marker_6d17bbf5cc668c3e672cf636c000bd9b.bindPopup(popup_b38944c265b2680d62ddfcbc7d443028)
+        ;
+
+        
+    
+    
+            var circle_marker_651b5177dacd018ba458c60aa50747a5 = L.circleMarker(
+                [40.880556, 15.654722],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3498db", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 1}
+            ).addTo(map_418e7ee54cc104c10bd11e142382e816);
+        
+    
+        var popup_cbbe25b841a3c4f0dcd0104ce2c72480 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_2511efa7c9b7ba220efb1b293e31c055 = $(`<div id="html_2511efa7c9b7ba220efb1b293e31c055" style="width: 100.0%; height: 100.0%;">                 <div style='font-family:Arial; width:220px;'>                     <h5 style='margin:0; color:#2c3e50;'>None</h5>                     <small>Bacino: N/A</small><hr style='margin:8px 0;'>                     <b>Livello Reale:</b> N/D<br>                     <div style='margin-top:10px; padding:8px; background:#f0f7ff; border-left:4px solid #4285F4;'>                         <small><b>GOOGLE FLOOD AI:</b></small><br>Monitoraggio AI Attivo                     </div>                 </div>                 </div>`)[0];
+                popup_cbbe25b841a3c4f0dcd0104ce2c72480.setContent(html_2511efa7c9b7ba220efb1b293e31c055);
+            
+        
+
+        circle_marker_651b5177dacd018ba458c60aa50747a5.bindPopup(popup_cbbe25b841a3c4f0dcd0104ce2c72480)
+        ;
+
+        
+    
+    
+            var circle_marker_dabd1c68d1eafc352336a66dff2d30b2 = L.circleMarker(
+                [40.902778, 15.503611],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3498db", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 1}
+            ).addTo(map_418e7ee54cc104c10bd11e142382e816);
+        
+    
+        var popup_853258ab6bd3fca75525e3dba8a955f5 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_a635c4a7ec2a8f724c4d412c8393a3ec = $(`<div id="html_a635c4a7ec2a8f724c4d412c8393a3ec" style="width: 100.0%; height: 100.0%;">                 <div style='font-family:Arial; width:220px;'>                     <h5 style='margin:0; color:#2c3e50;'>None</h5>                     <small>Bacino: N/A</small><hr style='margin:8px 0;'>                     <b>Livello Reale:</b> 1.33 m<br>                     <div style='margin-top:10px; padding:8px; background:#f0f7ff; border-left:4px solid #4285F4;'>                         <small><b>GOOGLE FLOOD AI:</b></small><br>Monitoraggio AI Attivo                     </div>                 </div>                 </div>`)[0];
+                popup_853258ab6bd3fca75525e3dba8a955f5.setContent(html_a635c4a7ec2a8f724c4d412c8393a3ec);
+            
+        
+
+        circle_marker_dabd1c68d1eafc352336a66dff2d30b2.bindPopup(popup_853258ab6bd3fca75525e3dba8a955f5)
+        ;
+
+        
+    
+    
+            var circle_marker_c8da27cdca537bd14c2ff88526b7a7ab = L.circleMarker(
+                [40.637778, 15.6375],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3498db", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 1}
+            ).addTo(map_418e7ee54cc104c10bd11e142382e816);
+        
+    
+        var popup_d7a2a6ed8f4e412bab6f377c39991755 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_0ae52828993b9d5210f03ecc87dca83d = $(`<div id="html_0ae52828993b9d5210f03ecc87dca83d" style="width: 100.0%; height: 100.0%;">                 <div style='font-family:Arial; width:220px;'>                     <h5 style='margin:0; color:#2c3e50;'>None</h5>                     <small>Bacino: N/A</small><hr style='margin:8px 0;'>                     <b>Livello Reale:</b> N/D<br>                     <div style='margin-top:10px; padding:8px; background:#f0f7ff; border-left:4px solid #4285F4;'>                         <small><b>GOOGLE FLOOD AI:</b></small><br>Monitoraggio AI Attivo                     </div>                 </div>                 </div>`)[0];
+                popup_d7a2a6ed8f4e412bab6f377c39991755.setContent(html_0ae52828993b9d5210f03ecc87dca83d);
+            
+        
+
+        circle_marker_c8da27cdca537bd14c2ff88526b7a7ab.bindPopup(popup_d7a2a6ed8f4e412bab6f377c39991755)
+        ;
+
+        
+    
+    
+            var circle_marker_44b6e72f79366a2d13f3a1591b4bf7be = L.circleMarker(
+                [40.325, 15.773889],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3498db", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 1}
+            ).addTo(map_418e7ee54cc104c10bd11e142382e816);
+        
+    
+        var popup_7f68a7a4ed3bdc6709974d9ecefc4d3c = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_6045e358384b2e5090a538d640307f0c = $(`<div id="html_6045e358384b2e5090a538d640307f0c" style="width: 100.0%; height: 100.0%;">                 <div style='font-family:Arial; width:220px;'>                     <h5 style='margin:0; color:#2c3e50;'>None</h5>                     <small>Bacino: N/A</small><hr style='margin:8px 0;'>                     <b>Livello Reale:</b> N/D<br>                     <div style='margin-top:10px; padding:8px; background:#f0f7ff; border-left:4px solid #4285F4;'>                         <small><b>GOOGLE FLOOD AI:</b></small><br>Monitoraggio AI Attivo                     </div>                 </div>                 </div>`)[0];
+                popup_7f68a7a4ed3bdc6709974d9ecefc4d3c.setContent(html_6045e358384b2e5090a538d640307f0c);
+            
+        
+
+        circle_marker_44b6e72f79366a2d13f3a1591b4bf7be.bindPopup(popup_7f68a7a4ed3bdc6709974d9ecefc4d3c)
+        ;
+
+        
+    
+    
+            var circle_marker_bcbd3b0624d1759385e895c109d1ecc3 = L.circleMarker(
+                [40.994444, 15.653056],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3498db", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 1}
+            ).addTo(map_418e7ee54cc104c10bd11e142382e816);
+        
+    
+        var popup_e3aae757343a9e748738ad23f1bf2e5e = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_f9017a5e29ca640a667cad3c68c50529 = $(`<div id="html_f9017a5e29ca640a667cad3c68c50529" style="width: 100.0%; height: 100.0%;">                 <div style='font-family:Arial; width:220px;'>                     <h5 style='margin:0; color:#2c3e50;'>None</h5>                     <small>Bacino: N/A</small><hr style='margin:8px 0;'>                     <b>Livello Reale:</b> N/D<br>                     <div style='margin-top:10px; padding:8px; background:#f0f7ff; border-left:4px solid #4285F4;'>                         <small><b>GOOGLE FLOOD AI:</b></small><br>Monitoraggio AI Attivo                     </div>                 </div>                 </div>`)[0];
+                popup_e3aae757343a9e748738ad23f1bf2e5e.setContent(html_f9017a5e29ca640a667cad3c68c50529);
+            
+        
+
+        circle_marker_bcbd3b0624d1759385e895c109d1ecc3.bindPopup(popup_e3aae757343a9e748738ad23f1bf2e5e)
+        ;
+
+        
+    
+    
+            var circle_marker_91dd6067246eb984656137c8eed28287 = L.circleMarker(
+                [40.6325, 16.27],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3498db", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 1}
+            ).addTo(map_418e7ee54cc104c10bd11e142382e816);
+        
+    
+        var popup_d41f579023de983663404e4c931f814e = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_62dbf195dab05f2bb6cfda60ea716840 = $(`<div id="html_62dbf195dab05f2bb6cfda60ea716840" style="width: 100.0%; height: 100.0%;">                 <div style='font-family:Arial; width:220px;'>                     <h5 style='margin:0; color:#2c3e50;'>None</h5>                     <small>Bacino: N/A</small><hr style='margin:8px 0;'>                     <b>Livello Reale:</b> N/D<br>                     <div style='margin-top:10px; padding:8px; background:#f0f7ff; border-left:4px solid #4285F4;'>                         <small><b>GOOGLE FLOOD AI:</b></small><br>Monitoraggio AI Attivo                     </div>                 </div>                 </div>`)[0];
+                popup_d41f579023de983663404e4c931f814e.setContent(html_62dbf195dab05f2bb6cfda60ea716840);
+            
+        
+
+        circle_marker_91dd6067246eb984656137c8eed28287.bindPopup(popup_d41f579023de983663404e4c931f814e)
+        ;
+
+        
+    
+    
+            var circle_marker_14beeb21aa5f108c6d825e5e156ab7bd = L.circleMarker(
+                [40.266389, 16.226389],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3498db", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 1}
+            ).addTo(map_418e7ee54cc104c10bd11e142382e816);
+        
+    
+        var popup_510d487a82a25b459275895d5c296705 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_8adf614ddf6e9f66db684cfce89441f5 = $(`<div id="html_8adf614ddf6e9f66db684cfce89441f5" style="width: 100.0%; height: 100.0%;">                 <div style='font-family:Arial; width:220px;'>                     <h5 style='margin:0; color:#2c3e50;'>None</h5>                     <small>Bacino: N/A</small><hr style='margin:8px 0;'>                     <b>Livello Reale:</b> 0.11 m<br>                     <div style='margin-top:10px; padding:8px; background:#f0f7ff; border-left:4px solid #4285F4;'>                         <small><b>GOOGLE FLOOD AI:</b></small><br>Monitoraggio AI Attivo                     </div>                 </div>                 </div>`)[0];
+                popup_510d487a82a25b459275895d5c296705.setContent(html_8adf614ddf6e9f66db684cfce89441f5);
+            
+        
+
+        circle_marker_14beeb21aa5f108c6d825e5e156ab7bd.bindPopup(popup_510d487a82a25b459275895d5c296705)
+        ;
+
+        
+    
+    
+            var circle_marker_a7b573fead9399d4e23708b5ed9fc1ff = L.circleMarker(
+                [39.94, 16.050556],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3498db", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 1}
+            ).addTo(map_418e7ee54cc104c10bd11e142382e816);
+        
+    
+        var popup_46bacbb47fb926dfd847ef6eac4d35f9 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_cf84a99d1664c836235236fdb7ccb898 = $(`<div id="html_cf84a99d1664c836235236fdb7ccb898" style="width: 100.0%; height: 100.0%;">                 <div style='font-family:Arial; width:220px;'>                     <h5 style='margin:0; color:#2c3e50;'>None</h5>                     <small>Bacino: N/A</small><hr style='margin:8px 0;'>                     <b>Livello Reale:</b> N/D<br>                     <div style='margin-top:10px; padding:8px; background:#f0f7ff; border-left:4px solid #4285F4;'>                         <small><b>GOOGLE FLOOD AI:</b></small><br>Monitoraggio AI Attivo                     </div>                 </div>                 </div>`)[0];
+                popup_46bacbb47fb926dfd847ef6eac4d35f9.setContent(html_cf84a99d1664c836235236fdb7ccb898);
+            
+        
+
+        circle_marker_a7b573fead9399d4e23708b5ed9fc1ff.bindPopup(popup_46bacbb47fb926dfd847ef6eac4d35f9)
+        ;
+
+        
+    
+    
+            var circle_marker_0ee4284ecc91c8b805371d75b80d0951 = L.circleMarker(
+                [40.636944, 15.801667],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3498db", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 1}
+            ).addTo(map_418e7ee54cc104c10bd11e142382e816);
+        
+    
+        var popup_caa20944bb8bd0834864cfbeda65ab64 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_a0b13f9df348014581df530beadebd2d = $(`<div id="html_a0b13f9df348014581df530beadebd2d" style="width: 100.0%; height: 100.0%;">                 <div style='font-family:Arial; width:220px;'>                     <h5 style='margin:0; color:#2c3e50;'>None</h5>                     <small>Bacino: N/A</small><hr style='margin:8px 0;'>                     <b>Livello Reale:</b> N/D<br>                     <div style='margin-top:10px; padding:8px; background:#f0f7ff; border-left:4px solid #4285F4;'>                         <small><b>GOOGLE FLOOD AI:</b></small><br>Monitoraggio AI Attivo                     </div>                 </div>                 </div>`)[0];
+                popup_caa20944bb8bd0834864cfbeda65ab64.setContent(html_a0b13f9df348014581df530beadebd2d);
+            
+        
+
+        circle_marker_0ee4284ecc91c8b805371d75b80d0951.bindPopup(popup_caa20944bb8bd0834864cfbeda65ab64)
+        ;
+
+        
+    
+    
+            var circle_marker_39fa1177df9b298f4be3d0e71dfa965e = L.circleMarker(
+                [40.840278, 16.003889],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3498db", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 1}
+            ).addTo(map_418e7ee54cc104c10bd11e142382e816);
+        
+    
+        var popup_2a0d5f5b7e93d0db81b2906324baea8c = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_d92ef6be95010b8ff1fd1239bc62a2b3 = $(`<div id="html_d92ef6be95010b8ff1fd1239bc62a2b3" style="width: 100.0%; height: 100.0%;">                 <div style='font-family:Arial; width:220px;'>                     <h5 style='margin:0; color:#2c3e50;'>None</h5>                     <small>Bacino: N/A</small><hr style='margin:8px 0;'>                     <b>Livello Reale:</b> N/D<br>                     <div style='margin-top:10px; padding:8px; background:#f0f7ff; border-left:4px solid #4285F4;'>                         <small><b>GOOGLE FLOOD AI:</b></small><br>Monitoraggio AI Attivo                     </div>                 </div>                 </div>`)[0];
+                popup_2a0d5f5b7e93d0db81b2906324baea8c.setContent(html_d92ef6be95010b8ff1fd1239bc62a2b3);
+            
+        
+
+        circle_marker_39fa1177df9b298f4be3d0e71dfa965e.bindPopup(popup_2a0d5f5b7e93d0db81b2906324baea8c)
+        ;
+
+        
+    
+    
+            var circle_marker_b6abbd9f8664c67f7da2cfe6e99d4308 = L.circleMarker(
+                [40.989167, 15.627222],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3498db", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 1}
+            ).addTo(map_418e7ee54cc104c10bd11e142382e816);
+        
+    
+        var popup_e9b776092f1d5a3554fe1bbad550a68a = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_261d92ddca5769b7a5561c7084037f5e = $(`<div id="html_261d92ddca5769b7a5561c7084037f5e" style="width: 100.0%; height: 100.0%;">                 <div style='font-family:Arial; width:220px;'>                     <h5 style='margin:0; color:#2c3e50;'>None</h5>                     <small>Bacino: N/A</small><hr style='margin:8px 0;'>                     <b>Livello Reale:</b> N/D<br>                     <div style='margin-top:10px; padding:8px; background:#f0f7ff; border-left:4px solid #4285F4;'>                         <small><b>GOOGLE FLOOD AI:</b></small><br>Monitoraggio AI Attivo                     </div>                 </div>                 </div>`)[0];
+                popup_e9b776092f1d5a3554fe1bbad550a68a.setContent(html_261d92ddca5769b7a5561c7084037f5e);
+            
+        
+
+        circle_marker_b6abbd9f8664c67f7da2cfe6e99d4308.bindPopup(popup_e9b776092f1d5a3554fe1bbad550a68a)
+        ;
+
+        
+    
+    
+            var circle_marker_a8d42e5983237faaa4531a8cd45d7992 = L.circleMarker(
+                [40.9575, 15.798611],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3498db", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 1}
+            ).addTo(map_418e7ee54cc104c10bd11e142382e816);
+        
+    
+        var popup_3021aad2440395d955d5f32dc252c6b0 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_f07059000b5e9b69dd1e595106244d4c = $(`<div id="html_f07059000b5e9b69dd1e595106244d4c" style="width: 100.0%; height: 100.0%;">                 <div style='font-family:Arial; width:220px;'>                     <h5 style='margin:0; color:#2c3e50;'>None</h5>                     <small>Bacino: N/A</small><hr style='margin:8px 0;'>                     <b>Livello Reale:</b> N/D<br>                     <div style='margin-top:10px; padding:8px; background:#f0f7ff; border-left:4px solid #4285F4;'>                         <small><b>GOOGLE FLOOD AI:</b></small><br>Monitoraggio AI Attivo                     </div>                 </div>                 </div>`)[0];
+                popup_3021aad2440395d955d5f32dc252c6b0.setContent(html_f07059000b5e9b69dd1e595106244d4c);
+            
+        
+
+        circle_marker_a8d42e5983237faaa4531a8cd45d7992.bindPopup(popup_3021aad2440395d955d5f32dc252c6b0)
+        ;
+
+        
+    
+    
+            var circle_marker_c02486428ffebf8abfa65610a22335a4 = L.circleMarker(
+                [40.479722, 15.641389],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3498db", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 1}
+            ).addTo(map_418e7ee54cc104c10bd11e142382e816);
+        
+    
+        var popup_a0d2986017bc5929e4441dc56d035196 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_4c22f80a2f4bac6b0f4444f18e88af2d = $(`<div id="html_4c22f80a2f4bac6b0f4444f18e88af2d" style="width: 100.0%; height: 100.0%;">                 <div style='font-family:Arial; width:220px;'>                     <h5 style='margin:0; color:#2c3e50;'>None</h5>                     <small>Bacino: N/A</small><hr style='margin:8px 0;'>                     <b>Livello Reale:</b> N/D<br>                     <div style='margin-top:10px; padding:8px; background:#f0f7ff; border-left:4px solid #4285F4;'>                         <small><b>GOOGLE FLOOD AI:</b></small><br>Monitoraggio AI Attivo                     </div>                 </div>                 </div>`)[0];
+                popup_a0d2986017bc5929e4441dc56d035196.setContent(html_4c22f80a2f4bac6b0f4444f18e88af2d);
+            
+        
+
+        circle_marker_c02486428ffebf8abfa65610a22335a4.bindPopup(popup_a0d2986017bc5929e4441dc56d035196)
+        ;
+
+        
+    
+    
+            var circle_marker_00381838296fcd44767c13140f42bbdb = L.circleMarker(
+                [40.864167, 15.553611],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3498db", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 1}
+            ).addTo(map_418e7ee54cc104c10bd11e142382e816);
+        
+    
+        var popup_0ac8dd9b38f24fe59bca55a82e89aa34 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_c6aad3936016ccf7afeb92b20a56533c = $(`<div id="html_c6aad3936016ccf7afeb92b20a56533c" style="width: 100.0%; height: 100.0%;">                 <div style='font-family:Arial; width:220px;'>                     <h5 style='margin:0; color:#2c3e50;'>None</h5>                     <small>Bacino: N/A</small><hr style='margin:8px 0;'>                     <b>Livello Reale:</b> N/D<br>                     <div style='margin-top:10px; padding:8px; background:#f0f7ff; border-left:4px solid #4285F4;'>                         <small><b>GOOGLE FLOOD AI:</b></small><br>Monitoraggio AI Attivo                     </div>                 </div>                 </div>`)[0];
+                popup_0ac8dd9b38f24fe59bca55a82e89aa34.setContent(html_c6aad3936016ccf7afeb92b20a56533c);
+            
+        
+
+        circle_marker_00381838296fcd44767c13140f42bbdb.bindPopup(popup_0ac8dd9b38f24fe59bca55a82e89aa34)
+        ;
+
+        
+    
+    
+            var circle_marker_59de9c43816090822313bb44d5a4b040 = L.circleMarker(
+                [40.591944, 15.516111],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3498db", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 1}
+            ).addTo(map_418e7ee54cc104c10bd11e142382e816);
+        
+    
+        var popup_35f1f2d1f87e57fa7120f673ff7ad2de = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_9115c154cec934743b877bd3bd541dae = $(`<div id="html_9115c154cec934743b877bd3bd541dae" style="width: 100.0%; height: 100.0%;">                 <div style='font-family:Arial; width:220px;'>                     <h5 style='margin:0; color:#2c3e50;'>None</h5>                     <small>Bacino: N/A</small><hr style='margin:8px 0;'>                     <b>Livello Reale:</b> N/D<br>                     <div style='margin-top:10px; padding:8px; background:#f0f7ff; border-left:4px solid #4285F4;'>                         <small><b>GOOGLE FLOOD AI:</b></small><br>Monitoraggio AI Attivo                     </div>                 </div>                 </div>`)[0];
+                popup_35f1f2d1f87e57fa7120f673ff7ad2de.setContent(html_9115c154cec934743b877bd3bd541dae);
+            
+        
+
+        circle_marker_59de9c43816090822313bb44d5a4b040.bindPopup(popup_35f1f2d1f87e57fa7120f673ff7ad2de)
+        ;
+
+        
+    
+    
+            var circle_marker_e56079568907f8c87ed545e95fd3d7f9 = L.circleMarker(
+                [40.598611, 15.787222],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3498db", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 1}
+            ).addTo(map_418e7ee54cc104c10bd11e142382e816);
+        
+    
+        var popup_03e428905c99f7d16b1cac0e49a86f84 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_2d9a6b70da35b9cf769bfdeab2eee330 = $(`<div id="html_2d9a6b70da35b9cf769bfdeab2eee330" style="width: 100.0%; height: 100.0%;">                 <div style='font-family:Arial; width:220px;'>                     <h5 style='margin:0; color:#2c3e50;'>None</h5>                     <small>Bacino: N/A</small><hr style='margin:8px 0;'>                     <b>Livello Reale:</b> 0.13 m<br>                     <div style='margin-top:10px; padding:8px; background:#f0f7ff; border-left:4px solid #4285F4;'>                         <small><b>GOOGLE FLOOD AI:</b></small><br>Monitoraggio AI Attivo                     </div>                 </div>                 </div>`)[0];
+                popup_03e428905c99f7d16b1cac0e49a86f84.setContent(html_2d9a6b70da35b9cf769bfdeab2eee330);
+            
+        
+
+        circle_marker_e56079568907f8c87ed545e95fd3d7f9.bindPopup(popup_03e428905c99f7d16b1cac0e49a86f84)
+        ;
+
+        
+    
+    
+            var circle_marker_dde42e9a643c4585d1c2dc90e290039a = L.circleMarker(
+                [40.426389, 15.729444],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3498db", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 1}
+            ).addTo(map_418e7ee54cc104c10bd11e142382e816);
+        
+    
+        var popup_4959fc71b5b0e148268719e6cb313c7a = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_5c948c2f7952f6843f3936518c620009 = $(`<div id="html_5c948c2f7952f6843f3936518c620009" style="width: 100.0%; height: 100.0%;">                 <div style='font-family:Arial; width:220px;'>                     <h5 style='margin:0; color:#2c3e50;'>None</h5>                     <small>Bacino: N/A</small><hr style='margin:8px 0;'>                     <b>Livello Reale:</b> N/D<br>                     <div style='margin-top:10px; padding:8px; background:#f0f7ff; border-left:4px solid #4285F4;'>                         <small><b>GOOGLE FLOOD AI:</b></small><br>Monitoraggio AI Attivo                     </div>                 </div>                 </div>`)[0];
+                popup_4959fc71b5b0e148268719e6cb313c7a.setContent(html_5c948c2f7952f6843f3936518c620009);
+            
+        
+
+        circle_marker_dde42e9a643c4585d1c2dc90e290039a.bindPopup(popup_4959fc71b5b0e148268719e6cb313c7a)
+        ;
+
+        
+    
+    
+            var circle_marker_f8f7087c34addd6f4115ff689b65773e = L.circleMarker(
+                [40.383611, 16.038056],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3498db", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 1}
+            ).addTo(map_418e7ee54cc104c10bd11e142382e816);
+        
+    
+        var popup_9dc3653310ae5d0022d33230a170273f = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_475979132f71046ccca51cbd177b8b6c = $(`<div id="html_475979132f71046ccca51cbd177b8b6c" style="width: 100.0%; height: 100.0%;">                 <div style='font-family:Arial; width:220px;'>                     <h5 style='margin:0; color:#2c3e50;'>None</h5>                     <small>Bacino: N/A</small><hr style='margin:8px 0;'>                     <b>Livello Reale:</b> N/D<br>                     <div style='margin-top:10px; padding:8px; background:#f0f7ff; border-left:4px solid #4285F4;'>                         <small><b>GOOGLE FLOOD AI:</b></small><br>Monitoraggio AI Attivo                     </div>                 </div>                 </div>`)[0];
+                popup_9dc3653310ae5d0022d33230a170273f.setContent(html_475979132f71046ccca51cbd177b8b6c);
+            
+        
+
+        circle_marker_f8f7087c34addd6f4115ff689b65773e.bindPopup(popup_9dc3653310ae5d0022d33230a170273f)
+        ;
+
+        
+    
+    
+            var circle_marker_6c922cf895929778a8b975cd20bd468c = L.circleMarker(
+                [40.534722, 16.181944],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3498db", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 1}
+            ).addTo(map_418e7ee54cc104c10bd11e142382e816);
+        
+    
+        var popup_822e41ed1b5bc198b985620359876dc8 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_96bcc1f7f1f3d6c7f9ca82aa04c0795e = $(`<div id="html_96bcc1f7f1f3d6c7f9ca82aa04c0795e" style="width: 100.0%; height: 100.0%;">                 <div style='font-family:Arial; width:220px;'>                     <h5 style='margin:0; color:#2c3e50;'>None</h5>                     <small>Bacino: N/A</small><hr style='margin:8px 0;'>                     <b>Livello Reale:</b> N/D<br>                     <div style='margin-top:10px; padding:8px; background:#f0f7ff; border-left:4px solid #4285F4;'>                         <small><b>GOOGLE FLOOD AI:</b></small><br>Monitoraggio AI Attivo                     </div>                 </div>                 </div>`)[0];
+                popup_822e41ed1b5bc198b985620359876dc8.setContent(html_96bcc1f7f1f3d6c7f9ca82aa04c0795e);
+            
+        
+
+        circle_marker_6c922cf895929778a8b975cd20bd468c.bindPopup(popup_822e41ed1b5bc198b985620359876dc8)
+        ;
+
+        
+    
+    
+            var circle_marker_fb3e5bca83802ba912d516ea171dbb4b = L.circleMarker(
+                [40.475278, 16.755],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3498db", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 1}
+            ).addTo(map_418e7ee54cc104c10bd11e142382e816);
+        
+    
+        var popup_76d0216c61c13f9df0afe167c8e608c9 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_d6a428fc3275b5e61290317fd6ee21e1 = $(`<div id="html_d6a428fc3275b5e61290317fd6ee21e1" style="width: 100.0%; height: 100.0%;">                 <div style='font-family:Arial; width:220px;'>                     <h5 style='margin:0; color:#2c3e50;'>None</h5>                     <small>Bacino: N/A</small><hr style='margin:8px 0;'>                     <b>Livello Reale:</b> 1.32 m<br>                     <div style='margin-top:10px; padding:8px; background:#f0f7ff; border-left:4px solid #4285F4;'>                         <small><b>GOOGLE FLOOD AI:</b></small><br>Monitoraggio AI Attivo                     </div>                 </div>                 </div>`)[0];
+                popup_76d0216c61c13f9df0afe167c8e608c9.setContent(html_d6a428fc3275b5e61290317fd6ee21e1);
+            
+        
+
+        circle_marker_fb3e5bca83802ba912d516ea171dbb4b.bindPopup(popup_76d0216c61c13f9df0afe167c8e608c9)
+        ;
+
+        
+    
+    
+            var circle_marker_9bfb5f52f877b9971c2cf0ac768e9e63 = L.circleMarker(
+                [40.916111, 15.735833],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3498db", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 1}
+            ).addTo(map_418e7ee54cc104c10bd11e142382e816);
+        
+    
+        var popup_650935039eb8fef2bcb7242937696217 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_232f01d91f0647e9607f2d02b99ddbcc = $(`<div id="html_232f01d91f0647e9607f2d02b99ddbcc" style="width: 100.0%; height: 100.0%;">                 <div style='font-family:Arial; width:220px;'>                     <h5 style='margin:0; color:#2c3e50;'>None</h5>                     <small>Bacino: N/A</small><hr style='margin:8px 0;'>                     <b>Livello Reale:</b> N/D<br>                     <div style='margin-top:10px; padding:8px; background:#f0f7ff; border-left:4px solid #4285F4;'>                         <small><b>GOOGLE FLOOD AI:</b></small><br>Monitoraggio AI Attivo                     </div>                 </div>                 </div>`)[0];
+                popup_650935039eb8fef2bcb7242937696217.setContent(html_232f01d91f0647e9607f2d02b99ddbcc);
+            
+        
+
+        circle_marker_9bfb5f52f877b9971c2cf0ac768e9e63.bindPopup(popup_650935039eb8fef2bcb7242937696217)
+        ;
+
+        
+    
+    
+            var circle_marker_a92829b80614ce049b2e3cf6cb71ca53 = L.circleMarker(
+                [40.639444, 16.433056],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3498db", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 1}
+            ).addTo(map_418e7ee54cc104c10bd11e142382e816);
+        
+    
+        var popup_4ebaa7f4a05dda9f5bb531abd875d1f3 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_df0c52aaf8562b9a88df8fd95cd5c3ab = $(`<div id="html_df0c52aaf8562b9a88df8fd95cd5c3ab" style="width: 100.0%; height: 100.0%;">                 <div style='font-family:Arial; width:220px;'>                     <h5 style='margin:0; color:#2c3e50;'>None</h5>                     <small>Bacino: N/A</small><hr style='margin:8px 0;'>                     <b>Livello Reale:</b> 0.81 m<br>                     <div style='margin-top:10px; padding:8px; background:#f0f7ff; border-left:4px solid #4285F4;'>                         <small><b>GOOGLE FLOOD AI:</b></small><br>Monitoraggio AI Attivo                     </div>                 </div>                 </div>`)[0];
+                popup_4ebaa7f4a05dda9f5bb531abd875d1f3.setContent(html_df0c52aaf8562b9a88df8fd95cd5c3ab);
+            
+        
+
+        circle_marker_a92829b80614ce049b2e3cf6cb71ca53.bindPopup(popup_4ebaa7f4a05dda9f5bb531abd875d1f3)
+        ;
+
+        
+    
+    
+            var circle_marker_e0a747aa08231d279acd988605b60340 = L.circleMarker(
+                [40.481667, 16.251111],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3498db", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 1}
+            ).addTo(map_418e7ee54cc104c10bd11e142382e816);
+        
+    
+        var popup_b4669a9400f24250d980f4c721dc640e = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_7632d20d6f98e88f61537377f6e916cd = $(`<div id="html_7632d20d6f98e88f61537377f6e916cd" style="width: 100.0%; height: 100.0%;">                 <div style='font-family:Arial; width:220px;'>                     <h5 style='margin:0; color:#2c3e50;'>None</h5>                     <small>Bacino: N/A</small><hr style='margin:8px 0;'>                     <b>Livello Reale:</b> N/D<br>                     <div style='margin-top:10px; padding:8px; background:#f0f7ff; border-left:4px solid #4285F4;'>                         <small><b>GOOGLE FLOOD AI:</b></small><br>Monitoraggio AI Attivo                     </div>                 </div>                 </div>`)[0];
+                popup_b4669a9400f24250d980f4c721dc640e.setContent(html_7632d20d6f98e88f61537377f6e916cd);
+            
+        
+
+        circle_marker_e0a747aa08231d279acd988605b60340.bindPopup(popup_b4669a9400f24250d980f4c721dc640e)
+        ;
+
+        
+    
+    
+            var circle_marker_9deb908cd23b3a6afac7d65f6f4f7348 = L.circleMarker(
+                [40.165278, 16.648611],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3498db", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 1}
+            ).addTo(map_418e7ee54cc104c10bd11e142382e816);
+        
+    
+        var popup_23540f8886b3a31e5494fe0774bd6be4 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_fbc1920c7a50db1bd5d16d379e69c937 = $(`<div id="html_fbc1920c7a50db1bd5d16d379e69c937" style="width: 100.0%; height: 100.0%;">                 <div style='font-family:Arial; width:220px;'>                     <h5 style='margin:0; color:#2c3e50;'>None</h5>                     <small>Bacino: N/A</small><hr style='margin:8px 0;'>                     <b>Livello Reale:</b> 0.27 m<br>                     <div style='margin-top:10px; padding:8px; background:#f0f7ff; border-left:4px solid #4285F4;'>                         <small><b>GOOGLE FLOOD AI:</b></small><br>Monitoraggio AI Attivo                     </div>                 </div>                 </div>`)[0];
+                popup_23540f8886b3a31e5494fe0774bd6be4.setContent(html_fbc1920c7a50db1bd5d16d379e69c937);
+            
+        
+
+        circle_marker_9deb908cd23b3a6afac7d65f6f4f7348.bindPopup(popup_23540f8886b3a31e5494fe0774bd6be4)
+        ;
+
+        
+    
+    
+            var circle_marker_cbfd0da9b18a6326a5fba5b36afb8dfd = L.circleMarker(
+                [40.485, 15.763056],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3498db", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 1}
+            ).addTo(map_418e7ee54cc104c10bd11e142382e816);
+        
+    
+        var popup_65573f7a64620b00e570f9beeddc6892 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_5d4442f8ad9d2042ea9394097ffb3c83 = $(`<div id="html_5d4442f8ad9d2042ea9394097ffb3c83" style="width: 100.0%; height: 100.0%;">                 <div style='font-family:Arial; width:220px;'>                     <h5 style='margin:0; color:#2c3e50;'>None</h5>                     <small>Bacino: N/A</small><hr style='margin:8px 0;'>                     <b>Livello Reale:</b> N/D<br>                     <div style='margin-top:10px; padding:8px; background:#f0f7ff; border-left:4px solid #4285F4;'>                         <small><b>GOOGLE FLOOD AI:</b></small><br>Monitoraggio AI Attivo                     </div>                 </div>                 </div>`)[0];
+                popup_65573f7a64620b00e570f9beeddc6892.setContent(html_5d4442f8ad9d2042ea9394097ffb3c83);
+            
+        
+
+        circle_marker_cbfd0da9b18a6326a5fba5b36afb8dfd.bindPopup(popup_65573f7a64620b00e570f9beeddc6892)
+        ;
+
+        
+    
+    
+            var circle_marker_ff3fb632641f5977be150675469cf597 = L.circleMarker(
+                [40.669444, 15.915278],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3498db", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 1}
+            ).addTo(map_418e7ee54cc104c10bd11e142382e816);
+        
+    
+        var popup_c101cc68d31bf7f16b6867aa2fe4ce5f = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_3c269f9bce67d8da97d93b23039243c0 = $(`<div id="html_3c269f9bce67d8da97d93b23039243c0" style="width: 100.0%; height: 100.0%;">                 <div style='font-family:Arial; width:220px;'>                     <h5 style='margin:0; color:#2c3e50;'>None</h5>                     <small>Bacino: N/A</small><hr style='margin:8px 0;'>                     <b>Livello Reale:</b> N/D<br>                     <div style='margin-top:10px; padding:8px; background:#f0f7ff; border-left:4px solid #4285F4;'>                         <small><b>GOOGLE FLOOD AI:</b></small><br>Monitoraggio AI Attivo                     </div>                 </div>                 </div>`)[0];
+                popup_c101cc68d31bf7f16b6867aa2fe4ce5f.setContent(html_3c269f9bce67d8da97d93b23039243c0);
+            
+        
+
+        circle_marker_ff3fb632641f5977be150675469cf597.bindPopup(popup_c101cc68d31bf7f16b6867aa2fe4ce5f)
+        ;
+
+        
+    
+    
+            var circle_marker_f0c63310b62e6c8cda7d7ce5c88ff4df = L.circleMarker(
+                [40.728611, 15.714444],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3498db", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 1}
+            ).addTo(map_418e7ee54cc104c10bd11e142382e816);
+        
+    
+        var popup_129eabb06f99f03a6cdf8b5626864497 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_756089593a8726ec4bdbb58ae5e1ceb4 = $(`<div id="html_756089593a8726ec4bdbb58ae5e1ceb4" style="width: 100.0%; height: 100.0%;">                 <div style='font-family:Arial; width:220px;'>                     <h5 style='margin:0; color:#2c3e50;'>None</h5>                     <small>Bacino: N/A</small><hr style='margin:8px 0;'>                     <b>Livello Reale:</b> N/D<br>                     <div style='margin-top:10px; padding:8px; background:#f0f7ff; border-left:4px solid #4285F4;'>                         <small><b>GOOGLE FLOOD AI:</b></small><br>Monitoraggio AI Attivo                     </div>                 </div>                 </div>`)[0];
+                popup_129eabb06f99f03a6cdf8b5626864497.setContent(html_756089593a8726ec4bdbb58ae5e1ceb4);
+            
+        
+
+        circle_marker_f0c63310b62e6c8cda7d7ce5c88ff4df.bindPopup(popup_129eabb06f99f03a6cdf8b5626864497)
+        ;
+
+        
+    
+    
+            var circle_marker_b1cb89a32ee82a48024f8b50c4050cf0 = L.circleMarker(
+                [40.934722, 15.971944],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3498db", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 1}
+            ).addTo(map_418e7ee54cc104c10bd11e142382e816);
+        
+    
+        var popup_69b565ad05000552427c08b80f8aef4e = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_4f0d96f671d8b368b08381d0da662a46 = $(`<div id="html_4f0d96f671d8b368b08381d0da662a46" style="width: 100.0%; height: 100.0%;">                 <div style='font-family:Arial; width:220px;'>                     <h5 style='margin:0; color:#2c3e50;'>None</h5>                     <small>Bacino: N/A</small><hr style='margin:8px 0;'>                     <b>Livello Reale:</b> N/D<br>                     <div style='margin-top:10px; padding:8px; background:#f0f7ff; border-left:4px solid #4285F4;'>                         <small><b>GOOGLE FLOOD AI:</b></small><br>Monitoraggio AI Attivo                     </div>                 </div>                 </div>`)[0];
+                popup_69b565ad05000552427c08b80f8aef4e.setContent(html_4f0d96f671d8b368b08381d0da662a46);
+            
+        
+
+        circle_marker_b1cb89a32ee82a48024f8b50c4050cf0.bindPopup(popup_69b565ad05000552427c08b80f8aef4e)
+        ;
+
+        
+    
+    
+            var circle_marker_068273dfa344cd54d0f65746d8338539 = L.circleMarker(
+                [40.408333, 16.225833],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3498db", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 1}
+            ).addTo(map_418e7ee54cc104c10bd11e142382e816);
+        
+    
+        var popup_37bac24db64526d1a1b784b07d94198b = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_6d5d22b21612aedcc6fa81fe08ca6761 = $(`<div id="html_6d5d22b21612aedcc6fa81fe08ca6761" style="width: 100.0%; height: 100.0%;">                 <div style='font-family:Arial; width:220px;'>                     <h5 style='margin:0; color:#2c3e50;'>None</h5>                     <small>Bacino: N/A</small><hr style='margin:8px 0;'>                     <b>Livello Reale:</b> N/D<br>                     <div style='margin-top:10px; padding:8px; background:#f0f7ff; border-left:4px solid #4285F4;'>                         <small><b>GOOGLE FLOOD AI:</b></small><br>Monitoraggio AI Attivo                     </div>                 </div>                 </div>`)[0];
+                popup_37bac24db64526d1a1b784b07d94198b.setContent(html_6d5d22b21612aedcc6fa81fe08ca6761);
+            
+        
+
+        circle_marker_068273dfa344cd54d0f65746d8338539.bindPopup(popup_37bac24db64526d1a1b784b07d94198b)
+        ;
+
+        
+    
+    
+            var circle_marker_393a369a253c287f72fe0d50cfd2c5db = L.circleMarker(
+                [40.556111, 16.330556],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3498db", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 1}
+            ).addTo(map_418e7ee54cc104c10bd11e142382e816);
+        
+    
+        var popup_0a3942771776baf89fd02d979d9beb08 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_d9fe81ac591812ea1c19b1b75ee69a60 = $(`<div id="html_d9fe81ac591812ea1c19b1b75ee69a60" style="width: 100.0%; height: 100.0%;">                 <div style='font-family:Arial; width:220px;'>                     <h5 style='margin:0; color:#2c3e50;'>None</h5>                     <small>Bacino: N/A</small><hr style='margin:8px 0;'>                     <b>Livello Reale:</b> N/D<br>                     <div style='margin-top:10px; padding:8px; background:#f0f7ff; border-left:4px solid #4285F4;'>                         <small><b>GOOGLE FLOOD AI:</b></small><br>Monitoraggio AI Attivo                     </div>                 </div>                 </div>`)[0];
+                popup_0a3942771776baf89fd02d979d9beb08.setContent(html_d9fe81ac591812ea1c19b1b75ee69a60);
+            
+        
+
+        circle_marker_393a369a253c287f72fe0d50cfd2c5db.bindPopup(popup_0a3942771776baf89fd02d979d9beb08)
+        ;
+
+        
+    
+    
+            var circle_marker_e51f6edbc1ac924a908f1840b52a1efa = L.circleMarker(
+                [40.431944, 16.569167],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 1}
+            ).addTo(map_418e7ee54cc104c10bd11e142382e816);
+        
+    
+        var popup_4fb745666281b870f19f5128389cef47 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_1f82a699f991ea0c13699bcea2a8b0eb = $(`<div id="html_1f82a699f991ea0c13699bcea2a8b0eb" style="width: 100.0%; height: 100.0%;">                 <div style='font-family:Arial; width:220px;'>                     <h5 style='margin:0; color:#2c3e50;'>None</h5>                     <small>Bacino: N/A</small><hr style='margin:8px 0;'>                     <b>Livello Reale:</b> 2.16 m<br>                     <div style='margin-top:10px; padding:8px; background:#f0f7ff; border-left:4px solid #4285F4;'>                         <small><b>GOOGLE FLOOD AI:</b></small><br>Monitoraggio AI Attivo                     </div>                 </div>                 </div>`)[0];
+                popup_4fb745666281b870f19f5128389cef47.setContent(html_1f82a699f991ea0c13699bcea2a8b0eb);
+            
+        
+
+        circle_marker_e51f6edbc1ac924a908f1840b52a1efa.bindPopup(popup_4fb745666281b870f19f5128389cef47)
+        ;
+
+        
+    
+    
+            var circle_marker_b91aafc36aae4526b2486c5740c45934 = L.circleMarker(
+                [40.456667, 15.973333],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3498db", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 1}
+            ).addTo(map_418e7ee54cc104c10bd11e142382e816);
+        
+    
+        var popup_bb97decb5580e16ad86a2287375a2302 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_faa5e79f4d336cb93e219e9c0693ab81 = $(`<div id="html_faa5e79f4d336cb93e219e9c0693ab81" style="width: 100.0%; height: 100.0%;">                 <div style='font-family:Arial; width:220px;'>                     <h5 style='margin:0; color:#2c3e50;'>None</h5>                     <small>Bacino: N/A</small><hr style='margin:8px 0;'>                     <b>Livello Reale:</b> N/D<br>                     <div style='margin-top:10px; padding:8px; background:#f0f7ff; border-left:4px solid #4285F4;'>                         <small><b>GOOGLE FLOOD AI:</b></small><br>Monitoraggio AI Attivo                     </div>                 </div>                 </div>`)[0];
+                popup_bb97decb5580e16ad86a2287375a2302.setContent(html_faa5e79f4d336cb93e219e9c0693ab81);
+            
+        
+
+        circle_marker_b91aafc36aae4526b2486c5740c45934.bindPopup(popup_bb97decb5580e16ad86a2287375a2302)
+        ;
+
+        
+    
+    
+            var circle_marker_88ec0f364c798c73221ea7a728e6312f = L.circleMarker(
+                [40.236944, 16.036389],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3498db", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 1}
+            ).addTo(map_418e7ee54cc104c10bd11e142382e816);
+        
+    
+        var popup_b55913f7cd37416bd081fcfdef0f19ab = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_147645475a60bb87258ab4eb9eaaed09 = $(`<div id="html_147645475a60bb87258ab4eb9eaaed09" style="width: 100.0%; height: 100.0%;">                 <div style='font-family:Arial; width:220px;'>                     <h5 style='margin:0; color:#2c3e50;'>None</h5>                     <small>Bacino: N/A</small><hr style='margin:8px 0;'>                     <b>Livello Reale:</b> N/D<br>                     <div style='margin-top:10px; padding:8px; background:#f0f7ff; border-left:4px solid #4285F4;'>                         <small><b>GOOGLE FLOOD AI:</b></small><br>Monitoraggio AI Attivo                     </div>                 </div>                 </div>`)[0];
+                popup_b55913f7cd37416bd081fcfdef0f19ab.setContent(html_147645475a60bb87258ab4eb9eaaed09);
+            
+        
+
+        circle_marker_88ec0f364c798c73221ea7a728e6312f.bindPopup(popup_b55913f7cd37416bd081fcfdef0f19ab)
+        ;
+
+        
+    
+    
+            var circle_marker_3783a3c451d57438f927a0b1acd0aae3 = L.circleMarker(
+                [40.226111, 16.686667],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3498db", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 1}
+            ).addTo(map_418e7ee54cc104c10bd11e142382e816);
+        
+    
+        var popup_fedfa12528143225e2d047ecb42a19c8 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_5cdc9f11e9b8c42ec66c9a8400ab9407 = $(`<div id="html_5cdc9f11e9b8c42ec66c9a8400ab9407" style="width: 100.0%; height: 100.0%;">                 <div style='font-family:Arial; width:220px;'>                     <h5 style='margin:0; color:#2c3e50;'>None</h5>                     <small>Bacino: N/A</small><hr style='margin:8px 0;'>                     <b>Livello Reale:</b> -0.43 m<br>                     <div style='margin-top:10px; padding:8px; background:#f0f7ff; border-left:4px solid #4285F4;'>                         <small><b>GOOGLE FLOOD AI:</b></small><br>Monitoraggio AI Attivo                     </div>                 </div>                 </div>`)[0];
+                popup_fedfa12528143225e2d047ecb42a19c8.setContent(html_5cdc9f11e9b8c42ec66c9a8400ab9407);
+            
+        
+
+        circle_marker_3783a3c451d57438f927a0b1acd0aae3.bindPopup(popup_fedfa12528143225e2d047ecb42a19c8)
+        ;
+
+        
+    
+    
+            var circle_marker_aa9bb967f77af2144ef7386363798606 = L.circleMarker(
+                [40.500556, 15.761111],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3498db", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 1}
+            ).addTo(map_418e7ee54cc104c10bd11e142382e816);
+        
+    
+        var popup_945531c579b2301c096ef0c42c689195 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_e98b4494477ee2b221de285ab4011d3d = $(`<div id="html_e98b4494477ee2b221de285ab4011d3d" style="width: 100.0%; height: 100.0%;">                 <div style='font-family:Arial; width:220px;'>                     <h5 style='margin:0; color:#2c3e50;'>None</h5>                     <small>Bacino: N/A</small><hr style='margin:8px 0;'>                     <b>Livello Reale:</b> N/D<br>                     <div style='margin-top:10px; padding:8px; background:#f0f7ff; border-left:4px solid #4285F4;'>                         <small><b>GOOGLE FLOOD AI:</b></small><br>Monitoraggio AI Attivo                     </div>                 </div>                 </div>`)[0];
+                popup_945531c579b2301c096ef0c42c689195.setContent(html_e98b4494477ee2b221de285ab4011d3d);
+            
+        
+
+        circle_marker_aa9bb967f77af2144ef7386363798606.bindPopup(popup_945531c579b2301c096ef0c42c689195)
+        ;
+
+        
+    
+    
+            var circle_marker_db34ff2203ba040036abd18a930d84d4 = L.circleMarker(
+                [39.936389, 15.767778],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3498db", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 1}
+            ).addTo(map_418e7ee54cc104c10bd11e142382e816);
+        
+    
+        var popup_27a0e755fd422583ff1a9125af930236 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_ed3af7d8009d75e0877ce9abdc5e06e4 = $(`<div id="html_ed3af7d8009d75e0877ce9abdc5e06e4" style="width: 100.0%; height: 100.0%;">                 <div style='font-family:Arial; width:220px;'>                     <h5 style='margin:0; color:#2c3e50;'>None</h5>                     <small>Bacino: N/A</small><hr style='margin:8px 0;'>                     <b>Livello Reale:</b> -0.26 m<br>                     <div style='margin-top:10px; padding:8px; background:#f0f7ff; border-left:4px solid #4285F4;'>                         <small><b>GOOGLE FLOOD AI:</b></small><br>Monitoraggio AI Attivo                     </div>                 </div>                 </div>`)[0];
+                popup_27a0e755fd422583ff1a9125af930236.setContent(html_ed3af7d8009d75e0877ce9abdc5e06e4);
+            
+        
+
+        circle_marker_db34ff2203ba040036abd18a930d84d4.bindPopup(popup_27a0e755fd422583ff1a9125af930236)
+        ;
+
+        
+    
+    
+            var circle_marker_dbe350dbc4cfc5b9ef45a98873df84fe = L.circleMarker(
+                [40.819722, 15.540278],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3498db", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 1}
+            ).addTo(map_418e7ee54cc104c10bd11e142382e816);
+        
+    
+        var popup_838928646aadd28d12fdbccd062b82a7 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_8daebbed2c5721b48e83f1ca92dba9e0 = $(`<div id="html_8daebbed2c5721b48e83f1ca92dba9e0" style="width: 100.0%; height: 100.0%;">                 <div style='font-family:Arial; width:220px;'>                     <h5 style='margin:0; color:#2c3e50;'>None</h5>                     <small>Bacino: N/A</small><hr style='margin:8px 0;'>                     <b>Livello Reale:</b> N/D<br>                     <div style='margin-top:10px; padding:8px; background:#f0f7ff; border-left:4px solid #4285F4;'>                         <small><b>GOOGLE FLOOD AI:</b></small><br>Monitoraggio AI Attivo                     </div>                 </div>                 </div>`)[0];
+                popup_838928646aadd28d12fdbccd062b82a7.setContent(html_8daebbed2c5721b48e83f1ca92dba9e0);
+            
+        
+
+        circle_marker_dbe350dbc4cfc5b9ef45a98873df84fe.bindPopup(popup_838928646aadd28d12fdbccd062b82a7)
+        ;
+
+        
+    
+    
+            var circle_marker_8b07971ecd6c566995b1bbffc171ac43 = L.circleMarker(
+                [40.210556, 16.199167],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3498db", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 1}
+            ).addTo(map_418e7ee54cc104c10bd11e142382e816);
+        
+    
+        var popup_deb989c6d6e848fc87c34b052cea8f2a = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_eb48ad360666be7ddc147b0edbea18cf = $(`<div id="html_eb48ad360666be7ddc147b0edbea18cf" style="width: 100.0%; height: 100.0%;">                 <div style='font-family:Arial; width:220px;'>                     <h5 style='margin:0; color:#2c3e50;'>None</h5>                     <small>Bacino: N/A</small><hr style='margin:8px 0;'>                     <b>Livello Reale:</b> N/D<br>                     <div style='margin-top:10px; padding:8px; background:#f0f7ff; border-left:4px solid #4285F4;'>                         <small><b>GOOGLE FLOOD AI:</b></small><br>Monitoraggio AI Attivo                     </div>                 </div>                 </div>`)[0];
+                popup_deb989c6d6e848fc87c34b052cea8f2a.setContent(html_eb48ad360666be7ddc147b0edbea18cf);
+            
+        
+
+        circle_marker_8b07971ecd6c566995b1bbffc171ac43.bindPopup(popup_deb989c6d6e848fc87c34b052cea8f2a)
+        ;
+
+        
+    
+    
+            var circle_marker_9306d5d71f8f1475cb565771d2297cee = L.circleMarker(
+                [40.132222, 16.304444],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3498db", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 1}
+            ).addTo(map_418e7ee54cc104c10bd11e142382e816);
+        
+    
+        var popup_52828c8f78fcaa61054b47f64ad40f91 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_b8ab891cfe8fccc281f46fc3c940a26d = $(`<div id="html_b8ab891cfe8fccc281f46fc3c940a26d" style="width: 100.0%; height: 100.0%;">                 <div style='font-family:Arial; width:220px;'>                     <h5 style='margin:0; color:#2c3e50;'>None</h5>                     <small>Bacino: N/A</small><hr style='margin:8px 0;'>                     <b>Livello Reale:</b> 0.29 m<br>                     <div style='margin-top:10px; padding:8px; background:#f0f7ff; border-left:4px solid #4285F4;'>                         <small><b>GOOGLE FLOOD AI:</b></small><br>Monitoraggio AI Attivo                     </div>                 </div>                 </div>`)[0];
+                popup_52828c8f78fcaa61054b47f64ad40f91.setContent(html_b8ab891cfe8fccc281f46fc3c940a26d);
+            
+        
+
+        circle_marker_9306d5d71f8f1475cb565771d2297cee.bindPopup(popup_52828c8f78fcaa61054b47f64ad40f91)
+        ;
+
+        
+    
+    
+            var circle_marker_2ddfbcfe1d799e7069ed3a275d7ee7a8 = L.circleMarker(
+                [40.516389, 16.5475],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3498db", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 1}
+            ).addTo(map_418e7ee54cc104c10bd11e142382e816);
+        
+    
+        var popup_ed5a2c137c523e41cde17ca880aaada0 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_5780f308c1f0c76c7ecfd28525e44cb4 = $(`<div id="html_5780f308c1f0c76c7ecfd28525e44cb4" style="width: 100.0%; height: 100.0%;">                 <div style='font-family:Arial; width:220px;'>                     <h5 style='margin:0; color:#2c3e50;'>None</h5>                     <small>Bacino: N/A</small><hr style='margin:8px 0;'>                     <b>Livello Reale:</b> N/D<br>                     <div style='margin-top:10px; padding:8px; background:#f0f7ff; border-left:4px solid #4285F4;'>                         <small><b>GOOGLE FLOOD AI:</b></small><br>Monitoraggio AI Attivo                     </div>                 </div>                 </div>`)[0];
+                popup_ed5a2c137c523e41cde17ca880aaada0.setContent(html_5780f308c1f0c76c7ecfd28525e44cb4);
+            
+        
+
+        circle_marker_2ddfbcfe1d799e7069ed3a275d7ee7a8.bindPopup(popup_ed5a2c137c523e41cde17ca880aaada0)
+        ;
+
+        
+    
+    
+            var circle_marker_87920e5e55351876f33fdc5303d16ca5 = L.circleMarker(
+                [40.172778, 16.44],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3498db", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 1}
+            ).addTo(map_418e7ee54cc104c10bd11e142382e816);
+        
+    
+        var popup_41976a085f3f3051196219bec542ae06 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_1a1761f691212cc4d9a83351c8cc940d = $(`<div id="html_1a1761f691212cc4d9a83351c8cc940d" style="width: 100.0%; height: 100.0%;">                 <div style='font-family:Arial; width:220px;'>                     <h5 style='margin:0; color:#2c3e50;'>None</h5>                     <small>Bacino: N/A</small><hr style='margin:8px 0;'>                     <b>Livello Reale:</b> -0.36 m<br>                     <div style='margin-top:10px; padding:8px; background:#f0f7ff; border-left:4px solid #4285F4;'>                         <small><b>GOOGLE FLOOD AI:</b></small><br>Monitoraggio AI Attivo                     </div>                 </div>                 </div>`)[0];
+                popup_41976a085f3f3051196219bec542ae06.setContent(html_1a1761f691212cc4d9a83351c8cc940d);
+            
+        
+
+        circle_marker_87920e5e55351876f33fdc5303d16ca5.bindPopup(popup_41976a085f3f3051196219bec542ae06)
+        ;
+
+        
+    
+    
+            var circle_marker_d544d3684e9fbacf0f109f3a839eb771 = L.circleMarker(
+                [40.833333, 15.398889],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3498db", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 1}
+            ).addTo(map_418e7ee54cc104c10bd11e142382e816);
+        
+    
+        var popup_68b7fda2e98383e5d95bcbdaeda23cd5 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_6bcabee9f2db282741dc60236d247d9f = $(`<div id="html_6bcabee9f2db282741dc60236d247d9f" style="width: 100.0%; height: 100.0%;">                 <div style='font-family:Arial; width:220px;'>                     <h5 style='margin:0; color:#2c3e50;'>None</h5>                     <small>Bacino: N/A</small><hr style='margin:8px 0;'>                     <b>Livello Reale:</b> N/D<br>                     <div style='margin-top:10px; padding:8px; background:#f0f7ff; border-left:4px solid #4285F4;'>                         <small><b>GOOGLE FLOOD AI:</b></small><br>Monitoraggio AI Attivo                     </div>                 </div>                 </div>`)[0];
+                popup_68b7fda2e98383e5d95bcbdaeda23cd5.setContent(html_6bcabee9f2db282741dc60236d247d9f);
+            
+        
+
+        circle_marker_d544d3684e9fbacf0f109f3a839eb771.bindPopup(popup_68b7fda2e98383e5d95bcbdaeda23cd5)
+        ;
+
+        
+    
+    
+            var circle_marker_fd6cb6ab2ee582f1a2555ad0f3382a18 = L.circleMarker(
+                [40.903889, 15.823056],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3498db", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 1}
+            ).addTo(map_418e7ee54cc104c10bd11e142382e816);
+        
+    
+        var popup_7b63fea7eb3fb370380068b8492f9129 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_746d0ace60fc416374c67b4cc5ccab63 = $(`<div id="html_746d0ace60fc416374c67b4cc5ccab63" style="width: 100.0%; height: 100.0%;">                 <div style='font-family:Arial; width:220px;'>                     <h5 style='margin:0; color:#2c3e50;'>None</h5>                     <small>Bacino: N/A</small><hr style='margin:8px 0;'>                     <b>Livello Reale:</b> N/D<br>                     <div style='margin-top:10px; padding:8px; background:#f0f7ff; border-left:4px solid #4285F4;'>                         <small><b>GOOGLE FLOOD AI:</b></small><br>Monitoraggio AI Attivo                     </div>                 </div>                 </div>`)[0];
+                popup_7b63fea7eb3fb370380068b8492f9129.setContent(html_746d0ace60fc416374c67b4cc5ccab63);
+            
+        
+
+        circle_marker_fd6cb6ab2ee582f1a2555ad0f3382a18.bindPopup(popup_7b63fea7eb3fb370380068b8492f9129)
+        ;
+
+        
+    
+    
+            var circle_marker_b5aef8ea930156a7ec14bbe2616d279d = L.circleMarker(
+                [40.304722, 16.752778],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3498db", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 1}
+            ).addTo(map_418e7ee54cc104c10bd11e142382e816);
+        
+    
+        var popup_f87cee58e31fb2b2c550ff4842fc2878 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_749b8d6501e52d75e1d67908d442c4f5 = $(`<div id="html_749b8d6501e52d75e1d67908d442c4f5" style="width: 100.0%; height: 100.0%;">                 <div style='font-family:Arial; width:220px;'>                     <h5 style='margin:0; color:#2c3e50;'>None</h5>                     <small>Bacino: N/A</small><hr style='margin:8px 0;'>                     <b>Livello Reale:</b> N/D<br>                     <div style='margin-top:10px; padding:8px; background:#f0f7ff; border-left:4px solid #4285F4;'>                         <small><b>GOOGLE FLOOD AI:</b></small><br>Monitoraggio AI Attivo                     </div>                 </div>                 </div>`)[0];
+                popup_f87cee58e31fb2b2c550ff4842fc2878.setContent(html_749b8d6501e52d75e1d67908d442c4f5);
+            
+        
+
+        circle_marker_b5aef8ea930156a7ec14bbe2616d279d.bindPopup(popup_f87cee58e31fb2b2c550ff4842fc2878)
+        ;
+
+        
+    
+    
+            var circle_marker_3620e278f5bce9e01966f9377bd168a7 = L.circleMarker(
+                [40.574167, 15.656944],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3498db", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 1}
+            ).addTo(map_418e7ee54cc104c10bd11e142382e816);
+        
+    
+        var popup_807c23fd31e49e995a4f229b9c900714 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_99b89f16f384b4882b17014dcc14f98f = $(`<div id="html_99b89f16f384b4882b17014dcc14f98f" style="width: 100.0%; height: 100.0%;">                 <div style='font-family:Arial; width:220px;'>                     <h5 style='margin:0; color:#2c3e50;'>None</h5>                     <small>Bacino: N/A</small><hr style='margin:8px 0;'>                     <b>Livello Reale:</b> N/D<br>                     <div style='margin-top:10px; padding:8px; background:#f0f7ff; border-left:4px solid #4285F4;'>                         <small><b>GOOGLE FLOOD AI:</b></small><br>Monitoraggio AI Attivo                     </div>                 </div>                 </div>`)[0];
+                popup_807c23fd31e49e995a4f229b9c900714.setContent(html_99b89f16f384b4882b17014dcc14f98f);
+            
+        
+
+        circle_marker_3620e278f5bce9e01966f9377bd168a7.bindPopup(popup_807c23fd31e49e995a4f229b9c900714)
+        ;
+
+        
+    
+    
+            var circle_marker_edc8b2801f2028ce91effe247a6ae40b = L.circleMarker(
+                [39.992222, 15.801944],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 1}
+            ).addTo(map_418e7ee54cc104c10bd11e142382e816);
+        
+    
+        var popup_8134408f2d8bfcb4804c91e4b804f25f = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_0b08b445ba94419de6f876b760b5f2cb = $(`<div id="html_0b08b445ba94419de6f876b760b5f2cb" style="width: 100.0%; height: 100.0%;">                 <div style='font-family:Arial; width:220px;'>                     <h5 style='margin:0; color:#2c3e50;'>None</h5>                     <small>Bacino: N/A</small><hr style='margin:8px 0;'>                     <b>Livello Reale:</b> 1.51 m<br>                     <div style='margin-top:10px; padding:8px; background:#f0f7ff; border-left:4px solid #4285F4;'>                         <small><b>GOOGLE FLOOD AI:</b></small><br>Monitoraggio AI Attivo                     </div>                 </div>                 </div>`)[0];
+                popup_8134408f2d8bfcb4804c91e4b804f25f.setContent(html_0b08b445ba94419de6f876b760b5f2cb);
+            
+        
+
+        circle_marker_edc8b2801f2028ce91effe247a6ae40b.bindPopup(popup_8134408f2d8bfcb4804c91e4b804f25f)
+        ;
+
+        
+    
+    
+            var circle_marker_a319e749c5dcb6bbbd54bf763e609b51 = L.circleMarker(
+                [40.423056, 16.821667],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3498db", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 1}
+            ).addTo(map_418e7ee54cc104c10bd11e142382e816);
+        
+    
+        var popup_a8ea19f00e3412e4c0e9394c2417f680 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_e54fd831b7d704be9f899ceb0634fc6e = $(`<div id="html_e54fd831b7d704be9f899ceb0634fc6e" style="width: 100.0%; height: 100.0%;">                 <div style='font-family:Arial; width:220px;'>                     <h5 style='margin:0; color:#2c3e50;'>None</h5>                     <small>Bacino: N/A</small><hr style='margin:8px 0;'>                     <b>Livello Reale:</b> N/D<br>                     <div style='margin-top:10px; padding:8px; background:#f0f7ff; border-left:4px solid #4285F4;'>                         <small><b>GOOGLE FLOOD AI:</b></small><br>Monitoraggio AI Attivo                     </div>                 </div>                 </div>`)[0];
+                popup_a8ea19f00e3412e4c0e9394c2417f680.setContent(html_e54fd831b7d704be9f899ceb0634fc6e);
+            
+        
+
+        circle_marker_a319e749c5dcb6bbbd54bf763e609b51.bindPopup(popup_a8ea19f00e3412e4c0e9394c2417f680)
+        ;
+
+        
+    
+    
+            var circle_marker_32badc9ed672d42e41faa8e127b3fa23 = L.circleMarker(
+                [40.733056, 15.8025],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3498db", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 1}
+            ).addTo(map_418e7ee54cc104c10bd11e142382e816);
+        
+    
+        var popup_2fdc960f97affce4754589e3d86142f5 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_2ec37b3d52fb46f7f68a4783965c3c7b = $(`<div id="html_2ec37b3d52fb46f7f68a4783965c3c7b" style="width: 100.0%; height: 100.0%;">                 <div style='font-family:Arial; width:220px;'>                     <h5 style='margin:0; color:#2c3e50;'>None</h5>                     <small>Bacino: N/A</small><hr style='margin:8px 0;'>                     <b>Livello Reale:</b> N/D<br>                     <div style='margin-top:10px; padding:8px; background:#f0f7ff; border-left:4px solid #4285F4;'>                         <small><b>GOOGLE FLOOD AI:</b></small><br>Monitoraggio AI Attivo                     </div>                 </div>                 </div>`)[0];
+                popup_2fdc960f97affce4754589e3d86142f5.setContent(html_2ec37b3d52fb46f7f68a4783965c3c7b);
+            
+        
+
+        circle_marker_32badc9ed672d42e41faa8e127b3fa23.bindPopup(popup_2fdc960f97affce4754589e3d86142f5)
+        ;
+
+        
+    
+    
+            var circle_marker_fcf2634a92a09df52a527c5635d3a15b = L.circleMarker(
+                [40.626389, 15.796944],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3498db", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 1}
+            ).addTo(map_418e7ee54cc104c10bd11e142382e816);
+        
+    
+        var popup_d1cf070e0cd203bde4616f91c13f2913 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_2a9ef8ae7c04e0c1a65fd47b5127cb9a = $(`<div id="html_2a9ef8ae7c04e0c1a65fd47b5127cb9a" style="width: 100.0%; height: 100.0%;">                 <div style='font-family:Arial; width:220px;'>                     <h5 style='margin:0; color:#2c3e50;'>None</h5>                     <small>Bacino: N/A</small><hr style='margin:8px 0;'>                     <b>Livello Reale:</b> 0.18 m<br>                     <div style='margin-top:10px; padding:8px; background:#f0f7ff; border-left:4px solid #4285F4;'>                         <small><b>GOOGLE FLOOD AI:</b></small><br>Monitoraggio AI Attivo                     </div>                 </div>                 </div>`)[0];
+                popup_d1cf070e0cd203bde4616f91c13f2913.setContent(html_2a9ef8ae7c04e0c1a65fd47b5127cb9a);
+            
+        
+
+        circle_marker_fcf2634a92a09df52a527c5635d3a15b.bindPopup(popup_d1cf070e0cd203bde4616f91c13f2913)
+        ;
+
+        
+    
+    
+            var circle_marker_6344e8fde839e6acba8eba743ee0c010 = L.circleMarker(
+                [40.169722, 16.523611],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3498db", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 1}
+            ).addTo(map_418e7ee54cc104c10bd11e142382e816);
+        
+    
+        var popup_6ae87487d19eaf48584279a14afed0d7 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_3c1d703ffb766125bf363c1da62d4620 = $(`<div id="html_3c1d703ffb766125bf363c1da62d4620" style="width: 100.0%; height: 100.0%;">                 <div style='font-family:Arial; width:220px;'>                     <h5 style='margin:0; color:#2c3e50;'>None</h5>                     <small>Bacino: N/A</small><hr style='margin:8px 0;'>                     <b>Livello Reale:</b> N/D<br>                     <div style='margin-top:10px; padding:8px; background:#f0f7ff; border-left:4px solid #4285F4;'>                         <small><b>GOOGLE FLOOD AI:</b></small><br>Monitoraggio AI Attivo                     </div>                 </div>                 </div>`)[0];
+                popup_6ae87487d19eaf48584279a14afed0d7.setContent(html_3c1d703ffb766125bf363c1da62d4620);
+            
+        
+
+        circle_marker_6344e8fde839e6acba8eba743ee0c010.bindPopup(popup_6ae87487d19eaf48584279a14afed0d7)
+        ;
+
+        
+    
+    
+            var circle_marker_e35a970b062995fe2d112c41f4d97e94 = L.circleMarker(
+                [40.299444, 15.998611],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3498db", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 1}
+            ).addTo(map_418e7ee54cc104c10bd11e142382e816);
+        
+    
+        var popup_9325185ebe34db67739d93796698f4dd = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_16d137e05cc0b1b08921a7c03043e9e3 = $(`<div id="html_16d137e05cc0b1b08921a7c03043e9e3" style="width: 100.0%; height: 100.0%;">                 <div style='font-family:Arial; width:220px;'>                     <h5 style='margin:0; color:#2c3e50;'>None</h5>                     <small>Bacino: N/A</small><hr style='margin:8px 0;'>                     <b>Livello Reale:</b> N/D<br>                     <div style='margin-top:10px; padding:8px; background:#f0f7ff; border-left:4px solid #4285F4;'>                         <small><b>GOOGLE FLOOD AI:</b></small><br>Monitoraggio AI Attivo                     </div>                 </div>                 </div>`)[0];
+                popup_9325185ebe34db67739d93796698f4dd.setContent(html_16d137e05cc0b1b08921a7c03043e9e3);
+            
+        
+
+        circle_marker_e35a970b062995fe2d112c41f4d97e94.bindPopup(popup_9325185ebe34db67739d93796698f4dd)
+        ;
+
+        
+    
+    
+            var circle_marker_1462dfbd12e594475518c2a2607794a0 = L.circleMarker(
+                [40.160833, 15.985556],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3498db", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 1}
+            ).addTo(map_418e7ee54cc104c10bd11e142382e816);
+        
+    
+        var popup_731952e8b5e42a4babb4cb6e2e78cc3b = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_51bf92a19aa69a5d008232b3432b6225 = $(`<div id="html_51bf92a19aa69a5d008232b3432b6225" style="width: 100.0%; height: 100.0%;">                 <div style='font-family:Arial; width:220px;'>                     <h5 style='margin:0; color:#2c3e50;'>None</h5>                     <small>Bacino: N/A</small><hr style='margin:8px 0;'>                     <b>Livello Reale:</b> N/D<br>                     <div style='margin-top:10px; padding:8px; background:#f0f7ff; border-left:4px solid #4285F4;'>                         <small><b>GOOGLE FLOOD AI:</b></small><br>Monitoraggio AI Attivo                     </div>                 </div>                 </div>`)[0];
+                popup_731952e8b5e42a4babb4cb6e2e78cc3b.setContent(html_51bf92a19aa69a5d008232b3432b6225);
+            
+        
+
+        circle_marker_1462dfbd12e594475518c2a2607794a0.bindPopup(popup_731952e8b5e42a4babb4cb6e2e78cc3b)
+        ;
+
+        
+    
+    
+            var circle_marker_78cae0b50c376a9f8d26cbb54ab11c7b = L.circleMarker(
+                [40.518889, 16.056667],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3498db", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 1}
+            ).addTo(map_418e7ee54cc104c10bd11e142382e816);
+        
+    
+        var popup_814e9d74dcb004b56416b2f7dbdeac91 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_3f617ef31d0c638c7542873a65b6e512 = $(`<div id="html_3f617ef31d0c638c7542873a65b6e512" style="width: 100.0%; height: 100.0%;">                 <div style='font-family:Arial; width:220px;'>                     <h5 style='margin:0; color:#2c3e50;'>None</h5>                     <small>Bacino: N/A</small><hr style='margin:8px 0;'>                     <b>Livello Reale:</b> N/D<br>                     <div style='margin-top:10px; padding:8px; background:#f0f7ff; border-left:4px solid #4285F4;'>                         <small><b>GOOGLE FLOOD AI:</b></small><br>Monitoraggio AI Attivo                     </div>                 </div>                 </div>`)[0];
+                popup_814e9d74dcb004b56416b2f7dbdeac91.setContent(html_3f617ef31d0c638c7542873a65b6e512);
+            
+        
+
+        circle_marker_78cae0b50c376a9f8d26cbb54ab11c7b.bindPopup(popup_814e9d74dcb004b56416b2f7dbdeac91)
+        ;
+
+        
+    
+    
+            var circle_marker_01e3e144c600774cc3b6668259858308 = L.circleMarker(
+                [40.083889, 16.205833],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3498db", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 1}
+            ).addTo(map_418e7ee54cc104c10bd11e142382e816);
+        
+    
+        var popup_8b1ba242c346f5f90fd1ca84ef38254c = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_17f8f3f15298473917167ff234fbdb1a = $(`<div id="html_17f8f3f15298473917167ff234fbdb1a" style="width: 100.0%; height: 100.0%;">                 <div style='font-family:Arial; width:220px;'>                     <h5 style='margin:0; color:#2c3e50;'>None</h5>                     <small>Bacino: N/A</small><hr style='margin:8px 0;'>                     <b>Livello Reale:</b> N/D<br>                     <div style='margin-top:10px; padding:8px; background:#f0f7ff; border-left:4px solid #4285F4;'>                         <small><b>GOOGLE FLOOD AI:</b></small><br>Monitoraggio AI Attivo                     </div>                 </div>                 </div>`)[0];
+                popup_8b1ba242c346f5f90fd1ca84ef38254c.setContent(html_17f8f3f15298473917167ff234fbdb1a);
+            
+        
+
+        circle_marker_01e3e144c600774cc3b6668259858308.bindPopup(popup_8b1ba242c346f5f90fd1ca84ef38254c)
+        ;
+
+        
+    
+    
+            var circle_marker_23c83f0e1b195bd0a5ea035500110bd5 = L.circleMarker(
+                [40.733889, 15.593611],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3498db", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 1}
+            ).addTo(map_418e7ee54cc104c10bd11e142382e816);
+        
+    
+        var popup_34a55833cee5a09892ba4463ddb6f553 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_2f139d575c4ad6a3d326910b9eacf83b = $(`<div id="html_2f139d575c4ad6a3d326910b9eacf83b" style="width: 100.0%; height: 100.0%;">                 <div style='font-family:Arial; width:220px;'>                     <h5 style='margin:0; color:#2c3e50;'>None</h5>                     <small>Bacino: N/A</small><hr style='margin:8px 0;'>                     <b>Livello Reale:</b> N/D<br>                     <div style='margin-top:10px; padding:8px; background:#f0f7ff; border-left:4px solid #4285F4;'>                         <small><b>GOOGLE FLOOD AI:</b></small><br>Monitoraggio AI Attivo                     </div>                 </div>                 </div>`)[0];
+                popup_34a55833cee5a09892ba4463ddb6f553.setContent(html_2f139d575c4ad6a3d326910b9eacf83b);
+            
+        
+
+        circle_marker_23c83f0e1b195bd0a5ea035500110bd5.bindPopup(popup_34a55833cee5a09892ba4463ddb6f553)
+        ;
+
+        
+    
+    
+            var circle_marker_f71738ca62013e545d9161485c236052 = L.circleMarker(
+                [40.134167, 15.761944],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3498db", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 1}
+            ).addTo(map_418e7ee54cc104c10bd11e142382e816);
+        
+    
+        var popup_ad7bd7493d0bf661b6dd8f89ecadbc99 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_11d13622208c52d90c14458a5e25ac44 = $(`<div id="html_11d13622208c52d90c14458a5e25ac44" style="width: 100.0%; height: 100.0%;">                 <div style='font-family:Arial; width:220px;'>                     <h5 style='margin:0; color:#2c3e50;'>None</h5>                     <small>Bacino: N/A</small><hr style='margin:8px 0;'>                     <b>Livello Reale:</b> N/D<br>                     <div style='margin-top:10px; padding:8px; background:#f0f7ff; border-left:4px solid #4285F4;'>                         <small><b>GOOGLE FLOOD AI:</b></small><br>Monitoraggio AI Attivo                     </div>                 </div>                 </div>`)[0];
+                popup_ad7bd7493d0bf661b6dd8f89ecadbc99.setContent(html_11d13622208c52d90c14458a5e25ac44);
+            
+        
+
+        circle_marker_f71738ca62013e545d9161485c236052.bindPopup(popup_ad7bd7493d0bf661b6dd8f89ecadbc99)
+        ;
+
+        
+    
+    
+            var circle_marker_8ef41033ea17b374eb79277c81e03e14 = L.circleMarker(
+                [40.697778, 16.021389],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3498db", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 1}
+            ).addTo(map_418e7ee54cc104c10bd11e142382e816);
+        
+    
+        var popup_01328947987181233ba875e96b6fd4d7 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_6819753f2a11eb930f47d9f9442618b7 = $(`<div id="html_6819753f2a11eb930f47d9f9442618b7" style="width: 100.0%; height: 100.0%;">                 <div style='font-family:Arial; width:220px;'>                     <h5 style='margin:0; color:#2c3e50;'>None</h5>                     <small>Bacino: N/A</small><hr style='margin:8px 0;'>                     <b>Livello Reale:</b> N/D<br>                     <div style='margin-top:10px; padding:8px; background:#f0f7ff; border-left:4px solid #4285F4;'>                         <small><b>GOOGLE FLOOD AI:</b></small><br>Monitoraggio AI Attivo                     </div>                 </div>                 </div>`)[0];
+                popup_01328947987181233ba875e96b6fd4d7.setContent(html_6819753f2a11eb930f47d9f9442618b7);
+            
+        
+
+        circle_marker_8ef41033ea17b374eb79277c81e03e14.bindPopup(popup_01328947987181233ba875e96b6fd4d7)
+        ;
+
+        
+    
+    
+            var circle_marker_bacdfbb87ae1af0a2d7b387c578f2433 = L.circleMarker(
+                [41.025, 15.965556],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3498db", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 1}
+            ).addTo(map_418e7ee54cc104c10bd11e142382e816);
+        
+    
+        var popup_1eab1442d1729b516be45861eadb6490 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_83757fdb7d2f8e046b66390ff1f7ad42 = $(`<div id="html_83757fdb7d2f8e046b66390ff1f7ad42" style="width: 100.0%; height: 100.0%;">                 <div style='font-family:Arial; width:220px;'>                     <h5 style='margin:0; color:#2c3e50;'>None</h5>                     <small>Bacino: N/A</small><hr style='margin:8px 0;'>                     <b>Livello Reale:</b> N/D<br>                     <div style='margin-top:10px; padding:8px; background:#f0f7ff; border-left:4px solid #4285F4;'>                         <small><b>GOOGLE FLOOD AI:</b></small><br>Monitoraggio AI Attivo                     </div>                 </div>                 </div>`)[0];
+                popup_1eab1442d1729b516be45861eadb6490.setContent(html_83757fdb7d2f8e046b66390ff1f7ad42);
+            
+        
+
+        circle_marker_bacdfbb87ae1af0a2d7b387c578f2433.bindPopup(popup_1eab1442d1729b516be45861eadb6490)
+        ;
+
+        
+    
+    
+            var circle_marker_a6660b3c0024eabdcb43f4d67af13b65 = L.circleMarker(
+                [40.936389, 15.606667],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3498db", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 1}
+            ).addTo(map_418e7ee54cc104c10bd11e142382e816);
+        
+    
+        var popup_176817a40d3c34cc1ae4ee91708b59d0 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_1fe7666715b0f490155df4bf7268a473 = $(`<div id="html_1fe7666715b0f490155df4bf7268a473" style="width: 100.0%; height: 100.0%;">                 <div style='font-family:Arial; width:220px;'>                     <h5 style='margin:0; color:#2c3e50;'>None</h5>                     <small>Bacino: N/A</small><hr style='margin:8px 0;'>                     <b>Livello Reale:</b> N/D<br>                     <div style='margin-top:10px; padding:8px; background:#f0f7ff; border-left:4px solid #4285F4;'>                         <small><b>GOOGLE FLOOD AI:</b></small><br>Monitoraggio AI Attivo                     </div>                 </div>                 </div>`)[0];
+                popup_176817a40d3c34cc1ae4ee91708b59d0.setContent(html_1fe7666715b0f490155df4bf7268a473);
+            
+        
+
+        circle_marker_a6660b3c0024eabdcb43f4d67af13b65.bindPopup(popup_176817a40d3c34cc1ae4ee91708b59d0)
+        ;
+
+        
+    
+    
+            var layer_control_e8c296f3e95ae69fa4b660e17d65a23b_layers = {
                 base_layers : {
-                    "cartodbdarkmatter" : tile_layer_0e73f628cf1c334203bb5142250874c4,
+                    "cartodbdarkmatter" : tile_layer_6f5d4c9d6061197887dd041366b104a9,
                 },
                 overlays :  {
-                    "Intensit\u00e0 Pioggia Prevista (GRIB)" : heat_map_b9da1cbb2653f76f259e63c4681cdd8d,
-                    "Livelli Fiumi \u0026 Pioggia" : feature_group_152eebcbb8ae7b2f7230458d759f91fc,
+                    "Previsione Pioggia (GRIB)" : heat_map_92ef135831949fc54813f52ed6069830,
                 },
             };
-            let layer_control_a42f4e33024bb9a16f0fa3c7d834599a = L.control.layers(
-                layer_control_a42f4e33024bb9a16f0fa3c7d834599a_layers.base_layers,
-                layer_control_a42f4e33024bb9a16f0fa3c7d834599a_layers.overlays,
+            let layer_control_e8c296f3e95ae69fa4b660e17d65a23b = L.control.layers(
+                layer_control_e8c296f3e95ae69fa4b660e17d65a23b_layers.base_layers,
+                layer_control_e8c296f3e95ae69fa4b660e17d65a23b_layers.overlays,
                 {
   "position": "topright",
   "collapsed": true,
   "autoZIndex": true,
 }
-            ).addTo(map_dda65f877106196b62581aeb7606eb84);
+            ).addTo(map_418e7ee54cc104c10bd11e142382e816);
 
-        
-    
-            L.control.fullscreen(
-                {
-  "position": "topleft",
-  "title": "Full Screen",
-  "titleCancel": "Exit Full Screen",
-  "forceSeparateButton": false,
-}
-            ).addTo(map_dda65f877106196b62581aeb7606eb84);
         
 </script>
 </html>
