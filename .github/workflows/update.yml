@@ -1,0 +1,28 @@
+name: Aggiornamento Monitoraggio Fiumi
+on:
+  schedule:
+    - cron: '0 * * * *' # Gira ogni ora esatta
+  workflow_dispatch: # Permette di avviarlo a mano se vuoi
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Setup Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.9'
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+      - name: Run Monitor
+        run: python main.py
+        env:
+          GOOGLE_API_KEY: ${{ secrets.GOOGLE_API_KEY }} # Sicurezza: la tua chiave rimane segreta
+      - name: Deploy Map
+        run: |
+          git config --global user.name 'GitHub Action'
+          git config --global user.email 'action@github.com'
+          git add index.html
+          git commit -m "Aggiornamento dati fiumi" || exit 0
+          git push
