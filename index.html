@@ -1,86 +1,2723 @@
 <!DOCTYPE html>
-<html lang="it">
+<html>
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Control Room Fiumi Basilicata | idranti-basilicata</title>
     
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/font-awesome.min.css">
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
     
-    <style>
-        body, html { height: 100%; margin: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: #0b0e11; }
-        
-        #map-container { position: relative; height: 100vh; width: 100%; }
-        
-        /* Header in Overlay */
-        .top-bar {
-            position: absolute; top: 20px; left: 20px; right: 20px;
-            background: rgba(11, 14, 17, 0.85);
-            backdrop-filter: blur(10px);
-            padding: 15px 25px; border-radius: 12px;
-            border: 1px solid rgba(255,255,255,0.1);
-            z-index: 1000; display: flex; justify-content: space-between; align-items: center;
-        }
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_77ab80c1b762e1c265d59fa64231379c {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
 
-        /* Legenda Professionale */
-        .legend-box {
-            position: absolute; bottom: 30px; left: 20px;
-            background: rgba(11, 14, 17, 0.9);
-            padding: 15px; border-radius: 10px;
-            border: 1px solid rgba(255,255,255,0.1);
-            color: white; z-index: 1000; font-size: 0.85rem;
-        }
+            <style>html, body {
+                width: 100%;
+                height: 100%;
+                margin: 0;
+                padding: 0;
+            }
+            </style>
 
-        .legend-item { display: flex; align-items: center; margin-bottom: 5px; }
-        .dot { height: 10px; width: 10px; border-radius: 50%; display: inline-block; margin-right: 10px; }
+            <style>#map {
+                position:absolute;
+                top:0;
+                bottom:0;
+                right:0;
+                left:0;
+                }
+            </style>
+
+            <script>
+                L_NO_TOUCH = false;
+                L_DISABLE_3D = false;
+            </script>
+
         
-        /* Sidebar per Alert AI */
-        .ai-sidebar {
-            position: absolute; top: 100px; right: 20px; width: 280px;
-            background: rgba(11, 14, 17, 0.85); border-radius: 12px;
-            padding: 20px; color: white; z-index: 1000;
-            border: 1px solid #4285F4;
-        }
-    </style>
+    <script src="https://cdn.jsdelivr.net/gh/python-visualization/folium@main/folium/templates/leaflet_heat.min.js"></script>
 </head>
 <body>
-
-    <div id="map-container">
-        <div class="top-bar">
-            <div>
-                <h4 class="mb-0 text-white">BASILICATA RIVER MONITOR</h4>
-                <small class="text-info"><i class="fa fa-robot"></i> Integrato con Google Flood AI</small>
-            </div>
-            <div class="text-end text-white-50">
-                <small>Aggiornamento: <span id="last-update">07/01/2026 13:30</span></small>
-            </div>
+    
+    
+        <div style="position: fixed; top: 10px; left: 50px; width: 300px; z-index: 999; 
+                    background: rgba(0,0,0,0.7); color: white; padding: 10px; border-radius: 5px;
+                    font-family: sans-serif; border: 1px solid #444;">
+            <h4 style="margin:0;">Control Room Basilicata</h4>
+            <small>Ultimo Aggiornamento: 07/01/2026 12:41</small>
         </div>
-
-        <div class="ai-sidebar">
-            <h6 class="text-primary"><img src="https://www.gstatic.com/images/branding/product/1x/googleg_48dp.png" width="18"> GOOGLE AI INSIGHTS</h6>
-            <hr>
-            <div id="ai-alerts">
-                <p class="small text-white-50">Analisi predittiva attiva su tutti i bacini idrografici (Bradano, Basento, Agri, Sinni, Ofanto).</p>
-                <div class="p-2 border border-secondary rounded bg-dark mb-2">
-                    <small class="d-block text-warning">ALLERTA GRIB METEO</small>
-                    <span class="small">Precipitazioni intense previste in zona Pollino.</span>
-                </div>
-            </div>
-        </div>
-
-        <div id="map" style="height: 100%;">
-            </div>
-
-        <div class="legend-box">
-            <div class="legend-item"><span class="dot" style="background: #3498db;"></span> Livello Idrometrico Regolare</div>
-            <div class="legend-item"><span class="dot" style="background: orange;"></span> Pre-Allerta AI / Criticità Media</div>
-            <div class="legend-item"><span class="dot" style="background: red;"></span> Allerta Elevata Google Flood</div>
-            <div class="legend-item"><span class="dot" style="background: #2ecc71;"></span> Monitoraggio Pluviometrico</div>
-            <hr class="my-2" style="border-color: rgba(255,255,255,0.1);">
-            <div class="legend-item"><i class="fa fa-fire text-danger me-2"></i> Area Previsione Pioggia (GRIB)</div>
-        </div>
-    </div>
-
+        
+    
+            <div class="folium-map" id="map_77ab80c1b762e1c265d59fa64231379c" ></div>
+        
 </body>
+<script>
+    
+    
+            var map_77ab80c1b762e1c265d59fa64231379c = L.map(
+                "map_77ab80c1b762e1c265d59fa64231379c",
+                {
+                    center: [40.64, 16.1],
+                    crs: L.CRS.EPSG3857,
+                    ...{
+  "zoom": 9,
+  "zoomControl": true,
+  "preferCanvas": false,
+}
+
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_c8c3b784397ef401d0811495eb1a27fd = L.tileLayer(
+                "https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png",
+                {
+  "minZoom": 0,
+  "maxZoom": 20,
+  "maxNativeZoom": 20,
+  "noWrap": false,
+  "attribution": "\u0026copy; OpenStreetMap \u0026copy; CARTO",
+  "subdomains": "abcd",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_c8c3b784397ef401d0811495eb1a27fd.addTo(map_77ab80c1b762e1c265d59fa64231379c);
+        
+    
+            var heat_map_e1891d9da28def7625966d576d30ef13 = L.heatLayer(
+                [[40.1, 15.8, 0.9], [40.4, 16.2, 0.7], [40.7, 16.5, 0.5]],
+                {
+  "minOpacity": 0.5,
+  "maxZoom": 18,
+  "radius": 25,
+  "blur": 15,
+}
+            );
+        
+    
+            heat_map_e1891d9da28def7625966d576d30ef13.addTo(map_77ab80c1b762e1c265d59fa64231379c);
+        
+    
+            var circle_marker_1102eb53bb1f3cea35a627c027a43c90 = L.circleMarker(
+                [40.728333, 15.9225],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3498db", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 1}
+            ).addTo(map_77ab80c1b762e1c265d59fa64231379c);
+        
+    
+        var popup_6753f81e0652a2439c5f5ddb5b4e6d7f = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_ad1a9fafd5f6ffe0d1894dd6ecde2540 = $(`<div id="html_ad1a9fafd5f6ffe0d1894dd6ecde2540" style="width: 100.0%; height: 100.0%;">                 <div style='font-family: sans-serif; width: 220px;'>                     <h5 style='margin:0;'>None</h5>                     <small>Fiume: N/A</small><hr style='margin:8px 0;'>                     <b>Livello Reale:</b> N/D<br>                     <div style='margin-top:10px; padding:10px; background:#e8f0fe; border-radius:4px;'>                         <b style='color:#4285F4;'>GOOGLE FLOOD AI:</b><br>                         Monitoraggio attivo per bacino                     </div>                 </div>                 </div>`)[0];
+                popup_6753f81e0652a2439c5f5ddb5b4e6d7f.setContent(html_ad1a9fafd5f6ffe0d1894dd6ecde2540);
+            
+        
+
+        circle_marker_1102eb53bb1f3cea35a627c027a43c90.bindPopup(popup_6753f81e0652a2439c5f5ddb5b4e6d7f)
+        ;
+
+        
+    
+    
+            var circle_marker_2b2d6dc850b7cc8c035da8b6fdec74f8 = L.circleMarker(
+                [40.952222, 15.629444],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3498db", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 1}
+            ).addTo(map_77ab80c1b762e1c265d59fa64231379c);
+        
+    
+        var popup_3152570c00b138ed759b79a06b90cb4b = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_e4f18af369360989361e7125472b3fd4 = $(`<div id="html_e4f18af369360989361e7125472b3fd4" style="width: 100.0%; height: 100.0%;">                 <div style='font-family: sans-serif; width: 220px;'>                     <h5 style='margin:0;'>None</h5>                     <small>Fiume: N/A</small><hr style='margin:8px 0;'>                     <b>Livello Reale:</b> N/D<br>                     <div style='margin-top:10px; padding:10px; background:#e8f0fe; border-radius:4px;'>                         <b style='color:#4285F4;'>GOOGLE FLOOD AI:</b><br>                         Monitoraggio attivo per bacino                     </div>                 </div>                 </div>`)[0];
+                popup_3152570c00b138ed759b79a06b90cb4b.setContent(html_e4f18af369360989361e7125472b3fd4);
+            
+        
+
+        circle_marker_2b2d6dc850b7cc8c035da8b6fdec74f8.bindPopup(popup_3152570c00b138ed759b79a06b90cb4b)
+        ;
+
+        
+    
+    
+            var circle_marker_23527b9948746143aced5fb32561971a = L.circleMarker(
+                [40.584722, 16.579444],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3498db", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 1}
+            ).addTo(map_77ab80c1b762e1c265d59fa64231379c);
+        
+    
+        var popup_f56ade85224d4654e787af325699aa09 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_7a74f698476518702a93d5baa28c1d3d = $(`<div id="html_7a74f698476518702a93d5baa28c1d3d" style="width: 100.0%; height: 100.0%;">                 <div style='font-family: sans-serif; width: 220px;'>                     <h5 style='margin:0;'>None</h5>                     <small>Fiume: N/A</small><hr style='margin:8px 0;'>                     <b>Livello Reale:</b> 0.19 m<br>                     <div style='margin-top:10px; padding:10px; background:#e8f0fe; border-radius:4px;'>                         <b style='color:#4285F4;'>GOOGLE FLOOD AI:</b><br>                         Monitoraggio attivo per bacino                     </div>                 </div>                 </div>`)[0];
+                popup_f56ade85224d4654e787af325699aa09.setContent(html_7a74f698476518702a93d5baa28c1d3d);
+            
+        
+
+        circle_marker_23527b9948746143aced5fb32561971a.bindPopup(popup_f56ade85224d4654e787af325699aa09)
+        ;
+
+        
+    
+    
+            var circle_marker_87e7d5d8cdc23a07af8c48d58dd2be00 = L.circleMarker(
+                [40.390278, 16.656944],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 1}
+            ).addTo(map_77ab80c1b762e1c265d59fa64231379c);
+        
+    
+        var popup_0e0403c8234bc2954003904ec714ad9d = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_7a10d9b9b07a786578bed918fa8afe26 = $(`<div id="html_7a10d9b9b07a786578bed918fa8afe26" style="width: 100.0%; height: 100.0%;">                 <div style='font-family: sans-serif; width: 220px;'>                     <h5 style='margin:0;'>None</h5>                     <small>Fiume: N/A</small><hr style='margin:8px 0;'>                     <b>Livello Reale:</b> 2.08 m<br>                     <div style='margin-top:10px; padding:10px; background:#e8f0fe; border-radius:4px;'>                         <b style='color:#4285F4;'>GOOGLE FLOOD AI:</b><br>                         Monitoraggio attivo per bacino                     </div>                 </div>                 </div>`)[0];
+                popup_0e0403c8234bc2954003904ec714ad9d.setContent(html_7a10d9b9b07a786578bed918fa8afe26);
+            
+        
+
+        circle_marker_87e7d5d8cdc23a07af8c48d58dd2be00.bindPopup(popup_0e0403c8234bc2954003904ec714ad9d)
+        ;
+
+        
+    
+    
+            var circle_marker_11c5f005da6b2d90b21bc6c0d74dff1a = L.circleMarker(
+                [40.5425, 15.569722],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3498db", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 1}
+            ).addTo(map_77ab80c1b762e1c265d59fa64231379c);
+        
+    
+        var popup_18cdef757725dff6d176a7b29a06c5ae = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_ad0756df8b0905ba2b7c2e2adfa2c124 = $(`<div id="html_ad0756df8b0905ba2b7c2e2adfa2c124" style="width: 100.0%; height: 100.0%;">                 <div style='font-family: sans-serif; width: 220px;'>                     <h5 style='margin:0;'>None</h5>                     <small>Fiume: N/A</small><hr style='margin:8px 0;'>                     <b>Livello Reale:</b> 0.36 m<br>                     <div style='margin-top:10px; padding:10px; background:#e8f0fe; border-radius:4px;'>                         <b style='color:#4285F4;'>GOOGLE FLOOD AI:</b><br>                         Monitoraggio attivo per bacino                     </div>                 </div>                 </div>`)[0];
+                popup_18cdef757725dff6d176a7b29a06c5ae.setContent(html_ad0756df8b0905ba2b7c2e2adfa2c124);
+            
+        
+
+        circle_marker_11c5f005da6b2d90b21bc6c0d74dff1a.bindPopup(popup_18cdef757725dff6d176a7b29a06c5ae)
+        ;
+
+        
+    
+    
+            var circle_marker_817d4e56ab17179fb62f5ab684919659 = L.circleMarker(
+                [40.521667, 15.912222],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3498db", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 1}
+            ).addTo(map_77ab80c1b762e1c265d59fa64231379c);
+        
+    
+        var popup_e9e878e5f2ca3700225bc764bb6fa165 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_d373652b25e13bb3cdb3b32266b37c00 = $(`<div id="html_d373652b25e13bb3cdb3b32266b37c00" style="width: 100.0%; height: 100.0%;">                 <div style='font-family: sans-serif; width: 220px;'>                     <h5 style='margin:0;'>None</h5>                     <small>Fiume: N/A</small><hr style='margin:8px 0;'>                     <b>Livello Reale:</b> N/D<br>                     <div style='margin-top:10px; padding:10px; background:#e8f0fe; border-radius:4px;'>                         <b style='color:#4285F4;'>GOOGLE FLOOD AI:</b><br>                         Monitoraggio attivo per bacino                     </div>                 </div>                 </div>`)[0];
+                popup_e9e878e5f2ca3700225bc764bb6fa165.setContent(html_d373652b25e13bb3cdb3b32266b37c00);
+            
+        
+
+        circle_marker_817d4e56ab17179fb62f5ab684919659.bindPopup(popup_e9e878e5f2ca3700225bc764bb6fa165)
+        ;
+
+        
+    
+    
+            var circle_marker_c906ce7ce30a613ab11e5b5f58f97756 = L.circleMarker(
+                [40.748611, 16.239444],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3498db", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 1}
+            ).addTo(map_77ab80c1b762e1c265d59fa64231379c);
+        
+    
+        var popup_392c0f904938f89e6778bbaeb98c0d76 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_7e5792dee617328ca5c0245fde1a9b6d = $(`<div id="html_7e5792dee617328ca5c0245fde1a9b6d" style="width: 100.0%; height: 100.0%;">                 <div style='font-family: sans-serif; width: 220px;'>                     <h5 style='margin:0;'>None</h5>                     <small>Fiume: N/A</small><hr style='margin:8px 0;'>                     <b>Livello Reale:</b> N/D<br>                     <div style='margin-top:10px; padding:10px; background:#e8f0fe; border-radius:4px;'>                         <b style='color:#4285F4;'>GOOGLE FLOOD AI:</b><br>                         Monitoraggio attivo per bacino                     </div>                 </div>                 </div>`)[0];
+                popup_392c0f904938f89e6778bbaeb98c0d76.setContent(html_7e5792dee617328ca5c0245fde1a9b6d);
+            
+        
+
+        circle_marker_c906ce7ce30a613ab11e5b5f58f97756.bindPopup(popup_392c0f904938f89e6778bbaeb98c0d76)
+        ;
+
+        
+    
+    
+            var circle_marker_5999924801e2d247f203260cdf78c771 = L.circleMarker(
+                [41.049722, 15.794444],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3498db", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 1}
+            ).addTo(map_77ab80c1b762e1c265d59fa64231379c);
+        
+    
+        var popup_a3473401934464f5af53fffc17f4e63f = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_161620673fa33cfec15ade7dd9e24216 = $(`<div id="html_161620673fa33cfec15ade7dd9e24216" style="width: 100.0%; height: 100.0%;">                 <div style='font-family: sans-serif; width: 220px;'>                     <h5 style='margin:0;'>None</h5>                     <small>Fiume: N/A</small><hr style='margin:8px 0;'>                     <b>Livello Reale:</b> N/D<br>                     <div style='margin-top:10px; padding:10px; background:#e8f0fe; border-radius:4px;'>                         <b style='color:#4285F4;'>GOOGLE FLOOD AI:</b><br>                         Monitoraggio attivo per bacino                     </div>                 </div>                 </div>`)[0];
+                popup_a3473401934464f5af53fffc17f4e63f.setContent(html_161620673fa33cfec15ade7dd9e24216);
+            
+        
+
+        circle_marker_5999924801e2d247f203260cdf78c771.bindPopup(popup_a3473401934464f5af53fffc17f4e63f)
+        ;
+
+        
+    
+    
+            var circle_marker_2517b2e48d39fd996e7237bddfe9184c = L.circleMarker(
+                [40.296944, 15.909167],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3498db", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 1}
+            ).addTo(map_77ab80c1b762e1c265d59fa64231379c);
+        
+    
+        var popup_b6303584813b3584f8694b82c923e3e4 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_1491e2a4fa62cfaab4c3add6a891fd1f = $(`<div id="html_1491e2a4fa62cfaab4c3add6a891fd1f" style="width: 100.0%; height: 100.0%;">                 <div style='font-family: sans-serif; width: 220px;'>                     <h5 style='margin:0;'>None</h5>                     <small>Fiume: N/A</small><hr style='margin:8px 0;'>                     <b>Livello Reale:</b> 0.42 m<br>                     <div style='margin-top:10px; padding:10px; background:#e8f0fe; border-radius:4px;'>                         <b style='color:#4285F4;'>GOOGLE FLOOD AI:</b><br>                         Monitoraggio attivo per bacino                     </div>                 </div>                 </div>`)[0];
+                popup_b6303584813b3584f8694b82c923e3e4.setContent(html_1491e2a4fa62cfaab4c3add6a891fd1f);
+            
+        
+
+        circle_marker_2517b2e48d39fd996e7237bddfe9184c.bindPopup(popup_b6303584813b3584f8694b82c923e3e4)
+        ;
+
+        
+    
+    
+            var circle_marker_ce45d2fca7c46ceebca0e46d684e5bda = L.circleMarker(
+                [40.069444, 16.106389],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3498db", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 1}
+            ).addTo(map_77ab80c1b762e1c265d59fa64231379c);
+        
+    
+        var popup_3050f25789a232f97d8a7090738ddb2b = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_0342a98fca78ede0246bdbbeb2d9aa25 = $(`<div id="html_0342a98fca78ede0246bdbbeb2d9aa25" style="width: 100.0%; height: 100.0%;">                 <div style='font-family: sans-serif; width: 220px;'>                     <h5 style='margin:0;'>None</h5>                     <small>Fiume: N/A</small><hr style='margin:8px 0;'>                     <b>Livello Reale:</b> 1.24 m<br>                     <div style='margin-top:10px; padding:10px; background:#e8f0fe; border-radius:4px;'>                         <b style='color:#4285F4;'>GOOGLE FLOOD AI:</b><br>                         Monitoraggio attivo per bacino                     </div>                 </div>                 </div>`)[0];
+                popup_3050f25789a232f97d8a7090738ddb2b.setContent(html_0342a98fca78ede0246bdbbeb2d9aa25);
+            
+        
+
+        circle_marker_ce45d2fca7c46ceebca0e46d684e5bda.bindPopup(popup_3050f25789a232f97d8a7090738ddb2b)
+        ;
+
+        
+    
+    
+            var circle_marker_2f54d019c28277e1202ea0cda335ad18 = L.circleMarker(
+                [40.021389, 16.140556],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3498db", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 1}
+            ).addTo(map_77ab80c1b762e1c265d59fa64231379c);
+        
+    
+        var popup_7228de194d4c190dede6043814c26323 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_81844e41ce0428868fc1bf32997de774 = $(`<div id="html_81844e41ce0428868fc1bf32997de774" style="width: 100.0%; height: 100.0%;">                 <div style='font-family: sans-serif; width: 220px;'>                     <h5 style='margin:0;'>None</h5>                     <small>Fiume: N/A</small><hr style='margin:8px 0;'>                     <b>Livello Reale:</b> N/D<br>                     <div style='margin-top:10px; padding:10px; background:#e8f0fe; border-radius:4px;'>                         <b style='color:#4285F4;'>GOOGLE FLOOD AI:</b><br>                         Monitoraggio attivo per bacino                     </div>                 </div>                 </div>`)[0];
+                popup_7228de194d4c190dede6043814c26323.setContent(html_81844e41ce0428868fc1bf32997de774);
+            
+        
+
+        circle_marker_2f54d019c28277e1202ea0cda335ad18.bindPopup(popup_7228de194d4c190dede6043814c26323)
+        ;
+
+        
+    
+    
+            var circle_marker_4b37f89a37b4f61997454e3e3e5094eb = L.circleMarker(
+                [40.254167, 15.983333],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3498db", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 1}
+            ).addTo(map_77ab80c1b762e1c265d59fa64231379c);
+        
+    
+        var popup_1fe654246f5189ed5706dc741135af27 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_f8cb2c5a39d684c6c565fb0ee8860431 = $(`<div id="html_f8cb2c5a39d684c6c565fb0ee8860431" style="width: 100.0%; height: 100.0%;">                 <div style='font-family: sans-serif; width: 220px;'>                     <h5 style='margin:0;'>None</h5>                     <small>Fiume: N/A</small><hr style='margin:8px 0;'>                     <b>Livello Reale:</b> N/D<br>                     <div style='margin-top:10px; padding:10px; background:#e8f0fe; border-radius:4px;'>                         <b style='color:#4285F4;'>GOOGLE FLOOD AI:</b><br>                         Monitoraggio attivo per bacino                     </div>                 </div>                 </div>`)[0];
+                popup_1fe654246f5189ed5706dc741135af27.setContent(html_f8cb2c5a39d684c6c565fb0ee8860431);
+            
+        
+
+        circle_marker_4b37f89a37b4f61997454e3e3e5094eb.bindPopup(popup_1fe654246f5189ed5706dc741135af27)
+        ;
+
+        
+    
+    
+            var circle_marker_d2dc0d13d69f806c3742ae8ce4826713 = L.circleMarker(
+                [40.247778, 15.893889],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3498db", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 1}
+            ).addTo(map_77ab80c1b762e1c265d59fa64231379c);
+        
+    
+        var popup_9dc6c9a4697d74bb346ff6456de01f5e = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_8768b469228057d563ea095d68e8ac64 = $(`<div id="html_8768b469228057d563ea095d68e8ac64" style="width: 100.0%; height: 100.0%;">                 <div style='font-family: sans-serif; width: 220px;'>                     <h5 style='margin:0;'>None</h5>                     <small>Fiume: N/A</small><hr style='margin:8px 0;'>                     <b>Livello Reale:</b> 1.32 m<br>                     <div style='margin-top:10px; padding:10px; background:#e8f0fe; border-radius:4px;'>                         <b style='color:#4285F4;'>GOOGLE FLOOD AI:</b><br>                         Monitoraggio attivo per bacino                     </div>                 </div>                 </div>`)[0];
+                popup_9dc6c9a4697d74bb346ff6456de01f5e.setContent(html_8768b469228057d563ea095d68e8ac64);
+            
+        
+
+        circle_marker_d2dc0d13d69f806c3742ae8ce4826713.bindPopup(popup_9dc6c9a4697d74bb346ff6456de01f5e)
+        ;
+
+        
+    
+    
+            var circle_marker_e5ac37fac4f689de477ba510c8fd7d9d = L.circleMarker(
+                [41.048056, 15.786111],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3498db", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 1}
+            ).addTo(map_77ab80c1b762e1c265d59fa64231379c);
+        
+    
+        var popup_071b7a71df817f1a40e8507fb4edf454 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_a2fee8dddf43649fafa475fbd28b1268 = $(`<div id="html_a2fee8dddf43649fafa475fbd28b1268" style="width: 100.0%; height: 100.0%;">                 <div style='font-family: sans-serif; width: 220px;'>                     <h5 style='margin:0;'>None</h5>                     <small>Fiume: N/A</small><hr style='margin:8px 0;'>                     <b>Livello Reale:</b> N/D<br>                     <div style='margin-top:10px; padding:10px; background:#e8f0fe; border-radius:4px;'>                         <b style='color:#4285F4;'>GOOGLE FLOOD AI:</b><br>                         Monitoraggio attivo per bacino                     </div>                 </div>                 </div>`)[0];
+                popup_071b7a71df817f1a40e8507fb4edf454.setContent(html_a2fee8dddf43649fafa475fbd28b1268);
+            
+        
+
+        circle_marker_e5ac37fac4f689de477ba510c8fd7d9d.bindPopup(popup_071b7a71df817f1a40e8507fb4edf454)
+        ;
+
+        
+    
+    
+            var circle_marker_9cebb606eaaa9c237ec4f93dea1e4ed6 = L.circleMarker(
+                [40.858611, 15.848056],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3498db", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 1}
+            ).addTo(map_77ab80c1b762e1c265d59fa64231379c);
+        
+    
+        var popup_dc4955df444fc5bb6ff2e585cfbd37e4 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_99a0a27e84f40f21efa370f3e702b741 = $(`<div id="html_99a0a27e84f40f21efa370f3e702b741" style="width: 100.0%; height: 100.0%;">                 <div style='font-family: sans-serif; width: 220px;'>                     <h5 style='margin:0;'>None</h5>                     <small>Fiume: N/A</small><hr style='margin:8px 0;'>                     <b>Livello Reale:</b> N/D<br>                     <div style='margin-top:10px; padding:10px; background:#e8f0fe; border-radius:4px;'>                         <b style='color:#4285F4;'>GOOGLE FLOOD AI:</b><br>                         Monitoraggio attivo per bacino                     </div>                 </div>                 </div>`)[0];
+                popup_dc4955df444fc5bb6ff2e585cfbd37e4.setContent(html_99a0a27e84f40f21efa370f3e702b741);
+            
+        
+
+        circle_marker_9cebb606eaaa9c237ec4f93dea1e4ed6.bindPopup(popup_dc4955df444fc5bb6ff2e585cfbd37e4)
+        ;
+
+        
+    
+    
+            var circle_marker_d39a828ade8ed696d1d701f3590fafc6 = L.circleMarker(
+                [39.983333, 16.297222],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3498db", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 1}
+            ).addTo(map_77ab80c1b762e1c265d59fa64231379c);
+        
+    
+        var popup_d8628b8266a3c3cfb7a405feae2a670f = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_95a88a0b4ce67fecb588aa7207494cda = $(`<div id="html_95a88a0b4ce67fecb588aa7207494cda" style="width: 100.0%; height: 100.0%;">                 <div style='font-family: sans-serif; width: 220px;'>                     <h5 style='margin:0;'>None</h5>                     <small>Fiume: N/A</small><hr style='margin:8px 0;'>                     <b>Livello Reale:</b> N/D<br>                     <div style='margin-top:10px; padding:10px; background:#e8f0fe; border-radius:4px;'>                         <b style='color:#4285F4;'>GOOGLE FLOOD AI:</b><br>                         Monitoraggio attivo per bacino                     </div>                 </div>                 </div>`)[0];
+                popup_d8628b8266a3c3cfb7a405feae2a670f.setContent(html_95a88a0b4ce67fecb588aa7207494cda);
+            
+        
+
+        circle_marker_d39a828ade8ed696d1d701f3590fafc6.bindPopup(popup_d8628b8266a3c3cfb7a405feae2a670f)
+        ;
+
+        
+    
+    
+            var circle_marker_1d674af14b5b19e3e4911f0b4afa89a6 = L.circleMarker(
+                [39.953611, 15.976667],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3498db", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 1}
+            ).addTo(map_77ab80c1b762e1c265d59fa64231379c);
+        
+    
+        var popup_6c7cf01219e90ad4327dc7f4ed855aee = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_f2b78968be60644b3a4d699525b871df = $(`<div id="html_f2b78968be60644b3a4d699525b871df" style="width: 100.0%; height: 100.0%;">                 <div style='font-family: sans-serif; width: 220px;'>                     <h5 style='margin:0;'>None</h5>                     <small>Fiume: N/A</small><hr style='margin:8px 0;'>                     <b>Livello Reale:</b> 0.87 m<br>                     <div style='margin-top:10px; padding:10px; background:#e8f0fe; border-radius:4px;'>                         <b style='color:#4285F4;'>GOOGLE FLOOD AI:</b><br>                         Monitoraggio attivo per bacino                     </div>                 </div>                 </div>`)[0];
+                popup_6c7cf01219e90ad4327dc7f4ed855aee.setContent(html_f2b78968be60644b3a4d699525b871df);
+            
+        
+
+        circle_marker_1d674af14b5b19e3e4911f0b4afa89a6.bindPopup(popup_6c7cf01219e90ad4327dc7f4ed855aee)
+        ;
+
+        
+    
+    
+            var circle_marker_effeeb45fa969afa9a29a1da40e4f618 = L.circleMarker(
+                [40.5675, 16.49],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3498db", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 1}
+            ).addTo(map_77ab80c1b762e1c265d59fa64231379c);
+        
+    
+        var popup_96bec5329bbeb13c313c8772f82cf0a7 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_0ed2f57552351eeb155346f48615002e = $(`<div id="html_0ed2f57552351eeb155346f48615002e" style="width: 100.0%; height: 100.0%;">                 <div style='font-family: sans-serif; width: 220px;'>                     <h5 style='margin:0;'>None</h5>                     <small>Fiume: N/A</small><hr style='margin:8px 0;'>                     <b>Livello Reale:</b> N/D<br>                     <div style='margin-top:10px; padding:10px; background:#e8f0fe; border-radius:4px;'>                         <b style='color:#4285F4;'>GOOGLE FLOOD AI:</b><br>                         Monitoraggio attivo per bacino                     </div>                 </div>                 </div>`)[0];
+                popup_96bec5329bbeb13c313c8772f82cf0a7.setContent(html_0ed2f57552351eeb155346f48615002e);
+            
+        
+
+        circle_marker_effeeb45fa969afa9a29a1da40e4f618.bindPopup(popup_96bec5329bbeb13c313c8772f82cf0a7)
+        ;
+
+        
+    
+    
+            var circle_marker_b77123d1ab55d2ec95460ab68ab0d6b0 = L.circleMarker(
+                [40.308611, 15.845],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3498db", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 1}
+            ).addTo(map_77ab80c1b762e1c265d59fa64231379c);
+        
+    
+        var popup_1fab26a82c1f518005c25a4f9a1a9138 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_d4c49255ce9127ecd7cda7d55e961c64 = $(`<div id="html_d4c49255ce9127ecd7cda7d55e961c64" style="width: 100.0%; height: 100.0%;">                 <div style='font-family: sans-serif; width: 220px;'>                     <h5 style='margin:0;'>None</h5>                     <small>Fiume: N/A</small><hr style='margin:8px 0;'>                     <b>Livello Reale:</b> 1.08 m<br>                     <div style='margin-top:10px; padding:10px; background:#e8f0fe; border-radius:4px;'>                         <b style='color:#4285F4;'>GOOGLE FLOOD AI:</b><br>                         Monitoraggio attivo per bacino                     </div>                 </div>                 </div>`)[0];
+                popup_1fab26a82c1f518005c25a4f9a1a9138.setContent(html_d4c49255ce9127ecd7cda7d55e961c64);
+            
+        
+
+        circle_marker_b77123d1ab55d2ec95460ab68ab0d6b0.bindPopup(popup_1fab26a82c1f518005c25a4f9a1a9138)
+        ;
+
+        
+    
+    
+            var circle_marker_e0fcbf7f1aa3719314bbebbcf90a4542 = L.circleMarker(
+                [40.647222, 15.930833],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3498db", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 1}
+            ).addTo(map_77ab80c1b762e1c265d59fa64231379c);
+        
+    
+        var popup_56319b02c4afbdfd9b6e758951e179b5 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_7f9283bd79e8b63b8c290205d2c37201 = $(`<div id="html_7f9283bd79e8b63b8c290205d2c37201" style="width: 100.0%; height: 100.0%;">                 <div style='font-family: sans-serif; width: 220px;'>                     <h5 style='margin:0;'>None</h5>                     <small>Fiume: N/A</small><hr style='margin:8px 0;'>                     <b>Livello Reale:</b> 0.29 m<br>                     <div style='margin-top:10px; padding:10px; background:#e8f0fe; border-radius:4px;'>                         <b style='color:#4285F4;'>GOOGLE FLOOD AI:</b><br>                         Monitoraggio attivo per bacino                     </div>                 </div>                 </div>`)[0];
+                popup_56319b02c4afbdfd9b6e758951e179b5.setContent(html_7f9283bd79e8b63b8c290205d2c37201);
+            
+        
+
+        circle_marker_e0fcbf7f1aa3719314bbebbcf90a4542.bindPopup(popup_56319b02c4afbdfd9b6e758951e179b5)
+        ;
+
+        
+    
+    
+            var circle_marker_a6709dea8062cb6a3d7b65b5669a8a4e = L.circleMarker(
+                [40.999722, 15.825],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3498db", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 1}
+            ).addTo(map_77ab80c1b762e1c265d59fa64231379c);
+        
+    
+        var popup_57ade5602e5cfda3f5be520f862d717d = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_b9670352f2afd0131deb2d89701355cb = $(`<div id="html_b9670352f2afd0131deb2d89701355cb" style="width: 100.0%; height: 100.0%;">                 <div style='font-family: sans-serif; width: 220px;'>                     <h5 style='margin:0;'>None</h5>                     <small>Fiume: N/A</small><hr style='margin:8px 0;'>                     <b>Livello Reale:</b> 1.04 m<br>                     <div style='margin-top:10px; padding:10px; background:#e8f0fe; border-radius:4px;'>                         <b style='color:#4285F4;'>GOOGLE FLOOD AI:</b><br>                         Monitoraggio attivo per bacino                     </div>                 </div>                 </div>`)[0];
+                popup_57ade5602e5cfda3f5be520f862d717d.setContent(html_b9670352f2afd0131deb2d89701355cb);
+            
+        
+
+        circle_marker_a6709dea8062cb6a3d7b65b5669a8a4e.bindPopup(popup_57ade5602e5cfda3f5be520f862d717d)
+        ;
+
+        
+    
+    
+            var circle_marker_24a78427d52eded61fb532fa3a2938a5 = L.circleMarker(
+                [40.293333, 16.657222],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3498db", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 1}
+            ).addTo(map_77ab80c1b762e1c265d59fa64231379c);
+        
+    
+        var popup_0005e3f7bb9a81d4d705dc8ddbdecfba = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_95490fe0c4a077cb579f5f5f10d634d0 = $(`<div id="html_95490fe0c4a077cb579f5f5f10d634d0" style="width: 100.0%; height: 100.0%;">                 <div style='font-family: sans-serif; width: 220px;'>                     <h5 style='margin:0;'>None</h5>                     <small>Fiume: N/A</small><hr style='margin:8px 0;'>                     <b>Livello Reale:</b> N/D<br>                     <div style='margin-top:10px; padding:10px; background:#e8f0fe; border-radius:4px;'>                         <b style='color:#4285F4;'>GOOGLE FLOOD AI:</b><br>                         Monitoraggio attivo per bacino                     </div>                 </div>                 </div>`)[0];
+                popup_0005e3f7bb9a81d4d705dc8ddbdecfba.setContent(html_95490fe0c4a077cb579f5f5f10d634d0);
+            
+        
+
+        circle_marker_24a78427d52eded61fb532fa3a2938a5.bindPopup(popup_0005e3f7bb9a81d4d705dc8ddbdecfba)
+        ;
+
+        
+    
+    
+            var circle_marker_75365251020d80b3cda829ca669c30ae = L.circleMarker(
+                [40.659722, 16.595278],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3498db", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 1}
+            ).addTo(map_77ab80c1b762e1c265d59fa64231379c);
+        
+    
+        var popup_fee3442a691a80143139498bb1f37e6a = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_350af2141aee3fed4ddf0f2f8e8a0467 = $(`<div id="html_350af2141aee3fed4ddf0f2f8e8a0467" style="width: 100.0%; height: 100.0%;">                 <div style='font-family: sans-serif; width: 220px;'>                     <h5 style='margin:0;'>None</h5>                     <small>Fiume: N/A</small><hr style='margin:8px 0;'>                     <b>Livello Reale:</b> N/D<br>                     <div style='margin-top:10px; padding:10px; background:#e8f0fe; border-radius:4px;'>                         <b style='color:#4285F4;'>GOOGLE FLOOD AI:</b><br>                         Monitoraggio attivo per bacino                     </div>                 </div>                 </div>`)[0];
+                popup_fee3442a691a80143139498bb1f37e6a.setContent(html_350af2141aee3fed4ddf0f2f8e8a0467);
+            
+        
+
+        circle_marker_75365251020d80b3cda829ca669c30ae.bindPopup(popup_fee3442a691a80143139498bb1f37e6a)
+        ;
+
+        
+    
+    
+            var circle_marker_507504708884d5b79210a0f371132c3d = L.circleMarker(
+                [40.253889, 16.474722],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3498db", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 1}
+            ).addTo(map_77ab80c1b762e1c265d59fa64231379c);
+        
+    
+        var popup_a9dd29b08af4427d4da67d7dbd395b29 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_7bf0df9f9178625c1a2bc77db06aa9c9 = $(`<div id="html_7bf0df9f9178625c1a2bc77db06aa9c9" style="width: 100.0%; height: 100.0%;">                 <div style='font-family: sans-serif; width: 220px;'>                     <h5 style='margin:0;'>None</h5>                     <small>Fiume: N/A</small><hr style='margin:8px 0;'>                     <b>Livello Reale:</b> N/D<br>                     <div style='margin-top:10px; padding:10px; background:#e8f0fe; border-radius:4px;'>                         <b style='color:#4285F4;'>GOOGLE FLOOD AI:</b><br>                         Monitoraggio attivo per bacino                     </div>                 </div>                 </div>`)[0];
+                popup_a9dd29b08af4427d4da67d7dbd395b29.setContent(html_7bf0df9f9178625c1a2bc77db06aa9c9);
+            
+        
+
+        circle_marker_507504708884d5b79210a0f371132c3d.bindPopup(popup_a9dd29b08af4427d4da67d7dbd395b29)
+        ;
+
+        
+    
+    
+            var circle_marker_bd778caac481a26edae0eec4d4a21c97 = L.circleMarker(
+                [40.367222, 16.781389],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3498db", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 1}
+            ).addTo(map_77ab80c1b762e1c265d59fa64231379c);
+        
+    
+        var popup_9f60f4325058fa8f908bc84ea4dc1676 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_61c7cc895febb204cf6ef34b440218f2 = $(`<div id="html_61c7cc895febb204cf6ef34b440218f2" style="width: 100.0%; height: 100.0%;">                 <div style='font-family: sans-serif; width: 220px;'>                     <h5 style='margin:0;'>None</h5>                     <small>Fiume: N/A</small><hr style='margin:8px 0;'>                     <b>Livello Reale:</b> 0.95 m<br>                     <div style='margin-top:10px; padding:10px; background:#e8f0fe; border-radius:4px;'>                         <b style='color:#4285F4;'>GOOGLE FLOOD AI:</b><br>                         Monitoraggio attivo per bacino                     </div>                 </div>                 </div>`)[0];
+                popup_9f60f4325058fa8f908bc84ea4dc1676.setContent(html_61c7cc895febb204cf6ef34b440218f2);
+            
+        
+
+        circle_marker_bd778caac481a26edae0eec4d4a21c97.bindPopup(popup_9f60f4325058fa8f908bc84ea4dc1676)
+        ;
+
+        
+    
+    
+            var circle_marker_d042f214dec8af5fe676474791bc2a02 = L.circleMarker(
+                [40.366389, 16.52],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3498db", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 1}
+            ).addTo(map_77ab80c1b762e1c265d59fa64231379c);
+        
+    
+        var popup_e318467c4ecc61e66fa1563dbd3db9fc = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_5baf421674f486105e43e11853f83998 = $(`<div id="html_5baf421674f486105e43e11853f83998" style="width: 100.0%; height: 100.0%;">                 <div style='font-family: sans-serif; width: 220px;'>                     <h5 style='margin:0;'>None</h5>                     <small>Fiume: N/A</small><hr style='margin:8px 0;'>                     <b>Livello Reale:</b> 0.16 m<br>                     <div style='margin-top:10px; padding:10px; background:#e8f0fe; border-radius:4px;'>                         <b style='color:#4285F4;'>GOOGLE FLOOD AI:</b><br>                         Monitoraggio attivo per bacino                     </div>                 </div>                 </div>`)[0];
+                popup_e318467c4ecc61e66fa1563dbd3db9fc.setContent(html_5baf421674f486105e43e11853f83998);
+            
+        
+
+        circle_marker_d042f214dec8af5fe676474791bc2a02.bindPopup(popup_e318467c4ecc61e66fa1563dbd3db9fc)
+        ;
+
+        
+    
+    
+            var circle_marker_08e2f51faf77bffb2251ad0d387a1415 = L.circleMarker(
+                [40.926944, 16.065],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3498db", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 1}
+            ).addTo(map_77ab80c1b762e1c265d59fa64231379c);
+        
+    
+        var popup_eecd4332658feb14b3e807fbf7900daf = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_9b7608d4679f7898bf8e35ecc44e2a86 = $(`<div id="html_9b7608d4679f7898bf8e35ecc44e2a86" style="width: 100.0%; height: 100.0%;">                 <div style='font-family: sans-serif; width: 220px;'>                     <h5 style='margin:0;'>None</h5>                     <small>Fiume: N/A</small><hr style='margin:8px 0;'>                     <b>Livello Reale:</b> 0.32 m<br>                     <div style='margin-top:10px; padding:10px; background:#e8f0fe; border-radius:4px;'>                         <b style='color:#4285F4;'>GOOGLE FLOOD AI:</b><br>                         Monitoraggio attivo per bacino                     </div>                 </div>                 </div>`)[0];
+                popup_eecd4332658feb14b3e807fbf7900daf.setContent(html_9b7608d4679f7898bf8e35ecc44e2a86);
+            
+        
+
+        circle_marker_08e2f51faf77bffb2251ad0d387a1415.bindPopup(popup_eecd4332658feb14b3e807fbf7900daf)
+        ;
+
+        
+    
+    
+            var circle_marker_2ca969fc8331b975da9640d3b8da8517 = L.circleMarker(
+                [40.486111, 16.451667],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3498db", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 1}
+            ).addTo(map_77ab80c1b762e1c265d59fa64231379c);
+        
+    
+        var popup_4abfea90a3807aef7b17b2639497b4b7 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_c0de270b881fd44fab8aa3bd0dbf36fb = $(`<div id="html_c0de270b881fd44fab8aa3bd0dbf36fb" style="width: 100.0%; height: 100.0%;">                 <div style='font-family: sans-serif; width: 220px;'>                     <h5 style='margin:0;'>None</h5>                     <small>Fiume: N/A</small><hr style='margin:8px 0;'>                     <b>Livello Reale:</b> N/D<br>                     <div style='margin-top:10px; padding:10px; background:#e8f0fe; border-radius:4px;'>                         <b style='color:#4285F4;'>GOOGLE FLOOD AI:</b><br>                         Monitoraggio attivo per bacino                     </div>                 </div>                 </div>`)[0];
+                popup_4abfea90a3807aef7b17b2639497b4b7.setContent(html_c0de270b881fd44fab8aa3bd0dbf36fb);
+            
+        
+
+        circle_marker_2ca969fc8331b975da9640d3b8da8517.bindPopup(popup_4abfea90a3807aef7b17b2639497b4b7)
+        ;
+
+        
+    
+    
+            var circle_marker_81224df9d617e6eeaf55d1b4ae318488 = L.circleMarker(
+                [40.869167, 15.646667],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3498db", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 1}
+            ).addTo(map_77ab80c1b762e1c265d59fa64231379c);
+        
+    
+        var popup_5a3524fe8e559f809809a7df6ab90a6e = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_c5a40fbc2d992749c8a463dadf0b302b = $(`<div id="html_c5a40fbc2d992749c8a463dadf0b302b" style="width: 100.0%; height: 100.0%;">                 <div style='font-family: sans-serif; width: 220px;'>                     <h5 style='margin:0;'>None</h5>                     <small>Fiume: N/A</small><hr style='margin:8px 0;'>                     <b>Livello Reale:</b> 1.42 m<br>                     <div style='margin-top:10px; padding:10px; background:#e8f0fe; border-radius:4px;'>                         <b style='color:#4285F4;'>GOOGLE FLOOD AI:</b><br>                         Monitoraggio attivo per bacino                     </div>                 </div>                 </div>`)[0];
+                popup_5a3524fe8e559f809809a7df6ab90a6e.setContent(html_c5a40fbc2d992749c8a463dadf0b302b);
+            
+        
+
+        circle_marker_81224df9d617e6eeaf55d1b4ae318488.bindPopup(popup_5a3524fe8e559f809809a7df6ab90a6e)
+        ;
+
+        
+    
+    
+            var circle_marker_66130fe30059b87ffc3cfb45ea6a505f = L.circleMarker(
+                [39.983611, 15.736111],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3498db", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 1}
+            ).addTo(map_77ab80c1b762e1c265d59fa64231379c);
+        
+    
+        var popup_5d96b1d6e176f7fd373f78d5ebc4143c = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_efb609c509ae73bdc506ff64ab830e52 = $(`<div id="html_efb609c509ae73bdc506ff64ab830e52" style="width: 100.0%; height: 100.0%;">                 <div style='font-family: sans-serif; width: 220px;'>                     <h5 style='margin:0;'>None</h5>                     <small>Fiume: N/A</small><hr style='margin:8px 0;'>                     <b>Livello Reale:</b> N/D<br>                     <div style='margin-top:10px; padding:10px; background:#e8f0fe; border-radius:4px;'>                         <b style='color:#4285F4;'>GOOGLE FLOOD AI:</b><br>                         Monitoraggio attivo per bacino                     </div>                 </div>                 </div>`)[0];
+                popup_5d96b1d6e176f7fd373f78d5ebc4143c.setContent(html_efb609c509ae73bdc506ff64ab830e52);
+            
+        
+
+        circle_marker_66130fe30059b87ffc3cfb45ea6a505f.bindPopup(popup_5d96b1d6e176f7fd373f78d5ebc4143c)
+        ;
+
+        
+    
+    
+            var circle_marker_a10456825efdbe562eb660d4754bc144 = L.circleMarker(
+                [40.558611, 16.701667],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3498db", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 1}
+            ).addTo(map_77ab80c1b762e1c265d59fa64231379c);
+        
+    
+        var popup_aee3c6e522e026e9d531f3e977cc0302 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_c41f27815127ba6e648cad4ef6c6624b = $(`<div id="html_c41f27815127ba6e648cad4ef6c6624b" style="width: 100.0%; height: 100.0%;">                 <div style='font-family: sans-serif; width: 220px;'>                     <h5 style='margin:0;'>None</h5>                     <small>Fiume: N/A</small><hr style='margin:8px 0;'>                     <b>Livello Reale:</b> 0.72 m<br>                     <div style='margin-top:10px; padding:10px; background:#e8f0fe; border-radius:4px;'>                         <b style='color:#4285F4;'>GOOGLE FLOOD AI:</b><br>                         Monitoraggio attivo per bacino                     </div>                 </div>                 </div>`)[0];
+                popup_aee3c6e522e026e9d531f3e977cc0302.setContent(html_c41f27815127ba6e648cad4ef6c6624b);
+            
+        
+
+        circle_marker_a10456825efdbe562eb660d4754bc144.bindPopup(popup_aee3c6e522e026e9d531f3e977cc0302)
+        ;
+
+        
+    
+    
+            var circle_marker_9ebd8e5dd76cde4bcb9f8af1d2f8e321 = L.circleMarker(
+                [40.581944, 16.035278],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3498db", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 1}
+            ).addTo(map_77ab80c1b762e1c265d59fa64231379c);
+        
+    
+        var popup_f380a45e0ab756b4d2281bb12db90729 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_6693756d344342b890cd5490a572fd9e = $(`<div id="html_6693756d344342b890cd5490a572fd9e" style="width: 100.0%; height: 100.0%;">                 <div style='font-family: sans-serif; width: 220px;'>                     <h5 style='margin:0;'>None</h5>                     <small>Fiume: N/A</small><hr style='margin:8px 0;'>                     <b>Livello Reale:</b> N/D<br>                     <div style='margin-top:10px; padding:10px; background:#e8f0fe; border-radius:4px;'>                         <b style='color:#4285F4;'>GOOGLE FLOOD AI:</b><br>                         Monitoraggio attivo per bacino                     </div>                 </div>                 </div>`)[0];
+                popup_f380a45e0ab756b4d2281bb12db90729.setContent(html_6693756d344342b890cd5490a572fd9e);
+            
+        
+
+        circle_marker_9ebd8e5dd76cde4bcb9f8af1d2f8e321.bindPopup(popup_f380a45e0ab756b4d2281bb12db90729)
+        ;
+
+        
+    
+    
+            var circle_marker_e824d92577a476fcfbff3a4a539ccb86 = L.circleMarker(
+                [40.082778, 15.753333],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 1}
+            ).addTo(map_77ab80c1b762e1c265d59fa64231379c);
+        
+    
+        var popup_9debd160299b9bb073f09a38ccfb8bbc = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_10329b98565814aec489d036a2caaa07 = $(`<div id="html_10329b98565814aec489d036a2caaa07" style="width: 100.0%; height: 100.0%;">                 <div style='font-family: sans-serif; width: 220px;'>                     <h5 style='margin:0;'>None</h5>                     <small>Fiume: N/A</small><hr style='margin:8px 0;'>                     <b>Livello Reale:</b> 1.63 m<br>                     <div style='margin-top:10px; padding:10px; background:#e8f0fe; border-radius:4px;'>                         <b style='color:#4285F4;'>GOOGLE FLOOD AI:</b><br>                         Monitoraggio attivo per bacino                     </div>                 </div>                 </div>`)[0];
+                popup_9debd160299b9bb073f09a38ccfb8bbc.setContent(html_10329b98565814aec489d036a2caaa07);
+            
+        
+
+        circle_marker_e824d92577a476fcfbff3a4a539ccb86.bindPopup(popup_9debd160299b9bb073f09a38ccfb8bbc)
+        ;
+
+        
+    
+    
+            var circle_marker_0fa01cf52096e073c7bcbde91cdb9250 = L.circleMarker(
+                [40.759722, 15.478889],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3498db", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 1}
+            ).addTo(map_77ab80c1b762e1c265d59fa64231379c);
+        
+    
+        var popup_2fb1ee4684c458835f9ea6084d37a56e = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_016a1143f5e4cda64fd8b666a94cd709 = $(`<div id="html_016a1143f5e4cda64fd8b666a94cd709" style="width: 100.0%; height: 100.0%;">                 <div style='font-family: sans-serif; width: 220px;'>                     <h5 style='margin:0;'>None</h5>                     <small>Fiume: N/A</small><hr style='margin:8px 0;'>                     <b>Livello Reale:</b> N/D<br>                     <div style='margin-top:10px; padding:10px; background:#e8f0fe; border-radius:4px;'>                         <b style='color:#4285F4;'>GOOGLE FLOOD AI:</b><br>                         Monitoraggio attivo per bacino                     </div>                 </div>                 </div>`)[0];
+                popup_2fb1ee4684c458835f9ea6084d37a56e.setContent(html_016a1143f5e4cda64fd8b666a94cd709);
+            
+        
+
+        circle_marker_0fa01cf52096e073c7bcbde91cdb9250.bindPopup(popup_2fb1ee4684c458835f9ea6084d37a56e)
+        ;
+
+        
+    
+    
+            var circle_marker_70d5393b22eb5cfc4352def5e209c692 = L.circleMarker(
+                [40.417222, 16.821389],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3498db", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 1}
+            ).addTo(map_77ab80c1b762e1c265d59fa64231379c);
+        
+    
+        var popup_1003db881a62c0441d8e2e5062dacdac = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_929bbfbfe6c13f4464b52ae7308290e8 = $(`<div id="html_929bbfbfe6c13f4464b52ae7308290e8" style="width: 100.0%; height: 100.0%;">                 <div style='font-family: sans-serif; width: 220px;'>                     <h5 style='margin:0;'>None</h5>                     <small>Fiume: N/A</small><hr style='margin:8px 0;'>                     <b>Livello Reale:</b> 0.26 m<br>                     <div style='margin-top:10px; padding:10px; background:#e8f0fe; border-radius:4px;'>                         <b style='color:#4285F4;'>GOOGLE FLOOD AI:</b><br>                         Monitoraggio attivo per bacino                     </div>                 </div>                 </div>`)[0];
+                popup_1003db881a62c0441d8e2e5062dacdac.setContent(html_929bbfbfe6c13f4464b52ae7308290e8);
+            
+        
+
+        circle_marker_70d5393b22eb5cfc4352def5e209c692.bindPopup(popup_1003db881a62c0441d8e2e5062dacdac)
+        ;
+
+        
+    
+    
+            var circle_marker_5b062aeb2620804a35ff72028d8a5999 = L.circleMarker(
+                [40.965278, 15.562778],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3498db", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 1}
+            ).addTo(map_77ab80c1b762e1c265d59fa64231379c);
+        
+    
+        var popup_f88a2c1976a93517a808a7d18adc573b = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_5d055b776b51ce349d444e915046bf7b = $(`<div id="html_5d055b776b51ce349d444e915046bf7b" style="width: 100.0%; height: 100.0%;">                 <div style='font-family: sans-serif; width: 220px;'>                     <h5 style='margin:0;'>None</h5>                     <small>Fiume: N/A</small><hr style='margin:8px 0;'>                     <b>Livello Reale:</b> -0.18 m<br>                     <div style='margin-top:10px; padding:10px; background:#e8f0fe; border-radius:4px;'>                         <b style='color:#4285F4;'>GOOGLE FLOOD AI:</b><br>                         Monitoraggio attivo per bacino                     </div>                 </div>                 </div>`)[0];
+                popup_f88a2c1976a93517a808a7d18adc573b.setContent(html_5d055b776b51ce349d444e915046bf7b);
+            
+        
+
+        circle_marker_5b062aeb2620804a35ff72028d8a5999.bindPopup(popup_f88a2c1976a93517a808a7d18adc573b)
+        ;
+
+        
+    
+    
+            var circle_marker_6482e4ff53db5464fae70b1e4a1d2595 = L.circleMarker(
+                [40.104167, 16.39],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3498db", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 1}
+            ).addTo(map_77ab80c1b762e1c265d59fa64231379c);
+        
+    
+        var popup_cc0e543d14fe3cd2314513c9a5750744 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_72f2907e6ea68d90a3d4a3faa12822a5 = $(`<div id="html_72f2907e6ea68d90a3d4a3faa12822a5" style="width: 100.0%; height: 100.0%;">                 <div style='font-family: sans-serif; width: 220px;'>                     <h5 style='margin:0;'>None</h5>                     <small>Fiume: N/A</small><hr style='margin:8px 0;'>                     <b>Livello Reale:</b> N/D<br>                     <div style='margin-top:10px; padding:10px; background:#e8f0fe; border-radius:4px;'>                         <b style='color:#4285F4;'>GOOGLE FLOOD AI:</b><br>                         Monitoraggio attivo per bacino                     </div>                 </div>                 </div>`)[0];
+                popup_cc0e543d14fe3cd2314513c9a5750744.setContent(html_72f2907e6ea68d90a3d4a3faa12822a5);
+            
+        
+
+        circle_marker_6482e4ff53db5464fae70b1e4a1d2595.bindPopup(popup_cc0e543d14fe3cd2314513c9a5750744)
+        ;
+
+        
+    
+    
+            var circle_marker_e8cf6165c0a5301478f8dd598138f5ee = L.circleMarker(
+                [40.095278, 15.924722],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3498db", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 1}
+            ).addTo(map_77ab80c1b762e1c265d59fa64231379c);
+        
+    
+        var popup_1466522d5cb941974b517fa63bf24e52 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_23510a30d76b424b8f845480000cf5f1 = $(`<div id="html_23510a30d76b424b8f845480000cf5f1" style="width: 100.0%; height: 100.0%;">                 <div style='font-family: sans-serif; width: 220px;'>                     <h5 style='margin:0;'>None</h5>                     <small>Fiume: N/A</small><hr style='margin:8px 0;'>                     <b>Livello Reale:</b> 1.42 m<br>                     <div style='margin-top:10px; padding:10px; background:#e8f0fe; border-radius:4px;'>                         <b style='color:#4285F4;'>GOOGLE FLOOD AI:</b><br>                         Monitoraggio attivo per bacino                     </div>                 </div>                 </div>`)[0];
+                popup_1466522d5cb941974b517fa63bf24e52.setContent(html_23510a30d76b424b8f845480000cf5f1);
+            
+        
+
+        circle_marker_e8cf6165c0a5301478f8dd598138f5ee.bindPopup(popup_1466522d5cb941974b517fa63bf24e52)
+        ;
+
+        
+    
+    
+            var circle_marker_7fa3abd0ef1e67915e1a97892da49242 = L.circleMarker(
+                [40.549444, 15.633889],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3498db", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 1}
+            ).addTo(map_77ab80c1b762e1c265d59fa64231379c);
+        
+    
+        var popup_2d9bbbe3b10aaec05b38e82a0451976d = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_fa5524e6f0db086fb38d3ca56dccdfde = $(`<div id="html_fa5524e6f0db086fb38d3ca56dccdfde" style="width: 100.0%; height: 100.0%;">                 <div style='font-family: sans-serif; width: 220px;'>                     <h5 style='margin:0;'>None</h5>                     <small>Fiume: N/A</small><hr style='margin:8px 0;'>                     <b>Livello Reale:</b> N/D<br>                     <div style='margin-top:10px; padding:10px; background:#e8f0fe; border-radius:4px;'>                         <b style='color:#4285F4;'>GOOGLE FLOOD AI:</b><br>                         Monitoraggio attivo per bacino                     </div>                 </div>                 </div>`)[0];
+                popup_2d9bbbe3b10aaec05b38e82a0451976d.setContent(html_fa5524e6f0db086fb38d3ca56dccdfde);
+            
+        
+
+        circle_marker_7fa3abd0ef1e67915e1a97892da49242.bindPopup(popup_2d9bbbe3b10aaec05b38e82a0451976d)
+        ;
+
+        
+    
+    
+            var circle_marker_64fdcbfcf6291b3c31573080766219e9 = L.circleMarker(
+                [40.376111, 16.099444],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3498db", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 1}
+            ).addTo(map_77ab80c1b762e1c265d59fa64231379c);
+        
+    
+        var popup_e1908fff767adcd05e6ff7af68f56391 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_2546742b300e95ba69fdbd993ad21df1 = $(`<div id="html_2546742b300e95ba69fdbd993ad21df1" style="width: 100.0%; height: 100.0%;">                 <div style='font-family: sans-serif; width: 220px;'>                     <h5 style='margin:0;'>None</h5>                     <small>Fiume: N/A</small><hr style='margin:8px 0;'>                     <b>Livello Reale:</b> N/D<br>                     <div style='margin-top:10px; padding:10px; background:#e8f0fe; border-radius:4px;'>                         <b style='color:#4285F4;'>GOOGLE FLOOD AI:</b><br>                         Monitoraggio attivo per bacino                     </div>                 </div>                 </div>`)[0];
+                popup_e1908fff767adcd05e6ff7af68f56391.setContent(html_2546742b300e95ba69fdbd993ad21df1);
+            
+        
+
+        circle_marker_64fdcbfcf6291b3c31573080766219e9.bindPopup(popup_e1908fff767adcd05e6ff7af68f56391)
+        ;
+
+        
+    
+    
+            var circle_marker_da794f60f5866fd37081ec51f7582aa3 = L.circleMarker(
+                [40.089722, 16.33],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3498db", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 1}
+            ).addTo(map_77ab80c1b762e1c265d59fa64231379c);
+        
+    
+        var popup_70385d32cb4bc1bc4296af406a42d32a = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_223d7618cac692797e1e44ef887e09e8 = $(`<div id="html_223d7618cac692797e1e44ef887e09e8" style="width: 100.0%; height: 100.0%;">                 <div style='font-family: sans-serif; width: 220px;'>                     <h5 style='margin:0;'>None</h5>                     <small>Fiume: N/A</small><hr style='margin:8px 0;'>                     <b>Livello Reale:</b> N/D<br>                     <div style='margin-top:10px; padding:10px; background:#e8f0fe; border-radius:4px;'>                         <b style='color:#4285F4;'>GOOGLE FLOOD AI:</b><br>                         Monitoraggio attivo per bacino                     </div>                 </div>                 </div>`)[0];
+                popup_70385d32cb4bc1bc4296af406a42d32a.setContent(html_223d7618cac692797e1e44ef887e09e8);
+            
+        
+
+        circle_marker_da794f60f5866fd37081ec51f7582aa3.bindPopup(popup_70385d32cb4bc1bc4296af406a42d32a)
+        ;
+
+        
+    
+    
+            var circle_marker_f87bb1d3d42604905561d0ab37b8ec8a = L.circleMarker(
+                [40.253056, 15.885],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3498db", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 1}
+            ).addTo(map_77ab80c1b762e1c265d59fa64231379c);
+        
+    
+        var popup_726652764f652f660f2ebe75eec7ce8a = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_8dc278da292aefc61cb5422eb5978280 = $(`<div id="html_8dc278da292aefc61cb5422eb5978280" style="width: 100.0%; height: 100.0%;">                 <div style='font-family: sans-serif; width: 220px;'>                     <h5 style='margin:0;'>None</h5>                     <small>Fiume: N/A</small><hr style='margin:8px 0;'>                     <b>Livello Reale:</b> 0.14 m<br>                     <div style='margin-top:10px; padding:10px; background:#e8f0fe; border-radius:4px;'>                         <b style='color:#4285F4;'>GOOGLE FLOOD AI:</b><br>                         Monitoraggio attivo per bacino                     </div>                 </div>                 </div>`)[0];
+                popup_726652764f652f660f2ebe75eec7ce8a.setContent(html_8dc278da292aefc61cb5422eb5978280);
+            
+        
+
+        circle_marker_f87bb1d3d42604905561d0ab37b8ec8a.bindPopup(popup_726652764f652f660f2ebe75eec7ce8a)
+        ;
+
+        
+    
+    
+            var circle_marker_b6e44b666b5c9c6db5cef99920af17e7 = L.circleMarker(
+                [40.618889, 16.138333],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3498db", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 1}
+            ).addTo(map_77ab80c1b762e1c265d59fa64231379c);
+        
+    
+        var popup_596e2c474c9130f481997df628bbd971 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_eb2546419eba3b6f90faf6658fca2a19 = $(`<div id="html_eb2546419eba3b6f90faf6658fca2a19" style="width: 100.0%; height: 100.0%;">                 <div style='font-family: sans-serif; width: 220px;'>                     <h5 style='margin:0;'>None</h5>                     <small>Fiume: N/A</small><hr style='margin:8px 0;'>                     <b>Livello Reale:</b> N/D<br>                     <div style='margin-top:10px; padding:10px; background:#e8f0fe; border-radius:4px;'>                         <b style='color:#4285F4;'>GOOGLE FLOOD AI:</b><br>                         Monitoraggio attivo per bacino                     </div>                 </div>                 </div>`)[0];
+                popup_596e2c474c9130f481997df628bbd971.setContent(html_eb2546419eba3b6f90faf6658fca2a19);
+            
+        
+
+        circle_marker_b6e44b666b5c9c6db5cef99920af17e7.bindPopup(popup_596e2c474c9130f481997df628bbd971)
+        ;
+
+        
+    
+    
+            var circle_marker_f88c55ad46531f140077900a1ade8599 = L.circleMarker(
+                [40.295833, 16.7275],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3498db", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 1}
+            ).addTo(map_77ab80c1b762e1c265d59fa64231379c);
+        
+    
+        var popup_2c452dee4daad052d16a450c2c2f9592 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_405b673b3e6cfb1baa00192bf0a6d0db = $(`<div id="html_405b673b3e6cfb1baa00192bf0a6d0db" style="width: 100.0%; height: 100.0%;">                 <div style='font-family: sans-serif; width: 220px;'>                     <h5 style='margin:0;'>None</h5>                     <small>Fiume: N/A</small><hr style='margin:8px 0;'>                     <b>Livello Reale:</b> 1.20 m<br>                     <div style='margin-top:10px; padding:10px; background:#e8f0fe; border-radius:4px;'>                         <b style='color:#4285F4;'>GOOGLE FLOOD AI:</b><br>                         Monitoraggio attivo per bacino                     </div>                 </div>                 </div>`)[0];
+                popup_2c452dee4daad052d16a450c2c2f9592.setContent(html_405b673b3e6cfb1baa00192bf0a6d0db);
+            
+        
+
+        circle_marker_f88c55ad46531f140077900a1ade8599.bindPopup(popup_2c452dee4daad052d16a450c2c2f9592)
+        ;
+
+        
+    
+    
+            var circle_marker_4094035ba0f565b7867bb86a2c51e5ab = L.circleMarker(
+                [40.597778, 16.244444],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3498db", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 1}
+            ).addTo(map_77ab80c1b762e1c265d59fa64231379c);
+        
+    
+        var popup_8863a985c6c340d5be9571a7cd832f69 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_b8f695c780843310a29034a7af4be09a = $(`<div id="html_b8f695c780843310a29034a7af4be09a" style="width: 100.0%; height: 100.0%;">                 <div style='font-family: sans-serif; width: 220px;'>                     <h5 style='margin:0;'>None</h5>                     <small>Fiume: N/A</small><hr style='margin:8px 0;'>                     <b>Livello Reale:</b> 1.35 m<br>                     <div style='margin-top:10px; padding:10px; background:#e8f0fe; border-radius:4px;'>                         <b style='color:#4285F4;'>GOOGLE FLOOD AI:</b><br>                         Monitoraggio attivo per bacino                     </div>                 </div>                 </div>`)[0];
+                popup_8863a985c6c340d5be9571a7cd832f69.setContent(html_b8f695c780843310a29034a7af4be09a);
+            
+        
+
+        circle_marker_4094035ba0f565b7867bb86a2c51e5ab.bindPopup(popup_8863a985c6c340d5be9571a7cd832f69)
+        ;
+
+        
+    
+    
+            var circle_marker_a2d1e87808073e1930cb58da385585d8 = L.circleMarker(
+                [40.545, 16.075556],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3498db", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 1}
+            ).addTo(map_77ab80c1b762e1c265d59fa64231379c);
+        
+    
+        var popup_76fe6da124e00149a3e63b83beb9618c = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_9add5a19d72fb5a5290cb133a215d844 = $(`<div id="html_9add5a19d72fb5a5290cb133a215d844" style="width: 100.0%; height: 100.0%;">                 <div style='font-family: sans-serif; width: 220px;'>                     <h5 style='margin:0;'>None</h5>                     <small>Fiume: N/A</small><hr style='margin:8px 0;'>                     <b>Livello Reale:</b> 0.55 m<br>                     <div style='margin-top:10px; padding:10px; background:#e8f0fe; border-radius:4px;'>                         <b style='color:#4285F4;'>GOOGLE FLOOD AI:</b><br>                         Monitoraggio attivo per bacino                     </div>                 </div>                 </div>`)[0];
+                popup_76fe6da124e00149a3e63b83beb9618c.setContent(html_9add5a19d72fb5a5290cb133a215d844);
+            
+        
+
+        circle_marker_a2d1e87808073e1930cb58da385585d8.bindPopup(popup_76fe6da124e00149a3e63b83beb9618c)
+        ;
+
+        
+    
+    
+            var circle_marker_c76f630750c51d676d5221f095ca4717 = L.circleMarker(
+                [39.985833, 15.721667],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3498db", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 1}
+            ).addTo(map_77ab80c1b762e1c265d59fa64231379c);
+        
+    
+        var popup_09b09906031c896608eb9a3851c931f9 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_b25a45c73030b78551b0f3e5a0845324 = $(`<div id="html_b25a45c73030b78551b0f3e5a0845324" style="width: 100.0%; height: 100.0%;">                 <div style='font-family: sans-serif; width: 220px;'>                     <h5 style='margin:0;'>None</h5>                     <small>Fiume: N/A</small><hr style='margin:8px 0;'>                     <b>Livello Reale:</b> N/D<br>                     <div style='margin-top:10px; padding:10px; background:#e8f0fe; border-radius:4px;'>                         <b style='color:#4285F4;'>GOOGLE FLOOD AI:</b><br>                         Monitoraggio attivo per bacino                     </div>                 </div>                 </div>`)[0];
+                popup_09b09906031c896608eb9a3851c931f9.setContent(html_b25a45c73030b78551b0f3e5a0845324);
+            
+        
+
+        circle_marker_c76f630750c51d676d5221f095ca4717.bindPopup(popup_09b09906031c896608eb9a3851c931f9)
+        ;
+
+        
+    
+    
+            var circle_marker_5e751d8088152516bc6e92c911575822 = L.circleMarker(
+                [40.5925, 16.376944],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3498db", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 1}
+            ).addTo(map_77ab80c1b762e1c265d59fa64231379c);
+        
+    
+        var popup_ca0f7a9bb7463e5534e351f0843cfeec = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_ba607e9b39904bf59774f89be1e3793e = $(`<div id="html_ba607e9b39904bf59774f89be1e3793e" style="width: 100.0%; height: 100.0%;">                 <div style='font-family: sans-serif; width: 220px;'>                     <h5 style='margin:0;'>None</h5>                     <small>Fiume: N/A</small><hr style='margin:8px 0;'>                     <b>Livello Reale:</b> N/D<br>                     <div style='margin-top:10px; padding:10px; background:#e8f0fe; border-radius:4px;'>                         <b style='color:#4285F4;'>GOOGLE FLOOD AI:</b><br>                         Monitoraggio attivo per bacino                     </div>                 </div>                 </div>`)[0];
+                popup_ca0f7a9bb7463e5534e351f0843cfeec.setContent(html_ba607e9b39904bf59774f89be1e3793e);
+            
+        
+
+        circle_marker_5e751d8088152516bc6e92c911575822.bindPopup(popup_ca0f7a9bb7463e5534e351f0843cfeec)
+        ;
+
+        
+    
+    
+            var circle_marker_eb88ee27224227d7adc42550741bddb6 = L.circleMarker(
+                [40.377222, 15.829444],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3498db", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 1}
+            ).addTo(map_77ab80c1b762e1c265d59fa64231379c);
+        
+    
+        var popup_8145af15b6d402b1ebfdc77a95fa870f = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_2519f12ea5c43aab9328a436dc947914 = $(`<div id="html_2519f12ea5c43aab9328a436dc947914" style="width: 100.0%; height: 100.0%;">                 <div style='font-family: sans-serif; width: 220px;'>                     <h5 style='margin:0;'>None</h5>                     <small>Fiume: N/A</small><hr style='margin:8px 0;'>                     <b>Livello Reale:</b> N/D<br>                     <div style='margin-top:10px; padding:10px; background:#e8f0fe; border-radius:4px;'>                         <b style='color:#4285F4;'>GOOGLE FLOOD AI:</b><br>                         Monitoraggio attivo per bacino                     </div>                 </div>                 </div>`)[0];
+                popup_8145af15b6d402b1ebfdc77a95fa870f.setContent(html_2519f12ea5c43aab9328a436dc947914);
+            
+        
+
+        circle_marker_eb88ee27224227d7adc42550741bddb6.bindPopup(popup_8145af15b6d402b1ebfdc77a95fa870f)
+        ;
+
+        
+    
+    
+            var circle_marker_7ed81e6f697ee0613b1c7159c18632e2 = L.circleMarker(
+                [40.763889, 15.985556],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3498db", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 1}
+            ).addTo(map_77ab80c1b762e1c265d59fa64231379c);
+        
+    
+        var popup_af9ebaaa76527edcaed089fdf670d866 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_5a78a0c8e338c19478d9002da9f05e9f = $(`<div id="html_5a78a0c8e338c19478d9002da9f05e9f" style="width: 100.0%; height: 100.0%;">                 <div style='font-family: sans-serif; width: 220px;'>                     <h5 style='margin:0;'>None</h5>                     <small>Fiume: N/A</small><hr style='margin:8px 0;'>                     <b>Livello Reale:</b> N/D<br>                     <div style='margin-top:10px; padding:10px; background:#e8f0fe; border-radius:4px;'>                         <b style='color:#4285F4;'>GOOGLE FLOOD AI:</b><br>                         Monitoraggio attivo per bacino                     </div>                 </div>                 </div>`)[0];
+                popup_af9ebaaa76527edcaed089fdf670d866.setContent(html_5a78a0c8e338c19478d9002da9f05e9f);
+            
+        
+
+        circle_marker_7ed81e6f697ee0613b1c7159c18632e2.bindPopup(popup_af9ebaaa76527edcaed089fdf670d866)
+        ;
+
+        
+    
+    
+            var circle_marker_829bc579a5c0a8ddbd8163a9d72dfeea = L.circleMarker(
+                [40.96, 15.803333],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3498db", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 1}
+            ).addTo(map_77ab80c1b762e1c265d59fa64231379c);
+        
+    
+        var popup_ede40798c048fcb126b4adfab9c96425 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_5264f43a971477c1038df9c0e34065ab = $(`<div id="html_5264f43a971477c1038df9c0e34065ab" style="width: 100.0%; height: 100.0%;">                 <div style='font-family: sans-serif; width: 220px;'>                     <h5 style='margin:0;'>None</h5>                     <small>Fiume: N/A</small><hr style='margin:8px 0;'>                     <b>Livello Reale:</b> N/D<br>                     <div style='margin-top:10px; padding:10px; background:#e8f0fe; border-radius:4px;'>                         <b style='color:#4285F4;'>GOOGLE FLOOD AI:</b><br>                         Monitoraggio attivo per bacino                     </div>                 </div>                 </div>`)[0];
+                popup_ede40798c048fcb126b4adfab9c96425.setContent(html_5264f43a971477c1038df9c0e34065ab);
+            
+        
+
+        circle_marker_829bc579a5c0a8ddbd8163a9d72dfeea.bindPopup(popup_ede40798c048fcb126b4adfab9c96425)
+        ;
+
+        
+    
+    
+            var circle_marker_45dffe358a13005dda3958b64221716c = L.circleMarker(
+                [40.803056, 15.735833],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3498db", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 1}
+            ).addTo(map_77ab80c1b762e1c265d59fa64231379c);
+        
+    
+        var popup_3476bdfe6b0d363c5d28e134ec6d6ebe = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_462efca5a58b0abd4abd6eb98b0c87bf = $(`<div id="html_462efca5a58b0abd4abd6eb98b0c87bf" style="width: 100.0%; height: 100.0%;">                 <div style='font-family: sans-serif; width: 220px;'>                     <h5 style='margin:0;'>None</h5>                     <small>Fiume: N/A</small><hr style='margin:8px 0;'>                     <b>Livello Reale:</b> N/D<br>                     <div style='margin-top:10px; padding:10px; background:#e8f0fe; border-radius:4px;'>                         <b style='color:#4285F4;'>GOOGLE FLOOD AI:</b><br>                         Monitoraggio attivo per bacino                     </div>                 </div>                 </div>`)[0];
+                popup_3476bdfe6b0d363c5d28e134ec6d6ebe.setContent(html_462efca5a58b0abd4abd6eb98b0c87bf);
+            
+        
+
+        circle_marker_45dffe358a13005dda3958b64221716c.bindPopup(popup_3476bdfe6b0d363c5d28e134ec6d6ebe)
+        ;
+
+        
+    
+    
+            var circle_marker_4bb034295c660cf74c669ca4bfce6255 = L.circleMarker(
+                [40.408889, 16.1125],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3498db", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 1}
+            ).addTo(map_77ab80c1b762e1c265d59fa64231379c);
+        
+    
+        var popup_00ba439317deabdba80e49538fd2cb67 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_88ff3c1199602a5ce61caf7bf7a9a99b = $(`<div id="html_88ff3c1199602a5ce61caf7bf7a9a99b" style="width: 100.0%; height: 100.0%;">                 <div style='font-family: sans-serif; width: 220px;'>                     <h5 style='margin:0;'>None</h5>                     <small>Fiume: N/A</small><hr style='margin:8px 0;'>                     <b>Livello Reale:</b> N/D<br>                     <div style='margin-top:10px; padding:10px; background:#e8f0fe; border-radius:4px;'>                         <b style='color:#4285F4;'>GOOGLE FLOOD AI:</b><br>                         Monitoraggio attivo per bacino                     </div>                 </div>                 </div>`)[0];
+                popup_00ba439317deabdba80e49538fd2cb67.setContent(html_88ff3c1199602a5ce61caf7bf7a9a99b);
+            
+        
+
+        circle_marker_4bb034295c660cf74c669ca4bfce6255.bindPopup(popup_00ba439317deabdba80e49538fd2cb67)
+        ;
+
+        
+    
+    
+            var circle_marker_36f7b1e7203fa8fa3553283343073981 = L.circleMarker(
+                [40.649444, 15.501389],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3498db", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 1}
+            ).addTo(map_77ab80c1b762e1c265d59fa64231379c);
+        
+    
+        var popup_10ade33d22d8cfb8bda4252b34109ecb = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_8506fc4cd3ccdc6188179f1318bc1e64 = $(`<div id="html_8506fc4cd3ccdc6188179f1318bc1e64" style="width: 100.0%; height: 100.0%;">                 <div style='font-family: sans-serif; width: 220px;'>                     <h5 style='margin:0;'>None</h5>                     <small>Fiume: N/A</small><hr style='margin:8px 0;'>                     <b>Livello Reale:</b> N/D<br>                     <div style='margin-top:10px; padding:10px; background:#e8f0fe; border-radius:4px;'>                         <b style='color:#4285F4;'>GOOGLE FLOOD AI:</b><br>                         Monitoraggio attivo per bacino                     </div>                 </div>                 </div>`)[0];
+                popup_10ade33d22d8cfb8bda4252b34109ecb.setContent(html_8506fc4cd3ccdc6188179f1318bc1e64);
+            
+        
+
+        circle_marker_36f7b1e7203fa8fa3553283343073981.bindPopup(popup_10ade33d22d8cfb8bda4252b34109ecb)
+        ;
+
+        
+    
+    
+            var circle_marker_3219f2c5682fbd8fda983e7dc9c38c63 = L.circleMarker(
+                [40.880556, 15.654722],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3498db", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 1}
+            ).addTo(map_77ab80c1b762e1c265d59fa64231379c);
+        
+    
+        var popup_e1d958e74180103747cbb62a31907570 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_916c3c3064fe20afd9a59e8d4e3d0c07 = $(`<div id="html_916c3c3064fe20afd9a59e8d4e3d0c07" style="width: 100.0%; height: 100.0%;">                 <div style='font-family: sans-serif; width: 220px;'>                     <h5 style='margin:0;'>None</h5>                     <small>Fiume: N/A</small><hr style='margin:8px 0;'>                     <b>Livello Reale:</b> N/D<br>                     <div style='margin-top:10px; padding:10px; background:#e8f0fe; border-radius:4px;'>                         <b style='color:#4285F4;'>GOOGLE FLOOD AI:</b><br>                         Monitoraggio attivo per bacino                     </div>                 </div>                 </div>`)[0];
+                popup_e1d958e74180103747cbb62a31907570.setContent(html_916c3c3064fe20afd9a59e8d4e3d0c07);
+            
+        
+
+        circle_marker_3219f2c5682fbd8fda983e7dc9c38c63.bindPopup(popup_e1d958e74180103747cbb62a31907570)
+        ;
+
+        
+    
+    
+            var circle_marker_e25bfd7eaaf5bee1065b05319cc3f8ea = L.circleMarker(
+                [40.902778, 15.503611],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3498db", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 1}
+            ).addTo(map_77ab80c1b762e1c265d59fa64231379c);
+        
+    
+        var popup_e98d57af90aa1b6bd832174b83568a3f = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_9b806866b5fc27f41af560d38ae313fa = $(`<div id="html_9b806866b5fc27f41af560d38ae313fa" style="width: 100.0%; height: 100.0%;">                 <div style='font-family: sans-serif; width: 220px;'>                     <h5 style='margin:0;'>None</h5>                     <small>Fiume: N/A</small><hr style='margin:8px 0;'>                     <b>Livello Reale:</b> 1.33 m<br>                     <div style='margin-top:10px; padding:10px; background:#e8f0fe; border-radius:4px;'>                         <b style='color:#4285F4;'>GOOGLE FLOOD AI:</b><br>                         Monitoraggio attivo per bacino                     </div>                 </div>                 </div>`)[0];
+                popup_e98d57af90aa1b6bd832174b83568a3f.setContent(html_9b806866b5fc27f41af560d38ae313fa);
+            
+        
+
+        circle_marker_e25bfd7eaaf5bee1065b05319cc3f8ea.bindPopup(popup_e98d57af90aa1b6bd832174b83568a3f)
+        ;
+
+        
+    
+    
+            var circle_marker_3ae39fb0ceb72acfce87472cabb6dfc3 = L.circleMarker(
+                [40.637778, 15.6375],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3498db", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 1}
+            ).addTo(map_77ab80c1b762e1c265d59fa64231379c);
+        
+    
+        var popup_c22570c8ba2d2e6e37be39607d3a94d0 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_5f5d619832c2904922b952c8eeee45df = $(`<div id="html_5f5d619832c2904922b952c8eeee45df" style="width: 100.0%; height: 100.0%;">                 <div style='font-family: sans-serif; width: 220px;'>                     <h5 style='margin:0;'>None</h5>                     <small>Fiume: N/A</small><hr style='margin:8px 0;'>                     <b>Livello Reale:</b> N/D<br>                     <div style='margin-top:10px; padding:10px; background:#e8f0fe; border-radius:4px;'>                         <b style='color:#4285F4;'>GOOGLE FLOOD AI:</b><br>                         Monitoraggio attivo per bacino                     </div>                 </div>                 </div>`)[0];
+                popup_c22570c8ba2d2e6e37be39607d3a94d0.setContent(html_5f5d619832c2904922b952c8eeee45df);
+            
+        
+
+        circle_marker_3ae39fb0ceb72acfce87472cabb6dfc3.bindPopup(popup_c22570c8ba2d2e6e37be39607d3a94d0)
+        ;
+
+        
+    
+    
+            var circle_marker_ac3c21c8a1a174030a759a2995f2b48c = L.circleMarker(
+                [40.325, 15.773889],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3498db", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 1}
+            ).addTo(map_77ab80c1b762e1c265d59fa64231379c);
+        
+    
+        var popup_91e1be138285285c49499bbcc5834999 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_cd6caffa8daa9d0be179f11cb9d1f5ed = $(`<div id="html_cd6caffa8daa9d0be179f11cb9d1f5ed" style="width: 100.0%; height: 100.0%;">                 <div style='font-family: sans-serif; width: 220px;'>                     <h5 style='margin:0;'>None</h5>                     <small>Fiume: N/A</small><hr style='margin:8px 0;'>                     <b>Livello Reale:</b> N/D<br>                     <div style='margin-top:10px; padding:10px; background:#e8f0fe; border-radius:4px;'>                         <b style='color:#4285F4;'>GOOGLE FLOOD AI:</b><br>                         Monitoraggio attivo per bacino                     </div>                 </div>                 </div>`)[0];
+                popup_91e1be138285285c49499bbcc5834999.setContent(html_cd6caffa8daa9d0be179f11cb9d1f5ed);
+            
+        
+
+        circle_marker_ac3c21c8a1a174030a759a2995f2b48c.bindPopup(popup_91e1be138285285c49499bbcc5834999)
+        ;
+
+        
+    
+    
+            var circle_marker_b5256a52dbc9b57b05e897db4264d015 = L.circleMarker(
+                [40.994444, 15.653056],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3498db", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 1}
+            ).addTo(map_77ab80c1b762e1c265d59fa64231379c);
+        
+    
+        var popup_94663b8d9ea4907a7b4be1f3b20fd541 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_f9aea0bfe2b50661d29a4f263cea5e43 = $(`<div id="html_f9aea0bfe2b50661d29a4f263cea5e43" style="width: 100.0%; height: 100.0%;">                 <div style='font-family: sans-serif; width: 220px;'>                     <h5 style='margin:0;'>None</h5>                     <small>Fiume: N/A</small><hr style='margin:8px 0;'>                     <b>Livello Reale:</b> N/D<br>                     <div style='margin-top:10px; padding:10px; background:#e8f0fe; border-radius:4px;'>                         <b style='color:#4285F4;'>GOOGLE FLOOD AI:</b><br>                         Monitoraggio attivo per bacino                     </div>                 </div>                 </div>`)[0];
+                popup_94663b8d9ea4907a7b4be1f3b20fd541.setContent(html_f9aea0bfe2b50661d29a4f263cea5e43);
+            
+        
+
+        circle_marker_b5256a52dbc9b57b05e897db4264d015.bindPopup(popup_94663b8d9ea4907a7b4be1f3b20fd541)
+        ;
+
+        
+    
+    
+            var circle_marker_a4186c36280ff85578cf3983d270b06e = L.circleMarker(
+                [40.6325, 16.27],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3498db", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 1}
+            ).addTo(map_77ab80c1b762e1c265d59fa64231379c);
+        
+    
+        var popup_280e9c349c6d8560acba30f31b2d8ef3 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_098c0041a024b5ba46d0a283d7941f1d = $(`<div id="html_098c0041a024b5ba46d0a283d7941f1d" style="width: 100.0%; height: 100.0%;">                 <div style='font-family: sans-serif; width: 220px;'>                     <h5 style='margin:0;'>None</h5>                     <small>Fiume: N/A</small><hr style='margin:8px 0;'>                     <b>Livello Reale:</b> N/D<br>                     <div style='margin-top:10px; padding:10px; background:#e8f0fe; border-radius:4px;'>                         <b style='color:#4285F4;'>GOOGLE FLOOD AI:</b><br>                         Monitoraggio attivo per bacino                     </div>                 </div>                 </div>`)[0];
+                popup_280e9c349c6d8560acba30f31b2d8ef3.setContent(html_098c0041a024b5ba46d0a283d7941f1d);
+            
+        
+
+        circle_marker_a4186c36280ff85578cf3983d270b06e.bindPopup(popup_280e9c349c6d8560acba30f31b2d8ef3)
+        ;
+
+        
+    
+    
+            var circle_marker_542570a6809493c386924d4cf991635e = L.circleMarker(
+                [40.266389, 16.226389],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3498db", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 1}
+            ).addTo(map_77ab80c1b762e1c265d59fa64231379c);
+        
+    
+        var popup_beb7491954a78ceaf54aa4e19e807d18 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_2fb934aa45bf0dd5c9e99e47d455748f = $(`<div id="html_2fb934aa45bf0dd5c9e99e47d455748f" style="width: 100.0%; height: 100.0%;">                 <div style='font-family: sans-serif; width: 220px;'>                     <h5 style='margin:0;'>None</h5>                     <small>Fiume: N/A</small><hr style='margin:8px 0;'>                     <b>Livello Reale:</b> 0.11 m<br>                     <div style='margin-top:10px; padding:10px; background:#e8f0fe; border-radius:4px;'>                         <b style='color:#4285F4;'>GOOGLE FLOOD AI:</b><br>                         Monitoraggio attivo per bacino                     </div>                 </div>                 </div>`)[0];
+                popup_beb7491954a78ceaf54aa4e19e807d18.setContent(html_2fb934aa45bf0dd5c9e99e47d455748f);
+            
+        
+
+        circle_marker_542570a6809493c386924d4cf991635e.bindPopup(popup_beb7491954a78ceaf54aa4e19e807d18)
+        ;
+
+        
+    
+    
+            var circle_marker_35f459c21cf8a01470c9604ac14095a4 = L.circleMarker(
+                [39.94, 16.050556],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3498db", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 1}
+            ).addTo(map_77ab80c1b762e1c265d59fa64231379c);
+        
+    
+        var popup_a5c1fb59165a2d9059422956f1dfde3d = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_b00d10fc1fa0d72dc752f4b14ab91f96 = $(`<div id="html_b00d10fc1fa0d72dc752f4b14ab91f96" style="width: 100.0%; height: 100.0%;">                 <div style='font-family: sans-serif; width: 220px;'>                     <h5 style='margin:0;'>None</h5>                     <small>Fiume: N/A</small><hr style='margin:8px 0;'>                     <b>Livello Reale:</b> N/D<br>                     <div style='margin-top:10px; padding:10px; background:#e8f0fe; border-radius:4px;'>                         <b style='color:#4285F4;'>GOOGLE FLOOD AI:</b><br>                         Monitoraggio attivo per bacino                     </div>                 </div>                 </div>`)[0];
+                popup_a5c1fb59165a2d9059422956f1dfde3d.setContent(html_b00d10fc1fa0d72dc752f4b14ab91f96);
+            
+        
+
+        circle_marker_35f459c21cf8a01470c9604ac14095a4.bindPopup(popup_a5c1fb59165a2d9059422956f1dfde3d)
+        ;
+
+        
+    
+    
+            var circle_marker_9bbc4c4e7e102e9790fe6280729784fd = L.circleMarker(
+                [40.636944, 15.801667],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3498db", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 1}
+            ).addTo(map_77ab80c1b762e1c265d59fa64231379c);
+        
+    
+        var popup_096c9b184fa1f24ada6d484b48f60200 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_04e6289fd8688a0125a0303a846ed733 = $(`<div id="html_04e6289fd8688a0125a0303a846ed733" style="width: 100.0%; height: 100.0%;">                 <div style='font-family: sans-serif; width: 220px;'>                     <h5 style='margin:0;'>None</h5>                     <small>Fiume: N/A</small><hr style='margin:8px 0;'>                     <b>Livello Reale:</b> N/D<br>                     <div style='margin-top:10px; padding:10px; background:#e8f0fe; border-radius:4px;'>                         <b style='color:#4285F4;'>GOOGLE FLOOD AI:</b><br>                         Monitoraggio attivo per bacino                     </div>                 </div>                 </div>`)[0];
+                popup_096c9b184fa1f24ada6d484b48f60200.setContent(html_04e6289fd8688a0125a0303a846ed733);
+            
+        
+
+        circle_marker_9bbc4c4e7e102e9790fe6280729784fd.bindPopup(popup_096c9b184fa1f24ada6d484b48f60200)
+        ;
+
+        
+    
+    
+            var circle_marker_41c0b5f84d29cf743a0099a3aaf85978 = L.circleMarker(
+                [40.840278, 16.003889],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3498db", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 1}
+            ).addTo(map_77ab80c1b762e1c265d59fa64231379c);
+        
+    
+        var popup_20aff8c94ca6b1fbff422d1f10d1b919 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_31041d6a11cbd6a938e3f0e7fda2c97a = $(`<div id="html_31041d6a11cbd6a938e3f0e7fda2c97a" style="width: 100.0%; height: 100.0%;">                 <div style='font-family: sans-serif; width: 220px;'>                     <h5 style='margin:0;'>None</h5>                     <small>Fiume: N/A</small><hr style='margin:8px 0;'>                     <b>Livello Reale:</b> N/D<br>                     <div style='margin-top:10px; padding:10px; background:#e8f0fe; border-radius:4px;'>                         <b style='color:#4285F4;'>GOOGLE FLOOD AI:</b><br>                         Monitoraggio attivo per bacino                     </div>                 </div>                 </div>`)[0];
+                popup_20aff8c94ca6b1fbff422d1f10d1b919.setContent(html_31041d6a11cbd6a938e3f0e7fda2c97a);
+            
+        
+
+        circle_marker_41c0b5f84d29cf743a0099a3aaf85978.bindPopup(popup_20aff8c94ca6b1fbff422d1f10d1b919)
+        ;
+
+        
+    
+    
+            var circle_marker_f4c26b23491e0f159739331d20bce5a4 = L.circleMarker(
+                [40.989167, 15.627222],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3498db", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 1}
+            ).addTo(map_77ab80c1b762e1c265d59fa64231379c);
+        
+    
+        var popup_7287177b755e1c7e4eef5d708aba663e = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_9aab3fff129835074685d04b17e46c97 = $(`<div id="html_9aab3fff129835074685d04b17e46c97" style="width: 100.0%; height: 100.0%;">                 <div style='font-family: sans-serif; width: 220px;'>                     <h5 style='margin:0;'>None</h5>                     <small>Fiume: N/A</small><hr style='margin:8px 0;'>                     <b>Livello Reale:</b> N/D<br>                     <div style='margin-top:10px; padding:10px; background:#e8f0fe; border-radius:4px;'>                         <b style='color:#4285F4;'>GOOGLE FLOOD AI:</b><br>                         Monitoraggio attivo per bacino                     </div>                 </div>                 </div>`)[0];
+                popup_7287177b755e1c7e4eef5d708aba663e.setContent(html_9aab3fff129835074685d04b17e46c97);
+            
+        
+
+        circle_marker_f4c26b23491e0f159739331d20bce5a4.bindPopup(popup_7287177b755e1c7e4eef5d708aba663e)
+        ;
+
+        
+    
+    
+            var circle_marker_27a2c9b636457c2b5b8bab9eaf5ae8dd = L.circleMarker(
+                [40.9575, 15.798611],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3498db", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 1}
+            ).addTo(map_77ab80c1b762e1c265d59fa64231379c);
+        
+    
+        var popup_4246fadf7e198d6bd36855c2330fb1bf = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_69e51d2be0ab4b89ab1acd5e33ab4daf = $(`<div id="html_69e51d2be0ab4b89ab1acd5e33ab4daf" style="width: 100.0%; height: 100.0%;">                 <div style='font-family: sans-serif; width: 220px;'>                     <h5 style='margin:0;'>None</h5>                     <small>Fiume: N/A</small><hr style='margin:8px 0;'>                     <b>Livello Reale:</b> N/D<br>                     <div style='margin-top:10px; padding:10px; background:#e8f0fe; border-radius:4px;'>                         <b style='color:#4285F4;'>GOOGLE FLOOD AI:</b><br>                         Monitoraggio attivo per bacino                     </div>                 </div>                 </div>`)[0];
+                popup_4246fadf7e198d6bd36855c2330fb1bf.setContent(html_69e51d2be0ab4b89ab1acd5e33ab4daf);
+            
+        
+
+        circle_marker_27a2c9b636457c2b5b8bab9eaf5ae8dd.bindPopup(popup_4246fadf7e198d6bd36855c2330fb1bf)
+        ;
+
+        
+    
+    
+            var circle_marker_5cb349e1b351ec61151e9fcc5a3d1d85 = L.circleMarker(
+                [40.479722, 15.641389],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3498db", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 1}
+            ).addTo(map_77ab80c1b762e1c265d59fa64231379c);
+        
+    
+        var popup_3d6082d709aaa2efd69fcd73249497cb = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_c1d75f5b36be564400b4ca87c96c8135 = $(`<div id="html_c1d75f5b36be564400b4ca87c96c8135" style="width: 100.0%; height: 100.0%;">                 <div style='font-family: sans-serif; width: 220px;'>                     <h5 style='margin:0;'>None</h5>                     <small>Fiume: N/A</small><hr style='margin:8px 0;'>                     <b>Livello Reale:</b> N/D<br>                     <div style='margin-top:10px; padding:10px; background:#e8f0fe; border-radius:4px;'>                         <b style='color:#4285F4;'>GOOGLE FLOOD AI:</b><br>                         Monitoraggio attivo per bacino                     </div>                 </div>                 </div>`)[0];
+                popup_3d6082d709aaa2efd69fcd73249497cb.setContent(html_c1d75f5b36be564400b4ca87c96c8135);
+            
+        
+
+        circle_marker_5cb349e1b351ec61151e9fcc5a3d1d85.bindPopup(popup_3d6082d709aaa2efd69fcd73249497cb)
+        ;
+
+        
+    
+    
+            var circle_marker_116e94e7a5a3ca17b25956f564cbaea0 = L.circleMarker(
+                [40.864167, 15.553611],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3498db", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 1}
+            ).addTo(map_77ab80c1b762e1c265d59fa64231379c);
+        
+    
+        var popup_6aa601c7603d56577ac93e20c3c49c80 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_fc320612fd7967b598e571fcf086a473 = $(`<div id="html_fc320612fd7967b598e571fcf086a473" style="width: 100.0%; height: 100.0%;">                 <div style='font-family: sans-serif; width: 220px;'>                     <h5 style='margin:0;'>None</h5>                     <small>Fiume: N/A</small><hr style='margin:8px 0;'>                     <b>Livello Reale:</b> N/D<br>                     <div style='margin-top:10px; padding:10px; background:#e8f0fe; border-radius:4px;'>                         <b style='color:#4285F4;'>GOOGLE FLOOD AI:</b><br>                         Monitoraggio attivo per bacino                     </div>                 </div>                 </div>`)[0];
+                popup_6aa601c7603d56577ac93e20c3c49c80.setContent(html_fc320612fd7967b598e571fcf086a473);
+            
+        
+
+        circle_marker_116e94e7a5a3ca17b25956f564cbaea0.bindPopup(popup_6aa601c7603d56577ac93e20c3c49c80)
+        ;
+
+        
+    
+    
+            var circle_marker_3191099a26b795efd139b15eaa0477f3 = L.circleMarker(
+                [40.591944, 15.516111],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3498db", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 1}
+            ).addTo(map_77ab80c1b762e1c265d59fa64231379c);
+        
+    
+        var popup_14bbd78535176444f14c99ce4e8e00ea = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_c85abf62d3aec396da0bc20cd72158ed = $(`<div id="html_c85abf62d3aec396da0bc20cd72158ed" style="width: 100.0%; height: 100.0%;">                 <div style='font-family: sans-serif; width: 220px;'>                     <h5 style='margin:0;'>None</h5>                     <small>Fiume: N/A</small><hr style='margin:8px 0;'>                     <b>Livello Reale:</b> N/D<br>                     <div style='margin-top:10px; padding:10px; background:#e8f0fe; border-radius:4px;'>                         <b style='color:#4285F4;'>GOOGLE FLOOD AI:</b><br>                         Monitoraggio attivo per bacino                     </div>                 </div>                 </div>`)[0];
+                popup_14bbd78535176444f14c99ce4e8e00ea.setContent(html_c85abf62d3aec396da0bc20cd72158ed);
+            
+        
+
+        circle_marker_3191099a26b795efd139b15eaa0477f3.bindPopup(popup_14bbd78535176444f14c99ce4e8e00ea)
+        ;
+
+        
+    
+    
+            var circle_marker_89ae7dd4b9f1593a9c346e579d215bfa = L.circleMarker(
+                [40.598611, 15.787222],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3498db", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 1}
+            ).addTo(map_77ab80c1b762e1c265d59fa64231379c);
+        
+    
+        var popup_bd4bd08a1cf9d23aa1547cdd5dcb5f22 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_523b261cf5ad3e86dedfa50e10ca4e5e = $(`<div id="html_523b261cf5ad3e86dedfa50e10ca4e5e" style="width: 100.0%; height: 100.0%;">                 <div style='font-family: sans-serif; width: 220px;'>                     <h5 style='margin:0;'>None</h5>                     <small>Fiume: N/A</small><hr style='margin:8px 0;'>                     <b>Livello Reale:</b> 0.13 m<br>                     <div style='margin-top:10px; padding:10px; background:#e8f0fe; border-radius:4px;'>                         <b style='color:#4285F4;'>GOOGLE FLOOD AI:</b><br>                         Monitoraggio attivo per bacino                     </div>                 </div>                 </div>`)[0];
+                popup_bd4bd08a1cf9d23aa1547cdd5dcb5f22.setContent(html_523b261cf5ad3e86dedfa50e10ca4e5e);
+            
+        
+
+        circle_marker_89ae7dd4b9f1593a9c346e579d215bfa.bindPopup(popup_bd4bd08a1cf9d23aa1547cdd5dcb5f22)
+        ;
+
+        
+    
+    
+            var circle_marker_ed734b7199b82eb69225ef050bc0f3db = L.circleMarker(
+                [40.426389, 15.729444],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3498db", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 1}
+            ).addTo(map_77ab80c1b762e1c265d59fa64231379c);
+        
+    
+        var popup_234bc8e65ccd84e69a65e0ffa5b7c924 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_378878e162c51b8a3d418520f80d5cf2 = $(`<div id="html_378878e162c51b8a3d418520f80d5cf2" style="width: 100.0%; height: 100.0%;">                 <div style='font-family: sans-serif; width: 220px;'>                     <h5 style='margin:0;'>None</h5>                     <small>Fiume: N/A</small><hr style='margin:8px 0;'>                     <b>Livello Reale:</b> N/D<br>                     <div style='margin-top:10px; padding:10px; background:#e8f0fe; border-radius:4px;'>                         <b style='color:#4285F4;'>GOOGLE FLOOD AI:</b><br>                         Monitoraggio attivo per bacino                     </div>                 </div>                 </div>`)[0];
+                popup_234bc8e65ccd84e69a65e0ffa5b7c924.setContent(html_378878e162c51b8a3d418520f80d5cf2);
+            
+        
+
+        circle_marker_ed734b7199b82eb69225ef050bc0f3db.bindPopup(popup_234bc8e65ccd84e69a65e0ffa5b7c924)
+        ;
+
+        
+    
+    
+            var circle_marker_0b3d838abf12721b24d47664cb00ea0e = L.circleMarker(
+                [40.383611, 16.038056],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3498db", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 1}
+            ).addTo(map_77ab80c1b762e1c265d59fa64231379c);
+        
+    
+        var popup_39c963d1ba4e5f7ab4812483ed30e4cd = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_1d383ba25f5d146054c0b6e2b2cf6f8a = $(`<div id="html_1d383ba25f5d146054c0b6e2b2cf6f8a" style="width: 100.0%; height: 100.0%;">                 <div style='font-family: sans-serif; width: 220px;'>                     <h5 style='margin:0;'>None</h5>                     <small>Fiume: N/A</small><hr style='margin:8px 0;'>                     <b>Livello Reale:</b> N/D<br>                     <div style='margin-top:10px; padding:10px; background:#e8f0fe; border-radius:4px;'>                         <b style='color:#4285F4;'>GOOGLE FLOOD AI:</b><br>                         Monitoraggio attivo per bacino                     </div>                 </div>                 </div>`)[0];
+                popup_39c963d1ba4e5f7ab4812483ed30e4cd.setContent(html_1d383ba25f5d146054c0b6e2b2cf6f8a);
+            
+        
+
+        circle_marker_0b3d838abf12721b24d47664cb00ea0e.bindPopup(popup_39c963d1ba4e5f7ab4812483ed30e4cd)
+        ;
+
+        
+    
+    
+            var circle_marker_4dd91816d9f44d0317f3b438371e76fa = L.circleMarker(
+                [40.534722, 16.181944],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3498db", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 1}
+            ).addTo(map_77ab80c1b762e1c265d59fa64231379c);
+        
+    
+        var popup_ea6fdf1e78d4e3bdc05e060074ecfc55 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_a0fd543d3d2f5a7742d1b4c58625b3f1 = $(`<div id="html_a0fd543d3d2f5a7742d1b4c58625b3f1" style="width: 100.0%; height: 100.0%;">                 <div style='font-family: sans-serif; width: 220px;'>                     <h5 style='margin:0;'>None</h5>                     <small>Fiume: N/A</small><hr style='margin:8px 0;'>                     <b>Livello Reale:</b> N/D<br>                     <div style='margin-top:10px; padding:10px; background:#e8f0fe; border-radius:4px;'>                         <b style='color:#4285F4;'>GOOGLE FLOOD AI:</b><br>                         Monitoraggio attivo per bacino                     </div>                 </div>                 </div>`)[0];
+                popup_ea6fdf1e78d4e3bdc05e060074ecfc55.setContent(html_a0fd543d3d2f5a7742d1b4c58625b3f1);
+            
+        
+
+        circle_marker_4dd91816d9f44d0317f3b438371e76fa.bindPopup(popup_ea6fdf1e78d4e3bdc05e060074ecfc55)
+        ;
+
+        
+    
+    
+            var circle_marker_e3d268e667f84995ed0e5a38de13da7c = L.circleMarker(
+                [40.475278, 16.755],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3498db", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 1}
+            ).addTo(map_77ab80c1b762e1c265d59fa64231379c);
+        
+    
+        var popup_d7cd9e24743f2b526e55aa5dbed1726a = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_4437671ec5ac1898c19f00fd1e034323 = $(`<div id="html_4437671ec5ac1898c19f00fd1e034323" style="width: 100.0%; height: 100.0%;">                 <div style='font-family: sans-serif; width: 220px;'>                     <h5 style='margin:0;'>None</h5>                     <small>Fiume: N/A</small><hr style='margin:8px 0;'>                     <b>Livello Reale:</b> 1.32 m<br>                     <div style='margin-top:10px; padding:10px; background:#e8f0fe; border-radius:4px;'>                         <b style='color:#4285F4;'>GOOGLE FLOOD AI:</b><br>                         Monitoraggio attivo per bacino                     </div>                 </div>                 </div>`)[0];
+                popup_d7cd9e24743f2b526e55aa5dbed1726a.setContent(html_4437671ec5ac1898c19f00fd1e034323);
+            
+        
+
+        circle_marker_e3d268e667f84995ed0e5a38de13da7c.bindPopup(popup_d7cd9e24743f2b526e55aa5dbed1726a)
+        ;
+
+        
+    
+    
+            var circle_marker_ba9b9b6f557f08aa03ffee3823f45a39 = L.circleMarker(
+                [40.916111, 15.735833],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3498db", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 1}
+            ).addTo(map_77ab80c1b762e1c265d59fa64231379c);
+        
+    
+        var popup_d2e442693bec0f4e5f40ed5381473feb = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_1fe4da27d3af05ef4ae43b5d1afcaeb0 = $(`<div id="html_1fe4da27d3af05ef4ae43b5d1afcaeb0" style="width: 100.0%; height: 100.0%;">                 <div style='font-family: sans-serif; width: 220px;'>                     <h5 style='margin:0;'>None</h5>                     <small>Fiume: N/A</small><hr style='margin:8px 0;'>                     <b>Livello Reale:</b> N/D<br>                     <div style='margin-top:10px; padding:10px; background:#e8f0fe; border-radius:4px;'>                         <b style='color:#4285F4;'>GOOGLE FLOOD AI:</b><br>                         Monitoraggio attivo per bacino                     </div>                 </div>                 </div>`)[0];
+                popup_d2e442693bec0f4e5f40ed5381473feb.setContent(html_1fe4da27d3af05ef4ae43b5d1afcaeb0);
+            
+        
+
+        circle_marker_ba9b9b6f557f08aa03ffee3823f45a39.bindPopup(popup_d2e442693bec0f4e5f40ed5381473feb)
+        ;
+
+        
+    
+    
+            var circle_marker_aa61596b163579b58c18297c73a58838 = L.circleMarker(
+                [40.639444, 16.433056],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3498db", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 1}
+            ).addTo(map_77ab80c1b762e1c265d59fa64231379c);
+        
+    
+        var popup_af4009092b3c229d0ef2941b51ae222d = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_fa607db7999c33337f1d04e5a150ff88 = $(`<div id="html_fa607db7999c33337f1d04e5a150ff88" style="width: 100.0%; height: 100.0%;">                 <div style='font-family: sans-serif; width: 220px;'>                     <h5 style='margin:0;'>None</h5>                     <small>Fiume: N/A</small><hr style='margin:8px 0;'>                     <b>Livello Reale:</b> 0.81 m<br>                     <div style='margin-top:10px; padding:10px; background:#e8f0fe; border-radius:4px;'>                         <b style='color:#4285F4;'>GOOGLE FLOOD AI:</b><br>                         Monitoraggio attivo per bacino                     </div>                 </div>                 </div>`)[0];
+                popup_af4009092b3c229d0ef2941b51ae222d.setContent(html_fa607db7999c33337f1d04e5a150ff88);
+            
+        
+
+        circle_marker_aa61596b163579b58c18297c73a58838.bindPopup(popup_af4009092b3c229d0ef2941b51ae222d)
+        ;
+
+        
+    
+    
+            var circle_marker_2d7702ec4117a30242e5223d8e92f4b1 = L.circleMarker(
+                [40.481667, 16.251111],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3498db", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 1}
+            ).addTo(map_77ab80c1b762e1c265d59fa64231379c);
+        
+    
+        var popup_ca5ea7cf8f8a7314c1dd2e47e681c3f9 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_b7761b584831459570b43cf1d46ccbd0 = $(`<div id="html_b7761b584831459570b43cf1d46ccbd0" style="width: 100.0%; height: 100.0%;">                 <div style='font-family: sans-serif; width: 220px;'>                     <h5 style='margin:0;'>None</h5>                     <small>Fiume: N/A</small><hr style='margin:8px 0;'>                     <b>Livello Reale:</b> N/D<br>                     <div style='margin-top:10px; padding:10px; background:#e8f0fe; border-radius:4px;'>                         <b style='color:#4285F4;'>GOOGLE FLOOD AI:</b><br>                         Monitoraggio attivo per bacino                     </div>                 </div>                 </div>`)[0];
+                popup_ca5ea7cf8f8a7314c1dd2e47e681c3f9.setContent(html_b7761b584831459570b43cf1d46ccbd0);
+            
+        
+
+        circle_marker_2d7702ec4117a30242e5223d8e92f4b1.bindPopup(popup_ca5ea7cf8f8a7314c1dd2e47e681c3f9)
+        ;
+
+        
+    
+    
+            var circle_marker_e0de32290f6122c72ede8aa5fc8ef92d = L.circleMarker(
+                [40.165278, 16.648611],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3498db", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 1}
+            ).addTo(map_77ab80c1b762e1c265d59fa64231379c);
+        
+    
+        var popup_ded5cf19d1909fe105daa90c6da8063b = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_75f9bf9b981da868dc27d9c152372340 = $(`<div id="html_75f9bf9b981da868dc27d9c152372340" style="width: 100.0%; height: 100.0%;">                 <div style='font-family: sans-serif; width: 220px;'>                     <h5 style='margin:0;'>None</h5>                     <small>Fiume: N/A</small><hr style='margin:8px 0;'>                     <b>Livello Reale:</b> 0.27 m<br>                     <div style='margin-top:10px; padding:10px; background:#e8f0fe; border-radius:4px;'>                         <b style='color:#4285F4;'>GOOGLE FLOOD AI:</b><br>                         Monitoraggio attivo per bacino                     </div>                 </div>                 </div>`)[0];
+                popup_ded5cf19d1909fe105daa90c6da8063b.setContent(html_75f9bf9b981da868dc27d9c152372340);
+            
+        
+
+        circle_marker_e0de32290f6122c72ede8aa5fc8ef92d.bindPopup(popup_ded5cf19d1909fe105daa90c6da8063b)
+        ;
+
+        
+    
+    
+            var circle_marker_96421d31097c3c13f822b15968029e59 = L.circleMarker(
+                [40.485, 15.763056],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3498db", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 1}
+            ).addTo(map_77ab80c1b762e1c265d59fa64231379c);
+        
+    
+        var popup_27dee72eb75c3da1ae6b962dfb677665 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_05bc30ca8b49fa177eb0c935739a6bed = $(`<div id="html_05bc30ca8b49fa177eb0c935739a6bed" style="width: 100.0%; height: 100.0%;">                 <div style='font-family: sans-serif; width: 220px;'>                     <h5 style='margin:0;'>None</h5>                     <small>Fiume: N/A</small><hr style='margin:8px 0;'>                     <b>Livello Reale:</b> N/D<br>                     <div style='margin-top:10px; padding:10px; background:#e8f0fe; border-radius:4px;'>                         <b style='color:#4285F4;'>GOOGLE FLOOD AI:</b><br>                         Monitoraggio attivo per bacino                     </div>                 </div>                 </div>`)[0];
+                popup_27dee72eb75c3da1ae6b962dfb677665.setContent(html_05bc30ca8b49fa177eb0c935739a6bed);
+            
+        
+
+        circle_marker_96421d31097c3c13f822b15968029e59.bindPopup(popup_27dee72eb75c3da1ae6b962dfb677665)
+        ;
+
+        
+    
+    
+            var circle_marker_da3267469a91fe98adb75d7eb98dcb8b = L.circleMarker(
+                [40.669444, 15.915278],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3498db", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 1}
+            ).addTo(map_77ab80c1b762e1c265d59fa64231379c);
+        
+    
+        var popup_6563a472a494f9e12c5c60ae5b0da433 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_eb4b6e381af54c3b3b12df5bd69818a6 = $(`<div id="html_eb4b6e381af54c3b3b12df5bd69818a6" style="width: 100.0%; height: 100.0%;">                 <div style='font-family: sans-serif; width: 220px;'>                     <h5 style='margin:0;'>None</h5>                     <small>Fiume: N/A</small><hr style='margin:8px 0;'>                     <b>Livello Reale:</b> N/D<br>                     <div style='margin-top:10px; padding:10px; background:#e8f0fe; border-radius:4px;'>                         <b style='color:#4285F4;'>GOOGLE FLOOD AI:</b><br>                         Monitoraggio attivo per bacino                     </div>                 </div>                 </div>`)[0];
+                popup_6563a472a494f9e12c5c60ae5b0da433.setContent(html_eb4b6e381af54c3b3b12df5bd69818a6);
+            
+        
+
+        circle_marker_da3267469a91fe98adb75d7eb98dcb8b.bindPopup(popup_6563a472a494f9e12c5c60ae5b0da433)
+        ;
+
+        
+    
+    
+            var circle_marker_31d63c408adccf69077cff4eb6621fca = L.circleMarker(
+                [40.728611, 15.714444],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3498db", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 1}
+            ).addTo(map_77ab80c1b762e1c265d59fa64231379c);
+        
+    
+        var popup_a04f3ca25f28528f8f554e860317694c = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_dea510464215e7f2a44bdcf73b4dcee8 = $(`<div id="html_dea510464215e7f2a44bdcf73b4dcee8" style="width: 100.0%; height: 100.0%;">                 <div style='font-family: sans-serif; width: 220px;'>                     <h5 style='margin:0;'>None</h5>                     <small>Fiume: N/A</small><hr style='margin:8px 0;'>                     <b>Livello Reale:</b> N/D<br>                     <div style='margin-top:10px; padding:10px; background:#e8f0fe; border-radius:4px;'>                         <b style='color:#4285F4;'>GOOGLE FLOOD AI:</b><br>                         Monitoraggio attivo per bacino                     </div>                 </div>                 </div>`)[0];
+                popup_a04f3ca25f28528f8f554e860317694c.setContent(html_dea510464215e7f2a44bdcf73b4dcee8);
+            
+        
+
+        circle_marker_31d63c408adccf69077cff4eb6621fca.bindPopup(popup_a04f3ca25f28528f8f554e860317694c)
+        ;
+
+        
+    
+    
+            var circle_marker_3de4bd90e76e42373572afc7303f9952 = L.circleMarker(
+                [40.934722, 15.971944],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3498db", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 1}
+            ).addTo(map_77ab80c1b762e1c265d59fa64231379c);
+        
+    
+        var popup_c71080a1a27c4e7bf09c12665748fecf = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_cb0989cf0c585dfaf180188c2c8b96a7 = $(`<div id="html_cb0989cf0c585dfaf180188c2c8b96a7" style="width: 100.0%; height: 100.0%;">                 <div style='font-family: sans-serif; width: 220px;'>                     <h5 style='margin:0;'>None</h5>                     <small>Fiume: N/A</small><hr style='margin:8px 0;'>                     <b>Livello Reale:</b> N/D<br>                     <div style='margin-top:10px; padding:10px; background:#e8f0fe; border-radius:4px;'>                         <b style='color:#4285F4;'>GOOGLE FLOOD AI:</b><br>                         Monitoraggio attivo per bacino                     </div>                 </div>                 </div>`)[0];
+                popup_c71080a1a27c4e7bf09c12665748fecf.setContent(html_cb0989cf0c585dfaf180188c2c8b96a7);
+            
+        
+
+        circle_marker_3de4bd90e76e42373572afc7303f9952.bindPopup(popup_c71080a1a27c4e7bf09c12665748fecf)
+        ;
+
+        
+    
+    
+            var circle_marker_332386ae34e81205cc2a0910c91a0ddb = L.circleMarker(
+                [40.408333, 16.225833],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3498db", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 1}
+            ).addTo(map_77ab80c1b762e1c265d59fa64231379c);
+        
+    
+        var popup_1e2e88fa543f0bb1e6cfa69e908dd1e5 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_a52fd7138d00ab7104539d8dde8b83b7 = $(`<div id="html_a52fd7138d00ab7104539d8dde8b83b7" style="width: 100.0%; height: 100.0%;">                 <div style='font-family: sans-serif; width: 220px;'>                     <h5 style='margin:0;'>None</h5>                     <small>Fiume: N/A</small><hr style='margin:8px 0;'>                     <b>Livello Reale:</b> N/D<br>                     <div style='margin-top:10px; padding:10px; background:#e8f0fe; border-radius:4px;'>                         <b style='color:#4285F4;'>GOOGLE FLOOD AI:</b><br>                         Monitoraggio attivo per bacino                     </div>                 </div>                 </div>`)[0];
+                popup_1e2e88fa543f0bb1e6cfa69e908dd1e5.setContent(html_a52fd7138d00ab7104539d8dde8b83b7);
+            
+        
+
+        circle_marker_332386ae34e81205cc2a0910c91a0ddb.bindPopup(popup_1e2e88fa543f0bb1e6cfa69e908dd1e5)
+        ;
+
+        
+    
+    
+            var circle_marker_20c3ab5eefa820fd0838761f0d6ddc1d = L.circleMarker(
+                [40.556111, 16.330556],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3498db", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 1}
+            ).addTo(map_77ab80c1b762e1c265d59fa64231379c);
+        
+    
+        var popup_2aa2d7dda4e59d8076bb61e7b46a9814 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_1918d989542ae4c7c39caa0c629fa899 = $(`<div id="html_1918d989542ae4c7c39caa0c629fa899" style="width: 100.0%; height: 100.0%;">                 <div style='font-family: sans-serif; width: 220px;'>                     <h5 style='margin:0;'>None</h5>                     <small>Fiume: N/A</small><hr style='margin:8px 0;'>                     <b>Livello Reale:</b> N/D<br>                     <div style='margin-top:10px; padding:10px; background:#e8f0fe; border-radius:4px;'>                         <b style='color:#4285F4;'>GOOGLE FLOOD AI:</b><br>                         Monitoraggio attivo per bacino                     </div>                 </div>                 </div>`)[0];
+                popup_2aa2d7dda4e59d8076bb61e7b46a9814.setContent(html_1918d989542ae4c7c39caa0c629fa899);
+            
+        
+
+        circle_marker_20c3ab5eefa820fd0838761f0d6ddc1d.bindPopup(popup_2aa2d7dda4e59d8076bb61e7b46a9814)
+        ;
+
+        
+    
+    
+            var circle_marker_87ea5a6c68504953cf73a54b93e03596 = L.circleMarker(
+                [40.431944, 16.569167],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 1}
+            ).addTo(map_77ab80c1b762e1c265d59fa64231379c);
+        
+    
+        var popup_4a9447edf9eab628e3c9d106402b164b = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_09347069a56cca23f0b4a6105df997a1 = $(`<div id="html_09347069a56cca23f0b4a6105df997a1" style="width: 100.0%; height: 100.0%;">                 <div style='font-family: sans-serif; width: 220px;'>                     <h5 style='margin:0;'>None</h5>                     <small>Fiume: N/A</small><hr style='margin:8px 0;'>                     <b>Livello Reale:</b> 2.16 m<br>                     <div style='margin-top:10px; padding:10px; background:#e8f0fe; border-radius:4px;'>                         <b style='color:#4285F4;'>GOOGLE FLOOD AI:</b><br>                         Monitoraggio attivo per bacino                     </div>                 </div>                 </div>`)[0];
+                popup_4a9447edf9eab628e3c9d106402b164b.setContent(html_09347069a56cca23f0b4a6105df997a1);
+            
+        
+
+        circle_marker_87ea5a6c68504953cf73a54b93e03596.bindPopup(popup_4a9447edf9eab628e3c9d106402b164b)
+        ;
+
+        
+    
+    
+            var circle_marker_901d46b0e1f0fa3405a67b373d539ed3 = L.circleMarker(
+                [40.456667, 15.973333],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3498db", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 1}
+            ).addTo(map_77ab80c1b762e1c265d59fa64231379c);
+        
+    
+        var popup_377dea688a02296868882b7395386436 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_c254532c065e69db543c4e6dcd0577d9 = $(`<div id="html_c254532c065e69db543c4e6dcd0577d9" style="width: 100.0%; height: 100.0%;">                 <div style='font-family: sans-serif; width: 220px;'>                     <h5 style='margin:0;'>None</h5>                     <small>Fiume: N/A</small><hr style='margin:8px 0;'>                     <b>Livello Reale:</b> N/D<br>                     <div style='margin-top:10px; padding:10px; background:#e8f0fe; border-radius:4px;'>                         <b style='color:#4285F4;'>GOOGLE FLOOD AI:</b><br>                         Monitoraggio attivo per bacino                     </div>                 </div>                 </div>`)[0];
+                popup_377dea688a02296868882b7395386436.setContent(html_c254532c065e69db543c4e6dcd0577d9);
+            
+        
+
+        circle_marker_901d46b0e1f0fa3405a67b373d539ed3.bindPopup(popup_377dea688a02296868882b7395386436)
+        ;
+
+        
+    
+    
+            var circle_marker_ecd9fe28a1c30ac8bcad816aa4f4450e = L.circleMarker(
+                [40.236944, 16.036389],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3498db", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 1}
+            ).addTo(map_77ab80c1b762e1c265d59fa64231379c);
+        
+    
+        var popup_b12be6402ce6abbbd7f261d206aecd92 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_1a1cde16cf2a0826edaac57f3e8b0014 = $(`<div id="html_1a1cde16cf2a0826edaac57f3e8b0014" style="width: 100.0%; height: 100.0%;">                 <div style='font-family: sans-serif; width: 220px;'>                     <h5 style='margin:0;'>None</h5>                     <small>Fiume: N/A</small><hr style='margin:8px 0;'>                     <b>Livello Reale:</b> N/D<br>                     <div style='margin-top:10px; padding:10px; background:#e8f0fe; border-radius:4px;'>                         <b style='color:#4285F4;'>GOOGLE FLOOD AI:</b><br>                         Monitoraggio attivo per bacino                     </div>                 </div>                 </div>`)[0];
+                popup_b12be6402ce6abbbd7f261d206aecd92.setContent(html_1a1cde16cf2a0826edaac57f3e8b0014);
+            
+        
+
+        circle_marker_ecd9fe28a1c30ac8bcad816aa4f4450e.bindPopup(popup_b12be6402ce6abbbd7f261d206aecd92)
+        ;
+
+        
+    
+    
+            var circle_marker_7873bee500a9f01ef12fae24e66a3297 = L.circleMarker(
+                [40.226111, 16.686667],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3498db", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 1}
+            ).addTo(map_77ab80c1b762e1c265d59fa64231379c);
+        
+    
+        var popup_c07dde8e5fc641272134f16ee0177bc9 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_1ba38993d74afdfe3ee45259588faba9 = $(`<div id="html_1ba38993d74afdfe3ee45259588faba9" style="width: 100.0%; height: 100.0%;">                 <div style='font-family: sans-serif; width: 220px;'>                     <h5 style='margin:0;'>None</h5>                     <small>Fiume: N/A</small><hr style='margin:8px 0;'>                     <b>Livello Reale:</b> -0.43 m<br>                     <div style='margin-top:10px; padding:10px; background:#e8f0fe; border-radius:4px;'>                         <b style='color:#4285F4;'>GOOGLE FLOOD AI:</b><br>                         Monitoraggio attivo per bacino                     </div>                 </div>                 </div>`)[0];
+                popup_c07dde8e5fc641272134f16ee0177bc9.setContent(html_1ba38993d74afdfe3ee45259588faba9);
+            
+        
+
+        circle_marker_7873bee500a9f01ef12fae24e66a3297.bindPopup(popup_c07dde8e5fc641272134f16ee0177bc9)
+        ;
+
+        
+    
+    
+            var circle_marker_51242a6b73abf4b7a462f94bb432fea8 = L.circleMarker(
+                [40.500556, 15.761111],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3498db", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 1}
+            ).addTo(map_77ab80c1b762e1c265d59fa64231379c);
+        
+    
+        var popup_5295aaf6f9daad0a631c07676cff558b = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_6b688018eef6421b70ce57abfb63cfcb = $(`<div id="html_6b688018eef6421b70ce57abfb63cfcb" style="width: 100.0%; height: 100.0%;">                 <div style='font-family: sans-serif; width: 220px;'>                     <h5 style='margin:0;'>None</h5>                     <small>Fiume: N/A</small><hr style='margin:8px 0;'>                     <b>Livello Reale:</b> N/D<br>                     <div style='margin-top:10px; padding:10px; background:#e8f0fe; border-radius:4px;'>                         <b style='color:#4285F4;'>GOOGLE FLOOD AI:</b><br>                         Monitoraggio attivo per bacino                     </div>                 </div>                 </div>`)[0];
+                popup_5295aaf6f9daad0a631c07676cff558b.setContent(html_6b688018eef6421b70ce57abfb63cfcb);
+            
+        
+
+        circle_marker_51242a6b73abf4b7a462f94bb432fea8.bindPopup(popup_5295aaf6f9daad0a631c07676cff558b)
+        ;
+
+        
+    
+    
+            var circle_marker_59de03c578881586d69e5dad01e6541b = L.circleMarker(
+                [39.936389, 15.767778],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3498db", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 1}
+            ).addTo(map_77ab80c1b762e1c265d59fa64231379c);
+        
+    
+        var popup_c8d367fcae6a05abb5163033f166b0ba = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_67723c8b5378ac93a2276e7cc1bcc135 = $(`<div id="html_67723c8b5378ac93a2276e7cc1bcc135" style="width: 100.0%; height: 100.0%;">                 <div style='font-family: sans-serif; width: 220px;'>                     <h5 style='margin:0;'>None</h5>                     <small>Fiume: N/A</small><hr style='margin:8px 0;'>                     <b>Livello Reale:</b> -0.26 m<br>                     <div style='margin-top:10px; padding:10px; background:#e8f0fe; border-radius:4px;'>                         <b style='color:#4285F4;'>GOOGLE FLOOD AI:</b><br>                         Monitoraggio attivo per bacino                     </div>                 </div>                 </div>`)[0];
+                popup_c8d367fcae6a05abb5163033f166b0ba.setContent(html_67723c8b5378ac93a2276e7cc1bcc135);
+            
+        
+
+        circle_marker_59de03c578881586d69e5dad01e6541b.bindPopup(popup_c8d367fcae6a05abb5163033f166b0ba)
+        ;
+
+        
+    
+    
+            var circle_marker_711b6e2ff4724b7365c9bc01a7baf9dc = L.circleMarker(
+                [40.819722, 15.540278],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3498db", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 1}
+            ).addTo(map_77ab80c1b762e1c265d59fa64231379c);
+        
+    
+        var popup_807c435eaabeeddd100d15f5ce81519d = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_7ffc0651469274a77ce91fecb397d316 = $(`<div id="html_7ffc0651469274a77ce91fecb397d316" style="width: 100.0%; height: 100.0%;">                 <div style='font-family: sans-serif; width: 220px;'>                     <h5 style='margin:0;'>None</h5>                     <small>Fiume: N/A</small><hr style='margin:8px 0;'>                     <b>Livello Reale:</b> N/D<br>                     <div style='margin-top:10px; padding:10px; background:#e8f0fe; border-radius:4px;'>                         <b style='color:#4285F4;'>GOOGLE FLOOD AI:</b><br>                         Monitoraggio attivo per bacino                     </div>                 </div>                 </div>`)[0];
+                popup_807c435eaabeeddd100d15f5ce81519d.setContent(html_7ffc0651469274a77ce91fecb397d316);
+            
+        
+
+        circle_marker_711b6e2ff4724b7365c9bc01a7baf9dc.bindPopup(popup_807c435eaabeeddd100d15f5ce81519d)
+        ;
+
+        
+    
+    
+            var circle_marker_0b6d2e9c8c346bdbb23c85b97b09a9e7 = L.circleMarker(
+                [40.210556, 16.199167],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3498db", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 1}
+            ).addTo(map_77ab80c1b762e1c265d59fa64231379c);
+        
+    
+        var popup_efb1c0748e88200c796cacd7df817f2f = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_ab984980ff95796f289fb2d2617a1d1b = $(`<div id="html_ab984980ff95796f289fb2d2617a1d1b" style="width: 100.0%; height: 100.0%;">                 <div style='font-family: sans-serif; width: 220px;'>                     <h5 style='margin:0;'>None</h5>                     <small>Fiume: N/A</small><hr style='margin:8px 0;'>                     <b>Livello Reale:</b> N/D<br>                     <div style='margin-top:10px; padding:10px; background:#e8f0fe; border-radius:4px;'>                         <b style='color:#4285F4;'>GOOGLE FLOOD AI:</b><br>                         Monitoraggio attivo per bacino                     </div>                 </div>                 </div>`)[0];
+                popup_efb1c0748e88200c796cacd7df817f2f.setContent(html_ab984980ff95796f289fb2d2617a1d1b);
+            
+        
+
+        circle_marker_0b6d2e9c8c346bdbb23c85b97b09a9e7.bindPopup(popup_efb1c0748e88200c796cacd7df817f2f)
+        ;
+
+        
+    
+    
+            var circle_marker_757a748170ff917c7977ef051f883f75 = L.circleMarker(
+                [40.132222, 16.304444],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3498db", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 1}
+            ).addTo(map_77ab80c1b762e1c265d59fa64231379c);
+        
+    
+        var popup_b005efeb0109b3b7ba0f814669561708 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_f8a4bf56418b83e5b28751cc32c9b0aa = $(`<div id="html_f8a4bf56418b83e5b28751cc32c9b0aa" style="width: 100.0%; height: 100.0%;">                 <div style='font-family: sans-serif; width: 220px;'>                     <h5 style='margin:0;'>None</h5>                     <small>Fiume: N/A</small><hr style='margin:8px 0;'>                     <b>Livello Reale:</b> 0.29 m<br>                     <div style='margin-top:10px; padding:10px; background:#e8f0fe; border-radius:4px;'>                         <b style='color:#4285F4;'>GOOGLE FLOOD AI:</b><br>                         Monitoraggio attivo per bacino                     </div>                 </div>                 </div>`)[0];
+                popup_b005efeb0109b3b7ba0f814669561708.setContent(html_f8a4bf56418b83e5b28751cc32c9b0aa);
+            
+        
+
+        circle_marker_757a748170ff917c7977ef051f883f75.bindPopup(popup_b005efeb0109b3b7ba0f814669561708)
+        ;
+
+        
+    
+    
+            var circle_marker_5dc530f2d35f83d1cbd8ffabce5357c8 = L.circleMarker(
+                [40.516389, 16.5475],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3498db", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 1}
+            ).addTo(map_77ab80c1b762e1c265d59fa64231379c);
+        
+    
+        var popup_ac8dc892daf793372bd472dce28c9a71 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_a98ec0ca566389265aca0eaf073e9025 = $(`<div id="html_a98ec0ca566389265aca0eaf073e9025" style="width: 100.0%; height: 100.0%;">                 <div style='font-family: sans-serif; width: 220px;'>                     <h5 style='margin:0;'>None</h5>                     <small>Fiume: N/A</small><hr style='margin:8px 0;'>                     <b>Livello Reale:</b> N/D<br>                     <div style='margin-top:10px; padding:10px; background:#e8f0fe; border-radius:4px;'>                         <b style='color:#4285F4;'>GOOGLE FLOOD AI:</b><br>                         Monitoraggio attivo per bacino                     </div>                 </div>                 </div>`)[0];
+                popup_ac8dc892daf793372bd472dce28c9a71.setContent(html_a98ec0ca566389265aca0eaf073e9025);
+            
+        
+
+        circle_marker_5dc530f2d35f83d1cbd8ffabce5357c8.bindPopup(popup_ac8dc892daf793372bd472dce28c9a71)
+        ;
+
+        
+    
+    
+            var circle_marker_708e13ecf8c207825a5edf32f86ced9a = L.circleMarker(
+                [40.172778, 16.44],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3498db", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 1}
+            ).addTo(map_77ab80c1b762e1c265d59fa64231379c);
+        
+    
+        var popup_3450c55dc553c01428fbd68690c084db = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_b3e486d8781ad10d0e8b07a3e10a5b3a = $(`<div id="html_b3e486d8781ad10d0e8b07a3e10a5b3a" style="width: 100.0%; height: 100.0%;">                 <div style='font-family: sans-serif; width: 220px;'>                     <h5 style='margin:0;'>None</h5>                     <small>Fiume: N/A</small><hr style='margin:8px 0;'>                     <b>Livello Reale:</b> -0.36 m<br>                     <div style='margin-top:10px; padding:10px; background:#e8f0fe; border-radius:4px;'>                         <b style='color:#4285F4;'>GOOGLE FLOOD AI:</b><br>                         Monitoraggio attivo per bacino                     </div>                 </div>                 </div>`)[0];
+                popup_3450c55dc553c01428fbd68690c084db.setContent(html_b3e486d8781ad10d0e8b07a3e10a5b3a);
+            
+        
+
+        circle_marker_708e13ecf8c207825a5edf32f86ced9a.bindPopup(popup_3450c55dc553c01428fbd68690c084db)
+        ;
+
+        
+    
+    
+            var circle_marker_96adcaaf380dd6d60d1ce41323fda3e3 = L.circleMarker(
+                [40.833333, 15.398889],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3498db", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 1}
+            ).addTo(map_77ab80c1b762e1c265d59fa64231379c);
+        
+    
+        var popup_c71bd8722e32611fad1ccd0cf452a28e = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_8516f4ad598cb514eb9b3cc73bfc058d = $(`<div id="html_8516f4ad598cb514eb9b3cc73bfc058d" style="width: 100.0%; height: 100.0%;">                 <div style='font-family: sans-serif; width: 220px;'>                     <h5 style='margin:0;'>None</h5>                     <small>Fiume: N/A</small><hr style='margin:8px 0;'>                     <b>Livello Reale:</b> N/D<br>                     <div style='margin-top:10px; padding:10px; background:#e8f0fe; border-radius:4px;'>                         <b style='color:#4285F4;'>GOOGLE FLOOD AI:</b><br>                         Monitoraggio attivo per bacino                     </div>                 </div>                 </div>`)[0];
+                popup_c71bd8722e32611fad1ccd0cf452a28e.setContent(html_8516f4ad598cb514eb9b3cc73bfc058d);
+            
+        
+
+        circle_marker_96adcaaf380dd6d60d1ce41323fda3e3.bindPopup(popup_c71bd8722e32611fad1ccd0cf452a28e)
+        ;
+
+        
+    
+    
+            var circle_marker_c36e59ba4e9e3d69148b0f54f1e0c7e9 = L.circleMarker(
+                [40.903889, 15.823056],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3498db", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 1}
+            ).addTo(map_77ab80c1b762e1c265d59fa64231379c);
+        
+    
+        var popup_57abe0311bd02604b3aab306272a03c8 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_fe32014a3bd4174d59f231d4c917d176 = $(`<div id="html_fe32014a3bd4174d59f231d4c917d176" style="width: 100.0%; height: 100.0%;">                 <div style='font-family: sans-serif; width: 220px;'>                     <h5 style='margin:0;'>None</h5>                     <small>Fiume: N/A</small><hr style='margin:8px 0;'>                     <b>Livello Reale:</b> N/D<br>                     <div style='margin-top:10px; padding:10px; background:#e8f0fe; border-radius:4px;'>                         <b style='color:#4285F4;'>GOOGLE FLOOD AI:</b><br>                         Monitoraggio attivo per bacino                     </div>                 </div>                 </div>`)[0];
+                popup_57abe0311bd02604b3aab306272a03c8.setContent(html_fe32014a3bd4174d59f231d4c917d176);
+            
+        
+
+        circle_marker_c36e59ba4e9e3d69148b0f54f1e0c7e9.bindPopup(popup_57abe0311bd02604b3aab306272a03c8)
+        ;
+
+        
+    
+    
+            var circle_marker_648cf59e9b0b03d79bdcc2daddb23456 = L.circleMarker(
+                [40.304722, 16.752778],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3498db", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 1}
+            ).addTo(map_77ab80c1b762e1c265d59fa64231379c);
+        
+    
+        var popup_1d6394088fad78242d76c156161d89e9 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_c1abb1a70316f90f097d8bc46e9049f7 = $(`<div id="html_c1abb1a70316f90f097d8bc46e9049f7" style="width: 100.0%; height: 100.0%;">                 <div style='font-family: sans-serif; width: 220px;'>                     <h5 style='margin:0;'>None</h5>                     <small>Fiume: N/A</small><hr style='margin:8px 0;'>                     <b>Livello Reale:</b> N/D<br>                     <div style='margin-top:10px; padding:10px; background:#e8f0fe; border-radius:4px;'>                         <b style='color:#4285F4;'>GOOGLE FLOOD AI:</b><br>                         Monitoraggio attivo per bacino                     </div>                 </div>                 </div>`)[0];
+                popup_1d6394088fad78242d76c156161d89e9.setContent(html_c1abb1a70316f90f097d8bc46e9049f7);
+            
+        
+
+        circle_marker_648cf59e9b0b03d79bdcc2daddb23456.bindPopup(popup_1d6394088fad78242d76c156161d89e9)
+        ;
+
+        
+    
+    
+            var circle_marker_79ca9f9cb4437aafcb1040705ccd834b = L.circleMarker(
+                [40.574167, 15.656944],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3498db", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 1}
+            ).addTo(map_77ab80c1b762e1c265d59fa64231379c);
+        
+    
+        var popup_035c9ab700758193255d9d8650fc74ee = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_9ea0ed45a96b0d005365d457a600442a = $(`<div id="html_9ea0ed45a96b0d005365d457a600442a" style="width: 100.0%; height: 100.0%;">                 <div style='font-family: sans-serif; width: 220px;'>                     <h5 style='margin:0;'>None</h5>                     <small>Fiume: N/A</small><hr style='margin:8px 0;'>                     <b>Livello Reale:</b> N/D<br>                     <div style='margin-top:10px; padding:10px; background:#e8f0fe; border-radius:4px;'>                         <b style='color:#4285F4;'>GOOGLE FLOOD AI:</b><br>                         Monitoraggio attivo per bacino                     </div>                 </div>                 </div>`)[0];
+                popup_035c9ab700758193255d9d8650fc74ee.setContent(html_9ea0ed45a96b0d005365d457a600442a);
+            
+        
+
+        circle_marker_79ca9f9cb4437aafcb1040705ccd834b.bindPopup(popup_035c9ab700758193255d9d8650fc74ee)
+        ;
+
+        
+    
+    
+            var circle_marker_f0e8423baeb86628d0d646847abeb55b = L.circleMarker(
+                [39.992222, 15.801944],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 1}
+            ).addTo(map_77ab80c1b762e1c265d59fa64231379c);
+        
+    
+        var popup_645070b100228aade51283aec7e50838 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_3da4a6128a148d7b8971ead0a2392fcc = $(`<div id="html_3da4a6128a148d7b8971ead0a2392fcc" style="width: 100.0%; height: 100.0%;">                 <div style='font-family: sans-serif; width: 220px;'>                     <h5 style='margin:0;'>None</h5>                     <small>Fiume: N/A</small><hr style='margin:8px 0;'>                     <b>Livello Reale:</b> 1.51 m<br>                     <div style='margin-top:10px; padding:10px; background:#e8f0fe; border-radius:4px;'>                         <b style='color:#4285F4;'>GOOGLE FLOOD AI:</b><br>                         Monitoraggio attivo per bacino                     </div>                 </div>                 </div>`)[0];
+                popup_645070b100228aade51283aec7e50838.setContent(html_3da4a6128a148d7b8971ead0a2392fcc);
+            
+        
+
+        circle_marker_f0e8423baeb86628d0d646847abeb55b.bindPopup(popup_645070b100228aade51283aec7e50838)
+        ;
+
+        
+    
+    
+            var circle_marker_a72ffccf71dabefa8419114090538e4d = L.circleMarker(
+                [40.423056, 16.821667],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3498db", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 1}
+            ).addTo(map_77ab80c1b762e1c265d59fa64231379c);
+        
+    
+        var popup_3216cfb872ee2afdc6c11c9a284aeaf4 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_f5c56f29bf6369d5e4444723d30e6a85 = $(`<div id="html_f5c56f29bf6369d5e4444723d30e6a85" style="width: 100.0%; height: 100.0%;">                 <div style='font-family: sans-serif; width: 220px;'>                     <h5 style='margin:0;'>None</h5>                     <small>Fiume: N/A</small><hr style='margin:8px 0;'>                     <b>Livello Reale:</b> N/D<br>                     <div style='margin-top:10px; padding:10px; background:#e8f0fe; border-radius:4px;'>                         <b style='color:#4285F4;'>GOOGLE FLOOD AI:</b><br>                         Monitoraggio attivo per bacino                     </div>                 </div>                 </div>`)[0];
+                popup_3216cfb872ee2afdc6c11c9a284aeaf4.setContent(html_f5c56f29bf6369d5e4444723d30e6a85);
+            
+        
+
+        circle_marker_a72ffccf71dabefa8419114090538e4d.bindPopup(popup_3216cfb872ee2afdc6c11c9a284aeaf4)
+        ;
+
+        
+    
+    
+            var circle_marker_22848300ddb98693025c3507076e39dd = L.circleMarker(
+                [40.733056, 15.8025],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3498db", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 1}
+            ).addTo(map_77ab80c1b762e1c265d59fa64231379c);
+        
+    
+        var popup_cbd5622871c992418cd2cb03df02d826 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_44cd0460e84fc6be71f0e2df74f5c018 = $(`<div id="html_44cd0460e84fc6be71f0e2df74f5c018" style="width: 100.0%; height: 100.0%;">                 <div style='font-family: sans-serif; width: 220px;'>                     <h5 style='margin:0;'>None</h5>                     <small>Fiume: N/A</small><hr style='margin:8px 0;'>                     <b>Livello Reale:</b> N/D<br>                     <div style='margin-top:10px; padding:10px; background:#e8f0fe; border-radius:4px;'>                         <b style='color:#4285F4;'>GOOGLE FLOOD AI:</b><br>                         Monitoraggio attivo per bacino                     </div>                 </div>                 </div>`)[0];
+                popup_cbd5622871c992418cd2cb03df02d826.setContent(html_44cd0460e84fc6be71f0e2df74f5c018);
+            
+        
+
+        circle_marker_22848300ddb98693025c3507076e39dd.bindPopup(popup_cbd5622871c992418cd2cb03df02d826)
+        ;
+
+        
+    
+    
+            var circle_marker_13f83660823d612897098ed8879d5dd5 = L.circleMarker(
+                [40.626389, 15.796944],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3498db", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 1}
+            ).addTo(map_77ab80c1b762e1c265d59fa64231379c);
+        
+    
+        var popup_87ba32b01ff9a309c4cb4257767d6471 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_bb771bc89781040d1b2224189153366d = $(`<div id="html_bb771bc89781040d1b2224189153366d" style="width: 100.0%; height: 100.0%;">                 <div style='font-family: sans-serif; width: 220px;'>                     <h5 style='margin:0;'>None</h5>                     <small>Fiume: N/A</small><hr style='margin:8px 0;'>                     <b>Livello Reale:</b> 0.18 m<br>                     <div style='margin-top:10px; padding:10px; background:#e8f0fe; border-radius:4px;'>                         <b style='color:#4285F4;'>GOOGLE FLOOD AI:</b><br>                         Monitoraggio attivo per bacino                     </div>                 </div>                 </div>`)[0];
+                popup_87ba32b01ff9a309c4cb4257767d6471.setContent(html_bb771bc89781040d1b2224189153366d);
+            
+        
+
+        circle_marker_13f83660823d612897098ed8879d5dd5.bindPopup(popup_87ba32b01ff9a309c4cb4257767d6471)
+        ;
+
+        
+    
+    
+            var circle_marker_01f69dd84f457ba203b5f9ac1602301d = L.circleMarker(
+                [40.169722, 16.523611],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3498db", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 1}
+            ).addTo(map_77ab80c1b762e1c265d59fa64231379c);
+        
+    
+        var popup_99c75151edc43efc384d902b1c2bcc47 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_9de8b545249451d42364e1884d2b308d = $(`<div id="html_9de8b545249451d42364e1884d2b308d" style="width: 100.0%; height: 100.0%;">                 <div style='font-family: sans-serif; width: 220px;'>                     <h5 style='margin:0;'>None</h5>                     <small>Fiume: N/A</small><hr style='margin:8px 0;'>                     <b>Livello Reale:</b> N/D<br>                     <div style='margin-top:10px; padding:10px; background:#e8f0fe; border-radius:4px;'>                         <b style='color:#4285F4;'>GOOGLE FLOOD AI:</b><br>                         Monitoraggio attivo per bacino                     </div>                 </div>                 </div>`)[0];
+                popup_99c75151edc43efc384d902b1c2bcc47.setContent(html_9de8b545249451d42364e1884d2b308d);
+            
+        
+
+        circle_marker_01f69dd84f457ba203b5f9ac1602301d.bindPopup(popup_99c75151edc43efc384d902b1c2bcc47)
+        ;
+
+        
+    
+    
+            var circle_marker_4409e7f23bce4ad53b535e3ae1fdd92e = L.circleMarker(
+                [40.299444, 15.998611],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3498db", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 1}
+            ).addTo(map_77ab80c1b762e1c265d59fa64231379c);
+        
+    
+        var popup_6727d897bd451b2a5c5c2991a3b70e72 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_9478d9f7e9b100c2b5a2d45643c3d05d = $(`<div id="html_9478d9f7e9b100c2b5a2d45643c3d05d" style="width: 100.0%; height: 100.0%;">                 <div style='font-family: sans-serif; width: 220px;'>                     <h5 style='margin:0;'>None</h5>                     <small>Fiume: N/A</small><hr style='margin:8px 0;'>                     <b>Livello Reale:</b> N/D<br>                     <div style='margin-top:10px; padding:10px; background:#e8f0fe; border-radius:4px;'>                         <b style='color:#4285F4;'>GOOGLE FLOOD AI:</b><br>                         Monitoraggio attivo per bacino                     </div>                 </div>                 </div>`)[0];
+                popup_6727d897bd451b2a5c5c2991a3b70e72.setContent(html_9478d9f7e9b100c2b5a2d45643c3d05d);
+            
+        
+
+        circle_marker_4409e7f23bce4ad53b535e3ae1fdd92e.bindPopup(popup_6727d897bd451b2a5c5c2991a3b70e72)
+        ;
+
+        
+    
+    
+            var circle_marker_b25fa96bf17d1bef5c7ebd0022daed13 = L.circleMarker(
+                [40.160833, 15.985556],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3498db", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 1}
+            ).addTo(map_77ab80c1b762e1c265d59fa64231379c);
+        
+    
+        var popup_b802be2e8a13b756755f5e5510975371 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_34966386eab816a78f68171f290964c2 = $(`<div id="html_34966386eab816a78f68171f290964c2" style="width: 100.0%; height: 100.0%;">                 <div style='font-family: sans-serif; width: 220px;'>                     <h5 style='margin:0;'>None</h5>                     <small>Fiume: N/A</small><hr style='margin:8px 0;'>                     <b>Livello Reale:</b> N/D<br>                     <div style='margin-top:10px; padding:10px; background:#e8f0fe; border-radius:4px;'>                         <b style='color:#4285F4;'>GOOGLE FLOOD AI:</b><br>                         Monitoraggio attivo per bacino                     </div>                 </div>                 </div>`)[0];
+                popup_b802be2e8a13b756755f5e5510975371.setContent(html_34966386eab816a78f68171f290964c2);
+            
+        
+
+        circle_marker_b25fa96bf17d1bef5c7ebd0022daed13.bindPopup(popup_b802be2e8a13b756755f5e5510975371)
+        ;
+
+        
+    
+    
+            var circle_marker_73819fe891a47cd279480e4a63cc7647 = L.circleMarker(
+                [40.518889, 16.056667],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3498db", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 1}
+            ).addTo(map_77ab80c1b762e1c265d59fa64231379c);
+        
+    
+        var popup_9691d1e1337fcfec9d78e38351454ce6 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_cd8d459d46f9c524a30f17e997a43640 = $(`<div id="html_cd8d459d46f9c524a30f17e997a43640" style="width: 100.0%; height: 100.0%;">                 <div style='font-family: sans-serif; width: 220px;'>                     <h5 style='margin:0;'>None</h5>                     <small>Fiume: N/A</small><hr style='margin:8px 0;'>                     <b>Livello Reale:</b> N/D<br>                     <div style='margin-top:10px; padding:10px; background:#e8f0fe; border-radius:4px;'>                         <b style='color:#4285F4;'>GOOGLE FLOOD AI:</b><br>                         Monitoraggio attivo per bacino                     </div>                 </div>                 </div>`)[0];
+                popup_9691d1e1337fcfec9d78e38351454ce6.setContent(html_cd8d459d46f9c524a30f17e997a43640);
+            
+        
+
+        circle_marker_73819fe891a47cd279480e4a63cc7647.bindPopup(popup_9691d1e1337fcfec9d78e38351454ce6)
+        ;
+
+        
+    
+    
+            var circle_marker_3331eb001eab020bb05966b31483df12 = L.circleMarker(
+                [40.083889, 16.205833],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3498db", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 1}
+            ).addTo(map_77ab80c1b762e1c265d59fa64231379c);
+        
+    
+        var popup_7eff45322a6d98b5d4d278292a1ebca3 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_cdcf01908ff5fb1e7bc2c4ed558104c5 = $(`<div id="html_cdcf01908ff5fb1e7bc2c4ed558104c5" style="width: 100.0%; height: 100.0%;">                 <div style='font-family: sans-serif; width: 220px;'>                     <h5 style='margin:0;'>None</h5>                     <small>Fiume: N/A</small><hr style='margin:8px 0;'>                     <b>Livello Reale:</b> N/D<br>                     <div style='margin-top:10px; padding:10px; background:#e8f0fe; border-radius:4px;'>                         <b style='color:#4285F4;'>GOOGLE FLOOD AI:</b><br>                         Monitoraggio attivo per bacino                     </div>                 </div>                 </div>`)[0];
+                popup_7eff45322a6d98b5d4d278292a1ebca3.setContent(html_cdcf01908ff5fb1e7bc2c4ed558104c5);
+            
+        
+
+        circle_marker_3331eb001eab020bb05966b31483df12.bindPopup(popup_7eff45322a6d98b5d4d278292a1ebca3)
+        ;
+
+        
+    
+    
+            var circle_marker_b45a55ad1a94ca335e2f80ad9a0d5520 = L.circleMarker(
+                [40.733889, 15.593611],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3498db", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 1}
+            ).addTo(map_77ab80c1b762e1c265d59fa64231379c);
+        
+    
+        var popup_c874adbf0ccfe532d8e56a85d4edc6ec = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_00f3013ad92846e9fb63593ca1ff2109 = $(`<div id="html_00f3013ad92846e9fb63593ca1ff2109" style="width: 100.0%; height: 100.0%;">                 <div style='font-family: sans-serif; width: 220px;'>                     <h5 style='margin:0;'>None</h5>                     <small>Fiume: N/A</small><hr style='margin:8px 0;'>                     <b>Livello Reale:</b> N/D<br>                     <div style='margin-top:10px; padding:10px; background:#e8f0fe; border-radius:4px;'>                         <b style='color:#4285F4;'>GOOGLE FLOOD AI:</b><br>                         Monitoraggio attivo per bacino                     </div>                 </div>                 </div>`)[0];
+                popup_c874adbf0ccfe532d8e56a85d4edc6ec.setContent(html_00f3013ad92846e9fb63593ca1ff2109);
+            
+        
+
+        circle_marker_b45a55ad1a94ca335e2f80ad9a0d5520.bindPopup(popup_c874adbf0ccfe532d8e56a85d4edc6ec)
+        ;
+
+        
+    
+    
+            var circle_marker_4e999cc04bddcf5ab2ca779cffaa59ba = L.circleMarker(
+                [40.134167, 15.761944],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3498db", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 1}
+            ).addTo(map_77ab80c1b762e1c265d59fa64231379c);
+        
+    
+        var popup_3591a946492377866708257b27348fa2 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_fc478a4ee9d8063b22fac20e7c3790e6 = $(`<div id="html_fc478a4ee9d8063b22fac20e7c3790e6" style="width: 100.0%; height: 100.0%;">                 <div style='font-family: sans-serif; width: 220px;'>                     <h5 style='margin:0;'>None</h5>                     <small>Fiume: N/A</small><hr style='margin:8px 0;'>                     <b>Livello Reale:</b> N/D<br>                     <div style='margin-top:10px; padding:10px; background:#e8f0fe; border-radius:4px;'>                         <b style='color:#4285F4;'>GOOGLE FLOOD AI:</b><br>                         Monitoraggio attivo per bacino                     </div>                 </div>                 </div>`)[0];
+                popup_3591a946492377866708257b27348fa2.setContent(html_fc478a4ee9d8063b22fac20e7c3790e6);
+            
+        
+
+        circle_marker_4e999cc04bddcf5ab2ca779cffaa59ba.bindPopup(popup_3591a946492377866708257b27348fa2)
+        ;
+
+        
+    
+    
+            var circle_marker_cd7e950870700defe9d24db6b20aa212 = L.circleMarker(
+                [40.697778, 16.021389],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3498db", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 1}
+            ).addTo(map_77ab80c1b762e1c265d59fa64231379c);
+        
+    
+        var popup_57b086aaa34b0c5eb3536bdded32b173 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_241d6f84fe474b0bfdd1c672e59d4f37 = $(`<div id="html_241d6f84fe474b0bfdd1c672e59d4f37" style="width: 100.0%; height: 100.0%;">                 <div style='font-family: sans-serif; width: 220px;'>                     <h5 style='margin:0;'>None</h5>                     <small>Fiume: N/A</small><hr style='margin:8px 0;'>                     <b>Livello Reale:</b> N/D<br>                     <div style='margin-top:10px; padding:10px; background:#e8f0fe; border-radius:4px;'>                         <b style='color:#4285F4;'>GOOGLE FLOOD AI:</b><br>                         Monitoraggio attivo per bacino                     </div>                 </div>                 </div>`)[0];
+                popup_57b086aaa34b0c5eb3536bdded32b173.setContent(html_241d6f84fe474b0bfdd1c672e59d4f37);
+            
+        
+
+        circle_marker_cd7e950870700defe9d24db6b20aa212.bindPopup(popup_57b086aaa34b0c5eb3536bdded32b173)
+        ;
+
+        
+    
+    
+            var circle_marker_331f0ffabbf9bc5b60bdf668eb6e5918 = L.circleMarker(
+                [41.025, 15.965556],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3498db", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 1}
+            ).addTo(map_77ab80c1b762e1c265d59fa64231379c);
+        
+    
+        var popup_221ed7aef2707fb9959eabb97fda8fcd = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_9de01f4bfc28404a43ca31ef50f10a90 = $(`<div id="html_9de01f4bfc28404a43ca31ef50f10a90" style="width: 100.0%; height: 100.0%;">                 <div style='font-family: sans-serif; width: 220px;'>                     <h5 style='margin:0;'>None</h5>                     <small>Fiume: N/A</small><hr style='margin:8px 0;'>                     <b>Livello Reale:</b> N/D<br>                     <div style='margin-top:10px; padding:10px; background:#e8f0fe; border-radius:4px;'>                         <b style='color:#4285F4;'>GOOGLE FLOOD AI:</b><br>                         Monitoraggio attivo per bacino                     </div>                 </div>                 </div>`)[0];
+                popup_221ed7aef2707fb9959eabb97fda8fcd.setContent(html_9de01f4bfc28404a43ca31ef50f10a90);
+            
+        
+
+        circle_marker_331f0ffabbf9bc5b60bdf668eb6e5918.bindPopup(popup_221ed7aef2707fb9959eabb97fda8fcd)
+        ;
+
+        
+    
+    
+            var circle_marker_706e2771ae2b9caabf04958d32f6eda2 = L.circleMarker(
+                [40.936389, 15.606667],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3498db", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 1}
+            ).addTo(map_77ab80c1b762e1c265d59fa64231379c);
+        
+    
+        var popup_49eab016c2e3d574f48e7918b830828d = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_58b2bc4f276ad6590682f38d1386fa63 = $(`<div id="html_58b2bc4f276ad6590682f38d1386fa63" style="width: 100.0%; height: 100.0%;">                 <div style='font-family: sans-serif; width: 220px;'>                     <h5 style='margin:0;'>None</h5>                     <small>Fiume: N/A</small><hr style='margin:8px 0;'>                     <b>Livello Reale:</b> N/D<br>                     <div style='margin-top:10px; padding:10px; background:#e8f0fe; border-radius:4px;'>                         <b style='color:#4285F4;'>GOOGLE FLOOD AI:</b><br>                         Monitoraggio attivo per bacino                     </div>                 </div>                 </div>`)[0];
+                popup_49eab016c2e3d574f48e7918b830828d.setContent(html_58b2bc4f276ad6590682f38d1386fa63);
+            
+        
+
+        circle_marker_706e2771ae2b9caabf04958d32f6eda2.bindPopup(popup_49eab016c2e3d574f48e7918b830828d)
+        ;
+
+        
+    
+</script>
 </html>
