@@ -1,5 +1,5 @@
 {
-    "last_update": "08/01/2026 10:18",
+    "last_update": "08/01/2026 10:23",
     "stazioni": [
         {
             "nome": null,
@@ -1473,35 +1473,35 @@
     ],
     "dighe": [
         {
-            "nome": "Monte Cotugno",
+            "nome": "MONTE COTUGNO",
             "lat": 40.136,
             "lon": 16.202,
             "volume": 0.0,
             "percentuale": 0
         },
         {
-            "nome": "Pertusillo",
+            "nome": "PERTUSILLO",
             "lat": 40.271,
             "lon": 15.908,
             "volume": 0.0,
             "percentuale": 0
         },
         {
-            "nome": "San Giuliano",
+            "nome": "SAN GIULIANO",
             "lat": 40.612,
             "lon": 16.518,
             "volume": 0.0,
             "percentuale": 0
         },
         {
-            "nome": "Basentello",
+            "nome": "BASENTELLO",
             "lat": 40.735,
             "lon": 16.142,
             "volume": 0.0,
             "percentuale": 0
         },
         {
-            "nome": "Camastra",
+            "nome": "CAMASTRA",
             "lat": 40.528,
             "lon": 15.845,
             "volume": 0.0,
