@@ -1,1360 +1,1473 @@
 {
-    "last_update": "08/01/2026 09:51",
-    "fiumi": [
+    "last_update": "08/01/2026 10:07",
+    "stazioni": [
         {
-            "stazione": "Sconosciuta",
-            "fiume": "N/A",
+            "nome": null,
+            "source": "REGIONE",
             "lat": 40.728333,
             "lon": 15.9225,
             "livello": "N/D",
-            "google": {
-                "status": "OPERATIVO",
-                "severity": "NORMALE",
-                "link": "#"
+            "status": "REGOLARE",
+            "soglie": {
+                "L1": null,
+                "L2": null,
+                "L3": null
             }
         },
         {
-            "stazione": "Sconosciuta",
-            "fiume": "N/A",
+            "nome": null,
+            "source": "REGIONE",
             "lat": 40.952222,
             "lon": 15.629444,
             "livello": "N/D",
-            "google": {
-                "status": "OPERATIVO",
-                "severity": "NORMALE",
-                "link": "#"
+            "status": "REGOLARE",
+            "soglie": {
+                "L1": null,
+                "L2": null,
+                "L3": null
             }
         },
         {
-            "stazione": "Sconosciuta",
-            "fiume": "N/A",
+            "nome": null,
+            "source": "REGIONE",
             "lat": 40.584722,
             "lon": 16.579444,
             "livello": "0.21 m",
-            "google": {
-                "status": "OPERATIVO",
-                "severity": "NORMALE",
-                "link": "#"
+            "status": "REGOLARE",
+            "soglie": {
+                "L1": null,
+                "L2": null,
+                "L3": null
             }
         },
         {
-            "stazione": "Sconosciuta",
-            "fiume": "N/A",
+            "nome": null,
+            "source": "REGIONE",
             "lat": 40.390278,
             "lon": 16.656944,
             "livello": "2.09 m",
-            "google": {
-                "status": "OPERATIVO",
-                "severity": "NORMALE",
-                "link": "#"
+            "status": "REGOLARE",
+            "soglie": {
+                "L1": null,
+                "L2": null,
+                "L3": null
             }
         },
         {
-            "stazione": "Sconosciuta",
-            "fiume": "N/A",
+            "nome": null,
+            "source": "REGIONE",
             "lat": 40.5425,
             "lon": 15.569722,
             "livello": "0.27 m",
-            "google": {
-                "status": "OPERATIVO",
-                "severity": "NORMALE",
-                "link": "#"
+            "status": "REGOLARE",
+            "soglie": {
+                "L1": null,
+                "L2": null,
+                "L3": null
             }
         },
         {
-            "stazione": "Sconosciuta",
-            "fiume": "N/A",
+            "nome": null,
+            "source": "REGIONE",
             "lat": 40.521667,
             "lon": 15.912222,
             "livello": "N/D",
-            "google": {
-                "status": "OPERATIVO",
-                "severity": "NORMALE",
-                "link": "#"
+            "status": "REGOLARE",
+            "soglie": {
+                "L1": null,
+                "L2": null,
+                "L3": null
             }
         },
         {
-            "stazione": "Sconosciuta",
-            "fiume": "N/A",
+            "nome": null,
+            "source": "REGIONE",
             "lat": 40.748611,
             "lon": 16.239444,
             "livello": "N/D",
-            "google": {
-                "status": "OPERATIVO",
-                "severity": "NORMALE",
-                "link": "#"
+            "status": "REGOLARE",
+            "soglie": {
+                "L1": null,
+                "L2": null,
+                "L3": null
             }
         },
         {
-            "stazione": "Sconosciuta",
-            "fiume": "N/A",
+            "nome": null,
+            "source": "REGIONE",
             "lat": 41.049722,
             "lon": 15.794444,
             "livello": "N/D",
-            "google": {
-                "status": "OPERATIVO",
-                "severity": "NORMALE",
-                "link": "#"
+            "status": "REGOLARE",
+            "soglie": {
+                "L1": null,
+                "L2": null,
+                "L3": null
             }
         },
         {
-            "stazione": "Sconosciuta",
-            "fiume": "N/A",
+            "nome": null,
+            "source": "REGIONE",
             "lat": 40.296944,
             "lon": 15.909167,
             "livello": "0.49 m",
-            "google": {
-                "status": "OPERATIVO",
-                "severity": "NORMALE",
-                "link": "#"
+            "status": "REGOLARE",
+            "soglie": {
+                "L1": null,
+                "L2": null,
+                "L3": null
             }
         },
         {
-            "stazione": "Sconosciuta",
-            "fiume": "N/A",
+            "nome": null,
+            "source": "REGIONE",
             "lat": 40.069444,
             "lon": 16.106389,
             "livello": "1.16 m",
-            "google": {
-                "status": "OPERATIVO",
-                "severity": "NORMALE",
-                "link": "#"
+            "status": "REGOLARE",
+            "soglie": {
+                "L1": null,
+                "L2": null,
+                "L3": null
             }
         },
         {
-            "stazione": "Sconosciuta",
-            "fiume": "N/A",
+            "nome": null,
+            "source": "REGIONE",
             "lat": 40.021389,
             "lon": 16.140556,
             "livello": "N/D",
-            "google": {
-                "status": "OPERATIVO",
-                "severity": "NORMALE",
-                "link": "#"
+            "status": "REGOLARE",
+            "soglie": {
+                "L1": null,
+                "L2": null,
+                "L3": null
             }
         },
         {
-            "stazione": "Sconosciuta",
-            "fiume": "N/A",
+            "nome": null,
+            "source": "REGIONE",
             "lat": 40.254167,
             "lon": 15.983333,
             "livello": "N/D",
-            "google": {
-                "status": "OPERATIVO",
-                "severity": "NORMALE",
-                "link": "#"
+            "status": "REGOLARE",
+            "soglie": {
+                "L1": null,
+                "L2": null,
+                "L3": null
             }
         },
         {
-            "stazione": "Sconosciuta",
-            "fiume": "N/A",
+            "nome": null,
+            "source": "REGIONE",
             "lat": 40.247778,
             "lon": 15.893889,
             "livello": "1.27 m",
-            "google": {
-                "status": "OPERATIVO",
-                "severity": "NORMALE",
-                "link": "#"
+            "status": "REGOLARE",
+            "soglie": {
+                "L1": null,
+                "L2": null,
+                "L3": null
             }
         },
         {
-            "stazione": "Sconosciuta",
-            "fiume": "N/A",
+            "nome": null,
+            "source": "REGIONE",
             "lat": 41.048056,
             "lon": 15.786111,
             "livello": "N/D",
-            "google": {
-                "status": "OPERATIVO",
-                "severity": "NORMALE",
-                "link": "#"
+            "status": "REGOLARE",
+            "soglie": {
+                "L1": null,
+                "L2": null,
+                "L3": null
             }
         },
         {
-            "stazione": "Sconosciuta",
-            "fiume": "N/A",
+            "nome": null,
+            "source": "REGIONE",
             "lat": 40.858611,
             "lon": 15.848056,
             "livello": "N/D",
-            "google": {
-                "status": "OPERATIVO",
-                "severity": "NORMALE",
-                "link": "#"
+            "status": "REGOLARE",
+            "soglie": {
+                "L1": null,
+                "L2": null,
+                "L3": null
             }
         },
         {
-            "stazione": "Sconosciuta",
-            "fiume": "N/A",
+            "nome": null,
+            "source": "REGIONE",
             "lat": 39.983333,
             "lon": 16.297222,
             "livello": "N/D",
-            "google": {
-                "status": "OPERATIVO",
-                "severity": "NORMALE",
-                "link": "#"
+            "status": "REGOLARE",
+            "soglie": {
+                "L1": null,
+                "L2": null,
+                "L3": null
             }
         },
         {
-            "stazione": "Sconosciuta",
-            "fiume": "N/A",
+            "nome": null,
+            "source": "REGIONE",
             "lat": 39.953611,
             "lon": 15.976667,
             "livello": "0.77 m",
-            "google": {
-                "status": "OPERATIVO",
-                "severity": "NORMALE",
-                "link": "#"
+            "status": "REGOLARE",
+            "soglie": {
+                "L1": null,
+                "L2": null,
+                "L3": null
             }
         },
         {
-            "stazione": "Sconosciuta",
-            "fiume": "N/A",
+            "nome": null,
+            "source": "REGIONE",
             "lat": 40.5675,
             "lon": 16.49,
             "livello": "N/D",
-            "google": {
-                "status": "OPERATIVO",
-                "severity": "NORMALE",
-                "link": "#"
+            "status": "REGOLARE",
+            "soglie": {
+                "L1": null,
+                "L2": null,
+                "L3": null
             }
         },
         {
-            "stazione": "Sconosciuta",
-            "fiume": "N/A",
+            "nome": null,
+            "source": "REGIONE",
             "lat": 40.308611,
             "lon": 15.845,
             "livello": "0.97 m",
-            "google": {
-                "status": "OPERATIVO",
-                "severity": "NORMALE",
-                "link": "#"
+            "status": "REGOLARE",
+            "soglie": {
+                "L1": null,
+                "L2": null,
+                "L3": null
             }
         },
         {
-            "stazione": "Sconosciuta",
-            "fiume": "N/A",
+            "nome": null,
+            "source": "REGIONE",
             "lat": 40.647222,
             "lon": 15.930833,
             "livello": "0.28 m",
-            "google": {
-                "status": "OPERATIVO",
-                "severity": "NORMALE",
-                "link": "#"
+            "status": "REGOLARE",
+            "soglie": {
+                "L1": null,
+                "L2": null,
+                "L3": null
             }
         },
         {
-            "stazione": "Sconosciuta",
-            "fiume": "N/A",
+            "nome": null,
+            "source": "REGIONE",
             "lat": 40.999722,
             "lon": 15.825,
             "livello": "1.00 m",
-            "google": {
-                "status": "OPERATIVO",
-                "severity": "NORMALE",
-                "link": "#"
+            "status": "REGOLARE",
+            "soglie": {
+                "L1": null,
+                "L2": null,
+                "L3": null
             }
         },
         {
-            "stazione": "Sconosciuta",
-            "fiume": "N/A",
+            "nome": null,
+            "source": "REGIONE",
             "lat": 40.293333,
             "lon": 16.657222,
             "livello": "N/D",
-            "google": {
-                "status": "OPERATIVO",
-                "severity": "NORMALE",
-                "link": "#"
+            "status": "REGOLARE",
+            "soglie": {
+                "L1": null,
+                "L2": null,
+                "L3": null
             }
         },
         {
-            "stazione": "Sconosciuta",
-            "fiume": "N/A",
+            "nome": null,
+            "source": "REGIONE",
             "lat": 40.659722,
             "lon": 16.595278,
             "livello": "N/D",
-            "google": {
-                "status": "OPERATIVO",
-                "severity": "NORMALE",
-                "link": "#"
+            "status": "REGOLARE",
+            "soglie": {
+                "L1": null,
+                "L2": null,
+                "L3": null
             }
         },
         {
-            "stazione": "Sconosciuta",
-            "fiume": "N/A",
+            "nome": null,
+            "source": "REGIONE",
             "lat": 40.253889,
             "lon": 16.474722,
             "livello": "N/D",
-            "google": {
-                "status": "OPERATIVO",
-                "severity": "NORMALE",
-                "link": "#"
+            "status": "REGOLARE",
+            "soglie": {
+                "L1": null,
+                "L2": null,
+                "L3": null
             }
         },
         {
-            "stazione": "Sconosciuta",
-            "fiume": "N/A",
+            "nome": null,
+            "source": "REGIONE",
             "lat": 40.367222,
             "lon": 16.781389,
             "livello": "0.93 m",
-            "google": {
-                "status": "OPERATIVO",
-                "severity": "NORMALE",
-                "link": "#"
+            "status": "REGOLARE",
+            "soglie": {
+                "L1": null,
+                "L2": null,
+                "L3": null
             }
         },
         {
-            "stazione": "Sconosciuta",
-            "fiume": "N/A",
+            "nome": null,
+            "source": "REGIONE",
             "lat": 40.366389,
             "lon": 16.52,
             "livello": "0.18 m",
-            "google": {
-                "status": "OPERATIVO",
-                "severity": "NORMALE",
-                "link": "#"
+            "status": "REGOLARE",
+            "soglie": {
+                "L1": null,
+                "L2": null,
+                "L3": null
             }
         },
         {
-            "stazione": "Sconosciuta",
-            "fiume": "N/A",
+            "nome": null,
+            "source": "REGIONE",
             "lat": 40.926944,
             "lon": 16.065,
             "livello": "0.35 m",
-            "google": {
-                "status": "OPERATIVO",
-                "severity": "NORMALE",
-                "link": "#"
+            "status": "REGOLARE",
+            "soglie": {
+                "L1": null,
+                "L2": null,
+                "L3": null
             }
         },
         {
-            "stazione": "Sconosciuta",
-            "fiume": "N/A",
+            "nome": null,
+            "source": "REGIONE",
             "lat": 40.486111,
             "lon": 16.451667,
             "livello": "N/D",
-            "google": {
-                "status": "OPERATIVO",
-                "severity": "NORMALE",
-                "link": "#"
+            "status": "REGOLARE",
+            "soglie": {
+                "L1": null,
+                "L2": null,
+                "L3": null
             }
         },
         {
-            "stazione": "Sconosciuta",
-            "fiume": "N/A",
+            "nome": null,
+            "source": "REGIONE",
             "lat": 40.869167,
             "lon": 15.646667,
             "livello": "1.42 m",
-            "google": {
-                "status": "OPERATIVO",
-                "severity": "NORMALE",
-                "link": "#"
+            "status": "REGOLARE",
+            "soglie": {
+                "L1": null,
+                "L2": null,
+                "L3": null
             }
         },
         {
-            "stazione": "Sconosciuta",
-            "fiume": "N/A",
+            "nome": null,
+            "source": "REGIONE",
             "lat": 39.983611,
             "lon": 15.736111,
             "livello": "N/D",
-            "google": {
-                "status": "OPERATIVO",
-                "severity": "NORMALE",
-                "link": "#"
+            "status": "REGOLARE",
+            "soglie": {
+                "L1": null,
+                "L2": null,
+                "L3": null
             }
         },
         {
-            "stazione": "Sconosciuta",
-            "fiume": "N/A",
+            "nome": null,
+            "source": "REGIONE",
             "lat": 40.558611,
             "lon": 16.701667,
             "livello": "0.79 m",
-            "google": {
-                "status": "OPERATIVO",
-                "severity": "NORMALE",
-                "link": "#"
+            "status": "REGOLARE",
+            "soglie": {
+                "L1": null,
+                "L2": null,
+                "L3": null
             }
         },
         {
-            "stazione": "Sconosciuta",
-            "fiume": "N/A",
+            "nome": null,
+            "source": "REGIONE",
             "lat": 40.581944,
             "lon": 16.035278,
             "livello": "N/D",
-            "google": {
-                "status": "OPERATIVO",
-                "severity": "NORMALE",
-                "link": "#"
+            "status": "REGOLARE",
+            "soglie": {
+                "L1": null,
+                "L2": null,
+                "L3": null
             }
         },
         {
-            "stazione": "Sconosciuta",
-            "fiume": "N/A",
+            "nome": null,
+            "source": "REGIONE",
             "lat": 40.082778,
             "lon": 15.753333,
             "livello": "1.59 m",
-            "google": {
-                "status": "OPERATIVO",
-                "severity": "NORMALE",
-                "link": "#"
+            "status": "REGOLARE",
+            "soglie": {
+                "L1": null,
+                "L2": null,
+                "L3": null
             }
         },
         {
-            "stazione": "Sconosciuta",
-            "fiume": "N/A",
+            "nome": null,
+            "source": "REGIONE",
             "lat": 40.759722,
             "lon": 15.478889,
             "livello": "N/D",
-            "google": {
-                "status": "OPERATIVO",
-                "severity": "NORMALE",
-                "link": "#"
+            "status": "REGOLARE",
+            "soglie": {
+                "L1": null,
+                "L2": null,
+                "L3": null
             }
         },
         {
-            "stazione": "Sconosciuta",
-            "fiume": "N/A",
+            "nome": null,
+            "source": "REGIONE",
             "lat": 40.417222,
             "lon": 16.821389,
             "livello": "0.25 m",
-            "google": {
-                "status": "OPERATIVO",
-                "severity": "NORMALE",
-                "link": "#"
+            "status": "REGOLARE",
+            "soglie": {
+                "L1": null,
+                "L2": null,
+                "L3": null
             }
         },
         {
-            "stazione": "Sconosciuta",
-            "fiume": "N/A",
+            "nome": null,
+            "source": "REGIONE",
             "lat": 40.965278,
             "lon": 15.562778,
             "livello": "-0.01 m",
-            "google": {
-                "status": "OPERATIVO",
-                "severity": "NORMALE",
-                "link": "#"
+            "status": "REGOLARE",
+            "soglie": {
+                "L1": null,
+                "L2": null,
+                "L3": null
             }
         },
         {
-            "stazione": "Sconosciuta",
-            "fiume": "N/A",
+            "nome": null,
+            "source": "REGIONE",
             "lat": 40.104167,
             "lon": 16.39,
             "livello": "N/D",
-            "google": {
-                "status": "OPERATIVO",
-                "severity": "NORMALE",
-                "link": "#"
+            "status": "REGOLARE",
+            "soglie": {
+                "L1": null,
+                "L2": null,
+                "L3": null
             }
         },
         {
-            "stazione": "Sconosciuta",
-            "fiume": "N/A",
+            "nome": null,
+            "source": "REGIONE",
             "lat": 40.095278,
             "lon": 15.924722,
             "livello": "1.37 m",
-            "google": {
-                "status": "OPERATIVO",
-                "severity": "NORMALE",
-                "link": "#"
+            "status": "REGOLARE",
+            "soglie": {
+                "L1": null,
+                "L2": null,
+                "L3": null
             }
         },
         {
-            "stazione": "Sconosciuta",
-            "fiume": "N/A",
+            "nome": null,
+            "source": "REGIONE",
             "lat": 40.549444,
             "lon": 15.633889,
             "livello": "N/D",
-            "google": {
-                "status": "OPERATIVO",
-                "severity": "NORMALE",
-                "link": "#"
+            "status": "REGOLARE",
+            "soglie": {
+                "L1": null,
+                "L2": null,
+                "L3": null
             }
         },
         {
-            "stazione": "Sconosciuta",
-            "fiume": "N/A",
+            "nome": null,
+            "source": "REGIONE",
             "lat": 40.376111,
             "lon": 16.099444,
             "livello": "N/D",
-            "google": {
-                "status": "OPERATIVO",
-                "severity": "NORMALE",
-                "link": "#"
+            "status": "REGOLARE",
+            "soglie": {
+                "L1": null,
+                "L2": null,
+                "L3": null
             }
         },
         {
-            "stazione": "Sconosciuta",
-            "fiume": "N/A",
+            "nome": null,
+            "source": "REGIONE",
             "lat": 40.089722,
             "lon": 16.33,
             "livello": "N/D",
-            "google": {
-                "status": "OPERATIVO",
-                "severity": "NORMALE",
-                "link": "#"
+            "status": "REGOLARE",
+            "soglie": {
+                "L1": null,
+                "L2": null,
+                "L3": null
             }
         },
         {
-            "stazione": "Sconosciuta",
-            "fiume": "N/A",
+            "nome": null,
+            "source": "REGIONE",
             "lat": 40.253056,
             "lon": 15.885,
             "livello": "0.17 m",
-            "google": {
-                "status": "OPERATIVO",
-                "severity": "NORMALE",
-                "link": "#"
+            "status": "REGOLARE",
+            "soglie": {
+                "L1": null,
+                "L2": null,
+                "L3": null
             }
         },
         {
-            "stazione": "Sconosciuta",
-            "fiume": "N/A",
+            "nome": null,
+            "source": "REGIONE",
             "lat": 40.618889,
             "lon": 16.138333,
             "livello": "N/D",
-            "google": {
-                "status": "OPERATIVO",
-                "severity": "NORMALE",
-                "link": "#"
+            "status": "REGOLARE",
+            "soglie": {
+                "L1": null,
+                "L2": null,
+                "L3": null
             }
         },
         {
-            "stazione": "Sconosciuta",
-            "fiume": "N/A",
+            "nome": null,
+            "source": "REGIONE",
             "lat": 40.295833,
             "lon": 16.7275,
             "livello": "1.20 m",
-            "google": {
-                "status": "OPERATIVO",
-                "severity": "NORMALE",
-                "link": "#"
+            "status": "REGOLARE",
+            "soglie": {
+                "L1": null,
+                "L2": null,
+                "L3": null
             }
         },
         {
-            "stazione": "Sconosciuta",
-            "fiume": "N/A",
+            "nome": null,
+            "source": "REGIONE",
             "lat": 40.597778,
             "lon": 16.244444,
             "livello": "1.52 m",
-            "google": {
-                "status": "OPERATIVO",
-                "severity": "NORMALE",
-                "link": "#"
+            "status": "REGOLARE",
+            "soglie": {
+                "L1": null,
+                "L2": null,
+                "L3": null
             }
         },
         {
-            "stazione": "Sconosciuta",
-            "fiume": "N/A",
+            "nome": null,
+            "source": "REGIONE",
             "lat": 40.545,
             "lon": 16.075556,
             "livello": "0.86 m",
-            "google": {
-                "status": "OPERATIVO",
-                "severity": "NORMALE",
-                "link": "#"
+            "status": "REGOLARE",
+            "soglie": {
+                "L1": null,
+                "L2": null,
+                "L3": null
             }
         },
         {
-            "stazione": "Sconosciuta",
-            "fiume": "N/A",
+            "nome": null,
+            "source": "REGIONE",
             "lat": 39.985833,
             "lon": 15.721667,
             "livello": "N/D",
-            "google": {
-                "status": "OPERATIVO",
-                "severity": "NORMALE",
-                "link": "#"
+            "status": "REGOLARE",
+            "soglie": {
+                "L1": null,
+                "L2": null,
+                "L3": null
             }
         },
         {
-            "stazione": "Sconosciuta",
-            "fiume": "N/A",
+            "nome": null,
+            "source": "REGIONE",
             "lat": 40.5925,
             "lon": 16.376944,
             "livello": "N/D",
-            "google": {
-                "status": "OPERATIVO",
-                "severity": "NORMALE",
-                "link": "#"
+            "status": "REGOLARE",
+            "soglie": {
+                "L1": null,
+                "L2": null,
+                "L3": null
             }
         },
         {
-            "stazione": "Sconosciuta",
-            "fiume": "N/A",
+            "nome": null,
+            "source": "REGIONE",
             "lat": 40.377222,
             "lon": 15.829444,
             "livello": "N/D",
-            "google": {
-                "status": "OPERATIVO",
-                "severity": "NORMALE",
-                "link": "#"
+            "status": "REGOLARE",
+            "soglie": {
+                "L1": null,
+                "L2": null,
+                "L3": null
             }
         },
         {
-            "stazione": "Sconosciuta",
-            "fiume": "N/A",
+            "nome": null,
+            "source": "REGIONE",
             "lat": 40.763889,
             "lon": 15.985556,
             "livello": "N/D",
-            "google": {
-                "status": "OPERATIVO",
-                "severity": "NORMALE",
-                "link": "#"
+            "status": "REGOLARE",
+            "soglie": {
+                "L1": null,
+                "L2": null,
+                "L3": null
             }
         },
         {
-            "stazione": "Sconosciuta",
-            "fiume": "N/A",
+            "nome": null,
+            "source": "REGIONE",
             "lat": 40.96,
             "lon": 15.803333,
             "livello": "N/D",
-            "google": {
-                "status": "OPERATIVO",
-                "severity": "NORMALE",
-                "link": "#"
+            "status": "REGOLARE",
+            "soglie": {
+                "L1": null,
+                "L2": null,
+                "L3": null
             }
         },
         {
-            "stazione": "Sconosciuta",
-            "fiume": "N/A",
+            "nome": null,
+            "source": "REGIONE",
             "lat": 40.803056,
             "lon": 15.735833,
             "livello": "N/D",
-            "google": {
-                "status": "OPERATIVO",
-                "severity": "NORMALE",
-                "link": "#"
+            "status": "REGOLARE",
+            "soglie": {
+                "L1": null,
+                "L2": null,
+                "L3": null
             }
         },
         {
-            "stazione": "Sconosciuta",
-            "fiume": "N/A",
+            "nome": null,
+            "source": "REGIONE",
             "lat": 40.408889,
             "lon": 16.1125,
             "livello": "N/D",
-            "google": {
-                "status": "OPERATIVO",
-                "severity": "NORMALE",
-                "link": "#"
+            "status": "REGOLARE",
+            "soglie": {
+                "L1": null,
+                "L2": null,
+                "L3": null
             }
         },
         {
-            "stazione": "Sconosciuta",
-            "fiume": "N/A",
+            "nome": null,
+            "source": "REGIONE",
             "lat": 40.649444,
             "lon": 15.501389,
             "livello": "N/D",
-            "google": {
-                "status": "OPERATIVO",
-                "severity": "NORMALE",
-                "link": "#"
+            "status": "REGOLARE",
+            "soglie": {
+                "L1": null,
+                "L2": null,
+                "L3": null
             }
         },
         {
-            "stazione": "Sconosciuta",
-            "fiume": "N/A",
+            "nome": null,
+            "source": "REGIONE",
             "lat": 40.880556,
             "lon": 15.654722,
             "livello": "N/D",
-            "google": {
-                "status": "OPERATIVO",
-                "severity": "NORMALE",
-                "link": "#"
+            "status": "REGOLARE",
+            "soglie": {
+                "L1": null,
+                "L2": null,
+                "L3": null
             }
         },
         {
-            "stazione": "Sconosciuta",
-            "fiume": "N/A",
+            "nome": null,
+            "source": "REGIONE",
             "lat": 40.902778,
             "lon": 15.503611,
             "livello": "1.42 m",
-            "google": {
-                "status": "OPERATIVO",
-                "severity": "NORMALE",
-                "link": "#"
+            "status": "REGOLARE",
+            "soglie": {
+                "L1": null,
+                "L2": null,
+                "L3": null
             }
         },
         {
-            "stazione": "Sconosciuta",
-            "fiume": "N/A",
+            "nome": null,
+            "source": "REGIONE",
             "lat": 40.637778,
             "lon": 15.6375,
             "livello": "N/D",
-            "google": {
-                "status": "OPERATIVO",
-                "severity": "NORMALE",
-                "link": "#"
+            "status": "REGOLARE",
+            "soglie": {
+                "L1": null,
+                "L2": null,
+                "L3": null
             }
         },
         {
-            "stazione": "Sconosciuta",
-            "fiume": "N/A",
+            "nome": null,
+            "source": "REGIONE",
             "lat": 40.325,
             "lon": 15.773889,
             "livello": "N/D",
-            "google": {
-                "status": "OPERATIVO",
-                "severity": "NORMALE",
-                "link": "#"
+            "status": "REGOLARE",
+            "soglie": {
+                "L1": null,
+                "L2": null,
+                "L3": null
             }
         },
         {
-            "stazione": "Sconosciuta",
-            "fiume": "N/A",
+            "nome": null,
+            "source": "REGIONE",
             "lat": 40.994444,
             "lon": 15.653056,
             "livello": "N/D",
-            "google": {
-                "status": "OPERATIVO",
-                "severity": "NORMALE",
-                "link": "#"
+            "status": "REGOLARE",
+            "soglie": {
+                "L1": null,
+                "L2": null,
+                "L3": null
             }
         },
         {
-            "stazione": "Sconosciuta",
-            "fiume": "N/A",
+            "nome": null,
+            "source": "REGIONE",
             "lat": 40.6325,
             "lon": 16.27,
             "livello": "N/D",
-            "google": {
-                "status": "OPERATIVO",
-                "severity": "NORMALE",
-                "link": "#"
+            "status": "REGOLARE",
+            "soglie": {
+                "L1": null,
+                "L2": null,
+                "L3": null
             }
         },
         {
-            "stazione": "Sconosciuta",
-            "fiume": "N/A",
+            "nome": null,
+            "source": "REGIONE",
             "lat": 40.266389,
             "lon": 16.226389,
             "livello": "0.14 m",
-            "google": {
-                "status": "OPERATIVO",
-                "severity": "NORMALE",
-                "link": "#"
+            "status": "REGOLARE",
+            "soglie": {
+                "L1": null,
+                "L2": null,
+                "L3": null
             }
         },
         {
-            "stazione": "Sconosciuta",
-            "fiume": "N/A",
+            "nome": null,
+            "source": "REGIONE",
             "lat": 39.94,
             "lon": 16.050556,
             "livello": "N/D",
-            "google": {
-                "status": "OPERATIVO",
-                "severity": "NORMALE",
-                "link": "#"
+            "status": "REGOLARE",
+            "soglie": {
+                "L1": null,
+                "L2": null,
+                "L3": null
             }
         },
         {
-            "stazione": "Sconosciuta",
-            "fiume": "N/A",
+            "nome": null,
+            "source": "REGIONE",
             "lat": 40.636944,
             "lon": 15.801667,
             "livello": "N/D",
-            "google": {
-                "status": "OPERATIVO",
-                "severity": "NORMALE",
-                "link": "#"
+            "status": "REGOLARE",
+            "soglie": {
+                "L1": null,
+                "L2": null,
+                "L3": null
             }
         },
         {
-            "stazione": "Sconosciuta",
-            "fiume": "N/A",
+            "nome": null,
+            "source": "REGIONE",
             "lat": 40.840278,
             "lon": 16.003889,
             "livello": "N/D",
-            "google": {
-                "status": "OPERATIVO",
-                "severity": "NORMALE",
-                "link": "#"
+            "status": "REGOLARE",
+            "soglie": {
+                "L1": null,
+                "L2": null,
+                "L3": null
             }
         },
         {
-            "stazione": "Sconosciuta",
-            "fiume": "N/A",
+            "nome": null,
+            "source": "REGIONE",
             "lat": 40.989167,
             "lon": 15.627222,
             "livello": "N/D",
-            "google": {
-                "status": "OPERATIVO",
-                "severity": "NORMALE",
-                "link": "#"
+            "status": "REGOLARE",
+            "soglie": {
+                "L1": null,
+                "L2": null,
+                "L3": null
             }
         },
         {
-            "stazione": "Sconosciuta",
-            "fiume": "N/A",
+            "nome": null,
+            "source": "REGIONE",
             "lat": 40.9575,
             "lon": 15.798611,
             "livello": "N/D",
-            "google": {
-                "status": "OPERATIVO",
-                "severity": "NORMALE",
-                "link": "#"
+            "status": "REGOLARE",
+            "soglie": {
+                "L1": null,
+                "L2": null,
+                "L3": null
             }
         },
         {
-            "stazione": "Sconosciuta",
-            "fiume": "N/A",
+            "nome": null,
+            "source": "REGIONE",
             "lat": 40.479722,
             "lon": 15.641389,
             "livello": "N/D",
-            "google": {
-                "status": "OPERATIVO",
-                "severity": "NORMALE",
-                "link": "#"
+            "status": "REGOLARE",
+            "soglie": {
+                "L1": null,
+                "L2": null,
+                "L3": null
             }
         },
         {
-            "stazione": "Sconosciuta",
-            "fiume": "N/A",
+            "nome": null,
+            "source": "REGIONE",
             "lat": 40.864167,
             "lon": 15.553611,
             "livello": "N/D",
-            "google": {
-                "status": "OPERATIVO",
-                "severity": "NORMALE",
-                "link": "#"
+            "status": "REGOLARE",
+            "soglie": {
+                "L1": null,
+                "L2": null,
+                "L3": null
             }
         },
         {
-            "stazione": "Sconosciuta",
-            "fiume": "N/A",
+            "nome": null,
+            "source": "REGIONE",
             "lat": 40.591944,
             "lon": 15.516111,
             "livello": "N/D",
-            "google": {
-                "status": "OPERATIVO",
-                "severity": "NORMALE",
-                "link": "#"
+            "status": "REGOLARE",
+            "soglie": {
+                "L1": null,
+                "L2": null,
+                "L3": null
             }
         },
         {
-            "stazione": "Sconosciuta",
-            "fiume": "N/A",
+            "nome": null,
+            "source": "REGIONE",
             "lat": 40.598611,
             "lon": 15.787222,
             "livello": "0.14 m",
-            "google": {
-                "status": "OPERATIVO",
-                "severity": "NORMALE",
-                "link": "#"
+            "status": "REGOLARE",
+            "soglie": {
+                "L1": null,
+                "L2": null,
+                "L3": null
             }
         },
         {
-            "stazione": "Sconosciuta",
-            "fiume": "N/A",
+            "nome": null,
+            "source": "REGIONE",
             "lat": 40.426389,
             "lon": 15.729444,
             "livello": "N/D",
-            "google": {
-                "status": "OPERATIVO",
-                "severity": "NORMALE",
-                "link": "#"
+            "status": "REGOLARE",
+            "soglie": {
+                "L1": null,
+                "L2": null,
+                "L3": null
             }
         },
         {
-            "stazione": "Sconosciuta",
-            "fiume": "N/A",
+            "nome": null,
+            "source": "REGIONE",
             "lat": 40.383611,
             "lon": 16.038056,
             "livello": "N/D",
-            "google": {
-                "status": "OPERATIVO",
-                "severity": "NORMALE",
-                "link": "#"
+            "status": "REGOLARE",
+            "soglie": {
+                "L1": null,
+                "L2": null,
+                "L3": null
             }
         },
         {
-            "stazione": "Sconosciuta",
-            "fiume": "N/A",
+            "nome": null,
+            "source": "REGIONE",
             "lat": 40.534722,
             "lon": 16.181944,
             "livello": "N/D",
-            "google": {
-                "status": "OPERATIVO",
-                "severity": "NORMALE",
-                "link": "#"
+            "status": "REGOLARE",
+            "soglie": {
+                "L1": null,
+                "L2": null,
+                "L3": null
             }
         },
         {
-            "stazione": "Sconosciuta",
-            "fiume": "N/A",
+            "nome": null,
+            "source": "REGIONE",
             "lat": 40.475278,
             "lon": 16.755,
             "livello": "1.32 m",
-            "google": {
-                "status": "OPERATIVO",
-                "severity": "NORMALE",
-                "link": "#"
+            "status": "REGOLARE",
+            "soglie": {
+                "L1": null,
+                "L2": null,
+                "L3": null
             }
         },
         {
-            "stazione": "Sconosciuta",
-            "fiume": "N/A",
+            "nome": null,
+            "source": "REGIONE",
             "lat": 40.916111,
             "lon": 15.735833,
             "livello": "N/D",
-            "google": {
-                "status": "OPERATIVO",
-                "severity": "NORMALE",
-                "link": "#"
+            "status": "REGOLARE",
+            "soglie": {
+                "L1": null,
+                "L2": null,
+                "L3": null
             }
         },
         {
-            "stazione": "Sconosciuta",
-            "fiume": "N/A",
+            "nome": null,
+            "source": "REGIONE",
             "lat": 40.639444,
             "lon": 16.433056,
             "livello": "0.83 m",
-            "google": {
-                "status": "OPERATIVO",
-                "severity": "NORMALE",
-                "link": "#"
+            "status": "REGOLARE",
+            "soglie": {
+                "L1": null,
+                "L2": null,
+                "L3": null
             }
         },
         {
-            "stazione": "Sconosciuta",
-            "fiume": "N/A",
+            "nome": null,
+            "source": "REGIONE",
             "lat": 40.481667,
             "lon": 16.251111,
             "livello": "N/D",
-            "google": {
-                "status": "OPERATIVO",
-                "severity": "NORMALE",
-                "link": "#"
+            "status": "REGOLARE",
+            "soglie": {
+                "L1": null,
+                "L2": null,
+                "L3": null
             }
         },
         {
-            "stazione": "Sconosciuta",
-            "fiume": "N/A",
+            "nome": null,
+            "source": "REGIONE",
             "lat": 40.165278,
             "lon": 16.648611,
             "livello": "0.28 m",
-            "google": {
-                "status": "OPERATIVO",
-                "severity": "NORMALE",
-                "link": "#"
+            "status": "REGOLARE",
+            "soglie": {
+                "L1": null,
+                "L2": null,
+                "L3": null
             }
         },
         {
-            "stazione": "Sconosciuta",
-            "fiume": "N/A",
+            "nome": null,
+            "source": "REGIONE",
             "lat": 40.485,
             "lon": 15.763056,
             "livello": "N/D",
-            "google": {
-                "status": "OPERATIVO",
-                "severity": "NORMALE",
-                "link": "#"
+            "status": "REGOLARE",
+            "soglie": {
+                "L1": null,
+                "L2": null,
+                "L3": null
             }
         },
         {
-            "stazione": "Sconosciuta",
-            "fiume": "N/A",
+            "nome": null,
+            "source": "REGIONE",
             "lat": 40.669444,
             "lon": 15.915278,
             "livello": "N/D",
-            "google": {
-                "status": "OPERATIVO",
-                "severity": "NORMALE",
-                "link": "#"
+            "status": "REGOLARE",
+            "soglie": {
+                "L1": null,
+                "L2": null,
+                "L3": null
             }
         },
         {
-            "stazione": "Sconosciuta",
-            "fiume": "N/A",
+            "nome": null,
+            "source": "REGIONE",
             "lat": 40.728611,
             "lon": 15.714444,
             "livello": "N/D",
-            "google": {
-                "status": "OPERATIVO",
-                "severity": "NORMALE",
-                "link": "#"
+            "status": "REGOLARE",
+            "soglie": {
+                "L1": null,
+                "L2": null,
+                "L3": null
             }
         },
         {
-            "stazione": "Sconosciuta",
-            "fiume": "N/A",
+            "nome": null,
+            "source": "REGIONE",
             "lat": 40.934722,
             "lon": 15.971944,
             "livello": "N/D",
-            "google": {
-                "status": "OPERATIVO",
-                "severity": "NORMALE",
-                "link": "#"
+            "status": "REGOLARE",
+            "soglie": {
+                "L1": null,
+                "L2": null,
+                "L3": null
             }
         },
         {
-            "stazione": "Sconosciuta",
-            "fiume": "N/A",
+            "nome": null,
+            "source": "REGIONE",
             "lat": 40.408333,
             "lon": 16.225833,
             "livello": "N/D",
-            "google": {
-                "status": "OPERATIVO",
-                "severity": "NORMALE",
-                "link": "#"
+            "status": "REGOLARE",
+            "soglie": {
+                "L1": null,
+                "L2": null,
+                "L3": null
             }
         },
         {
-            "stazione": "Sconosciuta",
-            "fiume": "N/A",
+            "nome": null,
+            "source": "REGIONE",
             "lat": 40.556111,
             "lon": 16.330556,
             "livello": "N/D",
-            "google": {
-                "status": "OPERATIVO",
-                "severity": "NORMALE",
-                "link": "#"
+            "status": "REGOLARE",
+            "soglie": {
+                "L1": null,
+                "L2": null,
+                "L3": null
             }
         },
         {
-            "stazione": "Sconosciuta",
-            "fiume": "N/A",
+            "nome": null,
+            "source": "REGIONE",
             "lat": 40.431944,
             "lon": 16.569167,
             "livello": "2.16 m",
-            "google": {
-                "status": "OPERATIVO",
-                "severity": "NORMALE",
-                "link": "#"
+            "status": "REGOLARE",
+            "soglie": {
+                "L1": null,
+                "L2": null,
+                "L3": null
             }
         },
         {
-            "stazione": "Sconosciuta",
-            "fiume": "N/A",
+            "nome": null,
+            "source": "REGIONE",
             "lat": 40.456667,
             "lon": 15.973333,
             "livello": "N/D",
-            "google": {
-                "status": "OPERATIVO",
-                "severity": "NORMALE",
-                "link": "#"
+            "status": "REGOLARE",
+            "soglie": {
+                "L1": null,
+                "L2": null,
+                "L3": null
             }
         },
         {
-            "stazione": "Sconosciuta",
-            "fiume": "N/A",
+            "nome": null,
+            "source": "REGIONE",
             "lat": 40.236944,
             "lon": 16.036389,
             "livello": "N/D",
-            "google": {
-                "status": "OPERATIVO",
-                "severity": "NORMALE",
-                "link": "#"
+            "status": "REGOLARE",
+            "soglie": {
+                "L1": null,
+                "L2": null,
+                "L3": null
             }
         },
         {
-            "stazione": "Sconosciuta",
-            "fiume": "N/A",
+            "nome": null,
+            "source": "REGIONE",
             "lat": 40.226111,
             "lon": 16.686667,
             "livello": "-0.45 m",
-            "google": {
-                "status": "OPERATIVO",
-                "severity": "NORMALE",
-                "link": "#"
+            "status": "REGOLARE",
+            "soglie": {
+                "L1": null,
+                "L2": null,
+                "L3": null
             }
         },
         {
-            "stazione": "Sconosciuta",
-            "fiume": "N/A",
+            "nome": null,
+            "source": "REGIONE",
             "lat": 40.500556,
             "lon": 15.761111,
             "livello": "N/D",
-            "google": {
-                "status": "OPERATIVO",
-                "severity": "NORMALE",
-                "link": "#"
+            "status": "REGOLARE",
+            "soglie": {
+                "L1": null,
+                "L2": null,
+                "L3": null
             }
         },
         {
-            "stazione": "Sconosciuta",
-            "fiume": "N/A",
+            "nome": null,
+            "source": "REGIONE",
             "lat": 39.936389,
             "lon": 15.767778,
             "livello": "-0.26 m",
-            "google": {
-                "status": "OPERATIVO",
-                "severity": "NORMALE",
-                "link": "#"
+            "status": "REGOLARE",
+            "soglie": {
+                "L1": null,
+                "L2": null,
+                "L3": null
             }
         },
         {
-            "stazione": "Sconosciuta",
-            "fiume": "N/A",
+            "nome": null,
+            "source": "REGIONE",
             "lat": 40.819722,
             "lon": 15.540278,
             "livello": "N/D",
-            "google": {
-                "status": "OPERATIVO",
-                "severity": "NORMALE",
-                "link": "#"
+            "status": "REGOLARE",
+            "soglie": {
+                "L1": null,
+                "L2": null,
+                "L3": null
             }
         },
         {
-            "stazione": "Sconosciuta",
-            "fiume": "N/A",
+            "nome": null,
+            "source": "REGIONE",
             "lat": 40.210556,
             "lon": 16.199167,
             "livello": "N/D",
-            "google": {
-                "status": "OPERATIVO",
-                "severity": "NORMALE",
-                "link": "#"
+            "status": "REGOLARE",
+            "soglie": {
+                "L1": null,
+                "L2": null,
+                "L3": null
             }
         },
         {
-            "stazione": "Sconosciuta",
-            "fiume": "N/A",
+            "nome": null,
+            "source": "REGIONE",
             "lat": 40.132222,
             "lon": 16.304444,
             "livello": "0.29 m",
-            "google": {
-                "status": "OPERATIVO",
-                "severity": "NORMALE",
-                "link": "#"
+            "status": "REGOLARE",
+            "soglie": {
+                "L1": null,
+                "L2": null,
+                "L3": null
             }
         },
         {
-            "stazione": "Sconosciuta",
-            "fiume": "N/A",
+            "nome": null,
+            "source": "REGIONE",
             "lat": 40.516389,
             "lon": 16.5475,
             "livello": "N/D",
-            "google": {
-                "status": "OPERATIVO",
-                "severity": "NORMALE",
-                "link": "#"
+            "status": "REGOLARE",
+            "soglie": {
+                "L1": null,
+                "L2": null,
+                "L3": null
             }
         },
         {
-            "stazione": "Sconosciuta",
-            "fiume": "N/A",
+            "nome": null,
+            "source": "REGIONE",
             "lat": 40.172778,
             "lon": 16.44,
             "livello": "-0.32 m",
-            "google": {
-                "status": "OPERATIVO",
-                "severity": "NORMALE",
-                "link": "#"
+            "status": "REGOLARE",
+            "soglie": {
+                "L1": null,
+                "L2": null,
+                "L3": null
             }
         },
         {
-            "stazione": "Sconosciuta",
-            "fiume": "N/A",
+            "nome": null,
+            "source": "REGIONE",
             "lat": 40.833333,
             "lon": 15.398889,
             "livello": "N/D",
-            "google": {
-                "status": "OPERATIVO",
-                "severity": "NORMALE",
-                "link": "#"
+            "status": "REGOLARE",
+            "soglie": {
+                "L1": null,
+                "L2": null,
+                "L3": null
             }
         },
         {
-            "stazione": "Sconosciuta",
-            "fiume": "N/A",
+            "nome": null,
+            "source": "REGIONE",
             "lat": 40.903889,
             "lon": 15.823056,
             "livello": "N/D",
-            "google": {
-                "status": "OPERATIVO",
-                "severity": "NORMALE",
-                "link": "#"
+            "status": "REGOLARE",
+            "soglie": {
+                "L1": null,
+                "L2": null,
+                "L3": null
             }
         },
         {
-            "stazione": "Sconosciuta",
-            "fiume": "N/A",
+            "nome": null,
+            "source": "REGIONE",
             "lat": 40.304722,
             "lon": 16.752778,
             "livello": "N/D",
-            "google": {
-                "status": "OPERATIVO",
-                "severity": "NORMALE",
-                "link": "#"
+            "status": "REGOLARE",
+            "soglie": {
+                "L1": null,
+                "L2": null,
+                "L3": null
             }
         },
         {
-            "stazione": "Sconosciuta",
-            "fiume": "N/A",
+            "nome": null,
+            "source": "REGIONE",
             "lat": 40.574167,
             "lon": 15.656944,
             "livello": "N/D",
-            "google": {
-                "status": "OPERATIVO",
-                "severity": "NORMALE",
-                "link": "#"
+            "status": "REGOLARE",
+            "soglie": {
+                "L1": null,
+                "L2": null,
+                "L3": null
             }
         },
         {
-            "stazione": "Sconosciuta",
-            "fiume": "N/A",
+            "nome": null,
+            "source": "REGIONE",
             "lat": 39.992222,
             "lon": 15.801944,
             "livello": "1.50 m",
-            "google": {
-                "status": "OPERATIVO",
-                "severity": "NORMALE",
-                "link": "#"
+            "status": "REGOLARE",
+            "soglie": {
+                "L1": null,
+                "L2": null,
+                "L3": null
             }
         },
         {
-            "stazione": "Sconosciuta",
-            "fiume": "N/A",
+            "nome": null,
+            "source": "REGIONE",
             "lat": 40.423056,
             "lon": 16.821667,
             "livello": "N/D",
-            "google": {
-                "status": "OPERATIVO",
-                "severity": "NORMALE",
-                "link": "#"
+            "status": "REGOLARE",
+            "soglie": {
+                "L1": null,
+                "L2": null,
+                "L3": null
             }
         },
         {
-            "stazione": "Sconosciuta",
-            "fiume": "N/A",
+            "nome": null,
+            "source": "REGIONE",
             "lat": 40.733056,
             "lon": 15.8025,
             "livello": "N/D",
-            "google": {
-                "status": "OPERATIVO",
-                "severity": "NORMALE",
-                "link": "#"
+            "status": "REGOLARE",
+            "soglie": {
+                "L1": null,
+                "L2": null,
+                "L3": null
             }
         },
         {
-            "stazione": "Sconosciuta",
-            "fiume": "N/A",
+            "nome": null,
+            "source": "REGIONE",
             "lat": 40.626389,
             "lon": 15.796944,
             "livello": "0.06 m",
-            "google": {
-                "status": "OPERATIVO",
-                "severity": "NORMALE",
-                "link": "#"
+            "status": "REGOLARE",
+            "soglie": {
+                "L1": null,
+                "L2": null,
+                "L3": null
             }
         },
         {
-            "stazione": "Sconosciuta",
-            "fiume": "N/A",
+            "nome": null,
+            "source": "REGIONE",
             "lat": 40.169722,
             "lon": 16.523611,
             "livello": "N/D",
-            "google": {
-                "status": "OPERATIVO",
-                "severity": "NORMALE",
-                "link": "#"
+            "status": "REGOLARE",
+            "soglie": {
+                "L1": null,
+                "L2": null,
+                "L3": null
             }
         },
         {
-            "stazione": "Sconosciuta",
-            "fiume": "N/A",
+            "nome": null,
+            "source": "REGIONE",
             "lat": 40.299444,
             "lon": 15.998611,
             "livello": "N/D",
-            "google": {
-                "status": "OPERATIVO",
-                "severity": "NORMALE",
-                "link": "#"
+            "status": "REGOLARE",
+            "soglie": {
+                "L1": null,
+                "L2": null,
+                "L3": null
             }
         },
         {
-            "stazione": "Sconosciuta",
-            "fiume": "N/A",
+            "nome": null,
+            "source": "REGIONE",
             "lat": 40.160833,
             "lon": 15.985556,
             "livello": "N/D",
-            "google": {
-                "status": "OPERATIVO",
-                "severity": "NORMALE",
-                "link": "#"
+            "status": "REGOLARE",
+            "soglie": {
+                "L1": null,
+                "L2": null,
+                "L3": null
             }
         },
         {
-            "stazione": "Sconosciuta",
-            "fiume": "N/A",
+            "nome": null,
+            "source": "REGIONE",
             "lat": 40.518889,
             "lon": 16.056667,
             "livello": "N/D",
-            "google": {
-                "status": "OPERATIVO",
-                "severity": "NORMALE",
-                "link": "#"
+            "status": "REGOLARE",
+            "soglie": {
+                "L1": null,
+                "L2": null,
+                "L3": null
             }
         },
         {
-            "stazione": "Sconosciuta",
-            "fiume": "N/A",
+            "nome": null,
+            "source": "REGIONE",
             "lat": 40.083889,
             "lon": 16.205833,
             "livello": "N/D",
-            "google": {
-                "status": "OPERATIVO",
-                "severity": "NORMALE",
-                "link": "#"
+            "status": "REGOLARE",
+            "soglie": {
+                "L1": null,
+                "L2": null,
+                "L3": null
             }
         },
         {
-            "stazione": "Sconosciuta",
-            "fiume": "N/A",
+            "nome": null,
+            "source": "REGIONE",
             "lat": 40.733889,
             "lon": 15.593611,
             "livello": "N/D",
-            "google": {
-                "status": "OPERATIVO",
-                "severity": "NORMALE",
-                "link": "#"
+            "status": "REGOLARE",
+            "soglie": {
+                "L1": null,
+                "L2": null,
+                "L3": null
             }
         },
         {
-            "stazione": "Sconosciuta",
-            "fiume": "N/A",
+            "nome": null,
+            "source": "REGIONE",
             "lat": 40.134167,
             "lon": 15.761944,
             "livello": "N/D",
-            "google": {
-                "status": "OPERATIVO",
-                "severity": "NORMALE",
-                "link": "#"
+            "status": "REGOLARE",
+            "soglie": {
+                "L1": null,
+                "L2": null,
+                "L3": null
             }
         },
         {
-            "stazione": "Sconosciuta",
-            "fiume": "N/A",
+            "nome": null,
+            "source": "REGIONE",
             "lat": 40.697778,
             "lon": 16.021389,
             "livello": "N/D",
-            "google": {
-                "status": "OPERATIVO",
-                "severity": "NORMALE",
-                "link": "#"
+            "status": "REGOLARE",
+            "soglie": {
+                "L1": null,
+                "L2": null,
+                "L3": null
             }
         },
         {
-            "stazione": "Sconosciuta",
-            "fiume": "N/A",
+            "nome": null,
+            "source": "REGIONE",
             "lat": 41.025,
             "lon": 15.965556,
             "livello": "N/D",
-            "google": {
-                "status": "OPERATIVO",
-                "severity": "NORMALE",
-                "link": "#"
+            "status": "REGOLARE",
+            "soglie": {
+                "L1": null,
+                "L2": null,
+                "L3": null
             }
         },
         {
-            "stazione": "Sconosciuta",
-            "fiume": "N/A",
+            "nome": null,
+            "source": "REGIONE",
             "lat": 40.936389,
             "lon": 15.606667,
             "livello": "N/D",
-            "google": {
-                "status": "OPERATIVO",
-                "severity": "NORMALE",
-                "link": "#"
+            "status": "REGOLARE",
+            "soglie": {
+                "L1": null,
+                "L2": null,
+                "L3": null
             }
         }
     ],
@@ -1363,58 +1476,36 @@
             "nome": "Monte Cotugno",
             "lat": 40.136,
             "lon": 16.202,
-            "volume": 0.0,
-            "percentuale": 0.0,
-            "data": "N/D"
+            "volume": 0,
+            "percentuale": 0
         },
         {
             "nome": "Pertusillo",
             "lat": 40.271,
             "lon": 15.908,
-            "volume": 0.0,
-            "percentuale": 0.0,
-            "data": "N/D"
+            "volume": 0,
+            "percentuale": 0
         },
         {
             "nome": "San Giuliano",
             "lat": 40.612,
             "lon": 16.518,
-            "volume": 0.0,
-            "percentuale": 0.0,
-            "data": "N/D"
+            "volume": 0,
+            "percentuale": 0
         },
         {
             "nome": "Basentello",
             "lat": 40.735,
             "lon": 16.142,
-            "volume": 0.0,
-            "percentuale": 0.0,
-            "data": "N/D"
+            "volume": 0,
+            "percentuale": 0
         },
         {
             "nome": "Camastra",
             "lat": 40.528,
             "lon": 15.845,
-            "volume": 0.0,
-            "percentuale": 0.0,
-            "data": "N/D"
+            "volume": 0,
+            "percentuale": 0
         }
-    ],
-    "grib_points": [
-        [
-            40.1,
-            15.8,
-            0.8
-        ],
-        [
-            40.5,
-            16.2,
-            0.6
-        ],
-        [
-            40.8,
-            16.5,
-            0.4
-        ]
     ]
 }
