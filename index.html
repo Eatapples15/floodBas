@@ -2,92 +2,97 @@
 <html lang="it">
 <head>
     <meta charset="UTF-8">
-    <title>Basilicata River AI | Control Room</title>
+    <title>Control Room Basilicata | Multi-Source AI</title>
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
-        body, html { margin: 0; padding: 0; height: 100%; background: #0b0e11; font-family: sans-serif; color: white; }
+        body, html { margin: 0; padding: 0; height: 100%; background: #0b0e11; font-family: 'Inter', sans-serif; color: white; }
         #map { height: 100vh; width: 100%; }
-        .panel { position: absolute; z-index: 1000; background: rgba(15, 20, 25, 0.9); backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.1); padding: 20px; border-radius: 12px; }
-        .top-left { top: 20px; left: 20px; width: 300px; }
-        .sidebar { top: 20px; right: 20px; width: 280px; max-height: 80vh; overflow-y: auto; }
-        .badge { font-size: 10px; padding: 2px 6px; border-radius: 4px; font-weight: bold; }
-        .bg-danger { background: #ff4d4d; }
-        .river-item { border-left: 3px solid #4285F4; background: rgba(255,255,255,0.05); margin-bottom: 8px; padding: 8px; border-radius: 4px; }
+        .glass { position: absolute; z-index: 1000; background: rgba(11, 14, 17, 0.9); backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.1); padding: 15px; border-radius: 12px; }
+        .top-left { top: 20px; left: 20px; }
+        .legend { bottom: 30px; left: 20px; font-size: 11px; }
+        
+        /* Forme Custom */
+        .marker-google { border-radius: 4px !important; } /* Quadrato */
+        .marker-regione { border-radius: 50% !important; } /* Cerchio */
+        
+        .chart-box { width: 220px; height: 110px; margin-top: 10px; }
     </style>
 </head>
 <body>
-    <div class="panel top-left">
-        <h3 style="margin:0; color:#4285F4;"><i class="fa fa-robot"></i> RIVER AI</h3>
-        <small id="update-time">Inizializzazione...</small>
-        <hr style="opacity:0.1">
-        <div id="summary">Monitoraggio Basilicata</div>
+
+    <div class="glass top-left">
+        <h4 style="margin:0; color:#4285F4;"><i class="fa fa-shield-halved"></i> BASILICATA RIVER MONITOR</h4>
+        <small id="update-time">Caricamento...</small>
     </div>
 
-    <div class="panel sidebar">
-        <h5 style="margin:0 0 10px 0;">ALLERTE GOOGLE FLOOD</h5>
-        <div id="alerts"></div>
+    <div class="glass legend">
+        <div style="margin-bottom:5px"><b>LEGENDA SENSORI</b></div>
+        <div><i class="fa fa-circle" style="color:#3498db"></i> Sensore Regione (OK)</div>
+        <div><i class="fa fa-square" style="color:#4285F4"></i> Sensore Google AI (OK)</div>
+        <div><i class="fa fa-circle" style="color:#e74c3c"></i> ALLERTA RILEVATA</div>
     </div>
 
     <div id="map"></div>
 
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-    <script src="https://cdn.jsdelivr.net/gh/python-visualization/folium@main/folium/templates/leaflet_heat.min.js"></script>
-
     <script>
         const map = L.map('map', { zoomControl: false }).setView([40.5, 16.2], 9);
         L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png').addTo(map);
 
         async function load() {
-            try {
-                const r = await fetch('data.json');
-                if (!r.ok) throw new Error("JSON non pronto");
-                const data = await r.json();
+            const r = await fetch('data.json?t=' + Date.now());
+            const data = await r.json();
+            document.getElementById('update-time').innerText = "Ultimo aggiornamento: " + data.last_update;
 
-                document.getElementById('update-time').innerText = "Update: " + data.last_update;
+            data.stazioni.forEach(s => {
+                let color = s.source === "REGIONE" ? "#3498db" : "#4285F4";
+                if(s.warning) color = "#e74c3c";
 
-                // Layer GRIB Heatmap
-                L.heatLayer(data.grib_points, {radius: 25, minOpacity: 0.2}).addTo(map);
+                // Differenziazione Forma
+                const markerHtml = `<div style="background:${color}; width:12px; height:12px; border:2px solid white; ${s.source === 'GOOGLE' ? 'border-radius:2px;' : 'border-radius:50%;'}"></div>`;
+                
+                const marker = L.marker([s.lat, s.lon], {
+                    icon: L.divIcon({ html: markerHtml, className: 'custom-marker', iconSize: [14, 14] })
+                }).addTo(map);
 
-                // Sensori Fiumi
-                data.fiumi.forEach(f => {
-                    let color = "#3498db";
-                    if(f.google.severity !== "NORMALE") color = "#ff4d4d";
-
-                    const m = L.circleMarker([f.lat, f.lon], {
-                        radius: 8, color: 'white', weight: 1, fill: true, fillColor: color, fillOpacity: 0.8
-                    }).addTo(map);
-
-                    m.bindPopup(`
-                        <div style="color:black; min-width:200px">
-                            <h4 style="margin:0">${f.stazione}</h4>
-                            <b>Livello: ${f.livello}</b><hr>
-                            <div style="background:#e8f0fe; padding:10px; border-radius:5px; border-left:4px solid #4285F4">
-                                <b style="color:#4285F4">GOOGLE FLOOD HUB</b><br>
-                                Rischio: ${f.google.severity}<br>
-                                <a href="${f.google.link}" target="_blank">Apri Previsioni AI →</a>
-                            </div>
+                // Popup differenziato
+                if(s.source === "REGIONE") {
+                    marker.bindPopup(`<b>${s.nome}</b><br>Sorgente: Regione<br>Livello: <b>${s.livello}</b>`);
+                } else {
+                    const cid = `c-${Math.random().toString(36).substr(2, 9)}`;
+                    marker.bindPopup(`
+                        <div style="width:230px; color:black">
+                            <h5 style="margin:0">Google Flood AI</h5>
+                            <small>${s.nome}</small><hr>
+                            <b>Rischio: ${s.severity}</b>
+                            <div class="chart-box"><canvas id="${cid}"></canvas></div>
+                            <a href="${s.link}" target="_blank" style="font-size:10px">Dettagli FloodHub →</a>
                         </div>
                     `);
+                    marker.on('popupopen', () => {
+                        new Chart(document.getElementById(cid), {
+                            type: 'line',
+                            data: {
+                                labels: ['+1g','+3g','+5g','+7g'],
+                                datasets: [{ data: s.forecast, borderColor: '#4285F4', fill: true, backgroundColor: 'rgba(66,133,244,0.1)', tension: 0.4 }]
+                            },
+                            options: { plugins: { legend: {display:false} }, scales: { y: {display:false} } }
+                        });
+                    });
+                }
+            });
 
-                    if(f.google.severity !== "NORMALE") {
-                        const div = document.createElement('div');
-                        div.className = 'river-item';
-                        div.innerHTML = `<b>${f.stazione}</b><br><span class="badge bg-danger">${f.google.severity}</span>`;
-                        document.getElementById('alerts').appendChild(div);
-                    }
+            // Dighe con fix riempimento
+            data.dighe.forEach(d => {
+                const damIcon = L.divIcon({
+                    html: `<div style="background:#1a73e8; color:white; padding:3px 6px; border-radius:4px; border:1px solid white; font-size:9px;">${d.percentuale}%</div>`,
+                    className: 'dam-lbl', iconSize: [35, 18]
                 });
-
-                // Dighe
-                data.dighe.forEach(d => {
-                    L.marker([d.lat, d.lon], {
-                        icon: L.divIcon({html: '<i class="fa fa-industry" style="color:#1a73e8; font-size:20px;"></i>', className: 'd-icon'})
-                    }).addTo(map).bindPopup(`<div style="color:black"><b>${d.nome}</b><br>Riempimento: ${d.percentuale}%</div>`);
-                });
-
-            } catch (e) { 
-                document.getElementById('update-time').innerText = "In attesa del primo deploy...";
-            }
+                L.marker([d.lat, d.lon], {icon: damIcon}).addTo(map)
+                 .bindPopup(`<b>Diga: ${d.nome}</b><br>Volume: ${d.volume} Mmc<br>Riempimento: ${d.percentuale}%`);
+            });
         }
         load();
     </script>
