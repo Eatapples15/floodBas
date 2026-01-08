@@ -1,97 +1,94 @@
-<!DOCTYPE html>
-<html lang="it">
-<head>
-    <meta charset="UTF-8">
-    <title>River Control Room | Basilicata</title>
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <style>
-        body, html { margin:0; padding:0; height:100%; background:#0b0e11; font-family:'Segoe UI',sans-serif; color:white; }
-        #map { height:100vh; width:100%; }
-        .glass { position:absolute; z-index:1000; background:rgba(15,20,25,0.85); backdrop-filter:blur(10px); border:1px solid rgba(255,255,255,0.1); padding:15px; border-radius:12px; }
-        .top-left { top:20px; left:20px; border-left: 4px solid #4285F4; }
-        .legend { bottom:30px; left:20px; font-size:11px; line-height:1.6; }
-        .dot { height:10px; width:10px; display:inline-block; border-radius:50%; margin-right:5px; border:1px solid white; }
-    </style>
-</head>
-<body>
-    <div class="glass top-left">
-        <h4 style="margin:0"><i class="fa fa-gauge-high"></i> CONTROL ROOM FIUMI</h4>
-        <small id="update-time">Inizializzazione...</small>
-    </div>
+import requests
+import json
+import os
+import sys
+from datetime import datetime
 
-    <div class="glass legend">
-        <b>STATO LIVELLI</b><br>
-        <span class="dot" style="background:#2ecc71"></span> Regolare (Sotto L1)<br>
-        <span class="dot" style="background:#f1c40f"></span> Pre-Allerta (Sopra L1)<br>
-        <span class="dot" style="background:#e67e22"></span> Allerta (Sopra L2)<br>
-        <span class="dot" style="background:#e74c3c"></span> Pericolo (Sopra L3)<br>
-        <span class="dot" style="background:#4285F4; border-radius:2px;"></span> Google Flood AI
-    </div>
+GOOGLE_API_KEY = os.getenv("GOOGLE_API_KEY")
+URL_ANA = "https://raw.githubusercontent.com/Eatapples15/allerte_bollettino_basilicata/refs/heads/main/anagrafica_stazioni.json"
+URL_DATI = "https://raw.githubusercontent.com/Eatapples15/allerte_bollettino_basilicata/refs/heads/main/dati_sensori.json"
+URL_INVASI = "https://raw.githubusercontent.com/Eatapples15/allerte_bollettino_basilicata/refs/heads/main/storico_invasi.json"
+URL_SOGLIE = "https://raw.githubusercontent.com/Eatapples15/allerte_bollettino_basilicata/refs/heads/main/soglie.json"
 
-    <div id="map"></div>
+COORDS_DIGHE = {
+    "Monte Cotugno": {"lat": 40.136, "lon": 16.202, "max": 530.0},
+    "Pertusillo": {"lat": 40.271, "lon": 15.908, "max": 155.0},
+    "San Giuliano": {"lat": 40.612, "lon": 16.518, "max": 107.0},
+    "Basentello": {"lat": 40.735, "lon": 16.142, "max": 39.0},
+    "Camastra": {"lat": 40.528, "lon": 15.845, "max": 22.0}
+}
 
-    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-    <script>
-        const map = L.map('map', { zoomControl: false }).setView([40.55, 16.2], 9);
-        L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png').addTo(map);
+def clean_num(v):
+    if v is None: return 0.0
+    try:
+        s = str(v).replace('m', '').replace('Mmc', '').strip()
+        if not s: return 0.0
+        # Gestione separatore migliaia e decimali italiano
+        if ',' in s and '.' in s: s = s.replace('.', '')
+        return float(s.replace(',', '.'))
+    except: return 0.0
 
-        async function init() {
-            try {
-                const res = await fetch('data.json?t=' + Date.now());
-                const data = await res.json();
-                document.getElementById('update-time').innerText = "Dati aggiornati: " + data.last_update;
+def run():
+    print("🚀 Avvio Elaborazione...")
+    try:
+        ana = requests.get(URL_ANA).json()
+        dat = requests.get(URL_DATI).json()
+        invasi = requests.get(URL_INVASI).json()
+        soglie = requests.get(URL_SOGLIE).json()
 
-                data.stazioni.forEach(s => {
-                    let color = "#2ecc71"; // Verde Default
-                    if(s.source === "REGIONE") {
-                        if(s.status === "PRE-ALLERTA") color = "#f1c40f";
-                        if(s.status === "ALLERTA") color = "#e67e22";
-                        if(s.status === "PERICOLO") color = "#e74c3c";
-                    } else {
-                        color = s.warning ? "#e74c3c" : "#4285F4";
-                    }
+        idro_map = {str(d['id']).strip().lstrip('0'): d for d in dat.get('sensori', {}).get('idrometria', {}).get('dati', [])}
+        # Match flessibile per le dighe
+        invasi_map = {d['diga'].strip().upper(): d for d in invasi if isinstance(d, dict)}
+        soglie_map = {str(s['id']).strip().lstrip('0'): s for s in soglie if isinstance(s, dict)}
 
-                    const radius = s.source === "GOOGLE" ? "2px" : "50%";
-                    const iconHtml = `<div style="background:${color}; width:12px; height:12px; border:2px solid white; border-radius:${radius};"></div>`;
-                    
-                    const marker = L.marker([s.lat, s.lon], {
-                        icon: L.divIcon({ html: iconHtml, className: 'm-icon', iconSize:[14,14] })
-                    }).addTo(map);
-
-                    if(s.source === "REGIONE") {
-                        marker.bindPopup(`
-                            <div style="color:black; width:200px">
-                                <b>${s.nome}</b><hr>
-                                Livello: <b>${s.livello}</b><br>
-                                <small style="color:gray">Soglie: L1:${s.soglie.L1} | L2:${s.soglie.L2} | L3:${s.soglie.L3}</small>
-                            </div>
-                        `);
-                    } else {
-                        const cid = `c-${Math.random().toString(36).substr(2,5)}`;
-                        marker.bindPopup(`<div style="color:black; width:230px"><b>GOOGLE AI</b><br><small>${s.nome}</small><div style="height:100px"><canvas id="${cid}"></canvas></div><a href="${s.link}" target="_blank" style="font-size:10px">Dettagli FloodHub →</a></div>`);
-                        marker.on('popupopen', () => {
-                            new Chart(document.getElementById(cid), {
-                                type: 'line',
-                                data: { labels: ['+1','+3','+5','+7'], datasets: [{ data: s.forecast, borderColor:'#4285F4', tension:0.4, fill:true, backgroundColor:'rgba(66,133,244,0.1)' }] },
-                                options: { plugins:{legend:{display:false}}, scales:{y:{display:false}} }
-                            });
-                        });
-                    }
-                });
-
-                data.dighe.forEach(d => {
-                    const damIcon = L.divIcon({
-                        html: `<div style="background:#1a73e8; color:white; padding:2px 5px; border-radius:4px; font-size:9px; font-weight:bold; border:1px solid white">${d.percentuale}%</div>`,
-                        className: 'd-lbl', iconSize:[38,18]
-                    });
-                    L.marker([d.lat, d.lon], {icon: damIcon}).addTo(map)
-                     .bindPopup(`<div style="color:black"><b>Diga ${d.nome}</b><br>Riempimento: ${d.percentuale}%</div>`);
-                });
-            } catch (e) { console.error(e); }
+        output = {
+            "last_update": datetime.now().strftime("%d/%m/%Y %H:%M"),
+            "stazioni": [],
+            "dighe": []
         }
-        init();
-    </script>
-</body>
-</html>
+
+        for s in ana:
+            s_id = str(s.get('id', '')).strip().lstrip('0')
+            val_info = idro_map.get(s_id, {})
+            val_str = val_info.get('valore', 'N/D')
+            val_num = clean_num(val_str)
+            s_lim = soglie_map.get(s_id, {})
+            
+            l1, l2, l3 = clean_num(s_lim.get('soglia1')), clean_num(s_lim.get('soglia2')), clean_num(s_lim.get('soglia3'))
+            
+            status = "REGOLARE"
+            if val_num > 0:
+                if l3 > 0 and val_num >= l3: status = "PERICOLO"
+                elif l2 > 0 and val_num >= l2: status = "ALLERTA"
+                elif l1 > 0 and val_num >= l1: status = "PRE-ALLERTA"
+
+            output["stazioni"].append({
+                "nome": s.get('stazione'),
+                "lat": float(str(s['lat']).replace(',','.')),
+                "lon": float(str(s['lon']).replace(',','.')),
+                "livello": val_str,
+                "status": status,
+                "soglie": {"l1": l1, "l2": l2, "l3": l3}
+            })
+
+        for nome, coords in COORDS_DIGHE.items():
+            # Cerca nel map usando il nome maiuscolo e pulito
+            info = invasi_map.get(nome.strip().upper(), {})
+            vol = clean_num(info.get('volume_attuale', 0))
+            perc = round((vol / coords["max"]) * 100, 1) if vol > 0 else 0
+            
+            output["dighe"].append({
+                "nome": nome, "lat": coords["lat"], "lon": coords["lon"],
+                "volume": vol, "percentuale": perc,
+                "data": info.get('data', 'N/D')
+            })
+
+        with open('data.json', 'w', encoding='utf-8') as f:
+            json.dump(output, f, ensure_ascii=False, indent=4)
+        print("✅ JSON Creato correttamente.")
+    except Exception as e:
+        print(f"❌ Errore: {e}")
+        sys.exit(1)
+
+if __name__ == "__main__":
+    run()
