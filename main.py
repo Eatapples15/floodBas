@@ -17,13 +17,31 @@ COORDS_DIGHE = {
     "Camastra": {"lat": 40.528, "lon": 15.845, "max": 22.0}
 }
 
-def get_ai_risk(lat, lon):
-    if not GOOGLE_API_KEY: return "Stabile"
+def get_google_flood_data(lat, lon):
+    """Interroga Google Flood Forecasting API v1."""
+    if not GOOGLE_API_KEY:
+        return {"status": "KEY_MISSING", "severity": "UNKNOWN"}
+    
+    # Endpoint per cercare stazioni di monitoraggio (gauges) vicino alle coordinate
     url = f"https://floodforecasting.googleapis.com/v1/gauges:search?key={GOOGLE_API_KEY}"
+    payload = {"location": {"latitude": lat, "longitude": lon}}
+    
     try:
-        r = requests.post(url, json={"location": {"latitude": lat, "longitude": lon}}, timeout=3)
-        return r.json().get('gauges', [{}])[0].get('status', 'NORMAL')
-    except: return "NORMAL"
+        r = requests.post(url, json=payload, timeout=5)
+        if r.status_code == 200:
+            gauges = r.json().get('gauges', [])
+            if gauges:
+                g = gauges[0]
+                # Estraiamo i dettagli reali
+                return {
+                    "gauge_id": g.get('name'),
+                    "status": g.get('status', 'STABILE'),
+                    "severity": g.get('severity', 'MINIMA'),
+                    "forecast_link": f"https://g.co/floodhub/gauge/{g.get('name').split('/')[-1]}"
+                }
+        return {"status": "OPERATIVO", "severity": "NORMALE"}
+    except Exception as e:
+        return {"status": "ERRORE_SYNC", "severity": "UNKNOWN"}
 
 def run():
     try:
@@ -40,19 +58,21 @@ def run():
             "dighe": []
         }
 
-        # Elaborazione Fiumi
+        # Elaborazione Fiumi con Google Flood Hub Reale
         for s in ana:
             s_id = str(s.get('id')).strip().lstrip('0')
-            lat = float(str(s['lat']).replace(',','.'))
-            lon = float(str(s['lon']).replace(',','.'))
+            lat, lon = float(str(s['lat']).replace(',','.')), float(str(s['lon']).replace(',','.'))
             valore = idro_map.get(s_id, {}).get('valore', 'N/D')
+            
+            # CHIAMATA REALE GOOGLE
+            google_data = get_google_flood_data(lat, lon)
             
             output["fiumi"].append({
                 "stazione": s.get('stazione'),
                 "fiume": s.get('fiume'),
                 "lat": lat, "lon": lon,
                 "livello": valore,
-                "ai_risk": get_ai_risk(lat, lon)
+                "google_ai": google_data
             })
 
         # Elaborazione Dighe
