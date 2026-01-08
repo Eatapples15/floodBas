@@ -1,94 +1,117 @@
-import requests
-import json
-import os
-import sys
-from datetime import datetime
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <title>BASILICATA RIVER AI | Command Center</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        :root { --bg: #0b0e11; --panel: rgba(13, 17, 23, 0.95); --accent: #4285F4; --danger: #ea4335; --warning: #fbbc04; --success: #34a853; }
+        body, html { margin:0; padding:0; height:100%; background: var(--bg); font-family: 'Inter', sans-serif; color: white; overflow: hidden; }
+        #map { height: 100vh; width: 100%; filter: saturate(1.2) brightness(0.8); }
+        
+        .ui-panel { position: absolute; z-index: 1000; background: var(--panel); backdrop-filter: blur(15px); border: 1px solid rgba(255,255,255,0.1); border-radius: 16px; padding: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
+        .top-left { top: 20px; left: 20px; width: 320px; border-top: 4px solid var(--accent); }
+        .sidebar { top: 20px; right: 20px; width: 300px; max-height: 85vh; overflow-y: auto; }
+        
+        .status-badge { font-size: 10px; padding: 4px 10px; border-radius: 50px; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 10px; display: inline-block; }
+        .badge-live { background: rgba(52, 168, 83, 0.2); color: var(--success); border: 1px solid var(--success); }
+        
+        .station-card { background: rgba(255,255,255,0.03); border-radius: 10px; padding: 12px; margin-bottom: 10px; border-left: 3px solid #333; transition: 0.3s; }
+        .station-card.alert { border-left-color: var(--danger); background: rgba(234, 67, 53, 0.1); }
+        
+        .dam-progress { height: 6px; background: #222; border-radius: 10px; margin: 8px 0; overflow: hidden; }
+        .dam-bar { height: 100%; background: linear-gradient(90deg, #4285F4, #00f2fe); transition: 1s ease-out; }
 
-GOOGLE_API_KEY = os.getenv("GOOGLE_API_KEY")
-URL_ANA = "https://raw.githubusercontent.com/Eatapples15/allerte_bollettino_basilicata/refs/heads/main/anagrafica_stazioni.json"
-URL_DATI = "https://raw.githubusercontent.com/Eatapples15/allerte_bollettino_basilicata/refs/heads/main/dati_sensori.json"
-URL_INVASI = "https://raw.githubusercontent.com/Eatapples15/allerte_bollettino_basilicata/refs/heads/main/storico_invasi.json"
-URL_SOGLIE = "https://raw.githubusercontent.com/Eatapples15/allerte_bollettino_basilicata/refs/heads/main/soglie.json"
+        /* Leaflet Tweaks */
+        .leaflet-popup-content-wrapper { background: var(--panel); color: white; border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; }
+        .leaflet-popup-tip { background: var(--panel); }
+        .custom-label { background: transparent; border: none; box-shadow: none; color: white; font-weight: bold; text-shadow: 0 0 5px black; }
+    </style>
+</head>
+<body>
 
-COORDS_DIGHE = {
-    "Monte Cotugno": {"lat": 40.136, "lon": 16.202, "max": 530.0},
-    "Pertusillo": {"lat": 40.271, "lon": 15.908, "max": 155.0},
-    "San Giuliano": {"lat": 40.612, "lon": 16.518, "max": 107.0},
-    "Basentello": {"lat": 40.735, "lon": 16.142, "max": 39.0},
-    "Camastra": {"lat": 40.528, "lon": 15.845, "max": 22.0}
-}
+    <div class="ui-panel top-left">
+        <div class="status-badge badge-live"><i class="fa fa-broadcast-tower"></i> SYSTEM LIVE</div>
+        <h2 style="margin:0; font-size: 1.4rem; font-weight: 700;">BASILICATA<br><span style="color:var(--accent)">RIVER MONITOR</span></h2>
+        <p style="font-size: 11px; color: #888; margin: 10px 0 0 0;" id="update-time">Inizializzazione flussi dati...</p>
+    </div>
 
-def clean_num(v):
-    if v is None: return 0.0
-    try:
-        s = str(v).replace('m', '').replace('Mmc', '').strip()
-        if not s: return 0.0
-        # Gestione separatore migliaia e decimali italiano
-        if ',' in s and '.' in s: s = s.replace('.', '')
-        return float(s.replace(',', '.'))
-    except: return 0.0
+    <div class="ui-panel sidebar">
+        <h5 style="margin: 0 0 15px 0; font-size: 0.9rem; color: var(--accent); letter-spacing: 1px;">CRITICITÀ RILEVATE</h5>
+        <div id="alerts-list"></div>
+    </div>
 
-def run():
-    print("🚀 Avvio Elaborazione...")
-    try:
-        ana = requests.get(URL_ANA).json()
-        dat = requests.get(URL_DATI).json()
-        invasi = requests.get(URL_INVASI).json()
-        soglie = requests.get(URL_SOGLIE).json()
+    <div id="map"></div>
 
-        idro_map = {str(d['id']).strip().lstrip('0'): d for d in dat.get('sensori', {}).get('idrometria', {}).get('dati', [])}
-        # Match flessibile per le dighe
-        invasi_map = {d['diga'].strip().upper(): d for d in invasi if isinstance(d, dict)}
-        soglie_map = {str(s['id']).strip().lstrip('0'): s for s in soglie if isinstance(s, dict)}
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script>
+        const map = L.map('map', { zoomControl: false }).setView([40.55, 16.2], 9);
+        L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png').addTo(map);
 
-        output = {
-            "last_update": datetime.now().strftime("%d/%m/%Y %H:%M"),
-            "stazioni": [],
-            "dighe": []
+        async function init() {
+            try {
+                // Il timestamp impedisce errori di cache su altri server
+                const r = await fetch('data.json?nocache=' + Date.now(), { mode: 'cors' });
+                const data = await r.json();
+                document.getElementById('update-time').innerText = "ULTIMO CHECK: " + data.last_update;
+
+                // --- GESTIONE FIUMI ---
+                data.stazioni.forEach(s => {
+                    let color = varColor(s.status);
+                    const marker = L.circleMarker([s.lat, s.lon], {
+                        radius: 7, color: 'white', weight: 1, fill: true, fillColor: color, fillOpacity: 0.9
+                    }).addTo(map);
+
+                    marker.bindPopup(`
+                        <div style="min-width:220px; padding:5px;">
+                            <b style="font-size:14px">${s.nome}</b><br>
+                            <div style="font-size:24px; font-weight:bold; margin:10px 0; color:${color}">${s.livello}</div>
+                            <div style="font-size:10px; color:#aaa">SOGLIE: L1:${s.soglie.l1} | L2:${s.soglie.l2} | L3:${s.soglie.l3}</div>
+                        </div>
+                    `);
+
+                    if(s.status !== "REGOLARE") {
+                        const card = document.createElement('div');
+                        card.className = 'station-card alert';
+                        card.innerHTML = `<small>${s.nome}</small><br><b style="color:var(--danger)">STATO: ${s.status}</b>`;
+                        document.getElementById('alerts-list').appendChild(card);
+                    }
+                });
+
+                // --- GESTIONE DIGHE (FIX 0%) ---
+                data.dighe.forEach(d => {
+                    const icon = L.divIcon({
+                        html: `<div style="text-align:center">
+                                <div style="background:var(--accent); color:white; font-size:10px; padding:2px 6px; border-radius:4px; border:1px solid white; font-weight:bold">${d.percentuale}%</div>
+                                <i class="fa fa-caret-down" style="color:white; margin-top:-5px; display:block"></i>
+                               </div>`,
+                        className: 'dam-icon', iconSize: [40, 30]
+                    });
+
+                    L.marker([d.lat, d.lon], {icon: icon}).addTo(map)
+                    .bindPopup(`
+                        <div style="color:white; width:200px">
+                            <h5 style="margin:0">${d.nome}</h5>
+                            <div class="dam-progress"><div class="dam-bar" style="width:${d.percentuale}%"></div></div>
+                            <b>${d.volume} Mmc</b> (${d.percentuale}%)<br>
+                            <small style="color:#888">Aggiornamento: ${d.data}</small>
+                        </div>
+                    `);
+                });
+
+            } catch (e) { console.error("Data fetch error:", e); }
         }
 
-        for s in ana:
-            s_id = str(s.get('id', '')).strip().lstrip('0')
-            val_info = idro_map.get(s_id, {})
-            val_str = val_info.get('valore', 'N/D')
-            val_num = clean_num(val_str)
-            s_lim = soglie_map.get(s_id, {})
-            
-            l1, l2, l3 = clean_num(s_lim.get('soglia1')), clean_num(s_lim.get('soglia2')), clean_num(s_lim.get('soglia3'))
-            
-            status = "REGOLARE"
-            if val_num > 0:
-                if l3 > 0 and val_num >= l3: status = "PERICOLO"
-                elif l2 > 0 and val_num >= l2: status = "ALLERTA"
-                elif l1 > 0 and val_num >= l1: status = "PRE-ALLERTA"
+        function varColor(status) {
+            if(status === "PERICOLO") return "#ea4335";
+            if(status === "ALLERTA") return "#e67e22";
+            if(status === "PRE-ALLERTA") return "#fbbc04";
+            return "#34a853";
+        }
 
-            output["stazioni"].append({
-                "nome": s.get('stazione'),
-                "lat": float(str(s['lat']).replace(',','.')),
-                "lon": float(str(s['lon']).replace(',','.')),
-                "livello": val_str,
-                "status": status,
-                "soglie": {"l1": l1, "l2": l2, "l3": l3}
-            })
-
-        for nome, coords in COORDS_DIGHE.items():
-            # Cerca nel map usando il nome maiuscolo e pulito
-            info = invasi_map.get(nome.strip().upper(), {})
-            vol = clean_num(info.get('volume_attuale', 0))
-            perc = round((vol / coords["max"]) * 100, 1) if vol > 0 else 0
-            
-            output["dighe"].append({
-                "nome": nome, "lat": coords["lat"], "lon": coords["lon"],
-                "volume": vol, "percentuale": perc,
-                "data": info.get('data', 'N/D')
-            })
-
-        with open('data.json', 'w', encoding='utf-8') as f:
-            json.dump(output, f, ensure_ascii=False, indent=4)
-        print("✅ JSON Creato correttamente.")
-    except Exception as e:
-        print(f"❌ Errore: {e}")
-        sys.exit(1)
-
-if __name__ == "__main__":
-    run()
+        init();
+    </script>
+</body>
+</html>
