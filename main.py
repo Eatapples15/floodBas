@@ -1,6 +1,7 @@
 import requests
 import json
 import os
+import sys
 from datetime import datetime
 
 # --- CONFIGURAZIONE ---
@@ -37,6 +38,7 @@ def get_google_flood_data(lat, lon):
         return {"status": "SYNCING", "severity": "NORMALE", "link": "#"}
 
 def run():
+    print("Inizio recupero dati...")
     try:
         ana = requests.get(URL_ANA).json()
         dat = requests.get(URL_DATI).json()
@@ -49,16 +51,15 @@ def run():
             "last_update": datetime.now().strftime("%d/%m/%Y %H:%M"),
             "fiumi": [],
             "dighe": [],
-            "grib_points": [[40.1, 15.8, 0.8], [40.5, 16.2, 0.6], [40.8, 16.5, 0.4]] # Esempio GRIB
+            "grib_points": [[40.1, 15.8, 0.8], [40.5, 16.2, 0.6]]
         }
 
         for s in ana:
-            s_id = str(s.get('id')).strip().lstrip('0')
             try:
+                s_id = str(s.get('id')).strip().lstrip('0')
                 lat = float(str(s['lat']).replace(',','.'))
                 lon = float(str(s['lon']).replace(',','.'))
                 valore = idro_map.get(s_id, {}).get('valore', 'N/D')
-                
                 output["fiumi"].append({
                     "stazione": s.get('stazione'),
                     "fiume": s.get('fiume'),
@@ -73,15 +74,20 @@ def run():
             vol = float(d_info.get('volume_attuale', 0))
             output["dighe"].append({
                 "nome": nome, "lat": coords["lat"], "lon": coords["lon"],
-                "volume": vol, "percentuale": round((vol / coords["max"]) * 100, 1),
-                "data": d_info.get('data', 'N/D')
+                "volume": vol, "percentuale": round((vol / coords["max"]) * 100, 1)
             })
 
-        with open('data.json', 'w', encoding='utf-8') as f:
+        # SCRITTURA FORZATA
+        file_path = os.path.join(os.getcwd(), 'data.json')
+        with open(file_path, 'w', encoding='utf-8') as f:
             json.dump(output, f, ensure_ascii=False, indent=4)
-            
+        
+        print(f"File creato con successo in: {file_path}")
+        print(f"Totale fiumi: {len(output['fiumi'])}")
+
     except Exception as e:
-        print(f"Errore: {e}")
+        print(f"ERRORE CRITICO: {e}")
+        sys.exit(1) # Forza il fallimento della Action se c'è un errore
 
 if __name__ == "__main__":
     run()
