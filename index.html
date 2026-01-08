@@ -2,125 +2,94 @@
 <html lang="it">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Control Room Fiumi Basilicata AI</title>
+    <title>Basilicata River AI | Control Room</title>
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
-        body, html { margin: 0; padding: 0; height: 100%; font-family: 'Inter', sans-serif; background: #0b0e11; }
-        #map { height: 100vh; width: 100%; z-index: 1; }
-        
-        .glass-panel {
-            position: absolute; z-index: 1000; background: rgba(11, 14, 17, 0.85);
-            backdrop-filter: blur(12px); border: 1px solid rgba(255,255,255,0.1);
-            color: white; padding: 20px; border-radius: 16px;
-        }
-        
-        .top-left { top: 20px; left: 20px; width: 320px; }
-        .sidebar { top: 20px; right: 20px; width: 300px; max-height: 80vh; overflow-y: auto; }
-        
-        .severity-badge { font-size: 10px; padding: 3px 8px; border-radius: 20px; font-weight: bold; text-transform: uppercase; }
-        .high { background: #ea4335; color: white; }
-        .medium { background: #fbbc04; color: black; }
-        .low { background: #34a853; color: white; }
-
-        .river-card { background: rgba(255,255,255,0.05); padding: 10px; border-radius: 8px; margin-bottom: 10px; border-left: 4px solid #4285F4; }
-        .river-card h6 { margin: 0; color: #4285F4; }
+        body, html { margin: 0; padding: 0; height: 100%; background: #0b0e11; font-family: sans-serif; color: white; }
+        #map { height: 100vh; width: 100%; }
+        .panel { position: absolute; z-index: 1000; background: rgba(15, 20, 25, 0.9); backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.1); padding: 20px; border-radius: 12px; }
+        .top-left { top: 20px; left: 20px; width: 300px; }
+        .sidebar { top: 20px; right: 20px; width: 280px; max-height: 80vh; overflow-y: auto; }
+        .badge { font-size: 10px; padding: 2px 6px; border-radius: 4px; font-weight: bold; }
+        .bg-danger { background: #ff4d4d; }
+        .river-item { border-left: 3px solid #4285F4; background: rgba(255,255,255,0.05); margin-bottom: 8px; padding: 8px; border-radius: 4px; }
     </style>
 </head>
 <body>
-
-    <div class="glass-panel top-left">
-        <div style="display: flex; align-items: center; gap: 10px;">
-            <img src="https://www.gstatic.com/images/branding/product/1x/googleg_48dp.png" width="24">
-            <h2 style="margin: 0; font-size: 1.1rem; letter-spacing: 0.5px;">BASILICATA FLOOD AI</h2>
-        </div>
-        <hr style="opacity: 0.1; margin: 15px 0;">
-        <div id="update-info"><small>Sincronizzazione API in corso...</small></div>
+    <div class="panel top-left">
+        <h3 style="margin:0; color:#4285F4;"><i class="fa fa-robot"></i> RIVER AI</h3>
+        <small id="update-time">Inizializzazione...</small>
+        <hr style="opacity:0.1">
+        <div id="summary">Monitoraggio Basilicata</div>
     </div>
 
-    <div class="glass-panel sidebar" id="alert-sidebar">
-        <h5 style="margin: 0 0 15px 0; font-size: 0.9rem; color: #aaa;">CRITICITÀ GOOGLE FLOOD HUB</h5>
-        <div id="alert-container"></div>
+    <div class="panel sidebar">
+        <h5 style="margin:0 0 10px 0;">ALLERTE GOOGLE FLOOD</h5>
+        <div id="alerts"></div>
     </div>
 
     <div id="map"></div>
 
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/python-visualization/folium@main/folium/templates/leaflet_heat.min.js"></script>
+
     <script>
         const map = L.map('map', { zoomControl: false }).setView([40.5, 16.2], 9);
         L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png').addTo(map);
 
-        async function init() {
+        async function load() {
             try {
-                const res = await fetch('data.json');
-                const data = await res.json();
-                
-                document.getElementById('update-info').innerHTML = `
-                    <div style="color: #2ecc71; font-size: 12px;"><i class="fa fa-circle"></i> SISTEMA LIVE</div>
-                    <small style="color: #888;">Aggiornato: ${data.last_update}</small>
-                `;
+                const r = await fetch('data.json');
+                if (!r.ok) throw new Error("JSON non pronto");
+                const data = await r.json();
 
-                // --- GESTIONE FIUMI ---
-                data.fiumi.forEach(river => {
-                    const ai = river.google_ai;
+                document.getElementById('update-time').innerText = "Update: " + data.last_update;
+
+                // Layer GRIB Heatmap
+                L.heatLayer(data.grib_points, {radius: 25, minOpacity: 0.2}).addTo(map);
+
+                // Sensori Fiumi
+                data.fiumi.forEach(f => {
                     let color = "#3498db";
-                    
-                    // Se Google segnala criticità o il sensore è alto
-                    if(ai.severity !== "NORMALE" && ai.severity !== "MINIMA") color = "#ea4335";
-                    else if(river.livello !== "N/D" && parseFloat(river.livello) > 1.5) color = "#f39c12";
+                    if(f.google.severity !== "NORMALE") color = "#ff4d4d";
 
-                    const marker = L.circleMarker([river.lat, river.lon], {
-                        radius: 8, color: 'white', weight: 1, fill: true, fillColor: color, fillOpacity: 0.9
+                    const m = L.circleMarker([f.lat, f.lon], {
+                        radius: 8, color: 'white', weight: 1, fill: true, fillColor: color, fillOpacity: 0.8
                     }).addTo(map);
 
-                    marker.bindPopup(`
-                        <div style="min-width: 200px">
-                            <h5 style="margin:0">${river.stazione}</h5>
-                            <hr>
-                            <b>Livello:</b> ${river.livello}<br>
-                            <div style="margin-top:10px; padding:10px; background:#f8f9fa; border-radius:8px; border:1px solid #4285F4">
-                                <img src="https://www.gstatic.com/images/branding/product/1x/googleg_48dp.png" width="16" style="vertical-align:middle">
-                                <b style="color:#4285F4; margin-left:5px">GOOGLE FLOOD HUB</b><br>
-                                <small>Stato: ${ai.status}</small><br>
-                                <small>Rischio: <span class="severity-badge ${ai.severity.toLowerCase()}">${ai.severity}</span></small><br>
-                                <a href="${ai.forecast_link}" target="_blank" style="font-size:11px; display:block; margin-top:5px; color:#4285F4">Vedi grafici predittivi →</a>
+                    m.bindPopup(`
+                        <div style="color:black; min-width:200px">
+                            <h4 style="margin:0">${f.stazione}</h4>
+                            <b>Livello: ${f.livello}</b><hr>
+                            <div style="background:#e8f0fe; padding:10px; border-radius:5px; border-left:4px solid #4285F4">
+                                <b style="color:#4285F4">GOOGLE FLOOD HUB</b><br>
+                                Rischio: ${f.google.severity}<br>
+                                <a href="${f.google.link}" target="_blank">Apri Previsioni AI →</a>
                             </div>
                         </div>
                     `);
 
-                    // Se c'è criticità, aggiungiamo alla sidebar
-                    if(ai.severity !== "NORMALE") {
-                        const alertItem = document.createElement('div');
-                        alertItem.className = 'river-card';
-                        alertItem.innerHTML = `<h6>${river.stazione}</h6><small>Rischio: ${ai.severity}</small>`;
-                        document.getElementById('alert-container').appendChild(alertItem);
+                    if(f.google.severity !== "NORMALE") {
+                        const div = document.createElement('div');
+                        div.className = 'river-item';
+                        div.innerHTML = `<b>${f.stazione}</b><br><span class="badge bg-danger">${f.google.severity}</span>`;
+                        document.getElementById('alerts').appendChild(div);
                     }
                 });
 
-                // --- GESTIONE DIGHE ---
-                const damIcon = L.divIcon({
-                    className: 'dam-icon',
-                    html: `<div style="background:#1a73e8; color:white; width:30px; height:30px; border-radius:50%; display:flex; align-items:center; justify-content:center; border:2px solid white;"><i class="fa fa-industry" style="font-size:12px"></i></div>`
+                // Dighe
+                data.dighe.forEach(d => {
+                    L.marker([d.lat, d.lon], {
+                        icon: L.divIcon({html: '<i class="fa fa-industry" style="color:#1a73e8; font-size:20px;"></i>', className: 'd-icon'})
+                    }).addTo(map).bindPopup(`<div style="color:black"><b>${d.nome}</b><br>Riempimento: ${d.percentuale}%</div>`);
                 });
 
-                data.dighe.forEach(dam => {
-                    L.marker([dam.lat, dam.lon], {icon: damIcon}).addTo(map)
-                     .bindPopup(`
-                        <b>DIGA ${dam.nome.upperCase}</b><br>
-                        Riempimento: <b>${dam.percentuale}%</b>
-                        <div style="width:100%; background:#eee; height:8px; border-radius:4px; margin-top:5px">
-                            <div style="width:${dam.percentuale}%; background:#1a73e8; height:8px; border-radius:4px"></div>
-                        </div>
-                        <small style="color:gray">Volume: ${dam.volume} Mmc</small>
-                     `);
-                });
-
-            } catch (e) { console.error("Errore inizializzazione:", e); }
+            } catch (e) { 
+                document.getElementById('update-time').innerText = "In attesa del primo deploy...";
+            }
         }
-
-        init();
+        load();
     </script>
 </body>
 </html>
