@@ -14,10 +14,10 @@ URL_SOGLIE = "https://raw.githubusercontent.com/Eatapples15/allerte_bollettino_b
 
 # Punti strategici per il meteo (Nord, Sud, Est, Ovest Basilicata)
 METEO_POINTS = [
-    {"zona": "Potentino", "lat": 40.64, "lon": 15.80},
-    {"zona": "Materano", "lat": 40.66, "lon": 16.60},
-    {"zona": "Pollino/Sinni", "lat": 40.09, "lon": 16.10},
-    {"zona": "Vulture/Melfese", "lat": 40.99, "lon": 15.65}
+    {"zona": "Potenza", "lat": 40.64, "lon": 15.80},
+    {"zona": "Matera", "lat": 40.66, "lon": 16.60},
+    {"zona": "Pollino", "lat": 40.09, "lon": 16.10},
+    {"zona": "Vulture", "lat": 40.99, "lon": 15.65}
 ]
 
 COORDS_DIGHE = {
@@ -43,23 +43,20 @@ def normalize_key(text):
     return str(text).lower().replace(" ", "").replace("-", "").strip()
 
 def get_rain_forecast():
-    """Scarica dati reali precipitazione (mm) per le prossime ore da Open-Meteo"""
+    """Scarica dati reali precipitazione (mm)"""
     forecasts = []
-    print("Scarico dati GRIB/Meteo...")
+    print("Meteo forecast download...")
     for p in METEO_POINTS:
         try:
             url = f"https://api.open-meteo.com/v1/forecast?latitude={p['lat']}&longitude={p['lon']}&hourly=precipitation&forecast_days=1"
             r = requests.get(url, timeout=3)
             data = r.json()
-            # Somma precipitazioni prossime 6 ore
             precip_sum = sum(data['hourly']['precipitation'][0:6])
             forecasts.append({
-                "lat": p['lat'], "lon": p['lon'],
-                "zona": p['zona'],
-                "mm_6h": round(precip_sum, 1) # Millimetri previsti prossime 6h
+                "lat": p['lat'], "lon": p['lon'], "zona": p['zona'],
+                "mm_6h": round(precip_sum, 1)
             })
-        except Exception as e:
-            print(f"Errore meteo {p['zona']}: {e}")
+        except: pass
     return forecasts
 
 def get_google_data(lat, lon):
@@ -91,28 +88,53 @@ def run():
         print(f"FATAL ERROR DOWNLOAD: {e}")
         sys.exit(1)
 
+    # MAP SENSORI IDRO
     map_sensori = {}
     dati_list = raw_dati.get('sensori', {}).get('idrometria', {}).get('dati', [])
     for d in dati_list:
         clean_id = str(d.get('id', '')).lstrip('0').strip()
         map_sensori[clean_id] = d
 
+    # MAP INVASI (FIX PER EVITARE CRASH)
     map_invasi = {}
-    for d in raw_invasi:
-        key = normalize_key(d.get('diga', ''))
-        map_invasi[key] = d
+    
+    ### FIX CRITICO STRUTTURA ###
+    target_invasi = []
+    if isinstance(raw_invasi, list):
+        target_invasi = raw_invasi
+    elif isinstance(raw_invasi, dict):
+        # Se è un dizionario, prova a trovare la lista o usa i valori
+        for k in ['invasi', 'data', 'dati', 'elenco']:
+            if k in raw_invasi and isinstance(raw_invasi[k], list):
+                target_invasi = raw_invasi[k]
+                break
+        if not target_invasi:
+            target_invasi = list(raw_invasi.values()) # Fallback sui valori
+    
+    print(f"Trovati {len(target_invasi)} record invasi grezzi.")
 
+    for d in target_invasi:
+        # Controllo fondamentale: d deve essere un dizionario
+        if not isinstance(d, dict): 
+            continue 
+        
+        # Ora possiamo usare .get() in sicurezza
+        key = normalize_key(d.get('diga', ''))
+        if key: map_invasi[key] = d
+    ### FINE FIX ###
+
+    # MAP SOGLIE
     map_soglie = {}
     for s in raw_soglie:
-        clean_id = str(s.get('id', '')).lstrip('0').strip()
-        map_soglie[clean_id] = s
+        if isinstance(s, dict):
+            clean_id = str(s.get('id', '')).lstrip('0').strip()
+            map_soglie[clean_id] = s
 
-    # RECUPERO DATI METEO REALI (GRIB LAYER)
     meteo_data = get_rain_forecast()
 
     output = {
         "last_update": datetime.now().strftime("%d/%m/%Y %H:%M"),
-        "meteo_grib": meteo_data, # Nuova sezione nel JSON
+        "meteo_grib": meteo_data,
         "stazioni": [],
         "dighe": []
     }
