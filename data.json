@@ -1,5 +1,31 @@
 {
-    "last_update": "08/01/2026 10:23",
+    "last_update": "08/01/2026 10:34",
+    "meteo_grib": [
+        {
+            "lat": 40.64,
+            "lon": 15.8,
+            "zona": "Potenza",
+            "mm_6h": 0.1
+        },
+        {
+            "lat": 40.66,
+            "lon": 16.6,
+            "zona": "Matera",
+            "mm_6h": 0.7
+        },
+        {
+            "lat": 40.09,
+            "lon": 16.1,
+            "zona": "Pollino",
+            "mm_6h": 0.0
+        },
+        {
+            "lat": 40.99,
+            "lon": 15.65,
+            "zona": "Vulture",
+            "mm_6h": 4.7
+        }
+    ],
     "stazioni": [
         {
             "nome": null,
@@ -9,9 +35,9 @@
             "livello": "N/D",
             "status": "REGOLARE",
             "soglie": {
-                "l1": 0.0,
-                "l2": 0.0,
-                "l3": 0.0
+                "l1": null,
+                "l2": null,
+                "l3": null
             }
         },
         {
@@ -22,9 +48,9 @@
             "livello": "N/D",
             "status": "REGOLARE",
             "soglie": {
-                "l1": 0.0,
-                "l2": 0.0,
-                "l3": 0.0
+                "l1": null,
+                "l2": null,
+                "l3": null
             }
         },
         {
@@ -35,9 +61,9 @@
             "livello": "0.21 m",
             "status": "REGOLARE",
             "soglie": {
-                "l1": 0.0,
-                "l2": 0.0,
-                "l3": 0.0
+                "l1": null,
+                "l2": null,
+                "l3": null
             }
         },
         {
@@ -48,9 +74,9 @@
             "livello": "2.09 m",
             "status": "REGOLARE",
             "soglie": {
-                "l1": 0.0,
-                "l2": 0.0,
-                "l3": 0.0
+                "l1": null,
+                "l2": null,
+                "l3": null
             }
         },
         {
@@ -61,9 +87,9 @@
             "livello": "0.27 m",
             "status": "REGOLARE",
             "soglie": {
-                "l1": 0.0,
-                "l2": 0.0,
-                "l3": 0.0
+                "l1": null,
+                "l2": null,
+                "l3": null
             }
         },
         {
@@ -74,9 +100,9 @@
             "livello": "N/D",
             "status": "REGOLARE",
             "soglie": {
-                "l1": 0.0,
-                "l2": 0.0,
-                "l3": 0.0
+                "l1": null,
+                "l2": null,
+                "l3": null
             }
         },
         {
@@ -87,9 +113,9 @@
             "livello": "N/D",
             "status": "REGOLARE",
             "soglie": {
-                "l1": 0.0,
-                "l2": 0.0,
-                "l3": 0.0
+                "l1": null,
+                "l2": null,
+                "l3": null
             }
         },
         {
@@ -100,9 +126,9 @@
             "livello": "N/D",
             "status": "REGOLARE",
             "soglie": {
-                "l1": 0.0,
-                "l2": 0.0,
-                "l3": 0.0
+                "l1": null,
+                "l2": null,
+                "l3": null
             }
         },
         {
@@ -113,9 +139,9 @@
             "livello": "0.49 m",
             "status": "REGOLARE",
             "soglie": {
-                "l1": 0.0,
-                "l2": 0.0,
-                "l3": 0.0
+                "l1": null,
+                "l2": null,
+                "l3": null
             }
         },
         {
@@ -126,9 +152,9 @@
             "livello": "1.16 m",
             "status": "REGOLARE",
             "soglie": {
-                "l1": 0.0,
-                "l2": 0.0,
-                "l3": 0.0
+                "l1": null,
+                "l2": null,
+                "l3": null
             }
         },
         {
@@ -139,9 +165,9 @@
             "livello": "N/D",
             "status": "REGOLARE",
             "soglie": {
-                "l1": 0.0,
-                "l2": 0.0,
-                "l3": 0.0
+                "l1": null,
+                "l2": null,
+                "l3": null
             }
         },
         {
@@ -152,9 +178,9 @@
             "livello": "N/D",
             "status": "REGOLARE",
             "soglie": {
-                "l1": 0.0,
-                "l2": 0.0,
-                "l3": 0.0
+                "l1": null,
+                "l2": null,
+                "l3": null
             }
         },
         {
@@ -165,9 +191,9 @@
             "livello": "1.27 m",
             "status": "REGOLARE",
             "soglie": {
-                "l1": 0.0,
-                "l2": 0.0,
-                "l3": 0.0
+                "l1": null,
+                "l2": null,
+                "l3": null
             }
         },
         {
@@ -178,9 +204,9 @@
             "livello": "N/D",
             "status": "REGOLARE",
             "soglie": {
-                "l1": 0.0,
-                "l2": 0.0,
-                "l3": 0.0
+                "l1": null,
+                "l2": null,
+                "l3": null
             }
         },
         {
@@ -191,9 +217,9 @@
             "livello": "N/D",
             "status": "REGOLARE",
             "soglie": {
-                "l1": 0.0,
-                "l2": 0.0,
-                "l3": 0.0
+                "l1": null,
+                "l2": null,
+                "l3": null
             }
         },
         {
@@ -204,9 +230,9 @@
             "livello": "N/D",
             "status": "REGOLARE",
             "soglie": {
-                "l1": 0.0,
-                "l2": 0.0,
-                "l3": 0.0
+                "l1": null,
+                "l2": null,
+                "l3": null
             }
         },
         {
@@ -217,9 +243,9 @@
             "livello": "0.77 m",
             "status": "REGOLARE",
             "soglie": {
-                "l1": 0.0,
-                "l2": 0.0,
-                "l3": 0.0
+                "l1": null,
+                "l2": null,
+                "l3": null
             }
         },
         {
@@ -230,9 +256,9 @@
             "livello": "N/D",
             "status": "REGOLARE",
             "soglie": {
-                "l1": 0.0,
-                "l2": 0.0,
-                "l3": 0.0
+                "l1": null,
+                "l2": null,
+                "l3": null
             }
         },
         {
@@ -243,9 +269,9 @@
             "livello": "0.97 m",
             "status": "REGOLARE",
             "soglie": {
-                "l1": 0.0,
-                "l2": 0.0,
-                "l3": 0.0
+                "l1": null,
+                "l2": null,
+                "l3": null
             }
         },
         {
@@ -256,9 +282,9 @@
             "livello": "0.28 m",
             "status": "REGOLARE",
             "soglie": {
-                "l1": 0.0,
-                "l2": 0.0,
-                "l3": 0.0
+                "l1": null,
+                "l2": null,
+                "l3": null
             }
         },
         {
@@ -269,9 +295,9 @@
             "livello": "1.00 m",
             "status": "REGOLARE",
             "soglie": {
-                "l1": 0.0,
-                "l2": 0.0,
-                "l3": 0.0
+                "l1": null,
+                "l2": null,
+                "l3": null
             }
         },
         {
@@ -282,9 +308,9 @@
             "livello": "N/D",
             "status": "REGOLARE",
             "soglie": {
-                "l1": 0.0,
-                "l2": 0.0,
-                "l3": 0.0
+                "l1": null,
+                "l2": null,
+                "l3": null
             }
         },
         {
@@ -295,9 +321,9 @@
             "livello": "N/D",
             "status": "REGOLARE",
             "soglie": {
-                "l1": 0.0,
-                "l2": 0.0,
-                "l3": 0.0
+                "l1": null,
+                "l2": null,
+                "l3": null
             }
         },
         {
@@ -308,9 +334,9 @@
             "livello": "N/D",
             "status": "REGOLARE",
             "soglie": {
-                "l1": 0.0,
-                "l2": 0.0,
-                "l3": 0.0
+                "l1": null,
+                "l2": null,
+                "l3": null
             }
         },
         {
@@ -321,9 +347,9 @@
             "livello": "0.93 m",
             "status": "REGOLARE",
             "soglie": {
-                "l1": 0.0,
-                "l2": 0.0,
-                "l3": 0.0
+                "l1": null,
+                "l2": null,
+                "l3": null
             }
         },
         {
@@ -334,9 +360,9 @@
             "livello": "0.18 m",
             "status": "REGOLARE",
             "soglie": {
-                "l1": 0.0,
-                "l2": 0.0,
-                "l3": 0.0
+                "l1": null,
+                "l2": null,
+                "l3": null
             }
         },
         {
@@ -347,9 +373,9 @@
             "livello": "0.35 m",
             "status": "REGOLARE",
             "soglie": {
-                "l1": 0.0,
-                "l2": 0.0,
-                "l3": 0.0
+                "l1": null,
+                "l2": null,
+                "l3": null
             }
         },
         {
@@ -360,9 +386,9 @@
             "livello": "N/D",
             "status": "REGOLARE",
             "soglie": {
-                "l1": 0.0,
-                "l2": 0.0,
-                "l3": 0.0
+                "l1": null,
+                "l2": null,
+                "l3": null
             }
         },
         {
@@ -373,9 +399,9 @@
             "livello": "1.42 m",
             "status": "REGOLARE",
             "soglie": {
-                "l1": 0.0,
-                "l2": 0.0,
-                "l3": 0.0
+                "l1": null,
+                "l2": null,
+                "l3": null
             }
         },
         {
@@ -386,9 +412,9 @@
             "livello": "N/D",
             "status": "REGOLARE",
             "soglie": {
-                "l1": 0.0,
-                "l2": 0.0,
-                "l3": 0.0
+                "l1": null,
+                "l2": null,
+                "l3": null
             }
         },
         {
@@ -399,9 +425,9 @@
             "livello": "0.79 m",
             "status": "REGOLARE",
             "soglie": {
-                "l1": 0.0,
-                "l2": 0.0,
-                "l3": 0.0
+                "l1": null,
+                "l2": null,
+                "l3": null
             }
         },
         {
@@ -412,9 +438,9 @@
             "livello": "N/D",
             "status": "REGOLARE",
             "soglie": {
-                "l1": 0.0,
-                "l2": 0.0,
-                "l3": 0.0
+                "l1": null,
+                "l2": null,
+                "l3": null
             }
         },
         {
@@ -425,9 +451,9 @@
             "livello": "1.59 m",
             "status": "REGOLARE",
             "soglie": {
-                "l1": 0.0,
-                "l2": 0.0,
-                "l3": 0.0
+                "l1": null,
+                "l2": null,
+                "l3": null
             }
         },
         {
@@ -438,9 +464,9 @@
             "livello": "N/D",
             "status": "REGOLARE",
             "soglie": {
-                "l1": 0.0,
-                "l2": 0.0,
-                "l3": 0.0
+                "l1": null,
+                "l2": null,
+                "l3": null
             }
         },
         {
@@ -451,9 +477,9 @@
             "livello": "0.25 m",
             "status": "REGOLARE",
             "soglie": {
-                "l1": 0.0,
-                "l2": 0.0,
-                "l3": 0.0
+                "l1": null,
+                "l2": null,
+                "l3": null
             }
         },
         {
@@ -464,9 +490,9 @@
             "livello": "-0.01 m",
             "status": "REGOLARE",
             "soglie": {
-                "l1": 0.0,
-                "l2": 0.0,
-                "l3": 0.0
+                "l1": null,
+                "l2": null,
+                "l3": null
             }
         },
         {
@@ -477,9 +503,9 @@
             "livello": "N/D",
             "status": "REGOLARE",
             "soglie": {
-                "l1": 0.0,
-                "l2": 0.0,
-                "l3": 0.0
+                "l1": null,
+                "l2": null,
+                "l3": null
             }
         },
         {
@@ -490,9 +516,9 @@
             "livello": "1.37 m",
             "status": "REGOLARE",
             "soglie": {
-                "l1": 0.0,
-                "l2": 0.0,
-                "l3": 0.0
+                "l1": null,
+                "l2": null,
+                "l3": null
             }
         },
         {
@@ -503,9 +529,9 @@
             "livello": "N/D",
             "status": "REGOLARE",
             "soglie": {
-                "l1": 0.0,
-                "l2": 0.0,
-                "l3": 0.0
+                "l1": null,
+                "l2": null,
+                "l3": null
             }
         },
         {
@@ -516,9 +542,9 @@
             "livello": "N/D",
             "status": "REGOLARE",
             "soglie": {
-                "l1": 0.0,
-                "l2": 0.0,
-                "l3": 0.0
+                "l1": null,
+                "l2": null,
+                "l3": null
             }
         },
         {
@@ -529,9 +555,9 @@
             "livello": "N/D",
             "status": "REGOLARE",
             "soglie": {
-                "l1": 0.0,
-                "l2": 0.0,
-                "l3": 0.0
+                "l1": null,
+                "l2": null,
+                "l3": null
             }
         },
         {
@@ -542,9 +568,9 @@
             "livello": "0.17 m",
             "status": "REGOLARE",
             "soglie": {
-                "l1": 0.0,
-                "l2": 0.0,
-                "l3": 0.0
+                "l1": null,
+                "l2": null,
+                "l3": null
             }
         },
         {
@@ -555,9 +581,9 @@
             "livello": "N/D",
             "status": "REGOLARE",
             "soglie": {
-                "l1": 0.0,
-                "l2": 0.0,
-                "l3": 0.0
+                "l1": null,
+                "l2": null,
+                "l3": null
             }
         },
         {
@@ -568,9 +594,9 @@
             "livello": "1.20 m",
             "status": "REGOLARE",
             "soglie": {
-                "l1": 0.0,
-                "l2": 0.0,
-                "l3": 0.0
+                "l1": null,
+                "l2": null,
+                "l3": null
             }
         },
         {
@@ -581,9 +607,9 @@
             "livello": "1.52 m",
             "status": "REGOLARE",
             "soglie": {
-                "l1": 0.0,
-                "l2": 0.0,
-                "l3": 0.0
+                "l1": null,
+                "l2": null,
+                "l3": null
             }
         },
         {
@@ -594,9 +620,9 @@
             "livello": "0.86 m",
             "status": "REGOLARE",
             "soglie": {
-                "l1": 0.0,
-                "l2": 0.0,
-                "l3": 0.0
+                "l1": null,
+                "l2": null,
+                "l3": null
             }
         },
         {
@@ -607,9 +633,9 @@
             "livello": "N/D",
             "status": "REGOLARE",
             "soglie": {
-                "l1": 0.0,
-                "l2": 0.0,
-                "l3": 0.0
+                "l1": null,
+                "l2": null,
+                "l3": null
             }
         },
         {
@@ -620,9 +646,9 @@
             "livello": "N/D",
             "status": "REGOLARE",
             "soglie": {
-                "l1": 0.0,
-                "l2": 0.0,
-                "l3": 0.0
+                "l1": null,
+                "l2": null,
+                "l3": null
             }
         },
         {
@@ -633,9 +659,9 @@
             "livello": "N/D",
             "status": "REGOLARE",
             "soglie": {
-                "l1": 0.0,
-                "l2": 0.0,
-                "l3": 0.0
+                "l1": null,
+                "l2": null,
+                "l3": null
             }
         },
         {
@@ -646,9 +672,9 @@
             "livello": "N/D",
             "status": "REGOLARE",
             "soglie": {
-                "l1": 0.0,
-                "l2": 0.0,
-                "l3": 0.0
+                "l1": null,
+                "l2": null,
+                "l3": null
             }
         },
         {
@@ -659,9 +685,9 @@
             "livello": "N/D",
             "status": "REGOLARE",
             "soglie": {
-                "l1": 0.0,
-                "l2": 0.0,
-                "l3": 0.0
+                "l1": null,
+                "l2": null,
+                "l3": null
             }
         },
         {
@@ -672,9 +698,9 @@
             "livello": "N/D",
             "status": "REGOLARE",
             "soglie": {
-                "l1": 0.0,
-                "l2": 0.0,
-                "l3": 0.0
+                "l1": null,
+                "l2": null,
+                "l3": null
             }
         },
         {
@@ -685,9 +711,9 @@
             "livello": "N/D",
             "status": "REGOLARE",
             "soglie": {
-                "l1": 0.0,
-                "l2": 0.0,
-                "l3": 0.0
+                "l1": null,
+                "l2": null,
+                "l3": null
             }
         },
         {
@@ -698,9 +724,9 @@
             "livello": "N/D",
             "status": "REGOLARE",
             "soglie": {
-                "l1": 0.0,
-                "l2": 0.0,
-                "l3": 0.0
+                "l1": null,
+                "l2": null,
+                "l3": null
             }
         },
         {
@@ -711,9 +737,9 @@
             "livello": "N/D",
             "status": "REGOLARE",
             "soglie": {
-                "l1": 0.0,
-                "l2": 0.0,
-                "l3": 0.0
+                "l1": null,
+                "l2": null,
+                "l3": null
             }
         },
         {
@@ -724,9 +750,9 @@
             "livello": "1.42 m",
             "status": "REGOLARE",
             "soglie": {
-                "l1": 0.0,
-                "l2": 0.0,
-                "l3": 0.0
+                "l1": null,
+                "l2": null,
+                "l3": null
             }
         },
         {
@@ -737,9 +763,9 @@
             "livello": "N/D",
             "status": "REGOLARE",
             "soglie": {
-                "l1": 0.0,
-                "l2": 0.0,
-                "l3": 0.0
+                "l1": null,
+                "l2": null,
+                "l3": null
             }
         },
         {
@@ -750,9 +776,9 @@
             "livello": "N/D",
             "status": "REGOLARE",
             "soglie": {
-                "l1": 0.0,
-                "l2": 0.0,
-                "l3": 0.0
+                "l1": null,
+                "l2": null,
+                "l3": null
             }
         },
         {
@@ -763,9 +789,9 @@
             "livello": "N/D",
             "status": "REGOLARE",
             "soglie": {
-                "l1": 0.0,
-                "l2": 0.0,
-                "l3": 0.0
+                "l1": null,
+                "l2": null,
+                "l3": null
             }
         },
         {
@@ -776,9 +802,9 @@
             "livello": "N/D",
             "status": "REGOLARE",
             "soglie": {
-                "l1": 0.0,
-                "l2": 0.0,
-                "l3": 0.0
+                "l1": null,
+                "l2": null,
+                "l3": null
             }
         },
         {
@@ -789,9 +815,9 @@
             "livello": "0.14 m",
             "status": "REGOLARE",
             "soglie": {
-                "l1": 0.0,
-                "l2": 0.0,
-                "l3": 0.0
+                "l1": null,
+                "l2": null,
+                "l3": null
             }
         },
         {
@@ -802,9 +828,9 @@
             "livello": "N/D",
             "status": "REGOLARE",
             "soglie": {
-                "l1": 0.0,
-                "l2": 0.0,
-                "l3": 0.0
+                "l1": null,
+                "l2": null,
+                "l3": null
             }
         },
         {
@@ -815,9 +841,9 @@
             "livello": "N/D",
             "status": "REGOLARE",
             "soglie": {
-                "l1": 0.0,
-                "l2": 0.0,
-                "l3": 0.0
+                "l1": null,
+                "l2": null,
+                "l3": null
             }
         },
         {
@@ -828,9 +854,9 @@
             "livello": "N/D",
             "status": "REGOLARE",
             "soglie": {
-                "l1": 0.0,
-                "l2": 0.0,
-                "l3": 0.0
+                "l1": null,
+                "l2": null,
+                "l3": null
             }
         },
         {
@@ -841,9 +867,9 @@
             "livello": "N/D",
             "status": "REGOLARE",
             "soglie": {
-                "l1": 0.0,
-                "l2": 0.0,
-                "l3": 0.0
+                "l1": null,
+                "l2": null,
+                "l3": null
             }
         },
         {
@@ -854,9 +880,9 @@
             "livello": "N/D",
             "status": "REGOLARE",
             "soglie": {
-                "l1": 0.0,
-                "l2": 0.0,
-                "l3": 0.0
+                "l1": null,
+                "l2": null,
+                "l3": null
             }
         },
         {
@@ -867,9 +893,9 @@
             "livello": "N/D",
             "status": "REGOLARE",
             "soglie": {
-                "l1": 0.0,
-                "l2": 0.0,
-                "l3": 0.0
+                "l1": null,
+                "l2": null,
+                "l3": null
             }
         },
         {
@@ -880,9 +906,9 @@
             "livello": "N/D",
             "status": "REGOLARE",
             "soglie": {
-                "l1": 0.0,
-                "l2": 0.0,
-                "l3": 0.0
+                "l1": null,
+                "l2": null,
+                "l3": null
             }
         },
         {
@@ -893,9 +919,9 @@
             "livello": "N/D",
             "status": "REGOLARE",
             "soglie": {
-                "l1": 0.0,
-                "l2": 0.0,
-                "l3": 0.0
+                "l1": null,
+                "l2": null,
+                "l3": null
             }
         },
         {
@@ -906,9 +932,9 @@
             "livello": "0.14 m",
             "status": "REGOLARE",
             "soglie": {
-                "l1": 0.0,
-                "l2": 0.0,
-                "l3": 0.0
+                "l1": null,
+                "l2": null,
+                "l3": null
             }
         },
         {
@@ -919,9 +945,9 @@
             "livello": "N/D",
             "status": "REGOLARE",
             "soglie": {
-                "l1": 0.0,
-                "l2": 0.0,
-                "l3": 0.0
+                "l1": null,
+                "l2": null,
+                "l3": null
             }
         },
         {
@@ -932,9 +958,9 @@
             "livello": "N/D",
             "status": "REGOLARE",
             "soglie": {
-                "l1": 0.0,
-                "l2": 0.0,
-                "l3": 0.0
+                "l1": null,
+                "l2": null,
+                "l3": null
             }
         },
         {
@@ -945,9 +971,9 @@
             "livello": "N/D",
             "status": "REGOLARE",
             "soglie": {
-                "l1": 0.0,
-                "l2": 0.0,
-                "l3": 0.0
+                "l1": null,
+                "l2": null,
+                "l3": null
             }
         },
         {
@@ -958,9 +984,9 @@
             "livello": "1.32 m",
             "status": "REGOLARE",
             "soglie": {
-                "l1": 0.0,
-                "l2": 0.0,
-                "l3": 0.0
+                "l1": null,
+                "l2": null,
+                "l3": null
             }
         },
         {
@@ -971,9 +997,9 @@
             "livello": "N/D",
             "status": "REGOLARE",
             "soglie": {
-                "l1": 0.0,
-                "l2": 0.0,
-                "l3": 0.0
+                "l1": null,
+                "l2": null,
+                "l3": null
             }
         },
         {
@@ -984,9 +1010,9 @@
             "livello": "0.83 m",
             "status": "REGOLARE",
             "soglie": {
-                "l1": 0.0,
-                "l2": 0.0,
-                "l3": 0.0
+                "l1": null,
+                "l2": null,
+                "l3": null
             }
         },
         {
@@ -997,9 +1023,9 @@
             "livello": "N/D",
             "status": "REGOLARE",
             "soglie": {
-                "l1": 0.0,
-                "l2": 0.0,
-                "l3": 0.0
+                "l1": null,
+                "l2": null,
+                "l3": null
             }
         },
         {
@@ -1010,9 +1036,9 @@
             "livello": "0.28 m",
             "status": "REGOLARE",
             "soglie": {
-                "l1": 0.0,
-                "l2": 0.0,
-                "l3": 0.0
+                "l1": null,
+                "l2": null,
+                "l3": null
             }
         },
         {
@@ -1023,9 +1049,9 @@
             "livello": "N/D",
             "status": "REGOLARE",
             "soglie": {
-                "l1": 0.0,
-                "l2": 0.0,
-                "l3": 0.0
+                "l1": null,
+                "l2": null,
+                "l3": null
             }
         },
         {
@@ -1036,9 +1062,9 @@
             "livello": "N/D",
             "status": "REGOLARE",
             "soglie": {
-                "l1": 0.0,
-                "l2": 0.0,
-                "l3": 0.0
+                "l1": null,
+                "l2": null,
+                "l3": null
             }
         },
         {
@@ -1049,9 +1075,9 @@
             "livello": "N/D",
             "status": "REGOLARE",
             "soglie": {
-                "l1": 0.0,
-                "l2": 0.0,
-                "l3": 0.0
+                "l1": null,
+                "l2": null,
+                "l3": null
             }
         },
         {
@@ -1062,9 +1088,9 @@
             "livello": "N/D",
             "status": "REGOLARE",
             "soglie": {
-                "l1": 0.0,
-                "l2": 0.0,
-                "l3": 0.0
+                "l1": null,
+                "l2": null,
+                "l3": null
             }
         },
         {
@@ -1075,9 +1101,9 @@
             "livello": "N/D",
             "status": "REGOLARE",
             "soglie": {
-                "l1": 0.0,
-                "l2": 0.0,
-                "l3": 0.0
+                "l1": null,
+                "l2": null,
+                "l3": null
             }
         },
         {
@@ -1088,9 +1114,9 @@
             "livello": "N/D",
             "status": "REGOLARE",
             "soglie": {
-                "l1": 0.0,
-                "l2": 0.0,
-                "l3": 0.0
+                "l1": null,
+                "l2": null,
+                "l3": null
             }
         },
         {
@@ -1101,9 +1127,9 @@
             "livello": "2.16 m",
             "status": "REGOLARE",
             "soglie": {
-                "l1": 0.0,
-                "l2": 0.0,
-                "l3": 0.0
+                "l1": null,
+                "l2": null,
+                "l3": null
             }
         },
         {
@@ -1114,9 +1140,9 @@
             "livello": "N/D",
             "status": "REGOLARE",
             "soglie": {
-                "l1": 0.0,
-                "l2": 0.0,
-                "l3": 0.0
+                "l1": null,
+                "l2": null,
+                "l3": null
             }
         },
         {
@@ -1127,9 +1153,9 @@
             "livello": "N/D",
             "status": "REGOLARE",
             "soglie": {
-                "l1": 0.0,
-                "l2": 0.0,
-                "l3": 0.0
+                "l1": null,
+                "l2": null,
+                "l3": null
             }
         },
         {
@@ -1140,9 +1166,9 @@
             "livello": "-0.45 m",
             "status": "REGOLARE",
             "soglie": {
-                "l1": 0.0,
-                "l2": 0.0,
-                "l3": 0.0
+                "l1": null,
+                "l2": null,
+                "l3": null
             }
         },
         {
@@ -1153,9 +1179,9 @@
             "livello": "N/D",
             "status": "REGOLARE",
             "soglie": {
-                "l1": 0.0,
-                "l2": 0.0,
-                "l3": 0.0
+                "l1": null,
+                "l2": null,
+                "l3": null
             }
         },
         {
@@ -1166,9 +1192,9 @@
             "livello": "-0.26 m",
             "status": "REGOLARE",
             "soglie": {
-                "l1": 0.0,
-                "l2": 0.0,
-                "l3": 0.0
+                "l1": null,
+                "l2": null,
+                "l3": null
             }
         },
         {
@@ -1179,9 +1205,9 @@
             "livello": "N/D",
             "status": "REGOLARE",
             "soglie": {
-                "l1": 0.0,
-                "l2": 0.0,
-                "l3": 0.0
+                "l1": null,
+                "l2": null,
+                "l3": null
             }
         },
         {
@@ -1192,9 +1218,9 @@
             "livello": "N/D",
             "status": "REGOLARE",
             "soglie": {
-                "l1": 0.0,
-                "l2": 0.0,
-                "l3": 0.0
+                "l1": null,
+                "l2": null,
+                "l3": null
             }
         },
         {
@@ -1205,9 +1231,9 @@
             "livello": "0.29 m",
             "status": "REGOLARE",
             "soglie": {
-                "l1": 0.0,
-                "l2": 0.0,
-                "l3": 0.0
+                "l1": null,
+                "l2": null,
+                "l3": null
             }
         },
         {
@@ -1218,9 +1244,9 @@
             "livello": "N/D",
             "status": "REGOLARE",
             "soglie": {
-                "l1": 0.0,
-                "l2": 0.0,
-                "l3": 0.0
+                "l1": null,
+                "l2": null,
+                "l3": null
             }
         },
         {
@@ -1231,9 +1257,9 @@
             "livello": "-0.32 m",
             "status": "REGOLARE",
             "soglie": {
-                "l1": 0.0,
-                "l2": 0.0,
-                "l3": 0.0
+                "l1": null,
+                "l2": null,
+                "l3": null
             }
         },
         {
@@ -1244,9 +1270,9 @@
             "livello": "N/D",
             "status": "REGOLARE",
             "soglie": {
-                "l1": 0.0,
-                "l2": 0.0,
-                "l3": 0.0
+                "l1": null,
+                "l2": null,
+                "l3": null
             }
         },
         {
@@ -1257,9 +1283,9 @@
             "livello": "N/D",
             "status": "REGOLARE",
             "soglie": {
-                "l1": 0.0,
-                "l2": 0.0,
-                "l3": 0.0
+                "l1": null,
+                "l2": null,
+                "l3": null
             }
         },
         {
@@ -1270,9 +1296,9 @@
             "livello": "N/D",
             "status": "REGOLARE",
             "soglie": {
-                "l1": 0.0,
-                "l2": 0.0,
-                "l3": 0.0
+                "l1": null,
+                "l2": null,
+                "l3": null
             }
         },
         {
@@ -1283,9 +1309,9 @@
             "livello": "N/D",
             "status": "REGOLARE",
             "soglie": {
-                "l1": 0.0,
-                "l2": 0.0,
-                "l3": 0.0
+                "l1": null,
+                "l2": null,
+                "l3": null
             }
         },
         {
@@ -1296,9 +1322,9 @@
             "livello": "1.50 m",
             "status": "REGOLARE",
             "soglie": {
-                "l1": 0.0,
-                "l2": 0.0,
-                "l3": 0.0
+                "l1": null,
+                "l2": null,
+                "l3": null
             }
         },
         {
@@ -1309,9 +1335,9 @@
             "livello": "N/D",
             "status": "REGOLARE",
             "soglie": {
-                "l1": 0.0,
-                "l2": 0.0,
-                "l3": 0.0
+                "l1": null,
+                "l2": null,
+                "l3": null
             }
         },
         {
@@ -1322,9 +1348,9 @@
             "livello": "N/D",
             "status": "REGOLARE",
             "soglie": {
-                "l1": 0.0,
-                "l2": 0.0,
-                "l3": 0.0
+                "l1": null,
+                "l2": null,
+                "l3": null
             }
         },
         {
@@ -1335,9 +1361,9 @@
             "livello": "0.06 m",
             "status": "REGOLARE",
             "soglie": {
-                "l1": 0.0,
-                "l2": 0.0,
-                "l3": 0.0
+                "l1": null,
+                "l2": null,
+                "l3": null
             }
         },
         {
@@ -1348,9 +1374,9 @@
             "livello": "N/D",
             "status": "REGOLARE",
             "soglie": {
-                "l1": 0.0,
-                "l2": 0.0,
-                "l3": 0.0
+                "l1": null,
+                "l2": null,
+                "l3": null
             }
         },
         {
@@ -1361,9 +1387,9 @@
             "livello": "N/D",
             "status": "REGOLARE",
             "soglie": {
-                "l1": 0.0,
-                "l2": 0.0,
-                "l3": 0.0
+                "l1": null,
+                "l2": null,
+                "l3": null
             }
         },
         {
@@ -1374,9 +1400,9 @@
             "livello": "N/D",
             "status": "REGOLARE",
             "soglie": {
-                "l1": 0.0,
-                "l2": 0.0,
-                "l3": 0.0
+                "l1": null,
+                "l2": null,
+                "l3": null
             }
         },
         {
@@ -1387,9 +1413,9 @@
             "livello": "N/D",
             "status": "REGOLARE",
             "soglie": {
-                "l1": 0.0,
-                "l2": 0.0,
-                "l3": 0.0
+                "l1": null,
+                "l2": null,
+                "l3": null
             }
         },
         {
@@ -1400,9 +1426,9 @@
             "livello": "N/D",
             "status": "REGOLARE",
             "soglie": {
-                "l1": 0.0,
-                "l2": 0.0,
-                "l3": 0.0
+                "l1": null,
+                "l2": null,
+                "l3": null
             }
         },
         {
@@ -1413,9 +1439,9 @@
             "livello": "N/D",
             "status": "REGOLARE",
             "soglie": {
-                "l1": 0.0,
-                "l2": 0.0,
-                "l3": 0.0
+                "l1": null,
+                "l2": null,
+                "l3": null
             }
         },
         {
@@ -1426,9 +1452,9 @@
             "livello": "N/D",
             "status": "REGOLARE",
             "soglie": {
-                "l1": 0.0,
-                "l2": 0.0,
-                "l3": 0.0
+                "l1": null,
+                "l2": null,
+                "l3": null
             }
         },
         {
@@ -1439,9 +1465,9 @@
             "livello": "N/D",
             "status": "REGOLARE",
             "soglie": {
-                "l1": 0.0,
-                "l2": 0.0,
-                "l3": 0.0
+                "l1": null,
+                "l2": null,
+                "l3": null
             }
         },
         {
@@ -1452,9 +1478,9 @@
             "livello": "N/D",
             "status": "REGOLARE",
             "soglie": {
-                "l1": 0.0,
-                "l2": 0.0,
-                "l3": 0.0
+                "l1": null,
+                "l2": null,
+                "l3": null
             }
         },
         {
@@ -1465,47 +1491,60 @@
             "livello": "N/D",
             "status": "REGOLARE",
             "soglie": {
-                "l1": 0.0,
-                "l2": 0.0,
-                "l3": 0.0
+                "l1": null,
+                "l2": null,
+                "l3": null
             }
         }
     ],
     "dighe": [
         {
-            "nome": "MONTE COTUGNO",
+            "nome": "Monte Cotugno",
             "lat": 40.136,
             "lon": 16.202,
             "volume": 0.0,
-            "percentuale": 0
+            "percentuale": 0.0,
+            "data": "N/D"
         },
         {
-            "nome": "PERTUSILLO",
+            "nome": "Pertusillo",
             "lat": 40.271,
             "lon": 15.908,
             "volume": 0.0,
-            "percentuale": 0
+            "percentuale": 0.0,
+            "data": "N/D"
         },
         {
-            "nome": "SAN GIULIANO",
+            "nome": "San Giuliano",
             "lat": 40.612,
             "lon": 16.518,
             "volume": 0.0,
-            "percentuale": 0
+            "percentuale": 0.0,
+            "data": "N/D"
         },
         {
-            "nome": "BASENTELLO",
+            "nome": "Basentello",
             "lat": 40.735,
             "lon": 16.142,
             "volume": 0.0,
-            "percentuale": 0
+            "percentuale": 0.0,
+            "data": "N/D"
         },
         {
-            "nome": "CAMASTRA",
+            "nome": "Camastra",
             "lat": 40.528,
             "lon": 15.845,
             "volume": 0.0,
-            "percentuale": 0
+            "percentuale": 0.0,
+            "data": "N/D"
+        },
+        {
+            "nome": "Gannano",
+            "lat": 40.228,
+            "lon": 16.515,
+            "volume": 0.0,
+            "percentuale": 0.0,
+            "data": "N/D"
         }
     ]
 }
