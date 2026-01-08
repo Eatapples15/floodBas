@@ -1,42 +1,26 @@
-name: Aggiornamento Monitoraggio Fiumi e AI
-
+name: River Monitor Update
 on:
   schedule:
-    - cron: '0 * * * *' # Esecuzione ogni ora esatta
-  workflow_dispatch: # Permette l'avvio manuale dalla scheda Actions di GitHub
-
+    - cron: '0 * * * *'
+  workflow_dispatch:
 permissions:
-  contents: write # Permesso necessario per permettere alla Action di fare il push dei dati
-
+  contents: write
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v3
-
-      - name: Setup Python
-        uses: actions/setup-python@v4
+      - uses: actions/checkout@v3
+      - uses: actions/setup-python@v4
         with:
           python-version: '3.9'
-          cache: 'pip' # Velocizza le esecuzioni successive
-
-      - name: Install dependencies
-        run: |
-          python -m pip install --upgrade pip
-          pip install requests
-
-      - name: Run Monitor Engine
-        run: python main.py
+      - run: pip install requests
+      - run: python main.py
         env:
-          GOOGLE_API_KEY: ${{ secrets.GOOGLE_API_KEY }} # Assicurati di averla messa nei Secrets del repo
-
-      - name: Commit and Push Data
+          GOOGLE_API_KEY: ${{ secrets.GOOGLE_API_KEY }}
+      - name: Deploy
         run: |
-          git config --global user.name 'Basilicata AI Monitor'
-          git config --global user.email 'actions@github.com'
-          # Aggiungiamo sia il nuovo JSON che l'eventuale index aggiornato
-          git add data.json index.html 
-          # Eseguiamo il commit solo se ci sono cambiamenti effettivi
-          git commit -m "Update hydrological data and Google Flood AI - $(date +'%d/%m/%Y %H:%M')" || exit 0
-          git pushs
+          git config --global user.name 'Bot'
+          git config --global user.email 'bot@bot.com'
+          git add data.json index.html
+          git commit -m "Update $(date)" || exit 0
+          git push
