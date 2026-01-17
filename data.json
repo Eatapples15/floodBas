@@ -1,12 +1,6 @@
 {
-    "last_update": "17/01/2026 02:48",
+    "last_update": "17/01/2026 03:51",
     "meteo_grib": [
-        {
-            "lat": 40.64,
-            "lon": 15.8,
-            "zona": "Potenza",
-            "mm_6h": 0.0
-        },
         {
             "lat": 40.66,
             "lon": 16.6,
@@ -71,7 +65,7 @@
             "source": "REGIONE",
             "lat": 40.390278,
             "lon": 16.656944,
-            "livello": "2.26 m",
+            "livello": "2.25 m",
             "status": "REGOLARE",
             "soglie": {
                 "l1": null,
@@ -84,7 +78,7 @@
             "source": "REGIONE",
             "lat": 40.5425,
             "lon": 15.569722,
-            "livello": "0.05 m",
+            "livello": "0.04 m",
             "status": "REGOLARE",
             "soglie": {
                 "l1": null,
@@ -136,7 +130,7 @@
             "source": "REGIONE",
             "lat": 40.296944,
             "lon": 15.909167,
-            "livello": "0.36 m",
+            "livello": "0.35 m",
             "status": "REGOLARE",
             "soglie": {
                 "l1": null,
@@ -149,7 +143,7 @@
             "source": "REGIONE",
             "lat": 40.069444,
             "lon": 16.106389,
-            "livello": "0.90 m",
+            "livello": "0.89 m",
             "status": "REGOLARE",
             "soglie": {
                 "l1": null,
@@ -240,7 +234,7 @@
             "source": "REGIONE",
             "lat": 39.953611,
             "lon": 15.976667,
-            "livello": "0.63 m",
+            "livello": "0.64 m",
             "status": "REGOLARE",
             "soglie": {
                 "l1": null,
@@ -266,7 +260,7 @@
             "source": "REGIONE",
             "lat": 40.308611,
             "lon": 15.845,
-            "livello": "0.58 m",
+            "livello": "0.57 m",
             "status": "REGOLARE",
             "soglie": {
                 "l1": null,
@@ -279,7 +273,7 @@
             "source": "REGIONE",
             "lat": 40.647222,
             "lon": 15.930833,
-            "livello": "0.24 m",
+            "livello": "0.26 m",
             "status": "REGOLARE",
             "soglie": {
                 "l1": null,
@@ -292,7 +286,7 @@
             "source": "REGIONE",
             "lat": 40.999722,
             "lon": 15.825,
-            "livello": "0.99 m",
+            "livello": "0.98 m",
             "status": "REGOLARE",
             "soglie": {
                 "l1": null,
@@ -344,7 +338,7 @@
             "source": "REGIONE",
             "lat": 40.367222,
             "lon": 16.781389,
-            "livello": "1.45 m",
+            "livello": "1.44 m",
             "status": "REGOLARE",
             "soglie": {
                 "l1": null,
@@ -357,7 +351,7 @@
             "source": "REGIONE",
             "lat": 40.366389,
             "lon": 16.52,
-            "livello": "0.21 m",
+            "livello": "0.18 m",
             "status": "REGOLARE",
             "soglie": {
                 "l1": null,
@@ -396,7 +390,7 @@
             "source": "REGIONE",
             "lat": 40.869167,
             "lon": 15.646667,
-            "livello": "1.19 m",
+            "livello": "1.18 m",
             "status": "REGOLARE",
             "soglie": {
                 "l1": null,
@@ -422,7 +416,7 @@
             "source": "REGIONE",
             "lat": 40.558611,
             "lon": 16.701667,
-            "livello": "0.71 m",
+            "livello": "0.70 m",
             "status": "REGOLARE",
             "soglie": {
                 "l1": null,
@@ -474,7 +468,7 @@
             "source": "REGIONE",
             "lat": 40.417222,
             "lon": 16.821389,
-            "livello": "0.26 m",
+            "livello": "0.25 m",
             "status": "REGOLARE",
             "soglie": {
                 "l1": null,
@@ -565,7 +559,7 @@
             "source": "REGIONE",
             "lat": 40.253056,
             "lon": 15.885,
-            "livello": "0.12 m",
+            "livello": "0.11 m",
             "status": "REGOLARE",
             "soglie": {
                 "l1": null,
@@ -604,7 +598,7 @@
             "source": "REGIONE",
             "lat": 40.597778,
             "lon": 16.244444,
-            "livello": "1.49 m",
+            "livello": "1.47 m",
             "status": "REGOLARE",
             "soglie": {
                 "l1": null,
@@ -617,7 +611,7 @@
             "source": "REGIONE",
             "lat": 40.545,
             "lon": 16.075556,
-            "livello": "0.82 m",
+            "livello": "0.83 m",
             "status": "REGOLARE",
             "soglie": {
                 "l1": null,
@@ -1033,7 +1027,7 @@
             "source": "REGIONE",
             "lat": 40.165278,
             "lon": 16.648611,
-            "livello": "0.26 m",
+            "livello": "0.25 m",
             "status": "REGOLARE",
             "soglie": {
                 "l1": null,
@@ -1163,7 +1157,7 @@
             "source": "REGIONE",
             "lat": 40.226111,
             "lon": 16.686667,
-            "livello": "-0.37 m",
+            "livello": "-0.36 m",
             "status": "REGOLARE",
             "soglie": {
                 "l1": null,
@@ -1358,7 +1352,7 @@
             "source": "REGIONE",
             "lat": 40.626389,
             "lon": 15.796944,
-            "livello": "-0.03 m",
+            "livello": "-0.04 m",
             "status": "REGOLARE",
             "soglie": {
                 "l1": null,
