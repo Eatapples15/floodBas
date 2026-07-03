@@ -1,31 +1,6 @@
 {
-    "last_update": "03/07/2026 22:55",
-    "meteo_grib": [
-        {
-            "lat": 40.64,
-            "lon": 15.8,
-            "zona": "Potenza",
-            "mm_6h": 0.0
-        },
-        {
-            "lat": 40.66,
-            "lon": 16.6,
-            "zona": "Matera",
-            "mm_6h": 0.0
-        },
-        {
-            "lat": 40.09,
-            "lon": 16.1,
-            "zona": "Pollino",
-            "mm_6h": 0.0
-        },
-        {
-            "lat": 40.99,
-            "lon": 15.65,
-            "zona": "Vulture",
-            "mm_6h": 0.0
-        }
-    ],
+    "last_update": "03/07/2026 23:56",
+    "meteo_grib": [],
     "stazioni": [
         {
             "nome": null,
