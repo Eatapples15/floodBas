@@ -1,5 +1,5 @@
 {
-    "last_update": "25/09/2026 22:56",
+    "last_update": "26/09/2026 01:05",
     "meteo_grib": [
         {
             "lat": 40.64,
@@ -11,7 +11,7 @@
             "lat": 40.66,
             "lon": 16.6,
             "zona": "Matera",
-            "mm_6h": 0.2
+            "mm_6h": 0.0
         },
         {
             "lat": 40.09,
@@ -23,7 +23,7 @@
             "lat": 40.99,
             "lon": 15.65,
             "zona": "Vulture",
-            "mm_6h": 2.4
+            "mm_6h": 0.0
         }
     ],
     "stazioni": [
